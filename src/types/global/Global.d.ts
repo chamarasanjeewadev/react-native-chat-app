@@ -23,3 +23,105 @@ type FontSize = {
   fs32: number;
   fs40: number;
 };
+
+
+type Section= {
+  proficiency_level: string
+  goal_user: string
+  title: string
+  topic: string
+  source: 'mila' | 'community' | 'mine'
+  background_id?: number
+  icon_id?: number
+  conversation_length: number
+  language_details: {
+    [key: string]: {
+      character_name: string
+      context_description: string
+      environment: {
+        description: string
+      }
+      voice: {
+        gender: string
+        interests: string
+        name: string
+        persona: string
+        tone: string
+      }
+    }
+  }
+  progress?: {
+    [key: string]: {
+      difficulty_level: number
+      is_completed: boolean
+    }
+  }
+  id: string
+  numeric_id: number
+  likes: number
+  times_played: number
+  creator: string
+  creation_date: string
+}
+
+type ContextTranslateBack= {
+  tokenization_response: Token[]
+}
+
+type Token= {
+  audio: string
+  learned?: boolean
+  furigana: string
+  kanji_only_length: number
+  romanization: string
+  token: string
+  translation: string
+  zhuyin: string
+}
+
+type AuthResponse ={
+  message: string;
+  user: {
+    id: number;
+    username: string;
+    object_id: string;
+    full_name: string;
+    email: string;
+    native_language: string;
+    target_language: string;
+    age_range: string;
+    daily_commitment: number;
+    motivation: string;
+    daily_streak: string;
+    last_active_date: string;
+    icon_id: number;
+    background_id: number;
+    stripe_customer_id: string;
+  };
+  user_metrics: {
+    id: string;
+    user_id: string;
+    target_language: string;
+    proficiency: string;
+    level: number;
+    level_name: string;
+    experience: number;
+    next_level_exp_req: number;
+    stripe_price_id: string;
+    streak: DailyStreak;
+    plan_expired_on: string;
+    is_cancel_scheduled: boolean;
+  };
+}
+
+
+interface MessageBack {
+  user_message: string
+  text_response: string
+  audio_response: string
+  slow_response: string
+  message_count: number
+  end_conversation: boolean
+  feedback_json?: string
+  feedback_text?: string
+}

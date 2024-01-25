@@ -2,13 +2,14 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeNavigator } from "./HomeNavigator";
 import PracticeScreen from "../screens/PracticeScreen";
-import ExploreScreen from "../screens/ExploreScreen";
+import ChatsScreen from "../screens/ChatsScreen";
 import HomeSmile from "../assets/icons/HomeSmile";
 import Explore from "../assets/icons/ExploreIcon";
 import PracticeIcon from "../assets/icons/PracticeIcon";
 import { ProfileIcon } from "../assets/icons";
 import { useTranslation } from "react-i18next";
 import ProfileScreen from "../screens/ProfileScreen";
+import { ChatNavigator } from "./ChatNavigator";
 
 export type BottomTabNavigatorParamList = {
   home: any | undefined; // TODO: add proper typings
@@ -24,7 +25,7 @@ export const TabNavigator = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={"profile"}
+      initialRouteName={"explore"}
       screenOptions={{
         tabBarStyle: { paddingTop: 10, paddingBottom: 10, height: 50 },
       }}
@@ -40,11 +41,11 @@ export const TabNavigator = () => {
       <Tab.Screen
         options={{
           headerShown: false,
-          tabBarLabel: "Explore",
+          tabBarLabel: "Chats",
           tabBarIcon: Explore,
         }}
         name="explore"
-        component={ExploreScreen}
+        component={ChatNavigator}
       />
       <Tab.Screen
         options={{

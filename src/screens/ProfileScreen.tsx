@@ -1,15 +1,41 @@
 import * as React from "react";
-import { Image, StyleSheet, View, Text, ScrollView } from "react-native";
 import {
-  FontFamily,
-  Color,
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+} from "react-native";
+
+import {
   Border,
-  Padding,
+  Color,
+  FontFamily,
   FontSize,
+  Padding,
 } from "../utils/GlobalStyles";
-import CurrentRankCard from "../components/organisms/CurrentRankCard";
-// TODO all images must be replaced with svgs
-const ProfileScreen = () => {
+import { useAuthStore } from "../stores/AuthStore";
+import { deleteIdToken } from "../utils/tokenUtils";
+import { useGetUsersQuery } from "../hooks/queries";
+const ProfileScreen = ({ navigation }) => {
+  const {
+    setIdToken: setAuthToken,
+    idToken: authToken,
+    user,
+    setUser,
+  } = useAuthStore();
+  const { data: userInfo } = useGetUsersQuery(); // this is expected to be fetched from storage
+  const handleLogout = () => {
+    try {
+      deleteIdToken();
+      setUser(null);
+      navigation.push("Login");
+      // navigation.navigate("authStack", { screen: "Details" });
+    } catch (error) {
+      console.log("error deleting token...");
+    }
+  };
   return (
     <ScrollView>
       <View style={styles.uiTemplatemobileprofile}>
@@ -26,6 +52,15 @@ const ProfileScreen = () => {
               source={require("../assets/images/group-16.png")}
             />
           </View>
+        </View>
+        <View>
+          <Pressable
+            onPress={() => {
+              handleLogout();
+            }}
+          >
+            <Text>Log out</Text>
+          </Pressable>
         </View>
         <View style={[styles.sectionTitle, styles.sectionParentFlexBox]}>
           <View
@@ -63,7 +98,7 @@ const ProfileScreen = () => {
             </View>
             <View style={[styles.userName, styles.userFlexBox]}>
               <Text style={[styles.heading1, styles.headingTypo1]}>
-                Olivia Rhye
+                {userInfo?.user?.full_name}
               </Text>
             </View>
           </View>
@@ -117,7 +152,7 @@ const ProfileScreen = () => {
             </View>
           </View>
         </View>
-        <CurrentRankCard />
+        {/* <CurrentRankCard /> */}
         <View style={styles.totalXpCard}>
           <View style={styles.subsectionFlexBox}>
             <Text style={[styles.heading2, styles.headingTypo]}>Total XP</Text>
