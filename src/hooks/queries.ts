@@ -1,48 +1,54 @@
-import { contextTranslate, firstChat } from "../services/apiService";
-import { useQuery } from "@tanstack/react-query";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { translateQueryKeys, userQueryKeys } from './queryKeys/index';
 import {
-  getUserChats,
-  getUserStats,
-  sectionsCommunity,
+  contextTranslate,
+  feedbackTranslate,
+  firstChat,
+} from "../services/apiService";
+import { useQuery } from "@tanstack/react-query";
+import {
+  getMilaUserChats,
   signIn,
 } from "../services/apiService";
+import { queryKeys } from "./queryKeys";
 
-type State = "all" | "open" | "done";
-type Todo = {
-  id: number;
-  state: State;
-};
 
 export const useGetUsersQuery = () =>
   useQuery({
-    queryKey: ["user"],
+    queryKey: queryKeys.user.user.queryKey,
     queryFn: signIn,
   });
 
-export const useGetUserChats = () =>
-  useSuspenseQuery({
-    queryKey: ["chats"],
-    queryFn: getUserChats,
-  });
-export const useGetSectionsCommunity = () =>
+export const useGetMilaChats = () =>
   useQuery({
-    queryKey: ["sections"],
-    queryFn: sectionsCommunity,
+    queryKey: queryKeys.chats.milaChats().queryKey,
+    queryFn: getMilaUserChats,
   });
-export const useGetUserStats = () =>
-  useQuery({
-    queryKey: ["stats"],
-    queryFn: getUserStats,
-  });
+
 export const useFirstChat = (difficulty: number, id: string) =>
   useQuery({
-    queryKey: ["sectionInfo", id],
-    queryFn: firstChat,
+    queryKey:queryKeys.chats.chat(id).queryKey,
+    queryFn: ()=>firstChat(difficulty,id),
   });
 
 export const useContextTranslate = (text: string) =>
   useQuery({
-    queryKey: ["translate", text],
-    queryFn: contextTranslate,
+    queryKey: queryKeys.translate.translateText(text).queryKey,
+    queryFn: ()=>contextTranslate(text),
+    enabled: !!text,
+  });
+export const useFeedbackTranslate = (
+  text: string,
+  difficulty: number,
+  sectionId: string,
+  id: number
+) =>
+  useQuery({
+    queryKey: queryKeys.translate.feedbackText(text,sectionId,id).queryKey,
+    queryFn:() =>  feedbackTranslate({
+      text,
+      difficulty_level: difficulty,
+      sectionId,
+      message_id: id,
+    }),
+    enabled: false,
   });

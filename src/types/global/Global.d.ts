@@ -24,62 +24,70 @@ type FontSize = {
   fs40: number;
 };
 
-
-type Section= {
-  proficiency_level: string
-  goal_user: string
-  title: string
-  topic: string
-  source: 'mila' | 'community' | 'mine'
-  background_id?: number
-  icon_id?: number
-  conversation_length: number
+type Section = {
+  proficiency_level: string;
+  goal_user: string;
+  title: string;
+  topic: string;
+  source: "mila" | "community" | "mine";
+  background_id?: number;
+  icon_id?: number;
+  conversation_length: number;
   language_details: {
     [key: string]: {
-      character_name: string
-      context_description: string
+      character_name: string;
+      context_description: string;
       environment: {
-        description: string
-      }
+        description: string;
+      };
       voice: {
-        gender: string
-        interests: string
-        name: string
-        persona: string
-        tone: string
-      }
-    }
-  }
+        gender: string;
+        interests: string;
+        name: string;
+        persona: string;
+        tone: string;
+      };
+    };
+  };
   progress?: {
     [key: string]: {
-      difficulty_level: number
-      is_completed: boolean
-    }
-  }
-  id: string
-  numeric_id: number
-  likes: number
-  times_played: number
-  creator: string
-  creation_date: string
-}
+      difficulty_level: number;
+      is_completed: boolean;
+    };
+  };
+  id: string;
+  numeric_id: number;
+  likes: number;
+  times_played: number;
+  creator: string;
+  creation_date: string;
+};
 
-type ContextTranslateBack= {
-  tokenization_response: Token[]
-}
+type ContextTranslateBack = {
+  tokenization_response: Token[];
+};
 
-type Token= {
-  audio: string
-  learned?: boolean
-  furigana: string
-  kanji_only_length: number
-  romanization: string
-  token: string
-  translation: string
-  zhuyin: string
-}
+type TranslateBack = {
+  translated_text: string;
+  slow_response: string;
+  audio_response: string;
+  words: Array<{
+    [key: string]: string;
+  }>;
+};
 
-type AuthResponse ={
+type Token = {
+  audio: string;
+  learned?: boolean;
+  furigana: string;
+  kanji_only_length: number;
+  romanization: string;
+  token: string;
+  translation: string;
+  zhuyin: string;
+};
+
+type AuthResponse = {
   message: string;
   user: {
     id: number;
@@ -112,16 +120,22 @@ type AuthResponse ={
     plan_expired_on: string;
     is_cancel_scheduled: boolean;
   };
-}
-
+};
 
 interface MessageBack {
-  user_message: string
-  text_response: string
-  audio_response: string
-  slow_response: string
-  message_count: number
-  end_conversation: boolean
-  feedback_json?: string
-  feedback_text?: string
+  user_message: string;
+  text_response: string;
+  audio_response: string;
+  slow_response: string;
+  message_count: number;
+  end_conversation: boolean;
+  feedback_json?: string;
+  feedback_text?: string;
 }
+
+type FeedbackTranslateType = {
+  sectionId: string;
+  difficulty_level: number;
+  text: string;
+  message_id: number;
+};
