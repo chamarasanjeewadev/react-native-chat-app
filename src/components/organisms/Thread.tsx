@@ -1,44 +1,52 @@
-import { Pressable, Text, View } from "react-native";
-import {
-  useContextTranslate,
-  useFeedbackTranslate,
-  useGetUsersQuery,
-} from "../../hooks/queries";
-import { BotWord } from "./BotWord";
-import { LanguageEnum, ThreadType } from "../../utils/enums";
-import classNames from "classnames";
-import TrackPlayer from "react-native-track-player";
-import { PlayAudio } from "../../assets/icons/PlayAudio";
-import { TranslateIcon } from "../../assets/icons/TranslateIcon";
-import { useState } from "react";
-const showRomaji = true;
-const japaneseNotation = "Furigana";
-const chineseNotation = "Romaji";
+import { Pressable, Text, View } from 'react-native'
+import { useContextTranslate, useFeedbackTranslate, useGetUsersQuery } from '../../hooks/queries'
+import { BotWord } from './BotWord'
+import { LanguageEnum, ThreadType } from '../../utils/enums'
+import classNames from 'classnames'
+import TrackPlayer from 'react-native-track-player'
+import { PlayAudio } from '../../assets/icons/PlayAudio'
+import { TranslateIcon } from '../../assets/icons/TranslateIcon'
+import { useState } from 'react'
+import { MilaHint } from '../../assets/icons/MilaHintIcon'
+import { PlaySlow } from '../../assets/icons/PlaySlowIcon'
+import { RetryIcon } from '../../assets/icons/RetryIcon'
+const showRomaji = true
+const japaneseNotation = 'Furigana'
+const chineseNotation = 'Romaji'
 
 export const Thread = ({
   thread,
   sectionId,
-  difficulty,
+  difficulty
 }: {
-  thread: Partial<MessageBack>;
-  sectionId: string;
-  difficulty: number;
+  thread: Partial<MessageBack>
+  sectionId: string
+  difficulty: number
 }) => {
-  const { data: tokens } = useContextTranslate(thread?.text_response);
+  const { data: tokens } = useContextTranslate(thread?.text_response)
   const { data: feedbackTranslate, refetch } = useFeedbackTranslate(
     thread?.text_response,
     difficulty,
     sectionId,
-   thread?.response_message_id
-  );
-  const [showTranslate, showToggleTranslate] = useState(false);
-  const { data: user, isLoading, refetch: getUserInfo } = useGetUsersQuery();
+    thread?.response_message_id
+  )
+  const [showTranslate, showToggleTranslate] = useState(false)
+  const { data: user } = useGetUsersQuery()
 
   return (
     <>
-      <View className={classNames("flex flex-row flex-wrap")}>
-        {thread.type === "user" && (
-          <Text className="shrink">{thread.message}</Text>
+      <View className={classNames('flex flex-row flex-wrap')}>
+        {thread?.type === 'USER' && (
+          <View className="flex flex-col gap-2 p-4 thread min-w-[330px] relative transition-all duration-1000 bg-orange-50">
+            <Text className="relative tracking-tight font-medium text-lg font-japanese text-xl text-orange-700">
+              {thread.user_message}
+            </Text>
+            <View className="flex justify-end flex-row gap-2">
+              <MilaHint />
+              <RetryIcon />
+              <PlaySlow />
+            </View>
+          </View>
         )}
         <View className="flex flex-row flex-wrap">
           {tokens?.tokenization_response?.map(
@@ -51,14 +59,14 @@ export const Thread = ({
                 romanization,
                 kanji_only_length,
                 zhuyin,
-                learned,
+                learned
               },
               index
             ) => (
               <BotWord
                 index={index}
                 key={index}
-                value={token.replace(/\s/g, "&nbsp;")}
+                value={token.replace(/\s/g, '&nbsp;')}
                 hasTranslation={!!translation}
                 translation={translation}
                 audio={audio}
@@ -66,12 +74,12 @@ export const Thread = ({
                 romanized_character={
                   showRomaji
                     ? user.target_language === LanguageEnum.Japanese
-                      ? japaneseNotation === "Furigana"
+                      ? japaneseNotation === 'Furigana'
                         ? furigana
                         : romanization
-                      : chineseNotation === "Romaji"
-                      ? romanization
-                      : zhuyin
+                      : chineseNotation === 'Romaji'
+                        ? romanization
+                        : zhuyin
                     : null
                 }
                 kanji_length={kanji_only_length || 0}
@@ -83,15 +91,15 @@ export const Thread = ({
       <View className="pr-10 flex flex-row gap-2">
         <Pressable
           onPress={async () => {
-            const url = thread?.audio_response!;
+            const url = thread?.audio_response!
             try {
-              await TrackPlayer.reset();
+              await TrackPlayer.reset()
               await TrackPlayer.add({
-                url: url,
-              });
-              await TrackPlayer.play();
+                url: url
+              })
+              await TrackPlayer.play()
             } catch (error) {
-              console.log("issue playing track", error);
+              console.log('issue playing track', error)
             }
           }}
         >
@@ -99,8 +107,8 @@ export const Thread = ({
         </Pressable>
         <Pressable
           onPress={async () => {
-            showToggleTranslate(x => !x);
-            refetch();
+            showToggleTranslate(x => !x)
+            refetch()
           }}
         >
           <TranslateIcon />
@@ -112,5 +120,5 @@ export const Thread = ({
         </View>
       )}
     </>
-  );
-};
+  )
+}

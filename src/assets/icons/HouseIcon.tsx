@@ -1,14 +1,8 @@
-import * as React from "react";
-import Svg, { Path } from "react-native-svg";
-import type { SvgProps } from "react-native-svg";
+import * as React from 'react'
+import Svg, { Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
 const HouseIcon = (props: SvgProps) => (
-  <Svg
-    width="64"
-    height="64"
-    viewBox="0 0 64 64"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <Svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
     <Path
       d="M32 10C34.8891 10 37.7499 10.569 40.419 11.6747C43.0882 12.7803 45.5135 14.4008 47.5564 16.4437C49.5992 18.4865 51.2197 20.9118 52.3254 23.581C53.431 26.2501 54 29.1109 54 32C54 34.8891 53.431 37.7499 52.3253 40.419C51.2197 43.0882 49.5992 45.5135 47.5563 47.5564C45.5135 49.5992 43.0882 51.2197 40.419 52.3254C37.7499 53.431 34.8891 54 32 54C29.1109 54 26.2501 53.431 23.581 52.3253C20.9118 51.2197 18.4865 49.5992 16.4436 47.5563C14.4008 45.5135 12.7802 43.0882 11.6746 40.419C10.569 37.7499 10 34.8891 10 32C10 29.1109 10.569 26.2501 11.6747 23.581C12.7803 20.9118 14.4008 18.4865 16.4437 16.4436C18.4866 14.4008 20.9118 12.7802 23.581 11.6746C26.2501 10.569 29.1109 10 32 10L32 10Z"
       stroke="#3B82F6"
@@ -31,5 +25,5 @@ const HouseIcon = (props: SvgProps) => (
       stroke-linejoin="round"
     ></Path>
   </Svg>
-);
-export default HouseIcon;
+)
+export default HouseIcon

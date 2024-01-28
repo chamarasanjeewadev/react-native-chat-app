@@ -1,26 +1,12 @@
-import * as React from "react";
-import Svg, { G, Rect, Path, Defs, ClipPath } from "react-native-svg";
+import * as React from 'react'
+import Svg, { G, Rect, Path, Defs, ClipPath } from 'react-native-svg'
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
-import type { SvgProps } from "react-native-svg";
+import type { SvgProps } from 'react-native-svg'
 const SvgStreakUnselectedIcon = (props: SvgProps) => (
-  <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={52}
-    height={53}
-    fill="none"
-    {...props}
-  >
+  <Svg xmlns="http://www.w3.org/2000/svg" width={52} height={53} fill="none" {...props}>
     <G filter="url(#streakUnselectedIcon_svg__a)">
       <Rect width={40} height={40} x={6} y={5.117} fill="#DBEAFE" rx={20} />
-      <Rect
-        width={40}
-        height={40}
-        x={6}
-        y={5.117}
-        stroke="#EFF6FF"
-        strokeWidth={6}
-        rx={20}
-      />
+      <Rect width={40} height={40} x={6} y={5.117} stroke="#EFF6FF" strokeWidth={6} rx={20} />
       <G clipPath="url(#streakUnselectedIcon_svg__b)">
         <Path
           fill="#2563EB"
@@ -42,5 +28,5 @@ const SvgStreakUnselectedIcon = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-);
-export default SvgStreakUnselectedIcon;
+)
+export default SvgStreakUnselectedIcon

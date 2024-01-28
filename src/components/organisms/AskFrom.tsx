@@ -1,8 +1,8 @@
-import { Text, TextInput, View } from "react-native";
-import { Light } from "../../assets/icons/Light";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-const isAIThinking = false;
-const isConversationEnding = false;
+import { Text, TextInput, View } from 'react-native'
+import { Light } from '../../assets/icons/Light'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+const isAIThinking = false
+const isConversationEnding = false
 export const AskFrom = ({ onEndConversation }) => {
   return (
     <View className="w-full flex gap-2">
@@ -92,5 +92,5 @@ export const AskFrom = ({ onEndConversation }) => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}

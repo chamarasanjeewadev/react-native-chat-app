@@ -1,13 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react";
-import Svg, { SvgProps, Path } from "react-native-svg";
+import * as React from 'react'
+import Svg, { SvgProps, Path } from 'react-native-svg'
 
-const FileIcon = ({
-  width = 19,
-  height = 22,
-  color = "#52525B",
-  ...props
-}: SvgProps) => (
+const FileIcon = ({ width = 19, height = 22, color = '#52525B', ...props }: SvgProps) => (
   <Svg width={width} height={height} fill="none" {...props}>
     <Path
       d="M8.62602 14.1169C9.07006 15.8422 10.6362 17.1169 12.5 17.1169C14.3638 17.1169 15.9299 15.8422 16.374 14.1169M11.5177 2.88094L4.73539 8.15607C4.28202 8.50869 4.05534 8.685 3.89203 8.9058C3.74737 9.10139 3.6396 9.32173 3.57403 9.55599C3.5 9.82046 3.5 10.1076 3.5 10.682V17.9169C3.5 19.037 3.5 19.5971 3.71799 20.0249C3.90973 20.4012 4.21569 20.7072 4.59202 20.8989C5.01984 21.1169 5.57989 21.1169 6.7 21.1169H18.3C19.4201 21.1169 19.9802 21.1169 20.408 20.8989C20.7843 20.7072 21.0903 20.4012 21.282 20.0249C21.5 19.5971 21.5 19.037 21.5 17.9169V10.682C21.5 10.1076 21.5 9.82046 21.426 9.55599C21.3604 9.32173 21.2526 9.10139 21.108 8.9058C20.9447 8.685 20.718 8.50869 20.2646 8.15607L13.4823 2.88094C13.131 2.60769 12.9553 2.47106 12.7613 2.41854C12.5902 2.3722 12.4098 2.3722 12.2387 2.41854C12.0447 2.47106 11.869 2.60769 11.5177 2.88094Z"
@@ -17,6 +12,6 @@ const FileIcon = ({
       stroke-linejoin="round"
     />
   </Svg>
-);
+)
 
-export default FileIcon;
+export default FileIcon

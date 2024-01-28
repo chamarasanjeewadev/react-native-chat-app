@@ -1,5 +1,5 @@
-import Svg, { Path } from "react-native-svg";
-export const Light = ({ width = "24", height = "24" }) => (
+import Svg, { Path } from 'react-native-svg'
+export const Light = ({ width = '24', height = '24' }) => (
   <Svg
     width={width}
     height={height}
@@ -20,4 +20,4 @@ export const Light = ({ width = "24", height = "24" }) => (
       strokeLinejoin="round"
     />
   </Svg>
-);
+)

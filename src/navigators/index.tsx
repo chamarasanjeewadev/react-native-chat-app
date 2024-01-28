@@ -1,23 +1,18 @@
-import React from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import ErrorBoundary from "react-native-error-boundary";
-import RootNavigator from "./RootNavigator";
+import ErrorBoundary from 'react-native-error-boundary'
+import RootNavigator from './RootNavigator'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getErrorBoundary = (error: any): boolean => {
-  if (
-    error &&
-    error.response &&
-    error.response.status &&
-    error.response.status >= 500
-  ) {
-    return true;
+  if (error && error.response && error.response.status && error.response.status >= 500) {
+    return true
   }
-  return false;
-};
+  return false
+}
 
 // queryClient.setDefaultOptions({
 //     queries: {
@@ -42,6 +37,6 @@ const Navigators = () => (
   //   </SafeAreaProvider>
   //     </ErrorBoundary>
   //   </QueryClientProvider>
-);
+)
 
-export default Navigators;
+export default Navigators

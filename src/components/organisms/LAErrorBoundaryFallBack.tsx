@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Pressable } from "react-native";
+import React from 'react'
+import { Button, Pressable } from 'react-native'
 
 export const MilaErrorBoundryFallBack = ({ resetErrorBoundary }) => {
   return (
@@ -7,5 +7,5 @@ export const MilaErrorBoundryFallBack = ({ resetErrorBoundary }) => {
       There was an error!
       <Pressable onPress={() => resetErrorBoundary()}>Try again</Pressable>
     </div>
-  );
-};
+  )
+}

@@ -1,13 +1,7 @@
-import * as React from "react"
-import Svg, { SvgProps, Path } from "react-native-svg"
+import * as React from 'react'
+import Svg, { SvgProps, Path } from 'react-native-svg'
 const CogWheelIcon = (props: SvgProps) => (
-  <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={25}
-    fill="none"
-    {...props}
-  >
+  <Svg xmlns="http://www.w3.org/2000/svg" width={24} height={25} fill="none" {...props}>
     <Path
       fill="#172554"
       fillRule="evenodd"
@@ -31,4 +25,4 @@ const CogWheelIcon = (props: SvgProps) => (
     />
   </Svg>
 )
-export default CogWheelIcon 
+export default CogWheelIcon

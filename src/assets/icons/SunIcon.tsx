@@ -1,24 +1,10 @@
-import * as React from "react";
-import Svg, { Rect, G, Path, Defs, ClipPath } from "react-native-svg";
-import type { SvgProps } from "react-native-svg";
+import * as React from 'react'
+import Svg, { Rect, G, Path, Defs, ClipPath } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
 const SvgSunIcon = (props: SvgProps) => (
-  <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={47}
-    height={47}
-    fill="none"
-    {...props}
-  >
+  <Svg xmlns="http://www.w3.org/2000/svg" width={47} height={47} fill="none" {...props}>
     <Rect width={40} height={40} x={3.5} y={3.117} fill="#A7F3D0" rx={20} />
-    <Rect
-      width={40}
-      height={40}
-      x={3.5}
-      y={3.117}
-      stroke="#D1FAE5"
-      strokeWidth={6}
-      rx={20}
-    />
+    <Rect width={40} height={40} x={3.5} y={3.117} stroke="#D1FAE5" strokeWidth={6} rx={20} />
     <G clipPath="url(#sunIcon_svg__a)">
       <Path
         fill="#059669"
@@ -39,5 +25,5 @@ const SvgSunIcon = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-);
-export default SvgSunIcon;
+)
+export default SvgSunIcon

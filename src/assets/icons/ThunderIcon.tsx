@@ -1,24 +1,10 @@
-import * as React from "react";
-import Svg, { Rect, G, Path, Defs, ClipPath } from "react-native-svg";
-import type { SvgProps } from "react-native-svg";
+import * as React from 'react'
+import Svg, { Rect, G, Path, Defs, ClipPath } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
 const SvgThunderIcon = (props: SvgProps) => (
-  <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={47}
-    height={47}
-    fill="none"
-    {...props}
-  >
+  <Svg xmlns="http://www.w3.org/2000/svg" width={47} height={47} fill="none" {...props}>
     <Rect width={40} height={40} x={3.5} y={3.117} fill="#FBCFE8" rx={20} />
-    <Rect
-      width={40}
-      height={40}
-      x={3.5}
-      y={3.117}
-      stroke="#FCE7F3"
-      strokeWidth={6}
-      rx={20}
-    />
+    <Rect width={40} height={40} x={3.5} y={3.117} stroke="#FCE7F3" strokeWidth={6} rx={20} />
     <G clipPath="url(#thunderIcon_svg__a)">
       <Path
         fill="#EA580C"
@@ -39,5 +25,5 @@ const SvgThunderIcon = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-);
-export default SvgThunderIcon;
+)
+export default SvgThunderIcon

@@ -1,4 +1,4 @@
-import { font } from "./scale";
+import { font } from './scale'
 
 export const fontSize: FontSize = {
   fs10: font(10),
@@ -11,5 +11,5 @@ export const fontSize: FontSize = {
   fs24: font(24),
   fs28: font(28),
   fs32: font(32),
-  fs40: font(40),
-};
+  fs40: font(40)
+}
