@@ -1,10 +1,20 @@
 import * as React from 'react'
-import { Image, StyleSheet, View, Text, ScrollView, Pressable } from 'react-native'
+import {
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  TouchableOpacity
+} from 'react-native'
 
 import { Border, Color, FontFamily, FontSize, Padding } from '../utils/GlobalStyles'
 import { useAuthStore } from '../stores/AuthStore'
 import { deleteIdToken } from '../utils/tokenUtils'
 import { useGetUsersQuery } from '../hooks/queries'
+import clsx from 'clsx'
+import { themeColors } from '../utils/consts'
 const ProfileScreen = ({ navigation }) => {
   const { setIdToken: setAuthToken, idToken: authToken, user, setUser } = useAuthStore()
   const { data: userInfo } = useGetUsersQuery() // this is expected to be fetched from storage
@@ -39,11 +49,24 @@ const ProfileScreen = ({ navigation }) => {
           <Pressable
             onPress={() => {
               handleLogout()
-            }}
-          >
+            }}>
             <Text>Log out</Text>
           </Pressable>
+          <View className="flex gap-2 flex-row">
+            {themeColors.map((color, index) => (
+              <TouchableOpacity
+                className={clsx(
+                  color.bgColor,
+                  'w-[50px] h-[50px]  flex-row rounded-lg cursor-pointer flex justify-center items-center'
+                )}
+                key={index}
+                onPress={() => {}}>
+                <Text> {color.color}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
+
         <View style={[styles.sectionTitle, styles.sectionParentFlexBox]}>
           <View style={[styles.sectionTitleBadgesParent, styles.sectionParentFlexBox]}>
             <View style={styles.sectionTitleBadges}>

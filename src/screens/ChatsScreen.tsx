@@ -1,7 +1,6 @@
 import { View, Text, Pressable, ScrollView } from 'react-native'
 import { useGetMilaChats } from '../hooks/queries'
 import React, { Suspense } from 'react'
-import { AskFrom } from '../components/organisms/AskFrom'
 import HouseIcon from '../assets/icons/HouseIcon'
 import { Dropdown } from '../assets/icons/DropDown'
 

@@ -1,5 +1,10 @@
 import { translateQueryKeys, userQueryKeys } from './queryKeys/index'
-import { contextTranslate, feedbackTranslate, firstChat } from '../services/apiService'
+import {
+  contextTranslate,
+  feedbackGrammar,
+  feedbackTranslate,
+  firstChat
+} from '../services/apiService'
 import { useQuery } from '@tanstack/react-query'
 import { getMilaUserChats, signIn } from '../services/apiService'
 import { queryKeys } from './queryKeys'
@@ -44,5 +49,11 @@ export const useFeedbackTranslate = (
         sectionId,
         message_id
       }),
+    enabled: false
+  })
+export const useFeedbackGrammar = (feedbackText: GrammarTranslateType) =>
+  useQuery({
+    queryKey: queryKeys.translate.feedbackGrammar(feedbackText).queryKey,
+    queryFn: () => feedbackGrammar(feedbackText),
     enabled: false
   })

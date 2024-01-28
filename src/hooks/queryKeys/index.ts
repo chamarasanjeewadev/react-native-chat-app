@@ -21,10 +21,16 @@ export const authQueryKeys = createQueryKeys('auth', {
 export const userQueryKeys = createQueryKeys('user', {
   user: null
 })
+
 export const translateQueryKeys = createQueryKeys('translate', {
   translateText: (text: string) => [text],
+  feedbackGrammar: ({ sectionId, message_id }: Partial<GrammarTranslateType>) => [
+    sectionId,
+    message_id
+  ],
   feedbackText: (text: string, sectionId: string, messageId: number) => [text, sectionId, messageId]
 })
+
 export const queryKeys = mergeQueryKeys(
   chatQueryKeys,
   authQueryKeys,

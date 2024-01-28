@@ -19,3 +19,17 @@ export const playListData: Track[] = [
     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
   }
 ]
+export const themeColors: IThemeColorOptions[] = [
+  {
+    color: 'blue',
+    bgColor: 'bg-blue-300'
+  },
+  {
+    color: 'orange',
+    bgColor: 'bg-orange-300'
+  },
+  {
+    color: 'pink',
+    bgColor: 'bg-pink-300'
+  }
+]

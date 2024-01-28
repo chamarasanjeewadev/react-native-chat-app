@@ -36,21 +36,10 @@ function App(): React.JSX.Element {
   return (
     <PersistQueryClientProvider
       client={queryClient}
-      persistOptions={{ persister: clientPersister }}
-    >
-      <ErrorBoundary
-        onError={() => {
-          console.log('error occured')
-        }}
-        fallback={<Text>Something went wrong!</Text>}
-        onReset={() => {
-          console.log('need to reset...')
-        }}
-      >
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-      </ErrorBoundary>
+      persistOptions={{ persister: clientPersister }}>
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
     </PersistQueryClientProvider>
   )
 }

@@ -143,4 +143,24 @@ type FeedbackTranslateType = {
   message_id: number
 }
 
+type GrammarTranslateType = {
+  sectionId: string
+  ai_text: string
+  difficulty_level: number
+  text: string
+  message_id: number
+}
 type ChatTypes = 'USER' | 'BOT'
+
+type ThemeColor = 'blue' | 'orange' | 'pink'
+interface IThemeColorOptions {
+  color: ThemeColor
+
+  bgColor: string
+}
+interface GrammarBack {
+  corrected_text: {
+    score: number
+    feedback: string
+  }
+}
