@@ -1,36 +1,48 @@
-import { View, Text, Button, Pressable, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  Pressable,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { useFirstChat } from "../hooks/queries";
 import { Thread } from "../components/organisms/Thread";
 import { AskFrom } from "../components/organisms/AskFrom";
 import TrackPlayer from "react-native-track-player";
 import { PlayAudio } from "../assets/icons/PlayAudio";
 import { useEffect, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 import { usePostMessage } from "../hooks/mutations";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import React from "react";
+const difficulty = 1;
 
-const SectionsScreen = ({ route, navigation }) => {
+const SectionsScreen = ({ route }) => {
   const { section } = route.params;
-  let { data, isSuccess, error } = useFirstChat(1, section?.id);
-  const client = useQueryClient();
-  let [chatThreads, setChatThread] = useState([]);
-  const [textInputValue, setTextInputValue] = useState("");
+  let { data: firstChat, isSuccess } = useFirstChat(difficulty, section?.id);
+  let [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([]);
+  const [userResponseMsg, setUserResponseMsg] = useState("");
   const mutation = usePostMessage();
   const onEndConversation = () => {};
+  const ref = React.useRef(null);
+
+  const scrollToBottom = () => {
+    ref.current?.scrollToEnd({ animated: true });
+  };
 
   useEffect(() => {
-    console.log("inside use effect", data);
-    if (isSuccess && data && chatThreads.length === 0) {
-      console.log("inside use effect data", data);
-      setChatThread(x => [...x, data]);
+    if (isSuccess && firstChat && chatThreads.length === 0) {
+      setChatThread(x => [...x, firstChat]);
     }
-  }, [data, isSuccess]);
+  }, [firstChat, isSuccess]);
 
   const handleSendButtonPress = async () => {
     setChatThread(chatThreads => [
       ...chatThreads,
       {
         type: "user",
-        message: textInputValue,
+        message: userResponseMsg,
         grammar: {
           corrected_text: {
             feedback: "",
@@ -41,70 +53,45 @@ const SectionsScreen = ({ route, navigation }) => {
       },
     ]);
     const data = await mutation.mutateAsync({
-      textInputValue,
+      textInputValue: userResponseMsg,
       sectionId: section?.id,
     });
-    console.log("data after response...", data);
     setChatThread(x => [...x, data]);
+    scrollToBottom();
   };
 
-  const threadData = client.getQueriesData({ queryKey: ["chats"] });
-  console.log("thread-data", threadData);
   return (
-    <>
-      <View className="mt-8 mb-8 px-20 bg-blend-color-dodge">
-        <Text>{section.title}</Text>
-      </View>
-      <View className="flex flex-col gap-2 p-4 thread min-w-[330px] relative transition-all duration-1000 bg-slate-100 thread-bot dark:bg-mila-gray-100">
+    <View className="flex-1 bg-gray-950 justify-between">
+      <ScrollView ref={ref} className="flex flex-col gap-2 p-4 thread min-w-[330px] relative transition-all duration-1000 bg-slate-500 thread-bot dark:bg-mila-gray-100">
         {chatThreads.map(res => (
-          <Thread thread={res} sectionId={section?.id} />
+          <Thread
+            thread={res}
+            sectionId={section?.id}
+            difficulty={difficulty}
+          />
         ))}
-      </View>
-      <Pressable
-        onPress={async () => {
-          const url = data?.audio_response!;
-          try {
-            await TrackPlayer.reset();
-            await TrackPlayer.add({
-              id: 1,
-              title: "Maan Meri Jaan",
-              artist: "King",
-              album: "Champagne Talk",
-              artwork:
-                "https://c.saavncdn.com/734/Champagne-Talk-Hindi-2022-20221008011951-500x500.jpg",
-              url: url,
-            });
-            await TrackPlayer.play();
-          } catch (error) {
-            console.log("issue playing track", error);
-          }
-        }}
-      >
-        <PlayAudio />
-      </Pressable>
-      <Pressable
-        onPress={async () => {
-          try {
-            console.log("just before stop track player");
+      </ScrollView>
 
-            await TrackPlayer.pause();
-          } catch (error) {
-            console.log("issue playing track", error);
-          }
-        }}
-      >
-        <Text>stop Audio</Text>
-      </Pressable>
-      <View>
-        <TextInput
-          placeholder="Enter text here"
-          value={textInputValue}
-          onChangeText={text => setTextInputValue(text)}
-        />
-        <Button title="Send" onPress={handleSendButtonPress} />
+      <View className="flex flex-row justify-between mr-2 ml-2 align-middle bg-red-400">
+        <View className="w-[80%]">
+          <TextInput
+            onChangeText={text => setUserResponseMsg(text)}
+            className="border border-slate-200 rounded-2xl text-base h-14 font-medium outline-none  p-4"
+            placeholder="Type something ..."
+          />
+        </View>
+        <View className="flex flex-row gap-1 align-baseline">
+          <TouchableOpacity onPress={handleSendButtonPress}className="self-center">
+            <Icon name="send" size={30} color="#900" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleSendButtonPress} className={"self-center"}>
+
+            <Icon name="settings-voice" size={30} color="#900" />
+          </TouchableOpacity>
+        </View>
       </View>
-      <AskFrom onEndConversation={onEndConversation} />
-    </>
+      {/* <AskFrom onEndConversation={onEndConversation} /> */}
+    </View>
   );
 };
 

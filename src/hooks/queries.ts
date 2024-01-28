@@ -38,17 +38,17 @@ export const useContextTranslate = (text: string) =>
   });
 export const useFeedbackTranslate = (
   text: string,
-  difficulty: number,
+  difficulty_level: number,
   sectionId: string,
-  id: number
+  message_id: number
 ) =>
   useQuery({
-    queryKey: queryKeys.translate.feedbackText(text,sectionId,id).queryKey,
+    queryKey: queryKeys.translate.feedbackText(text,sectionId,message_id).queryKey,
     queryFn:() =>  feedbackTranslate({
       text,
-      difficulty_level: difficulty,
+      difficulty_level ,
       sectionId,
-      message_id: id,
+      message_id ,
     }),
     enabled: false,
   });

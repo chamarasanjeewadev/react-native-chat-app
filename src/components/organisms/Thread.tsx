@@ -14,67 +14,71 @@ import { useState } from "react";
 const showRomaji = true;
 const japaneseNotation = "Furigana";
 const chineseNotation = "Romaji";
-export const Thread = ({ thread, sectionId }: any) => {
+
+export const Thread = ({
+  thread,
+  sectionId,
+  difficulty,
+}: {
+  thread: Partial<MessageBack>;
+  sectionId: string;
+  difficulty: number;
+}) => {
   const { data: tokens } = useContextTranslate(thread?.text_response);
   const { data: feedbackTranslate, refetch } = useFeedbackTranslate(
     thread?.text_response,
-    1,
+    difficulty,
     sectionId,
-    "3"
+   thread?.response_message_id
   );
   const [showTranslate, showToggleTranslate] = useState(false);
   const { data: user, isLoading, refetch: getUserInfo } = useGetUsersQuery();
 
   return (
     <>
-      <View
-        className={classNames(
-          "flex flex-row",
-          thread?.type === ThreadType.BOT ? "" : "justify-end"
-        )}
-      >
+      <View className={classNames("flex flex-row flex-wrap")}>
         {thread.type === "user" && (
-          <View>
-            <Text>{thread.message}</Text>
-          </View>
+          <Text className="shrink">{thread.message}</Text>
         )}
-        {tokens?.tokenization_response?.map(
-          (
-            {
-              token,
-              translation,
-              furigana,
-              audio,
-              romanization,
-              kanji_only_length,
-              zhuyin,
-              learned,
-            },
-            index
-          ) => (
-            <BotWord
-              index={index}
-              key={index}
-              value={token.replace(/\s/g, "&nbsp;")}
-              hasTranslation={!!translation}
-              translation={translation}
-              audio={audio}
-              learned={learned}
-              romanized_character={
-                showRomaji
-                  ? user.target_language === LanguageEnum.Japanese
-                    ? japaneseNotation === "Furigana"
-                      ? furigana
-                      : romanization
-                    : chineseNotation === "Romaji"
-                    ? romanization
-                    : zhuyin
-                  : null
-              }
-              kanji_length={kanji_only_length || 0}
-            />
-          )
-        )}
+        <View className="flex flex-row flex-wrap">
+          {tokens?.tokenization_response?.map(
+            (
+              {
+                token,
+                translation,
+                furigana,
+                audio,
+                romanization,
+                kanji_only_length,
+                zhuyin,
+                learned,
+              },
+              index
+            ) => (
+              <BotWord
+                index={index}
+                key={index}
+                value={token.replace(/\s/g, "&nbsp;")}
+                hasTranslation={!!translation}
+                translation={translation}
+                audio={audio}
+                learned={learned}
+                romanized_character={
+                  showRomaji
+                    ? user.target_language === LanguageEnum.Japanese
+                      ? japaneseNotation === "Furigana"
+                        ? furigana
+                        : romanization
+                      : chineseNotation === "Romaji"
+                      ? romanization
+                      : zhuyin
+                    : null
+                }
+                kanji_length={kanji_only_length || 0}
+              />
+            )
+          )}
+        </View>
       </View>
       <View className="pr-10 flex flex-row gap-2">
         <Pressable

@@ -123,6 +123,7 @@ type AuthResponse = {
 };
 
 interface MessageBack {
+  type: string;
   user_message: string;
   text_response: string;
   audio_response: string;
@@ -131,6 +132,8 @@ interface MessageBack {
   end_conversation: boolean;
   feedback_json?: string;
   feedback_text?: string;
+  user_message_id: number;
+  response_message_id: number;
 }
 
 type FeedbackTranslateType = {
