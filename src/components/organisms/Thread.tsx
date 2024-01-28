@@ -2,7 +2,6 @@ import { Pressable, Text, View } from 'react-native'
 import { useContextTranslate, useFeedbackTranslate, useGetUsersQuery } from '../../hooks/queries'
 import { BotWord } from './BotWord'
 import { LanguageEnum, ThreadType } from '../../utils/enums'
-import classNames from 'classnames'
 import TrackPlayer from 'react-native-track-player'
 import { PlayAudio } from '../../assets/icons/PlayAudio'
 import { TranslateIcon } from '../../assets/icons/TranslateIcon'
@@ -10,6 +9,7 @@ import { useState } from 'react'
 import { MilaHint } from '../../assets/icons/MilaHintIcon'
 import { PlaySlow } from '../../assets/icons/PlaySlowIcon'
 import { RetryIcon } from '../../assets/icons/RetryIcon'
+import clsx from 'clsx/lite'
 const showRomaji = true
 const japaneseNotation = 'Furigana'
 const chineseNotation = 'Romaji'
@@ -35,7 +35,7 @@ export const Thread = ({
 
   return (
     <>
-      <View className={classNames('flex flex-row flex-wrap')}>
+      <View className={clsx('flex flex-row flex-wrap')}>
         {thread?.type === 'USER' && (
           <View className="flex flex-col gap-2 p-4 thread min-w-[330px] relative transition-all duration-1000 bg-orange-50">
             <Text className="relative tracking-tight font-medium text-lg font-japanese text-xl text-orange-700">
@@ -101,21 +101,19 @@ export const Thread = ({
             } catch (error) {
               console.log('issue playing track', error)
             }
-          }}
-        >
+          }}>
           <PlayAudio />
         </Pressable>
         <Pressable
           onPress={async () => {
             showToggleTranslate(x => !x)
             refetch()
-          }}
-        >
+          }}>
           <TranslateIcon />
         </Pressable>
       </View>
       {feedbackTranslate && showTranslate && (
-        <View className="mt-6 pt-10 px-4 pb-4 rounded-br-2xl rounded-bl-2xl bg-slate-200 text-slate-800 dark:bg-slate-600 dark:text-white">
+        <View className="mt-6 pt-10 px-4 pb-4 rounded-br-2xl rounded-bl-2xl bg-slate-200 text-slate-800 dark:bg-slate-600 dark:text-white py-11">
           <Text>{feedbackTranslate?.translated_text}</Text>
         </View>
       )}

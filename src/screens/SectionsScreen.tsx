@@ -1,26 +1,15 @@
-import {
-  View,
-  Text,
-  Button,
-  Pressable,
-  TextInput,
-  TouchableOpacity,
-  ScrollView
-} from 'react-native'
+import { View, Button, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import { useFirstChat } from '../hooks/queries'
 import { Thread } from '../components/organisms/Thread'
-import { AskFrom } from '../components/organisms/AskFrom'
-import TrackPlayer from 'react-native-track-player'
-import { PlayAudio } from '../assets/icons/PlayAudio'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePostMessage } from '../hooks/mutations'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import React from 'react'
 const difficulty = 1
 
-const SectionsScreen = ({ route }) => {
+const SectionsScreen = ({ route, navigation }) => {
   const { section } = route.params
-  let { data: firstChat, isSuccess, refetch } = useFirstChat(difficulty, section?.id)
+  let { data: firstChat, refetch } = useFirstChat(difficulty, section?.id)
   let [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([])
   const [userResponseMsg, setUserResponseMsg] = useState('')
   const textInputRef = useRef(null)
@@ -30,7 +19,9 @@ const SectionsScreen = ({ route }) => {
   const scrollToBottom = () => {
     ref.current?.scrollToEnd({ animated: true })
   }
+
   const getInitialChat = useCallback(async () => {
+    navigation.setOptions({ title: 'test title' })
     await refetch()
     setChatThread([firstChat])
     textInputRef.current.focus()
@@ -69,8 +60,7 @@ const SectionsScreen = ({ route }) => {
     <View className="flex-1 bg-gray-950 justify-between">
       <ScrollView
         ref={ref}
-        className="flex flex-col gap-2 p-4 thread min-w-[330px] relative transition-all duration-1000 bg-slate-500 thread-bot dark:bg-mila-gray-100"
-      >
+        className="flex flex-col gap-2 p-4 thread min-w-[330px] relative transition-all duration-1000 bg-slate-500 thread-bot dark:bg-mila-gray-100">
         {chatThreads.map(res => (
           <Thread thread={res} sectionId={section?.id} difficulty={difficulty} />
         ))}
@@ -94,19 +84,8 @@ const SectionsScreen = ({ route }) => {
           </TouchableOpacity>
         </View>
       </View>
-      {/* <AskFrom onEndConversation={onEndConversation} /> */}
     </View>
   )
 }
 
-SectionsScreen.navigationOptions = ({ navigation }) => ({
-  title: 'Details',
-  headerLeft: () => (
-    <Button
-      onPress={() => navigation.goBack()}
-      title="Back"
-      color="#007AFF" // You can customize the color
-    />
-  )
-})
 export default SectionsScreen
