@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { LogBox, Text } from 'react-native'
+import React, { useEffect } from 'react'
+import { LogBox } from 'react-native'
 import RootNavigator from './src/navigators/RootNavigator'
 import { NavigationContainer } from '@react-navigation/native'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient } from '@tanstack/react-query'
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
 import { clientPersister } from './src/utils/mmkvStorage'
-import { ErrorBoundary } from 'react-error-boundary'
 import { setupPlayer } from 'react-native-track-player/lib/trackPlayer'
-import { addTrack } from './src/utils/musicPlayServices'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,11 +15,11 @@ export const queryClient = new QueryClient({
   }
 })
 
-if (__DEV__) {
-  import('react-query-native-devtools').then(({ addPlugin }) => {
-    addPlugin({ queryClient })
-  })
-}
+// if (__DEV__) {
+//   import('react-query-native-devtools').then(({ addPlugin }) => {
+//     addPlugin({ queryClient })
+//   })
+// }
 function App(): React.JSX.Element {
   LogBox.ignoreAllLogs()
 

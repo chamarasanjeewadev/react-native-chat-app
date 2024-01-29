@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { SafeAreaView, StyleSheet, Text } from 'react-native'
 import { TabNavigator } from '../TabNavigator'
 import SignInScreen from '../../screens/SignInScreen'
 import { useGetUsersQuery } from '../../hooks/queries'
-import { getIdToken, setIdToken } from '../../utils/tokenUtils'
+import { getIdToken } from '../../utils/tokenUtils'
 import { ErrorBoundary } from 'react-error-boundary'
 
 const RootStack = createNativeStackNavigator()
@@ -13,34 +13,30 @@ const RootNavigator = () => {
   const idToken = getIdToken()
   const isUserAvailable = idToken && user
   return (
-
     <SafeAreaView style={styles.safeArea}>
-       <ErrorBoundary
+      <ErrorBoundary
         onError={() => {
           console.log('error occured')
         }}
         fallback={<Text>Something went wrong!</Text>}
         onReset={() => {
           console.log('need to reset...')
-        }}
-      >
-      {!isUserAvailable ? ( // TODO refactor this to a hook
-        <RootStack.Navigator
-          screenOptions={{
-            headerShown: false
-          }}
-        >
-          <RootStack.Screen name="Login" component={SignInScreen} />
-        </RootStack.Navigator>
-      ) : (
-        <RootStack.Navigator
-          screenOptions={{
-            headerShown: false
-          }}
-        >
-          <RootStack.Screen name="Home" component={TabNavigator} />
-        </RootStack.Navigator>
-      )}
+        }}>
+        {!isUserAvailable ? ( // TODO refactor this to a hook
+          <RootStack.Navigator
+            screenOptions={{
+              headerShown: false
+            }}>
+            <RootStack.Screen name="Login" component={SignInScreen} />
+          </RootStack.Navigator>
+        ) : (
+          <RootStack.Navigator
+            screenOptions={{
+              headerShown: false
+            }}>
+            <RootStack.Screen name="Home" component={TabNavigator} />
+          </RootStack.Navigator>
+        )}
       </ErrorBoundary>
     </SafeAreaView>
   )
