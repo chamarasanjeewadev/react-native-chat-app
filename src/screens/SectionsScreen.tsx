@@ -21,7 +21,7 @@ const SectionsScreen = ({ route, navigation }) => {
   }
 
   const getInitialChat = useCallback(async () => {
-    navigation.setOptions({ title: section?.title})
+    navigation.setOptions({ title: section?.title })
     await refetch()
     setChatThread([firstChat])
     textInputRef.current.focus()
@@ -61,8 +61,8 @@ const SectionsScreen = ({ route, navigation }) => {
       <ScrollView
         ref={ref}
         className="flex flex-col gap-2 p-4 thread min-w-[330px] relative transition-all duration-1000  thread-bot dark:bg-mila-gray-100">
-        {chatThreads.map(res => (
-          <Thread thread={res} sectionId={section?.id} difficulty={difficulty} />
+        {chatThreads.map((res, index) => (
+          <Thread key={index} thread={res} sectionId={section?.id} difficulty={difficulty} />
         ))}
       </ScrollView>
 
