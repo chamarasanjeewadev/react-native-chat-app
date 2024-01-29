@@ -33,17 +33,17 @@ export const Thread = ({
   const { data: tokens } = useContextTranslate(thread?.text_response)
   console.log("mapped",{
     ai_text: thread?.text_response,
-    text: thread.user_message,
+    text: thread?.user_message,
     sectionId: sectionId,
     difficulty_level: difficulty,
-    message_id: thread.response_message_id
+    message_id: thread?.response_message_id
   })
   const { data: grammerResponse, refetch: refectchFeedbackGrammar } = useFeedbackGrammar({
     ai_text: thread?.text_response,
-    text: thread.user_message,
+    text: thread?.user_message,
     sectionId: sectionId,
     difficulty_level: difficulty,
-    message_id: thread.response_message_id
+    message_id: thread?.response_message_id
   })
 
   const {
@@ -65,7 +65,7 @@ export const Thread = ({
         {thread?.type === 'USER' && (
           <View className={'flex flex-grow flex-col gap-2 p-2  bg-slate-500'}>
             <Text className="relative tracking-tight font-medium  font-japanese text-lg ">
-              {thread.user_message}
+              {thread?.user_message}
             </Text>
             <View className="flex justify-end flex-row gap-4">
               <TouchableOpacity

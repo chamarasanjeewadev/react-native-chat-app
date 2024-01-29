@@ -1,4 +1,4 @@
-package com.milaaimobileapp
+package com.milaai.app
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

@@ -1,4 +1,4 @@
-package com.milaaimobileapp
+package com.milaai.app
 
 import android.app.Application
 import com.facebook.react.PackageList
