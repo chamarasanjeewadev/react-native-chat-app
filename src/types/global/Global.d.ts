@@ -86,26 +86,27 @@ type Token = {
   translation: string
   zhuyin: string
 }
+type User = {
+  id: number
+  username: string
+  object_id: string
+  full_name: string
+  email: string
+  native_language: string
+  target_language: string
+  age_range: string
+  daily_commitment: number
+  motivation: string
+  daily_streak: string
+  last_active_date: string
+  icon_id: number
+  background_id: number
+  stripe_customer_id: string
+}
 
 type AuthResponse = {
   message: string
-  user: {
-    id: number
-    username: string
-    object_id: string
-    full_name: string
-    email: string
-    native_language: string
-    target_language: string
-    age_range: string
-    daily_commitment: number
-    motivation: string
-    daily_streak: string
-    last_active_date: string
-    icon_id: number
-    background_id: number
-    stripe_customer_id: string
-  }
+  user: User
   user_metrics: {
     id: string
     user_id: string
@@ -190,4 +191,20 @@ interface GrammarBack {
     score: number
     feedback: string
   }
+}
+
+interface IOption {
+  value: string | number
+  label: string
+}
+
+interface ITargetLanguageOption {
+  flag: JSX.Element
+  value: LanguageEnum
+  label: JSX.Element
+}
+
+interface IThemeColorOptions {
+  color: ThemeColor
+  bgColor: string
 }

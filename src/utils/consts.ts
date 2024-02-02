@@ -1,4 +1,6 @@
+import { UK_O } from './../assets/icons/Flags'
 import { Track } from 'react-native-track-player'
+import { LanguageEnum } from './enums'
 
 export const themeColor = 'blue'
 export const playListData: Track[] = [
@@ -31,5 +33,28 @@ export const themeColors: IThemeColorOptions[] = [
   {
     color: 'pink',
     bgColor: 'bg-pink-300'
+  }
+]
+
+export const proficiencyOptions: IOption[] = [
+  {
+    label: 'Just Started 🌱',
+    value: 'Novice'
+  },
+  {
+    label: 'Beginner 🌱',
+    value: 'Beginner'
+  },
+  {
+    label: 'Intermediate 🌾',
+    value: 'Intermediate'
+  },
+  {
+    label: 'Advanced 🌲',
+    value: 'Advanced'
+  },
+  {
+    label: 'Master 🌳',
+    value: 'Master'
   }
 ]

@@ -1,12 +1,14 @@
+import Slider from '@react-native-community/slider'
 import clsx from 'clsx'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Image, Pressable, TextInput, View, ScrollView, Switch, Button, Text } from 'react-native'
 import { avatarBackgroundColors, avatarImages } from '../utils/avatar'
 import { LanguageEnum } from '../utils/enums'
-import { themeColors } from '../utils/consts'
+import { proficiencyOptions, themeColors } from '../utils/consts'
 import { useColorScheme } from 'nativewind'
 import MButton from '../components/atoms/MButton'
+import { CN_O, ES_O, FR_O, GE_O, JP_O, MX_O, UK_O, US_O } from '../assets/icons/Flags'
 import { MHairLine } from '../components/atoms/MHairLine'
 import { MText } from '../components/atoms/MText'
 import { useUserPost } from '../hooks/mutations'
@@ -14,82 +16,25 @@ import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup' // install @hookform/resolvers (not @hookform/resolvers/yup)
 import * as yup from 'yup'
 import { useGetUsersQuery } from '../hooks/queries'
+import { MDropdown } from '../components/atoms/MDropdown'
+import MCheckBox from '../components/atoms/MCheckBox'
+import { isLangJapaneseOrChinese } from '../utils/commonFunctions'
+import MChatButton from '../components/atoms/MChatButton'
+import { useSettingStore } from '../stores/settingStore'
+import { useState } from 'react'
 const avatarBgIndex = 1
 const avatarIndex = 1
 const targetLanguage = { value: LanguageEnum.Japanese }
 const themeColor = 'blue'
 
-export const targetLanguages: ITargetLanguageOption[] = [
-  {
-    // flag:<View></View> <UK_O />,
-    value: LanguageEnum.British,
-    label: (
-      <>
-        English
-        <br />
-        (UK)
-      </>
-    )
-  },
-  {
-    // flag: <US_O />,
-    value: LanguageEnum.American,
-    label: (
-      <>
-        English
-        <br />
-        (US)
-      </>
-    )
-  },
-  {
-    // flag: <FR_O />,
-    value: LanguageEnum.French,
-    label: <>French</>
-  },
-  {
-    // flag: <MX_O />,
-    value: LanguageEnum.Mexican,
-    label: (
-      <>
-        Spanish
-        <br />
-        (MX)
-      </>
-    )
-  },
-  {
-    // flag: <ES_O />,
-    value: LanguageEnum.Spanish,
-    label: (
-      <>
-        Spanish
-        <br />
-        (ES)
-      </>
-    )
-  },
-  {
-    // flag: <GE_O />,
-    value: LanguageEnum.German,
-    label: <>German</>
-  },
-  {
-    // flag: <JP_O />,
-    value: LanguageEnum.Japanese,
-    label: <>Japanese</>
-  },
-  {
-    // flag: <CN_O />,
-    value: LanguageEnum.Chinese,
-    label: <>Chinese</>
-  }
-]
-
 const schema = yup.object().shape({
-  firstName: yup.string(),
-  content: yup.string(),
-  language: yup.string()
+  background_id: yup.number(),
+  daily_commitment: yup.number(),
+  full_name: yup.string(),
+  icon_id: yup.number(),
+  native_language: yup.string(),
+  proficiency: yup.string(),
+  target_language: yup.string()
 })
 
 const SettingsScreen = ({ navigation }) => {
@@ -100,17 +45,60 @@ const SettingsScreen = ({ navigation }) => {
     resolver: yupResolver(schema)
   })
   const { colorScheme, toggleColorScheme, setColorScheme } = useColorScheme()
-  const userInfo: AuthResponse = user?.user || {}
+
+  const [
+    themeColor,
+    setThemeColor,
+    showRomaji,
+    setRomajiShown,
+    japaneseNotation,
+    setJapaneseNotation,
+    chineseNotation,
+    setChineseNotation,
+    autoSubmitThreadhold,
+    setAutoSubmitThreadhold,
+    autoRecord,
+    setAutoRecord,
+    audioOnly,
+    setAudioOnly,
+    colorMode,
+    setColorMode
+  ] = useSettingStore(state => [
+    state.themeColor,
+    state.setThemeColor,
+
+    state.showRomaji,
+    state.setRomajiShown,
+
+    state.japaneseNotation,
+    state.setJapaneseNotation,
+
+    state.chineseNotation,
+    state.setChineseNotation,
+
+    state.autoSubmitThreadhold,
+    state.setAutoSubmitThreadhold,
+    state.autoRecord,
+    state.setAutoRecord,
+    state.audioOnly,
+    state.setAudioOnly,
+
+    state.colorMode,
+    state.setColorMode
+  ])
+  const [autoRecordEnabled, setAutoRecordEnabled] = useState(autoRecord)
+  const userInfo: User = user?.user || ({} as User)
   const defaultValues = {
     full_name: userInfo?.full_name ?? '',
-    icon_id: userInfo?.icon_Id,
+    icon_id: userInfo?.icon_id,
     background_id: userInfo?.background_id,
     content: '',
-    email: userInfo?.email,
-    language: 'java'
+    email: userInfo?.email
   }
+
   const onSubmit = data => {
     console.log('on submit triggered...', data)
+    setAutoRecord(autoRecordEnabled)
     mutate(data)
     console.log(data)
   }
@@ -152,7 +140,6 @@ const SettingsScreen = ({ navigation }) => {
             )}
             name="full_name"
           />
-          {/* {errors.firstName && <Text>This is required.</Text>} */}
         </View>
         <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
         <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
@@ -242,7 +229,7 @@ const SettingsScreen = ({ navigation }) => {
             /> */}
             </View>
           </View>
-
+          <MHairLine />
           <View className="mt-6">
             <MText className="text-lg font-semibold dark:text-white">
               {t('settings.language')}
@@ -260,17 +247,13 @@ const SettingsScreen = ({ navigation }) => {
               </MText>
             </View>
             <View className="w-[400px] max-sm:w-full">
-              {/* <Range
-              min={1}
-              max={10}
-              value={threadhold}
-              onChange={t => {
-                setThreadhold(t)
-              }}
-              step={1}
-              tooltip={value => `${value} sec`}
-              color={themeColor}
-            /> */}
+              <Slider
+                style={{ width: 200, height: 40 }}
+                minimumValue={0}
+                maximumValue={1}
+                minimumTrackTintColor="#FFFFFF"
+                maximumTrackTintColor="#000000"
+              />
             </View>
           </View>
           <View className="text-sm text-[#475569] dark:text-slate-300 mt-6">
@@ -285,87 +268,94 @@ const SettingsScreen = ({ navigation }) => {
             </View>
             <View className="w-[400px]">
               {/* <Toggle
-              checked={autoRecordEnabled}
-              color="blue"
-              onChange={enabled => {
-                setAutoRecordEnabled(enabled)
-              }}
-            /> */}
+            checked={autoRecordEnabled}
+            color="blue"
+            onChange={(enabled) => {
+              setAutoRecordEnabled(enabled)
+            }}
+          /> */}
+              <Switch
+                value={autoRecordEnabled}
+                onChange={value => {
+                  // toggleColorScheme()
+                  setAutoRecordEnabled(value)
+                }}></Switch>
             </View>
           </View>
           <MText className="text-sm text-[#475569] dark:text-slate-300 mt-2">
             {t('settings.auto-record.description')}
           </MText>
 
-          {(targetLanguage.value === LanguageEnum.Japanese ||
-            targetLanguage.value === LanguageEnum.Chinese) && (
-            <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
+          {isLangJapaneseOrChinese(targetLanguage.value) && (
+            <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25">
+              <MCheckBox />
+            </View>
           )}
-          {(targetLanguage.value === LanguageEnum.Japanese ||
-            targetLanguage.value === LanguageEnum.Chinese) && (
-            <View
-              className="flex gap-2 items-center cursor-pointer"
-              onClick={() => {
-                // setIsRomajiShown(!isRomajiShown)
-              }}>
-              {/* <Switch
-              className={clsx(
-                'text-white w-4 h-4',
-                themeColor === 'orange' ? 'accent-orange-600' : '',
-                themeColor === 'blue' ? 'accent-blue-600' : '',
-                themeColor === 'pink' ? 'accent-pink-600' : ''
-              )}
-              checked={true}
-            /> */}
+          {isLangJapaneseOrChinese(targetLanguage.value) && (
+            <View className="flex gap-2 items-center cursor-pointer">
+              <MCheckBox />
               <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
                 {t('settings.showPR')}
               </MText>
             </View>
           )}
-
+          <MHairLine />
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
               {t('settings.proficiencylevel')}
             </MText>
-            <View className="w-[400px] max-sm:w-full">
-              {/* <Select
-              options={proficiencyOptions}
-              value={proficiencyOption}
-              onChange={val => {
-                setProficiencyOption(val)
+            <MDropdown
+              items={proficiencyOptions}
+              onValueChange={value => {
+                setValue('proficiency', value)
               }}
-              className="flex-1"
-              disabled={isSaving}
-            /> */}
-            </View>
+            />
           </View>
-
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-5">
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
-              {t('settings.native-language')}
-            </MText>
+          <MHairLine />
+          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
+            <View className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+              <MText>{t('settings.daily-commit')}</MText>
+            </View>
             <View className="w-[400px] max-sm:w-full">
-              {/* MText/* <Select
-              options={nativeLanguageOptions}
-              value={nativeLanguage}
-              onChange={val => {
-                setNativeLanguage(val)
-              }}
-              className="flex-1"
-              disabled={isSaving}
-            /> */}
+              <MDropdown
+                items={dailyCommitOptions}
+                onValueChange={value => {
+                  setValue('daily_commitment', value)
+                }}
+              />
               <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
-                {t('settings.native-language.description')}
+                {t('settings.daily-commit.description')}
               </MText>
             </View>
           </View>
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-5">
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
+              {t('settings.native-language')}
+            </MText>
+            <View className="w-[400px] max-sm:w-full">
+              <MDropdown
+                items={nativeLanguageOptions}
+                onValueChange={value => {
+                  setValue('native_language', value)
+                }}
+              />
+              <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
+                {t('settings.native-language.description')}
+              </MText>
+            </View>
+          </View>
+          <View className="flex fl gap-8 max-sm:flex-col max-sm:gap-5">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
               {t('settings.target-language')}
             </MText>
-            <View className="flex-1 flex gap-2 overflow-x-auto slim-scrollbar">
+            <ScrollView
+              horizontal={true}
+              className="flex-1 gap-2 m-2 p-2 flex flex-row gap-2 overflow-x-auto slim-scrollbar">
               {targetLanguages.map((option, index) => (
-                <View
+                <MChatButton
+                  onPress={() => {
+                    setValue('target_language', option.value)
+                  }}
                   className={clsx(
                     'w-[90px] p-2 flex justify-center border',
                     targetLanguage.value === option.value
@@ -373,29 +363,20 @@ const SettingsScreen = ({ navigation }) => {
                       : 'border-transparent'
                   )}
                   key={index}>
-                  {/* <button
-                  key={index}
-                  className="flex flex-col items-center"
-                  onClick={() => {
-                    // setTargetLanguage(option)
-                  }}>
-                  {option.flag}
                   <View className="text-sm font-semibold text-[#334155] text-center mt-2">
-                    {option.label}
+                    <MText>{option.label}</MText>
+                    <View>{option.flag}</View>
                   </View>
-                </button> */}
-                </View>
+                </MChatButton>
               ))}
-            </View>
+            </ScrollView>
           </View>
           <View className="mt-4 flex flex-col gap-4 text-sm pl-2">
             <View className="flex flex-col text-[#475467] dark:text-slate-300 text-left gap-4">
               <View className="flex max-md:flex-col">
                 <MText> We care about your data in our</MText>
               </View>
-              <Pressable
-                className="cursor-pointer underline underline-offset-4 text-[#475467] dark:text-slate-300 w-fit"
-                onPress={() => {}}>
+              <Pressable className="cursor-pointer underline underline-offset-4 text-[#475467] dark:text-slate-300 w-fit">
                 <MText>Terms and Conditions</MText>
               </Pressable>
             </View>
@@ -406,3 +387,188 @@ const SettingsScreen = ({ navigation }) => {
   )
 }
 export default SettingsScreen
+
+export const targetLanguages: ITargetLanguageOption[] = [
+  {
+    flag: <UK_O />,
+    value: LanguageEnum.British,
+    label: <Text>English (UK)</Text>
+  },
+  {
+    flag: <US_O />,
+    value: LanguageEnum.American,
+    label: <>English (US)</>
+  },
+  {
+    flag: <FR_O />,
+    value: LanguageEnum.French,
+    label: <>French</>
+  },
+  {
+    flag: <MX_O />,
+    value: LanguageEnum.Mexican,
+    label: <>Spanish (MX)</>
+  },
+  {
+    flag: <ES_O />,
+    value: LanguageEnum.Spanish,
+    label: <>Spanish (ES)</>
+  },
+  {
+    flag: <GE_O />,
+    value: LanguageEnum.German,
+    label: <>German</>
+  },
+  {
+    flag: <JP_O />,
+    value: LanguageEnum.Japanese,
+    label: <>Japanese</>
+  },
+  {
+    flag: <CN_O />,
+    value: LanguageEnum.Chinese,
+    label: <>Chinese</>
+  }
+]
+
+const dailyCommitOptions: IOption[] = [
+  {
+    label: '5 minutes',
+    value: 5
+  },
+  {
+    label: '10 minutes',
+    value: 10
+  },
+  {
+    label: '15 minutes',
+    value: 15
+  },
+  {
+    label: '20 minutes',
+    value: 20
+  },
+  {
+    label: '30 minutes',
+    value: 30
+  },
+  {
+    label: '40 minutes',
+    value: 40
+  },
+  {
+    label: '50 minutes',
+    value: 50
+  },
+  {
+    label: '60 minutes',
+    value: 60
+  }
+]
+
+const nativeLanguageOptions: IOption[] = [
+  {
+    label: 'American English',
+    value: 'American English'
+  },
+  {
+    label: 'British English',
+    value: 'British English'
+  },
+  {
+    label: '普通话',
+    value: 'Mandarin Chinese'
+  },
+  {
+    label: 'Español',
+    value: 'Spanish'
+  },
+  {
+    label: 'Mexicano',
+    value: 'Mexican Spanish'
+  },
+  {
+    label: 'Français',
+    value: 'French'
+  },
+  {
+    label: 'Deutsch',
+    value: 'German'
+  },
+  {
+    label: 'Italiano',
+    value: 'Italian'
+  },
+  {
+    label: '日本語',
+    value: 'Japanese'
+  },
+  {
+    label: 'Русский',
+    value: 'Russian'
+  },
+  {
+    label: 'Português',
+    value: 'Portuguese'
+  },
+  {
+    label: 'Português Brasileiro',
+    value: 'Brazilian Portuguese'
+  },
+  {
+    label: 'Čeština',
+    value: 'Czech'
+  },
+  {
+    label: 'Dansk',
+    value: 'Danish'
+  },
+  {
+    label: 'Nederlands',
+    value: 'Dutch'
+  },
+  {
+    label: 'Suomi',
+    value: 'Finnish'
+  },
+  {
+    label: 'Ελληνικά',
+    value: 'Greek'
+  },
+  {
+    label: 'עִבְֿרִית‎',
+    value: 'Hebrew'
+  },
+  {
+    label: 'Bahasa Indonesia',
+    value: 'Indonesian'
+  },
+  {
+    label: '한국어',
+    value: 'Korean'
+  },
+  {
+    label: 'Norsk',
+    value: 'Norwegian'
+  },
+  {
+    label: 'Polski',
+    value: 'Polish'
+  },
+  {
+    label: 'Română',
+    value: 'Romanian'
+  },
+  {
+    label: 'Svenska',
+    value: 'Swedish'
+  },
+  {
+    label: 'Türkçe',
+    value: 'Turkish'
+  },
+  {
+    label: 'Українська',
+    value: 'Ukrainian'
+  }
+]

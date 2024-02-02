@@ -9,6 +9,7 @@ import clsx from 'clsx'
 import { themeColors } from '../utils/consts'
 import MChatButton from '../components/atoms/MChatButton'
 import { useQueryClient } from '@tanstack/react-query'
+import { LanguageEnum } from '../utils/enums'
 
 const ProfileScreen = ({ navigation }) => {
   const { refetch } = useGetUsersQuery()
