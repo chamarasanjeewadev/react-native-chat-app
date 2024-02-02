@@ -1,12 +1,13 @@
 import clsx from 'clsx'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Image, Pressable, Text, TextInput, View, ScrollView, Switch } from 'react-native'
+import { Image, Pressable, TextInput, View, ScrollView, Switch } from 'react-native'
 import { avatarBackgroundColors, avatarImages } from '../utils/avatar'
 import { LanguageEnum } from '../utils/enums'
 import { themeColors } from '../utils/consts'
 import MButton from '../components/atoms/MButton'
 import { MHairLine } from '../components/atoms/MHairLine'
+import { MText } from '../components/atoms/MText'
 const avatarBgIndex = 1
 const avatarIndex = 1
 const targetLanguage = { value: LanguageEnum.Japanese }
@@ -86,26 +87,26 @@ const SettingsScreen = ({ navigation }) => {
       <View className="m-4">
         <View className="flex flex-row justify-between  ">
           <View>
-            <Text className="text-lg font-semibold dark:text-white">
+            <MText className="text-lg font-semibold dark:text-white">
               {t('settings.personal-info.title')}
-            </Text>
-            <Text className="text-sm text-[#475569] dark:text-slate-300">
+            </MText>
+            <MText className="text-sm text-[#475569] dark:text-slate-300">
               {t('settings.personal-info.description')}
-            </Text>
+            </MText>
           </View>
           <MButton
+            buttonText={t('save')}
             className="m-3 p-3 text-center"
             onPress={() => {
               console.log('pressed')
-            }}>
-            <Text className="text-center">{t('save')}</Text>
-          </MButton>
+            }}
+          />
         </View>
         <MHairLine />
         <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
-          <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+          <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
             {t('settings.personal-info.name')}
-          </Text>
+          </MText>
           <TextInput
             value={'chamara'}
             className="outline-none border border-[#CBD5E1] rounded-lg px-3 py-2 focus:border-gray-300  text-sm max-sm:w-full  dark:bg-transparent dark:border-slate-300 dark:text-white"
@@ -117,9 +118,9 @@ const SettingsScreen = ({ navigation }) => {
         </View>
         <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
         <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
-          <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+          <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
             {t('settings.personal-info.email')}
-          </Text>
+          </MText>
           <TextInput
             value={'chamara.sanjeewa@gmail.com'}
             className="outline-none border border-[#CBD5E1] rounded-lg px-3 py-2 focus:border-gray-300 w-[400px] text-sm max-sm:w-full disabled:bg-slate-200  dark:bg-transparent dark:border-slate-300 dark:text-white"
@@ -129,12 +130,12 @@ const SettingsScreen = ({ navigation }) => {
         <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
         <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
           <View className="w-[280px]">
-            <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.personal-info.profile-picture')}
-            </Text>
-            <Text className="text-sm text-[#475569] dark:text-slate-300 w-[280px]">
+            </MText>
+            <MText className="text-sm text-[#475569] dark:text-slate-300 w-[280px]">
               {t('settings.personal-info.profile-picture.description')}
-            </Text>
+            </MText>
             <View className="w-full flex justify-center max-sm:justify-start">
               <View
                 className={clsx(
@@ -146,9 +147,9 @@ const SettingsScreen = ({ navigation }) => {
             </View>
           </View>
           <View className="flex flex-col gap-4 flex-1 w-0 max-sm:w-full">
-            <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.choose-avatar')}
-            </Text>
+            </MText>
             {/* <View className="flex flex-row gap-4 overflow-x-auto slim-scrollbar">
             {avatarImages.map((avatar, index) => (
              <Pressable
@@ -165,9 +166,9 @@ const SettingsScreen = ({ navigation }) => {
               </Pressable>
             ))}
           </View> */}
-            <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.choose-background-color')}
-            </Text>
+            </MText>
             <View className="flex flex-row gap-5 overflow-x-auto slim-scrollbar">
               {avatarBackgroundColors.map((c, index) => (
                 <Pressable
@@ -185,9 +186,9 @@ const SettingsScreen = ({ navigation }) => {
           </View>
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-6">
             <View className="w-[280px]">
-              <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
                 Dark Mode
-              </Text>
+              </MText>
             </View>
             <View className="w-[400px]">
               {/* <Switch
@@ -201,18 +202,20 @@ const SettingsScreen = ({ navigation }) => {
           </View>
 
           <View className="mt-6">
-            <Text className="text-lg font-semibold dark:text-white">{t('settings.language')}</Text>
-            <Text className="text-sm text-[#475569] dark:text-slate-300">
+            <MText className="text-lg font-semibold dark:text-white">
+              {t('settings.language')}
+            </MText>
+            <MText className="text-sm text-[#475569] dark:text-slate-300">
               {t('settings.language.description')}
-            </Text>
+            </MText>
           </View>
           <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
 
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-6">
             <View className="w-[280px]">
-              <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
                 {t('settings.auto-submit')}
-              </Text>
+              </MText>
             </View>
             <View className="w-[400px] max-sm:w-full">
               {/* <Range
@@ -229,14 +232,14 @@ const SettingsScreen = ({ navigation }) => {
             </View>
           </View>
           <View className="text-sm text-[#475569] dark:text-slate-300 mt-6">
-            <Text>{t('settings.auto-submit.description', { seconds: 0 })}</Text>
+            <MText>{t('settings.auto-submit.description', { seconds: 0 })}</MText>
           </View>
 
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-6">
             <View className="w-[280px]">
-              <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
                 {t('settings.auto-record')}
-              </Text>
+              </MText>
             </View>
             <View className="w-[400px]">
               {/* <Toggle
@@ -248,9 +251,9 @@ const SettingsScreen = ({ navigation }) => {
             /> */}
             </View>
           </View>
-          <Text className="text-sm text-[#475569] dark:text-slate-300 mt-2">
+          <MText className="text-sm text-[#475569] dark:text-slate-300 mt-2">
             {t('settings.auto-record.description')}
-          </Text>
+          </MText>
 
           {(targetLanguage.value === LanguageEnum.Japanese ||
             targetLanguage.value === LanguageEnum.Chinese) && (
@@ -272,16 +275,16 @@ const SettingsScreen = ({ navigation }) => {
               )}
               checked={true}
             /> */}
-              <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
                 {t('settings.showPR')}
-              </Text>
+              </MText>
             </View>
           )}
 
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
-            <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
               {t('settings.proficiencylevel')}
-            </Text>
+            </MText>
             <View className="w-[400px] max-sm:w-full">
               {/* <Select
               options={proficiencyOptions}
@@ -296,11 +299,11 @@ const SettingsScreen = ({ navigation }) => {
           </View>
 
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-5">
-            <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
               {t('settings.native-language')}
-            </Text>
+            </MText>
             <View className="w-[400px] max-sm:w-full">
-              {/* Text/* <Select
+              {/* MText/* <Select
               options={nativeLanguageOptions}
               value={nativeLanguage}
               onChange={val => {
@@ -309,15 +312,15 @@ const SettingsScreen = ({ navigation }) => {
               className="flex-1"
               disabled={isSaving}
             /> */}
-              <Text className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
+              <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
                 {t('settings.native-language.description')}
-              </Text>
+              </MText>
             </View>
           </View>
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-5">
-            <Text className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
               {t('settings.target-language')}
-            </Text>
+            </MText>
             <View className="flex-1 flex gap-2 overflow-x-auto slim-scrollbar">
               {targetLanguages.map((option, index) => (
                 <View
@@ -346,12 +349,12 @@ const SettingsScreen = ({ navigation }) => {
           <View className="mt-4 flex flex-col gap-4 text-sm pl-2">
             <View className="flex flex-col text-[#475467] dark:text-slate-300 text-left gap-4">
               <View className="flex max-md:flex-col">
-                <Text> We care about your data in our</Text>
+                <MText> We care about your data in our</MText>
               </View>
               <Pressable
                 className="cursor-pointer underline underline-offset-4 text-[#475467] dark:text-slate-300 w-fit"
                 onPress={() => {}}>
-                <Text>Terms and Conditions</Text>
+                <MText>Terms and Conditions</MText>
               </Pressable>
             </View>
           </View>
