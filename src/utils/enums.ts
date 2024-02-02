@@ -9,6 +9,12 @@ export enum RecordState {
   ANALYZING = 2
 }
 
+export enum ConversationProgress {
+  NOT_STARTED,
+  STARTED,
+  FINISHED
+}
+
 export enum LanguageEnum {
   American = 'American English',
   British = 'British English',

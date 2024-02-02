@@ -59,12 +59,4 @@ const authStore = (set: any) => ({
   setProficiency: (proficiency: string) => set({ proficiency })
 })
 
-// const persistedAuthStore: any = persist(authStore, { name: "AUTH_STORE" });
-export const useAuthStore = create(
-  devtools(
-    persist(authStore, {
-      name: 'AUTH_STORE'
-      // storage: createJSONStorage(() => AsyncStorage),
-    })
-  )
-)
+export const useAuthStore = create(authStore)

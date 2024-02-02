@@ -1,11 +1,11 @@
 import { axiosInstance } from '../utils/axiosApiUtil'
 export const signIn = async () => {
-  let result = await axiosInstance.post<AuthResponse>(`/user/login`)
+  const result = await axiosInstance.post<AuthResponse>(`/user/login`)
   return result.data
 }
 
 export const getMilaUserChats = async () => {
-  let result = await axiosInstance.get<AuthResponse>(`/user/sections/mila`, {})
+  const result = await axiosInstance.get<AuthResponse>(`/user/sections/mila`, {})
   return result.data
 }
 export const postMessage = async ({
@@ -18,7 +18,7 @@ export const postMessage = async ({
   const formData = new FormData()
   formData.append('text', textInputValue ?? '')
   formData.append('section_model', JSON.stringify({ difficulty_level: 1 }))
-  let result = await axiosInstance.post<MessageBack>(
+  const result = await axiosInstance.post<MessageBack>(
     `/conversation/section/${sectionId}/message`,
     formData,
     {
@@ -31,13 +31,13 @@ export const postMessage = async ({
 }
 
 export const firstChat = async (difficulty_level: number, sectionId: string) => {
-  let result = await axiosInstance.post<MessageBack>(`/conversation/section/${sectionId}`, {
+  const result = await axiosInstance.post<MessageBack>(`/conversation/section/${sectionId}`, {
     difficulty_level
   })
   return result.data
 }
 export const contextTranslate = async (text: string) => {
-  let result = await axiosInstance.post<ContextTranslateBack>(`/feedback/contexttranslate`, {
+  const result = await axiosInstance.post<ContextTranslateBack>(`/feedback/contexttranslate`, {
     text
   })
   return result.data
@@ -46,7 +46,7 @@ export const feedbackTranslate = async ({
   sectionId,
   ...feedbackParams
 }: FeedbackTranslateType) => {
-  let result = await axiosInstance.post<TranslateBack>(
+  const result = await axiosInstance.post<TranslateBack>(
     `/feedback/translate/${sectionId}`,
     feedbackParams
   )
@@ -54,8 +54,8 @@ export const feedbackTranslate = async ({
 }
 export const feedbackGrammar = async ({ sectionId, ...feedbackParams }: GrammarTranslateType) => {
   console.log('feedback params', feedbackParams)
-  let result = await axiosInstance.post<TranslateBack>(
-    `/feedback/grammar${sectionId}`,
+  const result = await axiosInstance.post<TranslateBack>(
+    `/feedback/grammar/${sectionId}`,
     feedbackParams
   )
   return result.data

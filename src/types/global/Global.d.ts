@@ -9,7 +9,7 @@ type FontFamily = {
   poppins800: string
   poppins900: string
 }
-
+export type ThemeColor = 'blue' | 'orange' | 'pink'
 type FontSize = {
   fs10: number
   fs12: number

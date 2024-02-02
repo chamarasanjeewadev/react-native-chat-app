@@ -6,12 +6,15 @@ import SignInScreen from '../../screens/SignInScreen'
 import { useGetUsersQuery } from '../../hooks/queries'
 import { getIdToken } from '../../utils/tokenUtils'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useAuthStore } from '../../stores/AuthStore'
 
 const RootStack = createNativeStackNavigator()
 const RootNavigator = () => {
-  const { data: user } = useGetUsersQuery() // this is expected to be fetched from storage
+  const { data: userInfo } = useGetUsersQuery() // this is expected to be fetched from storage
   const idToken = getIdToken()
-  const isUserAvailable = idToken && user
+  const { setIdToken: setAuthToken, idToken: authToken, user, setUser } = useAuthStore()
+  const isUserAvailable = idToken && userInfo
+  console.log('isUseravailable...', isUserAvailable)
   return (
     <SafeAreaView style={styles.safeArea}>
       <ErrorBoundary
@@ -22,21 +25,28 @@ const RootNavigator = () => {
         onReset={() => {
           console.log('need to reset...')
         }}>
-        {!isUserAvailable ? ( // TODO refactor this to a hook
+        {/* {!isUserAvailable ? ( // TODO refactor this to a hook
           <RootStack.Navigator
             screenOptions={{
               headerShown: false
             }}>
             <RootStack.Screen name="Login" component={SignInScreen} />
           </RootStack.Navigator>
-        ) : (
-          <RootStack.Navigator
-            screenOptions={{
-              headerShown: false
-            }}>
-            <RootStack.Screen name="Home" component={TabNavigator} />
-          </RootStack.Navigator>
-        )}
+        ) : ( */}
+        <RootStack.Navigator
+          screenOptions={{
+            headerShown: false
+          }}>
+          <>
+            {!isUserAvailable ? (
+              <RootStack.Screen name="Login" component={SignInScreen} />
+            ) : (
+              <RootStack.Screen name="Home" component={TabNavigator} />
+            )}
+          </>
+        </RootStack.Navigator>
+        {/* ) */}
+        {/* } */}
       </ErrorBoundary>
     </SafeAreaView>
   )

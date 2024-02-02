@@ -16,6 +16,8 @@ import { PlaySlow } from '../../assets/icons/PlaySlowIcon'
 import { RetryIcon } from '../../assets/icons/RetryIcon'
 import clsx from 'clsx'
 import { feedbackGrammar } from '../../services/apiService'
+import { MText } from '../atoms/MText'
+import MChatButton from '../atoms/MChatButton'
 const showRomaji = true
 const japaneseNotation = 'Furigana'
 const chineseNotation = 'Romaji'
@@ -29,21 +31,14 @@ export const Thread = ({
   sectionId: string
   difficulty: number
 }) => {
-  console.log("thread....",thread)
   const { data: tokens } = useContextTranslate(thread?.text_response)
-  console.log("mapped",{
-    ai_text: thread?.text_response,
-    text: thread?.user_message,
-    sectionId: sectionId,
-    difficulty_level: difficulty,
-    message_id: thread?.response_message_id
-  })
+
   const { data: grammerResponse, refetch: refectchFeedbackGrammar } = useFeedbackGrammar({
-    ai_text: thread?.text_response,
+    ai_text: thread?.text_response ?? thread?.lastAIMessage ?? '',
     text: thread?.user_message,
     sectionId: sectionId,
     difficulty_level: difficulty,
-    message_id: thread?.response_message_id
+    message_id: thread?.response_message_id ?? thread?.lastAIMessageId ?? 0
   })
 
   const {
@@ -61,23 +56,25 @@ export const Thread = ({
 
   return (
     <>
-      <View className={clsx('flex flex-row flex-wrap')}>
+      <View className={clsx('flex m-1 rounded-md flex-row flex-wrap bg-white p-2')}>
         {thread?.type === 'USER' && (
-          <View className={'flex flex-grow flex-col gap-2 p-2  bg-slate-500'}>
-            <Text className="relative tracking-tight font-medium  font-japanese text-lg ">
+          <View className={'flex flex-grow flex-col gap-1 p-2 align-middle  '}>
+            <Text className="relative tracking-tight font-medium  font-japanese text-lg  ">
               {thread?.user_message}
             </Text>
-            <View className="flex justify-end flex-row gap-4">
-              <TouchableOpacity
+            <View className="flex justify-end flex-row gap-2 align-middle">
+              <MChatButton
                 onPress={async () => {
                   await refectchFeedbackGrammar()
-                  console.log('feedback grammar data', grammerResponse)
                 }}>
                 <MilaHint />
-              </TouchableOpacity>
-
-              <RetryIcon />
-              <PlaySlow />
+              </MChatButton>
+              <MChatButton>
+                <RetryIcon />
+              </MChatButton>
+              <MChatButton>
+                <PlaySlow />
+              </MChatButton>
             </View>
           </View>
         )}
@@ -120,36 +117,42 @@ export const Thread = ({
             )
           )}
         </View>
+        {thread?.type !== 'USER' && (
+          <View className="pt-2 pr-2 flex flex-row gap-2 align-middle text-orange-900 ">
+            <MChatButton
+              onPress={async () => {
+                console.log('press....', thread?.audio_response)
+                const url = thread?.audio_response
+                try {
+                  await TrackPlayer.reset()
+                  await TrackPlayer.add({
+                    url: url
+                  })
+                  await TrackPlayer.play()
+                } catch (error) {
+                  console.log('issue playing track', error)
+                }
+              }}>
+              <PlayAudio />
+            </MChatButton>
+            <MChatButton
+              className="rounded-lg bg-orange-50 p-2 shadow-sm play-button dark:bg-slate-800 dark:active:bg-slate-400 dark:text-white  active:bg-orange-200 border-orange-100 text-orange-900"
+              onPress={async () => {
+                console.log('translate', showToggleTranslate)
+                if (!showToggleTranslate) {
+                  await refetch()
+                }
+                showToggleTranslate(x => !x)
+              }}>
+              <TranslateIcon />
+            </MChatButton>
+          </View>
+        )}
       </View>
-      <View className="pr-10 flex flex-row gap-2">
-        <Pressable
-          onPress={async () => {
-            const url = thread?.audio_response!
-            try {
-              await TrackPlayer.reset()
-              await TrackPlayer.add({
-                url: url
-              })
-              await TrackPlayer.play()
-            } catch (error) {
-              console.log('issue playing track', error)
-            }
-          }}>
-          <PlayAudio />
-        </Pressable>
-        <Pressable
-          onPress={async () => {
-            if (!showToggleTranslate) {
-              await refetch()
-            }
-            showToggleTranslate(x => !x)
-          }}>
-          <TranslateIcon />
-        </Pressable>
-      </View>
+
       {feedbackTranslate && showTranslate && !isFetching && (
         <View className="py-1 rounded-br-2xl rounded-bl-2xl bg-slate-200 text-slate-800 dark:bg-slate-600 dark:text-white">
-          <Text>{feedbackTranslate?.translated_text}</Text>
+          <MText>{feedbackTranslate?.translated_text}</MText>
         </View>
       )}
     </>

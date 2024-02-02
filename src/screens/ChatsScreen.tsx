@@ -1,44 +1,61 @@
-import { View, Text, Pressable, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { useGetMilaChats } from '../hooks/queries'
 import React, { Suspense } from 'react'
-import HouseIcon from '../assets/icons/HouseIcon'
 import { Dropdown } from '../assets/icons/DropDown'
+import { ConversationLogo } from '../assets/icons/ConversationLogo'
+import ProgressCircle from '../assets/icons/ProgressCircle'
+import { ConversationProgress, StudyMode } from '../utils/enums'
+import { fontFamily } from '../utils/fonts/fontFamily'
 
 const ChatsScreen = ({ navigation }) => {
-  const { data, isPending } = useGetMilaChats()
-
+  const { data } = useGetMilaChats()
   return (
-    <ScrollView>
-      <Suspense fallback={<div>Loading...</div>}>
+    <View>
+      <Suspense fallback={<View>Loading...</View>}>
         {data?.sections?.map((section: Section, index: number) => (
-          <Pressable
-            onPress={() => {
-              navigation.push('Section', { section })
-            }}
-          >
-            <View className="flex align-middle justify-center flex-row border-red-200 py-3 w-full shadow-sm rounded-lg p-5 cursor-pointer bg-gray-200">
-              <View>
-                <HouseIcon />
-              </View>
-              <View className={'flex flex-col gap-0.5 justify-center align-middle  '}>
-                <Text className="text-center font-semibold text-slate-700 dark:text-white">
-                  {section?.title}
-                </Text>
-                <View className={'flex flex-row gap-4'}>
-                  <HouseIcon />
-                  <HouseIcon />
-                  <HouseIcon />
-                </View>
-              </View>
-              <View className={'flex justify-center'}>
-                <Dropdown />
+          <View
+            key={index}
+            className="flex flex-row m-1 shadow-lg justify-between px-8 align-baseline rounded-lg bg-white">
+            <View className=" justify-center">
+              <ConversationLogo />
+            </View>
+            <View className={'flex flex-col gap-0.5 ¥align-middle flex-grow mx-5  '}>
+              <Text
+                className="text-lg font-normal  text-slate-700 dark:text-white"
+                style={{ fontFamily: fontFamily.poppins400 }}>
+                {section?.title}
+              </Text>
+              <View className={'flex flex-row mb-2 flex-grow-1 justify-between '}>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.push('Section', { section })
+                  }}>
+                  <ProgressCircle
+                    difficulty={StudyMode.CONVERSATION_EASY}
+                    progress={ConversationProgress.STARTED}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <ProgressCircle
+                    difficulty={StudyMode.CONVERSATION_MEDIUM}
+                    progress={ConversationProgress.STARTED}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <ProgressCircle
+                    difficulty={StudyMode.CONVERSATION_HARD}
+                    progress={ConversationProgress.STARTED}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
-          </Pressable>
+            <View className="justify-center">
+              <Dropdown />
+            </View>
+          </View>
         ))}
       </Suspense>
-    </ScrollView>
+    </View>
   )
 }
-
 export default ChatsScreen

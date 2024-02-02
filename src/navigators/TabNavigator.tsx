@@ -10,12 +10,14 @@ import { ProfileIcon } from '../assets/icons'
 import { useTranslation } from 'react-i18next'
 import ProfileScreen from '../screens/ProfileScreen'
 import { ChatNavigator } from './ChatNavigator'
+import SettingsScreen from '../screens/SettingsScreen'
 
 export type BottomTabNavigatorParamList = {
   home: any | undefined // TODO: add proper typings
   explore: any | undefined
   practice: any | undefined
   profile: any | undefined
+  settings: any
 }
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>()
@@ -25,11 +27,10 @@ export const TabNavigator = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={'explore'}
+      initialRouteName={'settings'}
       screenOptions={{
         tabBarStyle: { paddingTop: 10, paddingBottom: 10, height: 50 }
-      }}
-    >
+      }}>
       <Tab.Screen
         options={{
           headerShown: false,
@@ -64,6 +65,15 @@ export const TabNavigator = () => {
         }}
         name="profile"
         component={ProfileScreen}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarLabel: 'Settings',
+          tabBarIcon: ProfileIcon
+        }}
+        name="settings"
+        component={SettingsScreen}
       />
     </Tab.Navigator>
   )

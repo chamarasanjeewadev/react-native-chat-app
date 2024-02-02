@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  -moz-osx-font-smoothing: yellowscale;
+
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-violet-50: #f5f3ff;
+  --color-violet-100: #ede9fe;
+  --color-violet-200: #ddd6fe;
+  --color-violet-300: #c4b5fd;
+  --color-violet-400: #a78bfa;
+  --color-violet-500: #8b5cf6;
+  --color-violet-600: #7c3aed;
+  --color-violet-700: #6d28d9;
+  --color-violet-800: #5b21b6;
+  --color-violet-900: #4c1d95;
+} */
+
+@layer base {
+  :root {
+    --baseOne: hsl(140, 69%, 40%);;
+    --baseTwo: hsl(252, 2%, 51%);
+    --baseThree: hsl(0, 0%, 96%);
+    --baseFour: hsl(0, 0%, 100%);
+    --accent1: hsl(6, 100%, 80%);
+  }
+
+  @media (prefers-color-scheme: dark) {
+      :root {
+        --baseOne: hsl(229, 57%, 11%);
+        --baseTwo: hsl(243, 100%, 93%);
+        --baseThree: hsl(228, 56%, 26%);
+        --baseFour: hsl(229, 57%, 11%);
+        --accent1: hsl(6, 100%, 80%);
+      }
+    }
+  
+  :root[data-theme='dark'] {
+    --baseOne: hsl(140, 69%, 40%);;
+    --baseTwo: hsl(243, 100%, 93%);
+    --baseThree: hsl(228, 56%, 26%);
+    --baseFour: hsl(229, 57%, 11%);
+    --accent1: hsl(6, 100%, 80%);
+  }
+
+  :root[data-theme='light'] {
+    --baseOne: hsl(0, 0%, 100%);
+    --baseTwo: hsl(252, 2%, 51%);
+    --baseThree: hsl(0, 0%, 96%);
+    --baseFour: hsl(0, 0%, 100%);
+    --accent1: hsl(6, 100%, 80%);
+  }
+
+  :root[data-theme='third'] {
+    --baseOne: hsl(167, 56%, 22%);
+    --baseTwo: hsl(140, 69%, 40%);
+    --baseThree: hsl(0, 0%, 0%);
+    --baseFour: hsl(0, 3%, 13%);
+    --accent1: hsl(6, 100%, 80%);
+  }
+}

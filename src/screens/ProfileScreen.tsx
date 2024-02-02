@@ -1,28 +1,32 @@
 import * as React from 'react'
-import {
-  Image,
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-  Pressable,
-  TouchableOpacity
-} from 'react-native'
-
+import { Image, StyleSheet, View, Text, ScrollView, TouchableOpacity, Switch } from 'react-native'
+import { useColorScheme } from 'nativewind'
 import { Border, Color, FontFamily, FontSize, Padding } from '../utils/GlobalStyles'
 import { useAuthStore } from '../stores/AuthStore'
 import { deleteIdToken } from '../utils/tokenUtils'
 import { useGetUsersQuery } from '../hooks/queries'
 import clsx from 'clsx'
 import { themeColors } from '../utils/consts'
+import MChatButton from '../components/atoms/MChatButton'
+import { useQueryClient } from '@tanstack/react-query'
+
 const ProfileScreen = ({ navigation }) => {
+  const { refetch } = useGetUsersQuery()
   const { setIdToken: setAuthToken, idToken: authToken, user, setUser } = useAuthStore()
   const { data: userInfo } = useGetUsersQuery() // this is expected to be fetched from storage
-  const handleLogout = () => {
+  const { colorScheme, toggleColorScheme, setColorScheme } = useColorScheme()
+
+  const queryClient = useQueryClient()
+
+  const handleLogout = async () => {
     try {
       deleteIdToken()
+      // await refetch()
       setUser(null)
-      navigation.push('Login')
+      // queryClient.invalidateQueries({ queryKey: ['user'] })
+      navigation.navigate('Login', {})
+      // Login
+      // navigate('Login', {})
       // navigation.navigate("authStack", { screen: "Details" });
     } catch (error) {
       console.log('error deleting token...')
@@ -45,19 +49,21 @@ const ProfileScreen = ({ navigation }) => {
             />
           </View>
         </View>
-        <View>
-          <Pressable
+        <View className="dark:bg-slate-600">
+          <Text className="  text-lg text-center bg-bl py-2 bg-baseOne ">Log out</Text>
+          <MChatButton
+            className="bg-green w-[100px] mb-2 p-0 text-center h-auto bg-mila-gray-50"
             onPress={() => {
               handleLogout()
             }}>
-            <Text>Log out</Text>
-          </Pressable>
+            <Text className="dark:text-white text-lg text-center py-2 ">Log out</Text>
+          </MChatButton>
           <View className="flex gap-2 flex-row">
             {themeColors.map((color, index) => (
               <TouchableOpacity
                 className={clsx(
                   color.bgColor,
-                  'w-[50px] h-[50px]  flex-row rounded-lg cursor-pointer flex justify-center items-center'
+                  'w-[50px] h-[50px] text-center  flex-row rounded-lg cursor-pointer flex justify-center items-center'
                 )}
                 key={index}
                 onPress={() => {}}>
@@ -65,6 +71,14 @@ const ProfileScreen = ({ navigation }) => {
               </TouchableOpacity>
             ))}
           </View>
+        </View>
+        <View className="space-y-10 flex flex-row justify-between align-middle">
+          <Text>Change color scheme</Text>
+          <Switch
+            value={colorScheme === 'dark'}
+            onChange={() => {
+              toggleColorScheme()
+            }}></Switch>
         </View>
 
         <View style={[styles.sectionTitle, styles.sectionParentFlexBox]}>
