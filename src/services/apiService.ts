@@ -29,6 +29,10 @@ export const postMessage = async ({
   )
   return result.data
 }
+export const postUserInfo = async (updatableInfo: UpdateUser) => {
+  const result = await axiosInstance.patch<UserUpdateResponse>(`/user/update`, updatableInfo)
+  return result.data
+}
 
 export const firstChat = async (difficulty_level: number, sectionId: string) => {
   const result = await axiosInstance.post<MessageBack>(`/conversation/section/${sectionId}`, {

@@ -9,7 +9,7 @@ type FontFamily = {
   poppins800: string
   poppins900: string
 }
-export type ThemeColor = 'blue' | 'orange' | 'pink'
+type ThemeColor = 'blue' | 'orange' | 'pink'
 type FontSize = {
   fs10: number
   fs12: number
@@ -157,6 +157,33 @@ interface IThemeColorOptions {
   color: ThemeColor
 
   bgColor: string
+}
+interface UserUpdateResponse {
+  message: string
+  user_metrics: {
+    id: number
+    user_id: number
+    target_language: string
+    proficiency: string
+    level: number
+    level_numeral: number
+    level_name: string
+    experience: number
+    next_level_exp_req: number
+  }
+}
+interface UpdateUser {
+  email?: string
+  username?: string
+  full_name?: string
+  native_language?: string
+  target_language?: string
+  age_range?: string
+  daily_commitment?: number
+  motivation?: string
+  proficiency?: string
+  icon_id: number
+  background_id: number
 }
 interface GrammarBack {
   corrected_text: {

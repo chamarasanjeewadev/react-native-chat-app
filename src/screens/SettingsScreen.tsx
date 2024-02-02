@@ -1,13 +1,19 @@
 import clsx from 'clsx'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Image, Pressable, TextInput, View, ScrollView, Switch } from 'react-native'
+import { Image, Pressable, TextInput, View, ScrollView, Switch, Button, Text } from 'react-native'
 import { avatarBackgroundColors, avatarImages } from '../utils/avatar'
 import { LanguageEnum } from '../utils/enums'
 import { themeColors } from '../utils/consts'
+import { useColorScheme } from 'nativewind'
 import MButton from '../components/atoms/MButton'
 import { MHairLine } from '../components/atoms/MHairLine'
 import { MText } from '../components/atoms/MText'
+import { useUserPost } from '../hooks/mutations'
+import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup' // install @hookform/resolvers (not @hookform/resolvers/yup)
+import * as yup from 'yup'
+import { useGetUsersQuery } from '../hooks/queries'
 const avatarBgIndex = 1
 const avatarIndex = 1
 const targetLanguage = { value: LanguageEnum.Japanese }
@@ -80,8 +86,34 @@ export const targetLanguages: ITargetLanguageOption[] = [
   }
 ]
 
+const schema = yup.object().shape({
+  firstName: yup.string(),
+  content: yup.string(),
+  language: yup.string()
+})
+
 const SettingsScreen = ({ navigation }) => {
+  const { data: user, isLoading, refetch: getUserInfo } = useGetUsersQuery()
+  const { mutate } = useUserPost()
   const { t, i18n } = useTranslation()
+  const { control, handleSubmit, errors, setValue, reset, getValues, watch } = useForm({
+    resolver: yupResolver(schema)
+  })
+  const { colorScheme, toggleColorScheme, setColorScheme } = useColorScheme()
+  const userInfo: AuthResponse = user?.user || {}
+  const defaultValues = {
+    full_name: userInfo?.full_name ?? '',
+    icon_id: userInfo?.icon_Id,
+    background_id: userInfo?.background_id,
+    content: '',
+    email: userInfo?.email,
+    language: 'java'
+  }
+  const onSubmit = data => {
+    console.log('on submit triggered...', data)
+    mutate(data)
+    console.log(data)
+  }
   return (
     <ScrollView>
       <View className="m-4">
@@ -97,9 +129,7 @@ const SettingsScreen = ({ navigation }) => {
           <MButton
             buttonText={t('save')}
             className="m-3 p-3 text-center"
-            onPress={() => {
-              console.log('pressed')
-            }}
+            onPress={handleSubmit(onSubmit)}
           />
         </View>
         <MHairLine />
@@ -107,14 +137,22 @@ const SettingsScreen = ({ navigation }) => {
           <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
             {t('settings.personal-info.name')}
           </MText>
-          <TextInput
-            value={'chamara'}
-            className="outline-none border border-[#CBD5E1] rounded-lg px-3 py-2 focus:border-gray-300  text-sm max-sm:w-full  dark:bg-transparent dark:border-slate-300 dark:text-white"
-            onChange={e => {
-              // setFullName(e.currentTarget.value)
+          <Controller
+            control={control}
+            rules={{
+              required: true
             }}
-            // disabled={isSaving}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                placeholder="First name"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                defaultValue={defaultValues.full_name}
+              />
+            )}
+            name="full_name"
           />
+          {/* {errors.firstName && <Text>This is required.</Text>} */}
         </View>
         <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
         <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
@@ -140,32 +178,30 @@ const SettingsScreen = ({ navigation }) => {
               <View
                 className={clsx(
                   'mt-6 w-[50px] h-[50px] rounded-full',
-                  avatarBackgroundColors[avatarBgIndex].bgColor
+                  avatarBackgroundColors[userInfo?.background_id]?.bgColor
                 )}>
-                <Image src={avatarImages[avatarIndex]} className="mt-1" />
+                <Image resizeMode="cover" source={avatarImages[avatarImages[userInfo?.icon_id]]} />
               </View>
             </View>
           </View>
-          <View className="flex flex-col gap-4 flex-1 w-0 max-sm:w-full">
+          <View className="flex flex-col mb-2">
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.choose-avatar')}
             </MText>
-            {/* <View className="flex flex-row gap-4 overflow-x-auto slim-scrollbar">
-            {avatarImages.map((avatar, index) => (
-             <Pressable
-                className="cursor-pointer w-[50px] h-[50px] min-w-[50px] min-h-[50px]"
-                key={index}
-                onPress={() => {
-                  // setAvatarIndex(index)
-                }}>
-                <Image
-                  src={avatar}
+            <Image src={avatarImages[avatarIndex]} className="mt-1" />
+            <View className="flex flex-row gap-4 overflow-x-auto slim-scrollbar">
+              {avatarImages.map((avatar, index) => (
+                <Pressable
+                  className="cursor-pointer w-[50px] h-[50px] min-w-[50px] min-h-[50px]"
                   key={index}
-                  className="w-[50px] h-[50px] min-w-[50px] min-h-[50px]"
-                />
-              </Pressable>
-            ))}
-          </View> */}
+                  onPress={() => {
+                    // setAvatarIndex(index)
+                    setValue('icon_id', index)
+                  }}>
+                  <Image resizeMode="cover" source={avatar} />
+                </Pressable>
+              ))}
+            </View>
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.choose-background-color')}
             </MText>
@@ -179,6 +215,7 @@ const SettingsScreen = ({ navigation }) => {
                   key={`bg-${index}`}
                   onPress={() => {
                     // setAvatarBgIndex(index)
+                    setValue('background_id', index)
                   }}
                 />
               ))}
@@ -191,6 +228,11 @@ const SettingsScreen = ({ navigation }) => {
               </MText>
             </View>
             <View className="w-[400px]">
+              <Switch
+                value={colorScheme === 'dark'}
+                onChange={() => {
+                  toggleColorScheme()
+                }}></Switch>
               {/* <Switch
               checked={colorMode === 'dark'}
               color="blue"
