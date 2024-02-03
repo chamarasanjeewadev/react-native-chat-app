@@ -93,7 +93,7 @@ type User = {
   full_name: string
   email: string
   native_language: string
-  target_language: string
+  target_language: Language
   age_range: string
   daily_commitment: number
   motivation: string
@@ -200,7 +200,7 @@ interface IOption {
 
 interface ITargetLanguageOption {
   flag: JSX.Element
-  value: LanguageEnum
+  value: Language
   label: JSX.Element
 }
 
@@ -208,3 +208,14 @@ interface IThemeColorOptions {
   color: ThemeColor
   bgColor: string
 }
+type Language =
+  | 'American English'
+  | 'British English'
+  | 'Spanish'
+  | 'Mexican Spanish'
+  | 'French'
+  | 'German'
+  | 'Japanese'
+  | 'Mandarin Chinese'
+type Notation = 'Furigana' | 'Romaji' | 'Zhuyin'
+type NotationType = { lang: Language; notation: Notation }

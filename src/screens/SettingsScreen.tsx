@@ -17,15 +17,14 @@ import { yupResolver } from '@hookform/resolvers/yup' // install @hookform/resol
 import * as yup from 'yup'
 import { useGetUsersQuery } from '../hooks/queries'
 import { MDropdown } from '../components/atoms/MDropdown'
-import MCheckBox from '../components/atoms/MCheckBox'
 import { isLangJapaneseOrChinese } from '../utils/commonFunctions'
 import MChatButton from '../components/atoms/MChatButton'
 import { useSettingStore } from '../stores/settingStore'
 import { useState } from 'react'
-const avatarBgIndex = 1
+import { MTextInput } from '../components/atoms/MTextInput'
+import { SelectSubLanguage } from '../components/molecules/SubLanguageSelect'
 const avatarIndex = 1
 const targetLanguage = { value: LanguageEnum.Japanese }
-const themeColor = 'blue'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -38,56 +37,35 @@ const schema = yup.object().shape({
 })
 
 const SettingsScreen = ({ navigation }) => {
-  const { data: user, isLoading, refetch: getUserInfo } = useGetUsersQuery()
+  const { data: user } = useGetUsersQuery()
+  const userInfo: User = user?.user || ({} as User)
   const { mutate } = useUserPost()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { control, handleSubmit, errors, setValue, reset, getValues, watch } = useForm({
     resolver: yupResolver(schema)
   })
-  const { colorScheme, toggleColorScheme, setColorScheme } = useColorScheme()
-
-  const [
-    themeColor,
-    setThemeColor,
-    showRomaji,
-    setRomajiShown,
-    japaneseNotation,
-    setJapaneseNotation,
-    chineseNotation,
-    setChineseNotation,
-    autoSubmitThreadhold,
-    setAutoSubmitThreadhold,
-    autoRecord,
-    setAutoRecord,
-    audioOnly,
-    setAudioOnly,
-    colorMode,
-    setColorMode
-  ] = useSettingStore(state => [
+  const { colorScheme, toggleColorScheme } = useColorScheme()
+  const [notation, setNotation] = useState<NotationType>({
+    lang: userInfo?.target_language,
+    notation: 'Romaji'
+  })
+  const [autoRecord, setUserState] = useSettingStore(state => [
     state.themeColor,
     state.setThemeColor,
-
+    state.setUserState,
     state.showRomaji,
     state.setRomajiShown,
-
-    state.japaneseNotation,
-    state.setJapaneseNotation,
-
-    state.chineseNotation,
-    state.setChineseNotation,
-
     state.autoSubmitThreadhold,
     state.setAutoSubmitThreadhold,
     state.autoRecord,
-    state.setAutoRecord,
     state.audioOnly,
     state.setAudioOnly,
-
     state.colorMode,
     state.setColorMode
   ])
   const [autoRecordEnabled, setAutoRecordEnabled] = useState(autoRecord)
-  const userInfo: User = user?.user || ({} as User)
+
+  console.log(userInfo)
   const defaultValues = {
     full_name: userInfo?.full_name ?? '',
     icon_id: userInfo?.icon_id,
@@ -98,13 +76,17 @@ const SettingsScreen = ({ navigation }) => {
 
   const onSubmit = data => {
     console.log('on submit triggered...', data)
-    setAutoRecord(autoRecordEnabled)
+    setUserState({
+      language: notation.lang,
+      notation: notation.notation,
+      autoRecord: autoRecordEnabled
+    })
     mutate(data)
     console.log(data)
   }
   return (
     <ScrollView>
-      <View className="m-4">
+      <View className="mx-2 mt-2 mb-2">
         <View className="flex flex-row justify-between  ">
           <View>
             <MText className="text-lg font-semibold dark:text-white">
@@ -120,8 +102,9 @@ const SettingsScreen = ({ navigation }) => {
             onPress={handleSubmit(onSubmit)}
           />
         </View>
+
         <MHairLine />
-        <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
+        <View className="flex max-sm:flex-col max-sm:gap-1.5">
           <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
             {t('settings.personal-info.name')}
           </MText>
@@ -131,7 +114,8 @@ const SettingsScreen = ({ navigation }) => {
               required: true
             }}
             render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
+              <MTextInput
+                key="firstName"
                 placeholder="First name"
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -142,15 +126,11 @@ const SettingsScreen = ({ navigation }) => {
           />
         </View>
         <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
-        <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
+        <View className="flex max-sm:flex-col max-sm:gap-1.5">
           <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
             {t('settings.personal-info.email')}
           </MText>
-          <TextInput
-            value={'chamara.sanjeewa@gmail.com'}
-            className="outline-none border border-[#CBD5E1] rounded-lg px-3 py-2 focus:border-gray-300 w-[400px] text-sm max-sm:w-full disabled:bg-slate-200  dark:bg-transparent dark:border-slate-300 dark:text-white"
-            readOnly
-          />
+          <MTextInput editable={false} value={'chamara.sanjeewa@gmail.com'} readOnly />
         </View>
         <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
         <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
@@ -175,62 +155,61 @@ const SettingsScreen = ({ navigation }) => {
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.choose-avatar')}
             </MText>
-            <Image src={avatarImages[avatarIndex]} className="mt-1" />
-            <View className="flex flex-row gap-4 overflow-x-auto slim-scrollbar">
-              {avatarImages.map((avatar, index) => (
-                <Pressable
-                  className="cursor-pointer w-[50px] h-[50px] min-w-[50px] min-h-[50px]"
-                  key={index}
-                  onPress={() => {
-                    // setAvatarIndex(index)
-                    setValue('icon_id', index)
-                  }}>
-                  <Image resizeMode="cover" source={avatar} />
-                </Pressable>
-              ))}
-            </View>
+            <Image src={avatarImages[avatarIndex]} className="py-2" />
+            <ScrollView horizontal>
+              <View className="flex flex-row gap-2 mb-4 overflow-x-auto slim-scrollbar">
+                {avatarImages.map((avatar, index) => (
+                  <Pressable
+                    className="cursor-pointer w-[50px] h-[50px] min-w-[50px] min-h-[50px]"
+                    key={index}
+                    onPress={() => {
+                      // setAvatarIndex(index)
+                      setValue('icon_id', index)
+                    }}>
+                    <Image resizeMode="cover" source={avatar} />
+                  </Pressable>
+                ))}
+              </View>
+            </ScrollView>
+
+            <MHairLine />
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.choose-background-color')}
             </MText>
-            <View className="flex flex-row gap-5 overflow-x-auto slim-scrollbar">
-              {avatarBackgroundColors.map((c, index) => (
-                <Pressable
-                  className={clsx(
-                    c.bgColor,
-                    'w-[50px] h-[50px] rounded-full cursor-pointer min-w-[50px]'
-                  )}
-                  key={`bg-${index}`}
-                  onPress={() => {
-                    // setAvatarBgIndex(index)
-                    setValue('background_id', index)
-                  }}
-                />
-              ))}
-            </View>
+            <ScrollView horizontal className="py-2">
+              <View className="flex flex-row gap-5 overflow-x-auto slim-scrollbar">
+                {avatarBackgroundColors.map((c, index) => (
+                  <Pressable
+                    className={clsx(
+                      c.bgColor,
+                      'w-[50px] h-[50px] rounded-full cursor-pointer min-w-[50px]'
+                    )}
+                    key={`bg-${index}`}
+                    onPress={() => {
+                      // setAvatarBgIndex(index)
+                      setValue('background_id', index)
+                    }}
+                  />
+                ))}
+              </View>
+            </ScrollView>
           </View>
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-6">
-            <View className="w-[280px]">
+          <View className="flex gap-2 mt-2">
+            <View className="">
               <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
                 Dark Mode
               </MText>
             </View>
-            <View className="w-[400px]">
+            <View className="">
               <Switch
                 value={colorScheme === 'dark'}
                 onChange={() => {
                   toggleColorScheme()
                 }}></Switch>
-              {/* <Switch
-              checked={colorMode === 'dark'}
-              color="blue"
-              onChange={enabled => {
-                setColorMode(enabled ? 'dark' : 'light')
-              }}
-            /> */}
             </View>
           </View>
           <MHairLine />
-          <View className="mt-6">
+          <View className="">
             <MText className="text-lg font-semibold dark:text-white">
               {t('settings.language')}
             </MText>
@@ -256,28 +235,20 @@ const SettingsScreen = ({ navigation }) => {
               />
             </View>
           </View>
-          <View className="text-sm text-[#475569] dark:text-slate-300 mt-6">
+          <View className="text-sm text-[#475569] dark:text-slate-300 mt-2">
             <MText>{t('settings.auto-submit.description', { seconds: 0 })}</MText>
           </View>
 
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-6">
-            <View className="w-[280px]">
+          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-2">
+            <View className="">
               <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
                 {t('settings.auto-record')}
               </MText>
             </View>
             <View className="w-[400px]">
-              {/* <Toggle
-            checked={autoRecordEnabled}
-            color="blue"
-            onChange={(enabled) => {
-              setAutoRecordEnabled(enabled)
-            }}
-          /> */}
               <Switch
                 value={autoRecordEnabled}
                 onChange={value => {
-                  // toggleColorScheme()
                   setAutoRecordEnabled(value)
                 }}></Switch>
             </View>
@@ -286,20 +257,15 @@ const SettingsScreen = ({ navigation }) => {
             {t('settings.auto-record.description')}
           </MText>
 
-          {isLangJapaneseOrChinese(targetLanguage.value) && (
-            <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25">
-              <MCheckBox />
-            </View>
-          )}
-          {isLangJapaneseOrChinese(targetLanguage.value) && (
-            <View className="flex gap-2 items-center cursor-pointer">
-              <MCheckBox />
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
-                {t('settings.showPR')}
-              </MText>
-            </View>
+          {isLangJapaneseOrChinese(notation.lang) && (
+            <SelectSubLanguage
+              notationInfo={notation}
+              setNotation={setNotation}
+              targetLanguage={userInfo.target_language}
+            />
           )}
           <MHairLine />
+
           <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
               {t('settings.proficiencylevel')}
@@ -349,12 +315,21 @@ const SettingsScreen = ({ navigation }) => {
               {t('settings.target-language')}
             </MText>
             <ScrollView
-              horizontal={true}
-              className="flex-1 gap-2 m-2 p-2 flex flex-row gap-2 overflow-x-auto slim-scrollbar">
+              horizontal
+              className="flex-1 gap-2 m-2 p-2 flex flex-row overflow-x-auto slim-scrollbar">
               {targetLanguages.map((option, index) => (
                 <MChatButton
                   onPress={() => {
                     setValue('target_language', option.value)
+                    const notation: Notation =
+                      option.value === 'Japanese'
+                        ? 'Romaji'
+                        : option.value === 'Mandarin Chinese'
+                          ? 'Zhuyin'
+                          : null
+                    console.log('target language', option.value)
+                    console.log('notation', notation)
+                    setNotation({ lang: option.value, notation: notation })
                   }}
                   className={clsx(
                     'w-[90px] p-2 flex justify-center border',

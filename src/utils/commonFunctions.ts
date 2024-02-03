@@ -1,5 +1,4 @@
-import { LanguageEnum } from './enums'
 
-export const isLangJapaneseOrChinese = (targetLanguage: LanguageEnum) => {
-  return targetLanguage === LanguageEnum.Japanese || targetLanguage === LanguageEnum.Chinese
+export const isLangJapaneseOrChinese = (targetLanguage: Language) => {
+  return targetLanguage === 'Japanese' || targetLanguage === 'Mandarin Chinese'
 }
