@@ -23,6 +23,7 @@ import { useSettingStore } from '../stores/settingStore'
 import { useState } from 'react'
 import { MTextInput } from '../components/atoms/MTextInput'
 import { SelectSubLanguage } from '../components/molecules/SubLanguageSelect'
+import { MSection } from '../components/atoms/MSection'
 const avatarIndex = 1
 const targetLanguage = { value: LanguageEnum.Japanese }
 
@@ -85,26 +86,27 @@ const SettingsScreen = ({ navigation }) => {
     console.log(data)
   }
   return (
-    <ScrollView>
-      <View className="mx-2 mt-2 mb-2">
-        <View className="flex flex-row justify-between  ">
-          <View>
-            <MText className="text-lg font-semibold dark:text-white">
-              {t('settings.personal-info.title')}
-            </MText>
-            <MText className="text-sm text-[#475569] dark:text-slate-300">
-              {t('settings.personal-info.description')}
-            </MText>
+    <ScrollView automaticallyAdjustContentInsets={false}>
+      <View className="mx-2 mt-2 mb-2 dark:bg-black">
+        <MSection>
+          <View className="flex flex-row justify-between  ">
+            <View>
+              <MText className="text-lg font-semibold dark:text-white">
+                {t('settings.personal-info.title')}
+              </MText>
+              <MText className="text-sm text-[#475569] dark:text-slate-300">
+                {t('settings.personal-info.description')}
+              </MText>
+            </View>
+            <MButton
+              buttonText={t('save')}
+              className="m-3 p-3 text-center"
+              onPress={handleSubmit(onSubmit)}
+            />
           </View>
-          <MButton
-            buttonText={t('save')}
-            className="m-3 p-3 text-center"
-            onPress={handleSubmit(onSubmit)}
-          />
-        </View>
-
+        </MSection>
         <MHairLine />
-        <View className="flex max-sm:flex-col max-sm:gap-1.5">
+        <MSection className="flex ">
           <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
             {t('settings.personal-info.name')}
           </MText>
@@ -113,7 +115,7 @@ const SettingsScreen = ({ navigation }) => {
             rules={{
               required: true
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <MTextInput
                 key="firstName"
                 placeholder="First name"
@@ -124,16 +126,18 @@ const SettingsScreen = ({ navigation }) => {
             )}
             name="full_name"
           />
-        </View>
-        <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
-        <View className="flex max-sm:flex-col max-sm:gap-1.5">
-          <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
-            {t('settings.personal-info.email')}
-          </MText>
-          <MTextInput editable={false} value={'chamara.sanjeewa@gmail.com'} readOnly />
-        </View>
-        <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
-        <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
+        </MSection>
+        <MHairLine />
+        <MSection>
+          <View className="flex max-sm:flex-col max-sm:gap-1.5">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+              {t('settings.personal-info.email')}
+            </MText>
+            <MTextInput editable={false} value={'chamara.sanjeewa@gmail.com'} readOnly />
+          </View>
+        </MSection>
+        {/* profilePic */}
+        <MSection>
           <View className="w-[280px]">
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.personal-info.profile-picture')}
@@ -151,6 +155,9 @@ const SettingsScreen = ({ navigation }) => {
               </View>
             </View>
           </View>
+        </MSection>
+        {/* avatar */}
+        <MSection>
           <View className="flex flex-col mb-2">
             <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
               {t('settings.choose-avatar')}
@@ -173,27 +180,33 @@ const SettingsScreen = ({ navigation }) => {
             </ScrollView>
 
             <MHairLine />
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
-              {t('settings.choose-background-color')}
-            </MText>
-            <ScrollView horizontal className="py-2">
-              <View className="flex flex-row gap-5 overflow-x-auto slim-scrollbar">
-                {avatarBackgroundColors.map((c, index) => (
-                  <Pressable
-                    className={clsx(
-                      c.bgColor,
-                      'w-[50px] h-[50px] rounded-full cursor-pointer min-w-[50px]'
-                    )}
-                    key={`bg-${index}`}
-                    onPress={() => {
-                      // setAvatarBgIndex(index)
-                      setValue('background_id', index)
-                    }}
-                  />
-                ))}
-              </View>
-            </ScrollView>
           </View>
+        </MSection>
+        {/* background color */}
+        <MSection>
+          <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+            {t('settings.choose-background-color')}
+          </MText>
+          <ScrollView horizontal className="py-2">
+            <View className="flex flex-row gap-5 overflow-x-auto slim-scrollbar">
+              {avatarBackgroundColors.map((c, index) => (
+                <Pressable
+                  className={clsx(
+                    c.bgColor,
+                    'w-[50px] h-[50px] rounded-full cursor-pointer min-w-[50px]'
+                  )}
+                  key={`bg-${index}`}
+                  onPress={() => {
+                    // setAvatarBgIndex(index)
+                    setValue('background_id', index)
+                  }}
+                />
+              ))}
+            </View>
+          </ScrollView>
+        </MSection>
+        {/* dark mode */}
+        <MSection>
           <View className="flex gap-2 mt-2">
             <View className="">
               <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
@@ -208,144 +221,152 @@ const SettingsScreen = ({ navigation }) => {
                 }}></Switch>
             </View>
           </View>
-          <MHairLine />
-          <View className="">
-            <MText className="text-lg font-semibold dark:text-white">
-              {t('settings.language')}
-            </MText>
-            <MText className="text-sm text-[#475569] dark:text-slate-300">
-              {t('settings.language.description')}
-            </MText>
-          </View>
-          <View className="my-5 border-t w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
-
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-6">
-            <View className="w-[280px]">
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
-                {t('settings.auto-submit')}
-              </MText>
-            </View>
-            <View className="w-[400px] max-sm:w-full">
-              <Slider
-                style={{ width: 200, height: 40 }}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#FFFFFF"
-                maximumTrackTintColor="#000000"
-              />
-            </View>
-          </View>
-          <View className="text-sm text-[#475569] dark:text-slate-300 mt-2">
-            <MText>{t('settings.auto-submit.description', { seconds: 0 })}</MText>
-          </View>
-
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5 mt-2">
-            <View className="">
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
-                {t('settings.auto-record')}
-              </MText>
-            </View>
-            <View className="w-[400px]">
-              <Switch
-                value={autoRecordEnabled}
-                onChange={value => {
-                  setAutoRecordEnabled(value)
-                }}></Switch>
-            </View>
-          </View>
-          <MText className="text-sm text-[#475569] dark:text-slate-300 mt-2">
-            {t('settings.auto-record.description')}
+        </MSection>
+        {/* languageSettings */}
+        <View className="">
+          <MText className="text-lg font-semibold dark:text-white">{t('settings.language')}</MText>
+          <MText className="text-sm text-[#475569] dark:text-slate-300">
+            {t('settings.language.description')}
           </MText>
+        </View>
 
-          {isLangJapaneseOrChinese(notation.lang) && (
+        <MHairLine />
+        {/* auto submit */}
+        <MSection>
+          <View className="w-[280px]">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+              {t('settings.auto-submit')}
+            </MText>
+          </View>
+          <View className="w-[400px] max-sm:w-full">
+            <Slider
+              style={{ width: 200, height: 40 }}
+              minimumValue={0}
+              maximumValue={1}
+              minimumTrackTintColor="#FFFFFF"
+              maximumTrackTintColor="#000000"
+            />
+          </View>
+          <MText className="text-sm text-[#475569] dark:text-slate-300">
+            {t('settings.auto-submit.description', { seconds: 0 })}
+          </MText>
+        </MSection>
+        {/* auto recording */}
+        <MSection>
+          <View className="">
+            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+              {t('settings.auto-record')}
+            </MText>
+          </View>
+          <View className="w-[400px]">
+            <Switch
+              value={autoRecordEnabled}
+              onChange={value => {
+                setAutoRecordEnabled(value)
+              }}></Switch>
+            <MText className="text-sm text-[#475569] dark:text-slate-300 mt-2">
+              {t('settings.auto-record.description')}
+            </MText>
+          </View>
+        </MSection>
+        {/* display notation */}
+        {isLangJapaneseOrChinese(notation.lang) && (
+          <MSection>
             <SelectSubLanguage
               notationInfo={notation}
               setNotation={setNotation}
               targetLanguage={userInfo.target_language}
             />
-          )}
-          <MHairLine />
+          </MSection>
+        )}
+        <MHairLine />
 
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
-              {t('settings.proficiencylevel')}
-            </MText>
+        <MSection>
+          <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+            {t('settings.proficiencylevel')}
+          </MText>
+          <MDropdown
+            items={proficiencyOptions}
+            onValueChange={value => {
+              setValue('proficiency', value)
+            }}
+          />
+        </MSection>
+        <MHairLine />
+        {/* daily commitment */}
+        <MSection>
+          <View className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
+            <MText>{t('settings.daily-commit')}</MText>
+          </View>
+          <View className="w-[400px] max-sm:w-full">
             <MDropdown
-              items={proficiencyOptions}
+              items={dailyCommitOptions}
               onValueChange={value => {
-                setValue('proficiency', value)
+                setValue('daily_commitment', value)
               }}
             />
-          </View>
-          <MHairLine />
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-1.5">
-            <View className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
-              <MText>{t('settings.daily-commit')}</MText>
-            </View>
-            <View className="w-[400px] max-sm:w-full">
-              <MDropdown
-                items={dailyCommitOptions}
-                onValueChange={value => {
-                  setValue('daily_commitment', value)
-                }}
-              />
-              <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
-                {t('settings.daily-commit.description')}
-              </MText>
-            </View>
-          </View>
-          <View className="flex gap-8 max-sm:flex-col max-sm:gap-5">
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
-              {t('settings.native-language')}
+            <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
+              {t('settings.daily-commit.description')}
             </MText>
-            <View className="w-[400px] max-sm:w-full">
-              <MDropdown
-                items={nativeLanguageOptions}
-                onValueChange={value => {
-                  setValue('native_language', value)
-                }}
-              />
-              <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
-                {t('settings.native-language.description')}
-              </MText>
-            </View>
           </View>
-          <View className="flex fl gap-8 max-sm:flex-col max-sm:gap-5">
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
-              {t('settings.target-language')}
+        </MSection>
+        <MHairLine />
+        {/* native language */}
+        <MSection>
+          <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
+            {t('settings.native-language')}
+          </MText>
+          <View className="w-[400px] max-sm:w-full">
+            <MDropdown
+              items={nativeLanguageOptions}
+              onValueChange={value => {
+                setValue('native_language', value)
+              }}
+            />
+            <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
+              {t('settings.native-language.description')}
             </MText>
-            <ScrollView
-              horizontal
-              className="flex-1 gap-2 m-2 p-2 flex flex-row overflow-x-auto slim-scrollbar">
-              {targetLanguages.map((option, index) => (
-                <MChatButton
-                  onPress={() => {
-                    setValue('target_language', option.value)
-                    const notation: Notation =
-                      option.value === 'Japanese'
-                        ? 'Romaji'
-                        : option.value === 'Mandarin Chinese'
-                          ? 'Zhuyin'
-                          : null
-                    console.log('target language', option.value)
-                    console.log('notation', notation)
-                    setNotation({ lang: option.value, notation: notation })
-                  }}
-                  className={clsx(
-                    'w-[90px] p-2 flex justify-center border',
-                    targetLanguage.value === option.value
-                      ? 'border-blue-400 rounded-lg'
-                      : 'border-transparent'
-                  )}
-                  key={index}>
-                  <View className="text-sm font-semibold text-[#334155] text-center mt-2">
-                    <MText>{option.label}</MText>
-                    <View>{option.flag}</View>
-                  </View>
-                </MChatButton>
-              ))}
-            </ScrollView>
           </View>
+        </MSection>
+        <MHairLine />
+        {/* target language */}
+        <MSection>
+          <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 ">
+            {t('settings.target-language')}
+          </MText>
+          <ScrollView
+            horizontal
+            className="flex-1 gap-2 m-2 p-2 flex flex-row overflow-x-auto slim-scrollbar">
+            {targetLanguages.map((option, index) => (
+              <MChatButton
+                onPress={() => {
+                  setValue('target_language', option.value)
+                  const notation: Notation =
+                    option.value === 'Japanese'
+                      ? 'Romaji'
+                      : option.value === 'Mandarin Chinese'
+                        ? 'Zhuyin'
+                        : null
+                  console.log('target language', option.value)
+                  console.log('notation', notation)
+                  setNotation({ lang: option.value, notation: notation })
+                }}
+                className={clsx(
+                  'w-[90px] p-2 flex justify-center border',
+                  targetLanguage.value === option.value
+                    ? 'border-blue-400 rounded-lg'
+                    : 'border-transparent'
+                )}
+                key={index}>
+                <View className="text-sm font-semibold text-[#334155] text-center mt-2">
+                  <MText>{option.label}</MText>
+                  <View>{option.flag}</View>
+                </View>
+              </MChatButton>
+            ))}
+          </ScrollView>
+        </MSection>
+        <MSection>
           <View className="mt-4 flex flex-col gap-4 text-sm pl-2">
             <View className="flex flex-col text-[#475467] dark:text-slate-300 text-left gap-4">
               <View className="flex max-md:flex-col">
@@ -356,7 +377,7 @@ const SettingsScreen = ({ navigation }) => {
               </Pressable>
             </View>
           </View>
-        </View>
+        </MSection>
       </View>
     </ScrollView>
   )

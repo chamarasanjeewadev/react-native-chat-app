@@ -1,18 +1,11 @@
-import { Pressable, PressableProps, Text } from 'react-native'
-import React, { FC, PropsWithChildren } from 'react'
-import { t } from 'i18next'
-import { fontFamily } from '../../utils/fonts/fontFamily'
+import { Pressable, PressableProps } from 'react-native'
 import { MText } from './MText'
 
 interface MButtonProps extends PressableProps {
   buttonText: string
 }
 
-export const MButton = ({
-  // children,
-  buttonText,
-  ...props
-}: MButtonProps) => {
+export const MButton = ({ buttonText, ...props }: MButtonProps) => {
   return (
     <Pressable
       {...props}
