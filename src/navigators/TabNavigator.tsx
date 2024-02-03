@@ -2,13 +2,12 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeNavigator } from './HomeNavigator'
 import PracticeScreen from '../screens/PracticeScreen'
-import ChatsScreen from '../screens/ChatsScreen'
 import HomeSmile from '../assets/icons/HomeSmile'
 import Explore from '../assets/icons/ExploreIcon'
 import PracticeIcon from '../assets/icons/PracticeIcon'
 import { ProfileIcon } from '../assets/icons'
 import { useTranslation } from 'react-i18next'
-import ProfileScreen from '../screens/ProfileScreen'
+import ProfileScreen from '../screens/ProfileScreen-old'
 import { ChatNavigator } from './ChatNavigator'
 import SettingsScreen from '../screens/SettingsScreen'
 
@@ -68,8 +67,8 @@ export const TabNavigator = () => {
       />
       <Tab.Screen
         options={{
-          headerShown: false,
-          tabBarLabel: 'Settings',
+          headerShown: true,
+          tabBarLabel: t('settings.title'),
           tabBarIcon: ProfileIcon
         }}
         name="settings"

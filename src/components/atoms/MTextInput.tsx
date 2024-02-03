@@ -10,7 +10,7 @@ export const MTextInput = ({ forwardedRef, ...props }: MTextInputProps) => {
   return (
     <TextInput
       ref={forwardedRef}
-      className="outline-none  border border-[#CBD5E1] rounded-lg px-3 py-2 focus:border-gray-300 w-[400px]  disabled:bg-slate-200  dark:bg-transparent dark:border-slate-300 dark:text-white"
+      className=" text-sm outline-none  border border-[#CBD5E1] rounded-lg px-3 py-2 focus:border-gray-300  disabled:bg-slate-200  dark:bg-transparent dark:border-slate-300 dark:text-white"
       style={{ fontFamily: fontFamily.poppins400 }}
       {...props}
     />

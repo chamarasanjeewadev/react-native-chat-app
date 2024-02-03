@@ -1,7 +1,6 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
-import { ChineseNotation, JapaneseNotation } from '../services/interface'
-import { ThemeColor } from '../interfaces'
+import { createJSONStorage, persist } from 'zustand/middleware'
+import { clientPersister, zustandStorage } from '../utils/mmkvStorage'
 interface UserState {
   language: Language
   notation: Notation
@@ -29,9 +28,8 @@ interface SettingStoreState {
   setColorMode: (colorMode: 'dark' | 'light') => void
   setUserState: ({ language, notation, autoRecord }: UserState) => void
 }
-// const persistedSettingStore = persist(settingStore, { name: 'SETTING_STORE' })
 
-export const useSettingStore = create<Partial<SettingStoreState>>(set => ({
+const settingStore = create<Partial<SettingStoreState>>(set => ({
   themeColor: 'blue',
   colorMode: 'light',
   audioOnly: false,
@@ -51,3 +49,9 @@ export const useSettingStore = create<Partial<SettingStoreState>>(set => ({
   setUserState: ({ language, notation, autoRecord }: UserState) =>
     set({ language, notation, autoRecord })
 }))
+export { settingStore as useSettingStore }
+// const useSettingStore = persist(settingStore, {
+//   name: 'user-setting-storage', // name of the item in the storage (must be unique)
+//   storage: createJSONStorage(() => zustandStorage) // (optional) by default, 'localStorage' is used
+// })
+// export { useSettingStore }

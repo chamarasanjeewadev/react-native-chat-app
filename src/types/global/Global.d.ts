@@ -102,6 +102,7 @@ type User = {
   icon_id: number
   background_id: number
   stripe_customer_id: string
+  proficiency: string
 }
 
 type AuthResponse = {
