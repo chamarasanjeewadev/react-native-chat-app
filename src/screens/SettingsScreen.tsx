@@ -17,7 +17,7 @@ const SettingsScreen: FC = () => {
   }
 
   return (
-    <View className=" flex flex-col max-sm:px-6 max-lg:pb-24 lg:py-8">
+    <View className=" flex-1">
       <View className=" py-2 rounded-2xl  flex flex-row justify-center">
         {tabs.map((tab, index) => (
           <Pressable

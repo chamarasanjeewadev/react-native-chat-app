@@ -203,6 +203,7 @@ interface ITargetLanguageOption {
   flag: JSX.Element
   value: Language
   label: JSX.Element
+  shortText?: string
 }
 
 interface IThemeColorOptions {
