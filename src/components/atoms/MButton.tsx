@@ -9,8 +9,8 @@ export const MButton = ({ buttonText, ...props }: MButtonProps) => {
   return (
     <Pressable
       {...props}
-      className="rounded-lg justify-center align-middle text-center text-orange-900 p-2 shadow-sm play-button dark:bg-slate-800 dark:active:bg-slate-400 dark:text-white bg-orange-50 active:bg-orange-200 border-orange-100 ">
-      <MText className="text-center ">{buttonText}</MText>
+      className="rounded-lg justify-center align-middle w-16 h-8  shadow-sm play-button bg-[--background] ">
+      <MText className="text-center text-[--primary] ">{buttonText}</MText>
     </Pressable>
   )
 }

@@ -52,7 +52,6 @@ const ProfileScreen = () => {
   const { data: user } = useGetUsersQuery()
   const { mutate } = useUserPost()
   const { t } = useTranslation()
-  console.log('commitment', user?.user?.daily_commitment)
 
   const { control, handleSubmit, setValue, watch } = useForm<Partial<User>>({
     resolver: yupResolver(schema),
@@ -67,20 +66,14 @@ const ProfileScreen = () => {
     lang: user?.user?.target_language,
     notation: 'Romaji'
   })
-  const [autoRecord, setUserState] = useSettingStore(state => [
+  const [autoRecord, themeColor, setThemeColor, setUserState] = useSettingStore(state => [
+    state.autoRecord,
     state.themeColor,
     state.setThemeColor,
-    state.setUserState,
-    state.showRomaji,
-    state.setRomajiShown,
-    state.autoSubmitThreadhold,
-    state.autoRecord,
-    state.audioOnly,
-    state.setAudioOnly,
-    state.colorMode,
-    state.setColorMode
+    state.setUserState
   ])
   const [autoRecordEnabled, setAutoRecordEnabled] = useState(autoRecord)
+
   const [autoSubmitThreadholdState, setAutoSubmitThreadhold] = useState(0)
   const latestIconId = watch('icon_id')
   const backgroundId = watch('background_id')
@@ -89,7 +82,7 @@ const ProfileScreen = () => {
       language: notation.lang,
       notation: notation.notation,
       autoRecord: autoRecordEnabled,
-      autoSubmitThreadhold: autoSubmitThreadholdState
+      autoSubmitThreadhold: autoSubmitThreadholdState,
     })
     mutate(data)
   }
@@ -396,6 +389,23 @@ const ProfileScreen = () => {
             </ScrollView>
           </MSection>
           <MHairLine />
+          <MSection>
+            <View className="flex gap-2 flex-row">
+              {themeColors.map((color, index) => (
+                <Pressable
+                  className={clsx(
+                    color.bgColor,
+                    'w-[60] h-[50] text-center  flex-row rounded-lg flex justify-center items-center'
+                  )}
+                  key={index}
+                  onPress={() => {
+                    setThemeColor(color.color)
+                  }}>
+                  <MText className="text-center "> {color.color}</MText>
+                </Pressable>
+              ))}
+            </View>
+          </MSection>
           <MSection>
             <View className="flex flex-row justify-between ">
               <Logout />

@@ -205,6 +205,7 @@ interface ITargetLanguageOption {
   label: JSX.Element
   shortText?: string
 }
+type ColorMode = 'dark' | 'light' | 'system'
 
 interface IThemeColorOptions {
   color: ThemeColor

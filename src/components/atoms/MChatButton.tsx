@@ -8,7 +8,7 @@ export const MChatButton: FC<PressableProps> = ({
   return (
     <Pressable
       {...props}
-      className="rounded-lg text-center text-orange-900 p-2 shadow-sm play-button dark:bg-slate-800 dark:active:bg-slate-400 dark:text-white bg-orange-50 active:bg-orange-200 border-orange-100 ">
+      className="rounded-lg text-center text-orange-900 p-2 shadow-sm play-button bg-[--color-primary]   bg-orange-50 active:bg-orange-200 border-orange-100 ">
       {children}
     </Pressable>
   )

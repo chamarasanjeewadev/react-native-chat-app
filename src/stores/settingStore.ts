@@ -1,3 +1,4 @@
+import { themeColor } from './../utils/consts'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import { clientPersister, zustandStorage } from '../utils/mmkvStorage'
@@ -5,6 +6,10 @@ interface UserState {
   language: Language
   notation: Notation
   autoRecord: boolean
+  autoSubmitThreadhold: number
+  themeColor: ThemeColor
+
+  colorMode: ColorMode
 }
 interface SettingStoreState {
   themeColor: ThemeColor
@@ -14,7 +19,7 @@ interface SettingStoreState {
   showRomaji: boolean
   autoSubmitThreadhold: number
   audioOnly: boolean
-  colorMode: 'dark' | 'light'
+  colorMode: ColorMode
   setThemeColor: (themeColor: ThemeColor) => void
 
   setRomajiShown: (showRomaji: boolean) => void
@@ -25,11 +30,11 @@ interface SettingStoreState {
 
   setAudioOnly: (audioOnly: boolean) => void
 
-  setColorMode: (colorMode: 'dark' | 'light') => void
-  setUserState: ({ language, notation, autoRecord }: UserState) => void
+  setColorMode: (colorMode: ColorMode) => void
+  setUserState: ({ language, notation, autoRecord, autoSubmitThreadhold }: UserState) => void
 }
 
-const settingStore = create<Partial<SettingStoreState>>(set => ({
+const useSettingStore = create<Partial<SettingStoreState>>(set => ({
   themeColor: 'blue',
   colorMode: 'light',
   audioOnly: false,
@@ -46,10 +51,10 @@ const settingStore = create<Partial<SettingStoreState>>(set => ({
 
   setColorMode: (colorMode: 'light' | 'dark') => set({ colorMode }),
 
-  setUserState: ({ language, notation, autoRecord }: UserState) =>
-    set({ language, notation, autoRecord })
+  setUserState: ({ language, notation, autoRecord, autoSubmitThreadhold }: UserState) =>
+    set({ language, notation, autoRecord, autoSubmitThreadhold })
 }))
-export { settingStore as useSettingStore }
+export { useSettingStore }
 // const useSettingStore = persist(settingStore, {
 //   name: 'user-setting-storage', // name of the item in the storage (must be unique)
 //   storage: createJSONStorage(() => zustandStorage) // (optional) by default, 'localStorage' is used
