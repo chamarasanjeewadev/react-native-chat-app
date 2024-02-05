@@ -5,11 +5,9 @@ import { useTranslation } from 'react-i18next'
 import {
   Image,
   Pressable,
-  TextInput,
   View,
   ScrollView,
   Switch,
-  Button,
   Text,
   TouchableOpacity,
   Linking
@@ -21,7 +19,7 @@ import { useColorScheme } from 'nativewind'
 import MButton from '../components/atoms/MButton'
 import { CN_O, ES_O, FR_O, GE_O, JP_O, MX_O, UK_O, US_O } from '../assets/icons/Flags'
 import { MHairLine } from '../components/atoms/MHairLine'
-import { MText } from '../components/atoms/MText'
+import { MLabelText, MLabelTextDescription, MText } from '../components/atoms/MText'
 import { useUserPost } from '../hooks/mutations'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup' // install @hookform/resolvers (not @hookform/resolvers/yup)
@@ -29,14 +27,12 @@ import * as yup from 'yup'
 import { useGetUsersQuery } from '../hooks/queries'
 import { MDropdown } from '../components/atoms/MDropdown'
 import { isLangJapaneseOrChinese } from '../utils/commonFunctions'
-import MChatButton from '../components/atoms/MChatButton'
 import { useSettingStore } from '../stores/settingStore'
 import { useState } from 'react'
 import { MTextInput } from '../components/atoms/MTextInput'
 import { SelectSubLanguage } from '../components/molecules/SubLanguageSelect'
 import { MSection } from '../components/atoms/MSection'
 import { Logout } from '../components/molecules/Logout'
-const targetLanguage = { value: LanguageEnum.Japanese }
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -45,44 +41,49 @@ const schema = yup.object().shape({
   icon_id: yup.number(),
   native_language: yup.string(),
   proficiency: yup.string(),
-  target_language: yup.string()
+  target_language: yup.string(),
+  autoSubmitThreadhold: yup.number()
 })
 
 const ProfileScreen = () => {
   const { data: user } = useGetUsersQuery()
   const { mutate } = useUserPost()
   const { t } = useTranslation()
-
+  const [autoRecord, autoSubmitThreadhold, themeColor, notation, setThemeColor, setUserState] =
+    useSettingStore(state => [
+      state.autoRecord,
+      state.autoSubmitThreadhold,
+      state.themeColor,
+      state.notation,
+      state.setThemeColor,
+      state.setUserState
+    ])
   const { control, handleSubmit, setValue, watch } = useForm<Partial<User>>({
     resolver: yupResolver(schema),
     defaultValues: {
       ...user?.user,
       daily_commitment: user?.user?.daily_commitment,
-      proficiency: user?.user_metrics?.proficiency
+      proficiency: user?.user_metrics?.proficiency,
+      autoSubmitThreadhold: autoSubmitThreadhold
     }
   })
   const { colorScheme, toggleColorScheme } = useColorScheme()
-  const [notation, setNotation] = useState<NotationType>({
+  const [notationState, setNotationState] = useState<NotationType>({
     lang: user?.user?.target_language,
-    notation: 'Romaji'
+    notation: notation
   })
-  const [autoRecord, themeColor, setThemeColor, setUserState] = useSettingStore(state => [
-    state.autoRecord,
-    state.themeColor,
-    state.setThemeColor,
-    state.setUserState
-  ])
+
   const [autoRecordEnabled, setAutoRecordEnabled] = useState(autoRecord)
 
-  const [autoSubmitThreadholdState, setAutoSubmitThreadhold] = useState(0)
   const latestIconId = watch('icon_id')
   const backgroundId = watch('background_id')
+  const selectedLanguage = watch('target_language')
   const onSubmit = data => {
     setUserState({
-      language: notation.lang,
-      notation: notation.notation,
+      language: notationState.lang,
+      notation: notationState.notation,
       autoRecord: autoRecordEnabled,
-      autoSubmitThreadhold: autoSubmitThreadholdState,
+      autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0
     })
     mutate(data)
   }
@@ -90,16 +91,16 @@ const ProfileScreen = () => {
   return (
     <View>
       <ScrollView automaticallyAdjustContentInsets={false} className="mb-30">
-        <View className="mx-2 mt-2 mb-2 dark:bg-black">
+        <View className="mx-2 mt-2 mb-16 ">
           <MSection>
             <View className="flex flex-row justify-between  ">
               <View>
-                <MText className="text-lg font-semibold dark:text-white">
+                <MText className="text-lg font-semibold ">
                   {t('settings.personal-info.title')}
                 </MText>
-                <MText className="text-sm text-[#475569] dark:text-slate-300">
+                <MLabelTextDescription className="text-sm  ">
                   {t('settings.personal-info.description')}
-                </MText>
+                </MLabelTextDescription>
               </View>
               <MButton
                 buttonText={t('save')}
@@ -109,10 +110,8 @@ const ProfileScreen = () => {
             </View>
           </MSection>
           <MHairLine />
-          <MSection className="flex ">
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 ">
-              {t('settings.personal-info.name')}
-            </MText>
+          <MSection className="flex gap-1 ">
+            <MLabelText>{t('settings.personal-info.name')}</MLabelText>
             <Controller
               control={control}
               rules={{
@@ -132,49 +131,38 @@ const ProfileScreen = () => {
           </MSection>
           <MHairLine />
           <MSection>
-            <View className="flex max-sm:flex-col max-sm:gap-1.5">
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
-                {t('settings.personal-info.email')}
-              </MText>
-              <MTextInput editable={false} value={user?.user?.email} readOnly />
-            </View>
+            <MLabelText>{t('settings.personal-info.email')}</MLabelText>
+            <MTextInput editable={false} value={user?.user?.email} readOnly />
           </MSection>
+
+          <MHairLine />
           {/* profilePic */}
-          <MSection>
-            <View className="w-[280px]">
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
-                {t('settings.personal-info.profile-picture')}
-              </MText>
-              <MText className="text-sm text-[#475569] dark:text-slate-300">
-                {t('settings.personal-info.profile-picture.description')}
-              </MText>
-              <View className="w-full flex justify-center ">
-                <View
-                  className={clsx(
-                    'mt-2 w-[50] h-[50] rounded-full flex  justify-center',
-                    avatarBackgroundColors[backgroundId]?.bgColor
-                  )}>
-                  <Image
-                    className="mx-auto"
-                    resizeMode="cover"
-                    source={avatarImages[latestIconId]}
-                  />
-                </View>
-              </View>
+          <MSection className="mt-2">
+            <MLabelText className="text-sm">
+              {t('settings.personal-info.profile-picture')}
+            </MLabelText>
+            <MLabelTextDescription className="text-sm ">
+              {t('settings.personal-info.profile-picture.description')}
+            </MLabelTextDescription>
+
+            <View
+              className={clsx(
+                'mt-2 w-[50] h-[50] rounded-full flex  justify-center align-middle items-center',
+                avatarBackgroundColors[backgroundId]?.bgColor
+              )}>
+              <Image resizeMode="cover" source={avatarImages[latestIconId]} />
             </View>
           </MSection>
           {/* avatar */}
           <MSection>
-            <View className="flex flex-col mb-2">
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
-                {t('settings.choose-avatar')}
-              </MText>
-              <Image src={avatarImages[user?.user?.icon_id]} className="py-2" />
+            <View className="flex flex-col py-2 ">
+              <MText className="text-sm font-semibold">{t('settings.choose-avatar')}</MText>
+              <Image source={{ uri: avatarImages[user?.user?.icon_id] }} className="py-1" />
               <ScrollView horizontal>
-                <View className="flex flex-row gap-2 mb-4 overflow-x-auto slim-scrollbar">
+                <View className="flex flex-row gap-2 mb-4  slim-scrollbar">
                   {avatarImages.map((avatar, index) => (
                     <Pressable
-                      className="cursor-pointer w-[50px] h-[50px] min-w-[50px] min-h-[50px]"
+                      className="w-[50] h-[50] min-w-[50] min-h-[50]"
                       key={index}
                       onPress={() => {
                         setValue('icon_id', index)
@@ -184,13 +172,10 @@ const ProfileScreen = () => {
                   ))}
                 </View>
               </ScrollView>
-
-              <MHairLine />
             </View>
-          </MSection>
-          {/* background color */}
-          <MSection>
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+
+            {/* background color */}
+            <MText className="text-sm font-semibold ">
               {t('settings.choose-background-color')}
             </MText>
             <ScrollView horizontal className="py-2">
@@ -214,11 +199,9 @@ const ProfileScreen = () => {
           <MSection>
             <View className="flex gap-2 mt-2">
               <View className="">
-                <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
-                  Dark Mode
-                </MText>
+                <MText className="text-sm font-semibold  ">Dark Mode</MText>
               </View>
-              <View className="">
+              <View>
                 <Switch
                   value={colorScheme === 'dark'}
                   onChange={() => {
@@ -228,81 +211,86 @@ const ProfileScreen = () => {
             </View>
           </MSection>
           {/* languageSettings */}
-          <View className="">
-            <MText className="text-lg font-semibold dark:text-white">
-              {t('settings.language')}
-            </MText>
-            <MText className="text-sm text-[#475569] dark:text-slate-300">
+          <View className="mb-2 mt-2">
+            <MText className="text-lg font-semibold ">{t('settings.language')}</MText>
+            <MLabelTextDescription className="text-sm ">
               {t('settings.language.description')}
-            </MText>
+            </MLabelTextDescription>
           </View>
 
           <MHairLine />
           {/* auto submit */}
           <MSection>
-            <View className="w-[280px]">
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+            <View className="">
+              <MLabelText className="text-sm font-semibold ">
                 {t('settings.auto-submit')}
-              </MText>
+              </MLabelText>
             </View>
-            <View className="w-[400px] max-sm:w-full">
-              <Slider
-                minimumValue={0}
-                maximumValue={10}
-                value={autoSubmitThreadholdState}
-                onValueChange={value => {
-                  console.log('value', value)
-                  setAutoSubmitThreadhold(value)
+            <View>
+              <Controller
+                control={control}
+                rules={{
+                  required: true
                 }}
-                tapToSeek
-                StepMarker={({ stepMarked }) => {
-                  return <Text>0</Text>
-                }}
-                step={1}
-                style={{ width: 300, height: 40 }}
-                minimumTrackTintColor="#FFFFFF"
-                maximumTrackTintColor="#000000"
+                render={({ field: { onChange, value } }) => (
+                  <Slider
+                    minimumValue={0}
+                    maximumValue={10}
+                    value={value}
+                    onValueChange={onChange}
+                    tapToSeek
+                    StepMarker={({ stepMarked }) => {
+                      //TODO
+                      return <Text>0</Text>
+                    }}
+                    step={1}
+                    style={{ width: 300, height: 40 }}
+                    minimumTrackTintColor="#FFFFFF"
+                    maximumTrackTintColor="#000000"
+                  />
+                )}
+                name="autoSubmitThreadhold"
               />
             </View>
-            <MText className="text-sm text-[#475569] dark:text-slate-300">
+            <MLabelTextDescription className="text-sm ">
               {t('settings.auto-submit.description', { seconds: 0 })}
-            </MText>
+            </MLabelTextDescription>
           </MSection>
           {/* auto recording */}
           <MSection>
             <View className="">
-              <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300">
+              <MLabelText className="text-sm font-semibold ">
                 {t('settings.auto-record')}
-              </MText>
+              </MLabelText>
             </View>
-            <View className="w-[400px]">
+            <View className="">
               <Switch
                 value={autoRecordEnabled}
                 onValueChange={value => {
-                  console.log('value', value)
                   setAutoRecordEnabled(value)
                 }}></Switch>
-              <MText className="text-sm text-[#475569] dark:text-slate-300 mt-2">
+              <MLabelTextDescription className="text-sm ">
                 {t('settings.auto-record.description')}
-              </MText>
+              </MLabelTextDescription>
             </View>
           </MSection>
           {/* display notation */}
-          {isLangJapaneseOrChinese(notation.lang) && (
-            <MSection>
-              <SelectSubLanguage
-                notationInfo={notation}
-                setNotation={setNotation}
-                targetLanguage={user?.user?.target_language}
-              />
-            </MSection>
+          {isLangJapaneseOrChinese(selectedLanguage) && (
+            <>
+              <MHairLine />
+              <MSection className="mt-2">
+                <SelectSubLanguage
+                  notationInfo={notationState}
+                  setNotation={setNotationState}
+                  targetLanguage={selectedLanguage}
+                />
+              </MSection>
+            </>
           )}
           <MHairLine />
 
-          <MSection>
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px]">
-              {t('settings.proficiencylevel')}
-            </MText>
+          <MSection className="gap-1">
+            <MLabelText>{t('settings.proficiencylevel')}</MLabelText>
             <Controller
               control={control}
               render={({ field: { onChange, value } }) => (
@@ -313,10 +301,10 @@ const ProfileScreen = () => {
           </MSection>
           <MHairLine />
           {/* daily commitment */}
-          <MSection>
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 ">
+          <MSection className="gap-1">
+            <MLabelText className="text-sm font-semibold  ">
               {t('settings.daily-commit')}
-            </MText>
+            </MLabelText>
             <View className=" ">
               <Controller
                 control={control}
@@ -325,17 +313,15 @@ const ProfileScreen = () => {
                 )}
                 name="daily_commitment"
               />
-              <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
+              <MLabelTextDescription className="mt-2 text-sm ">
                 {t('settings.daily-commit.description')}
-              </MText>
+              </MLabelTextDescription>
             </View>
           </MSection>
           <MHairLine />
           {/* native language */}
-          <MSection>
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 w-[280px] max-w-[280px]">
-              {t('settings.native-language')}
-            </MText>
+          <MSection className="gap-1">
+            <MLabelText>{t('settings.native-language')}</MLabelText>
             <View className="">
               <Controller
                 control={control}
@@ -344,57 +330,58 @@ const ProfileScreen = () => {
                 )}
                 name="native_language"
               />
-              <MText className="mt-2 text-[#475569] dark:text-slate-300 text-sm pl-1">
+              <MLabelTextDescription>
                 {t('settings.native-language.description')}
-              </MText>
+              </MLabelTextDescription>
             </View>
           </MSection>
           <MHairLine />
           {/* target language */}
           <MSection>
-            <MText className="text-sm font-semibold text-[#334155] dark:text-slate-300 ">
+            <MLabelText className="text-sm font-semibold ">
               {t('settings.target-language')}
-            </MText>
+            </MLabelText>
             <ScrollView horizontal>
-              <View className="flex flex-row gap-2 mb-4 mt-2">
+              <View className="flex flex-row gap-1 ">
                 {targetLanguages.map((option, index) => (
-                  <MChatButton
-                    onPress={() => {
-                      setValue('target_language', option.value)
-                      const notation: Notation =
-                        option.value === 'Japanese'
-                          ? 'Romaji'
-                          : option.value === 'Mandarin Chinese'
-                            ? 'Zhuyin'
-                            : null
-                      console.log('target language', option.value)
-                      console.log('notation', notation)
-                      setNotation({ lang: option.value, notation: notation })
-                    }}
-                    className={clsx(
-                      'w-[90px] p-2 flex justify-center border',
-                      targetLanguage.value === option.value
-                        ? 'border-blue-400 rounded-lg'
-                        : 'border-transparent'
+                  <Controller
+                    key={index}
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                      <TouchableOpacity
+                        value={value}
+                        key={index}
+                        onPress={() => {
+                          onChange(option.value)
+                        }}
+                        className={clsx(
+                          'm-2 p-2 flex justify-center border',
+                          value === option.value
+                            ? 'border-blue-400 rounded-lg'
+                            : 'border-transparent'
+                        )}>
+                        <View className="text-sm font-semibold text-center mt-2">
+                          <View>{option.flag}</View>
+                          <MText className="text-sm mt-2">{option.label}</MText>
+                          <MText className="text-sm text-center">{option.shortText}</MText>
+                        </View>
+                      </TouchableOpacity>
                     )}
-                    key={index}>
-                    <View className="text-sm font-semibold text-[#334155] text-center mt-2">
-                      <View>{option.flag}</View>
-                      <MText className="text-sm">{option.label}</MText>
-                      <MText className="text-sm text-center">{option.shortText}</MText>
-                    </View>
-                  </MChatButton>
+                    name="target_language"
+                  />
                 ))}
               </View>
             </ScrollView>
           </MSection>
           <MHairLine />
-          <MSection>
+          <MSection className="gap-2 ">
+            <MLabelText> {t('settings.theme')}</MLabelText>
             <View className="flex gap-2 flex-row">
               {themeColors.map((color, index) => (
                 <Pressable
                   className={clsx(
                     color.bgColor,
+                    themeColor === color.bgColor ? 'bg-red ' : 'bg-green',
                     'w-[60] h-[50] text-center  flex-row rounded-lg flex justify-center items-center'
                   )}
                   key={index}
@@ -417,7 +404,7 @@ const ProfileScreen = () => {
             </View>
           </MSection>
           <MSection>
-            <View className="mt-4 flex flex-col gap-4 text-sm pl-2">
+            <View className=" flex flex-col gap-4 text-sm pl-2">
               <View className="flex flex-col text-[#475467] dark:text-slate-300 text-left gap-4">
                 <View className="flex flex-row">
                   <MText> We care about your data in our</MText>

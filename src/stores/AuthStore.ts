@@ -1,5 +1,6 @@
-import { devtools, persist } from 'zustand/middleware'
+import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 import { create } from 'zustand'
+import { zustandStorage } from '../utils/mmkvStorage'
 
 interface AuthStoreInterface {
   isAADAuthenticated: boolean
@@ -29,34 +30,39 @@ interface AuthStoreInterface {
   proficiency: string
   setProficiency: (proficiency: string) => void
 }
+const forPersist = persist<AuthStoreInterface>(
+  set => ({
+    isUserRegistered: false,
+    setUserRegistered: (isUserRegistered: boolean) => set({ isUserRegistered }),
 
-const authStore = (set: any) => ({
-  isUserRegistered: false,
-  setUserRegistered: (isUserRegistered: boolean) => set({ isUserRegistered }),
+    idToken: '',
+    setIdToken: (idToken: string) => set({ idToken }),
 
-  idToken: '',
-  setIdToken: (idToken: string) => set({ idToken }),
+    isAADAuthenticated: false,
+    setAADAuthenticated: (isAADAuthenticated: boolean) => set({ isAADAuthenticated }),
 
-  isAADAuthenticated: false,
-  setAADAuthenticated: (isAADAuthenticated: boolean) => set({ isAADAuthenticated }),
+    user: null,
+    setUser: (user: User | null) => set({ user }),
 
-  user: null,
-  setUser: (user: User | null) => set({ user }),
+    nativeLanguage: '',
+    setNativeLanguage: (nativeLanguage: string) => set({ nativeLanguage }),
 
-  nativeLanguage: '',
-  setNativeLanguage: (nativeLanguage: string) => set({ nativeLanguage }),
+    targetLanguage: '',
+    setTargetLanguage: (targetLanguage: string) => set({ targetLanguage }),
 
-  targetLanguage: '',
-  setTargetLanguage: (targetLanguage: string) => set({ targetLanguage }),
+    age: '',
+    setAge: (age: string) => set({ age }),
 
-  age: '',
-  setAge: (age: string) => set({ age }),
+    name: '',
+    setName: (name: string) => set({ name }),
 
-  name: '',
-  setName: (name: string) => set({ name }),
-
-  proficiency: '',
-  setProficiency: (proficiency: string) => set({ proficiency })
-})
-
-export const useAuthStore = create(authStore)
+    proficiency: '',
+    setProficiency: (proficiency: string) => set({ proficiency })
+  }),
+  {
+    name: 'auth-storage',
+    storage: createJSONStorage(() => zustandStorage)
+  }
+)
+const useAuthStore = create<Partial<AuthStoreInterface>>()(forPersist)
+export { useAuthStore }

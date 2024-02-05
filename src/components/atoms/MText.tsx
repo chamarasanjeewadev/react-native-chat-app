@@ -5,3 +5,23 @@ import { fontFamily } from '../../utils/fonts/fontFamily'
 export const MText: FC<TextProps> = ({ ...props }: PropsWithChildren<TextProps>) => {
   return <Text {...props} style={{ fontFamily: fontFamily.poppins400 }}></Text>
 }
+
+export const MLabelText: FC<TextProps> = ({ ...props }: PropsWithChildren<TextProps>) => {
+  return (
+    <Text
+      {...props}
+      className="text-sm font-semibold"
+      style={{ fontFamily: fontFamily.poppins400 }}></Text>
+  )
+}
+
+export const MLabelTextDescription: FC<TextProps> = ({
+  ...props
+}: PropsWithChildren<TextProps>) => {
+  return (
+    <Text
+      {...props}
+      className="text-sm font-semibold text-[--muted]"
+      style={{ fontFamily: fontFamily.poppins400 }}></Text>
+  )
+}

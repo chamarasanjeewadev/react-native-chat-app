@@ -1,9 +1,8 @@
 import { View } from 'react-native'
 import { MCheckBoxWithCaption } from '../atoms/MCheckBox'
-import { MText } from '../atoms/MText'
+import { MLabelTextDescription } from '../atoms/MText'
 import { t } from 'i18next'
 import { useState } from 'react'
-import { MHairLine } from '../atoms/MHairLine'
 
 interface TargetLangProps {
   targetLanguage: Language
@@ -16,19 +15,20 @@ export const SelectSubLanguage = ({
   notationInfo,
   setNotation
 }: TargetLangProps) => {
-  const [isLanguageSelectionShown, setIsLanguageSelectionShown] = useState<boolean>(false)
+  const [isLanguageSelectionShown, setIsLanguageSelectionShown] = useState<boolean>(
+    !!notationInfo.notation
+  )
   return (
     <>
-      <MHairLine />
       <MCheckBoxWithCaption
         key={'selectNotation'}
         caption={t('settings.showPR')}
         value={isLanguageSelectionShown}
         onValueChange={newValue => setIsLanguageSelectionShown(newValue)}
       />
-      <MText className="mt-4 text-[#475569] dark:text-slate-300 text-sm">
+      <MLabelTextDescription className="mt-4 text-[#475569] dark:text-slate-300 text-sm">
         {t('settings.showPR.description')}
-      </MText>
+      </MLabelTextDescription>
       {isLanguageSelectionShown && (
         <View className="my-5 gap-4   dark:border-mila-gray-25 flex flex-row">
           {targetLanguage === 'Japanese' && (

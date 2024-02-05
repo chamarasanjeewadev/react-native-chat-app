@@ -1,17 +1,17 @@
-import { Pressable, PressableProps } from 'react-native'
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import { MText } from './MText'
 
-interface MButtonProps extends PressableProps {
+interface MButtonProps extends TouchableOpacityProps {
   buttonText: string
 }
 
 export const MButton = ({ buttonText, ...props }: MButtonProps) => {
   return (
-    <Pressable
+    <TouchableOpacity
       {...props}
-      className="rounded-lg justify-center align-middle w-16 h-8  shadow-sm play-button bg-[--background] ">
-      <MText className="text-center text-[--primary] ">{buttonText}</MText>
-    </Pressable>
+      className="rounded-lg justify-center align-middle m-2 p-2 active:green  shadow-sm play-button bg-[--background] ">
+      <MText className="text-center text-[--muted] ">{buttonText}</MText>
+    </TouchableOpacity>
   )
 }
 

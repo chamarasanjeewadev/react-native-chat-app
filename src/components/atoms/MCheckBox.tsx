@@ -1,12 +1,12 @@
 import CheckBox, { CheckBoxProps } from '@react-native-community/checkbox'
 import { View } from 'react-native'
-import { MText } from './MText'
+import { MLabelText } from './MText'
 const MCheckBox = (checkBoxProps: CheckBoxProps) => {
   return (
     <CheckBox
       {...checkBoxProps}
       boxType="square"
-      style={{ backgroundColor: 'red', margin: 0, padding: 0 }}
+      style={{ margin: 0, padding: 0 }}
       lineWidth={2}
       onCheckColor="green"
       onFillColor="pink"
@@ -22,7 +22,7 @@ export const MCheckBoxWithCaption = ({ caption, ...checkBoxProps }: CaptionAndCh
   return (
     <View className="flex flex-row items-center gap-2 ">
       <MCheckBox {...checkBoxProps} />
-      <MText className="text-sm font-semibold text-[#334155] ">{caption}</MText>
+      <MLabelText className="text-sm font-semibold ">{caption}</MLabelText>
     </View>
   )
 }

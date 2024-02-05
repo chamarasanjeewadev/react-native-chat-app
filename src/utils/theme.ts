@@ -3,11 +3,11 @@ import { vars } from 'nativewind'
 export const themes = {
   blue: {
     light: vars({
-      '--primary': '#E90716', // Orange
+      '--primary': 'bg-blue-600', // Orange
       '--secondary': '255, 255, 255', // White
       '--background': '#2563eb',
       '--foreground': '15, 23, 42',
-      '--muted': '241, 245, 249',
+      '--muted': '#475569',
       '--muted-foreground': '100, 116, 139',
       '--popover': '255, 255, 255',
       '--popover-foreground': '15, 23, 42',
@@ -51,7 +51,7 @@ export const themes = {
       '--secondary': '255, 255, 255', // White
       '--background': 'blue',
       '--foreground': '15, 23, 42',
-      '--muted': '241, 245, 249',
+      '--muted': '#475569',
       '--muted-foreground': '100, 116, 139',
       '--popover': '255, 255, 255',
       '--popover-foreground': '15, 23, 42',
@@ -95,7 +95,7 @@ export const themes = {
       '--secondary': '255, 255, 255', // White
       '--background': '#ec4899',
       '--foreground': '15, 23, 42',
-      '--muted': '241, 245, 249',
+      '--muted': '#475569',
       '--muted-foreground': '100, 116, 139',
       '--popover': '255, 255, 255',
       '--popover-foreground': '15, 23, 42',

@@ -103,6 +103,7 @@ type User = {
   background_id: number
   stripe_customer_id: string
   proficiency: string
+  autoSubmitThreadhold?: number
 }
 
 type AuthResponse = {
