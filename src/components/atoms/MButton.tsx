@@ -12,11 +12,11 @@ export const MButton = ({ loading, buttonText, className, ...props }: MButtonPro
     <TouchableOpacity
       {...props}
       className={cn(
-        'rounded-lg justify-center  gap-1 align-middle m-2 p-2 active:green flex flex-row  shadow-sm play-button bg-primary',
+        'rounded-lg justify-center  gap-1 align-middle m-2 p-2 active:green flex flex-row  shadow-sm play-button ',
         className,
         { 'bg-secondary': loading }
       )}>
-      {loading && <ActivityIndicator size="small" color="#0000ff" />}
+      {loading && <ActivityIndicator className="text-primary" size="small" />}
       <MText className="text-center text-[--muted] ">{buttonText}</MText>
     </TouchableOpacity>
   )

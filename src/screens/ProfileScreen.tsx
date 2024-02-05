@@ -10,7 +10,8 @@ import {
   Switch,
   Text,
   TouchableOpacity,
-  Linking
+  Linking,
+  ActivityIndicator
 } from 'react-native'
 import { avatarBackgroundColors, avatarImages } from '../utils/avatar'
 import { LanguageEnum } from '../utils/enums'
@@ -103,7 +104,7 @@ const ProfileScreen = () => {
                 </MLabelTextDescription>
               </View>
               <MButton
-                loading={false}
+                loading={true}
                 buttonText={t('save')}
                 className="m-3 p-3 text-center"
                 onPress={handleSubmit(onSubmit)}
