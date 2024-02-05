@@ -88,21 +88,26 @@ type Token = {
 }
 type User = {
   id: number
-  username: string
-  object_id: string
-  full_name: string
-  email: string
-  native_language: string
-  target_language: Language
-  age_range: string
-  daily_commitment: number
-  motivation: string
-  daily_streak: string
-  last_active_date: string
+  age_range?: string
+  email?: string
+  full_name?: string
+  native_language?: string
+  target_language?: string
+  username?: string
+  daily_commitment?: number
+  stripe_customer_id?: string
+  stripe_price_id?: string
+  token: string
+  motivation?: string
+  proficiency?: string
+  level: number
+  level_name: string
+  experience: number
+  next_level_exp_req: number
   icon_id: number
   background_id: number
-  stripe_customer_id: string
-  proficiency: string
+  is_cancel_scheduled: boolean
+  plan_expired_on: string
   autoSubmitThreadhold?: number
 }
 

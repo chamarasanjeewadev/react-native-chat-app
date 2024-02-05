@@ -58,3 +58,5 @@ export const proficiencyOptions: IOption[] = [
     value: 'Master'
   }
 ]
+
+export const FREE_TRIAL = 'price_trial'
