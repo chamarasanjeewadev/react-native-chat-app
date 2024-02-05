@@ -7,14 +7,16 @@ import { useGetUsersQuery } from '../../hooks/queries'
 import { getIdToken } from '../../utils/tokenUtils'
 import { ErrorBoundary } from 'react-error-boundary'
 import { themes } from '../../utils/theme'
-import { useColorScheme } from 'nativewind'
+import { vars, useColorScheme } from 'nativewind'
 import { useSettingStore } from '../../stores/settingStore'
+import { StripeProvider } from '@stripe/stripe-react-native'
 interface ThemeProps extends PropsWithChildren {
   name: string
 }
 export function Theme({ name, children }: ThemeProps) {
+  console.log('name', name)
   const colorScheme = useColorScheme()
-  const theme = themes[name ?? 'blue'][colorScheme.colorScheme ?? 'light']
+  const theme = vars(themes[name ?? 'blue'][colorScheme.colorScheme ?? 'light'])
   return <View style={[{ flex: 1 }, theme]}>{children}</View>
 }
 const RootStack = createNativeStackNavigator()
@@ -22,7 +24,6 @@ const RootNavigator = () => {
   const { data: userInfo } = useGetUsersQuery() // this is expected to be fetched from storage
   const idToken = getIdToken()
   const [themeColor] = useSettingStore(state => [state.themeColor])
-  console.log('theme color......', themeColor)
   const isUserAvailable = idToken && userInfo
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -35,6 +36,11 @@ const RootNavigator = () => {
           onReset={() => {
             console.log('need to reset...')
           }}>
+          {/* <StripeProvider
+            publishableKey="pk_test_51NXxwoHwFwFEWRRtmOOsXlcemv7xVSq9G06LFieeOhkEYvYKg5KgSxQMkP6B7yffm2odmwpyYcRnr8WWh6xGyehk004xHJUjBX"
+            // urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
+            // merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
+          > */}
           {/* {!isUserAvailable ? ( // TODO refactor this to a hook
           <RootStack.Navigator
             screenOptions={{
@@ -57,6 +63,7 @@ const RootNavigator = () => {
           </RootStack.Navigator>
           {/* ) */}
           {/* } */}
+          {/* </StripeProvider> */}
         </ErrorBoundary>
       </Theme>
     </SafeAreaView>

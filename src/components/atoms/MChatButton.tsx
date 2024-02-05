@@ -1,14 +1,24 @@
-import { Pressable, PressableProps } from 'react-native'
+import { ActivityIndicator, Pressable, PressableProps } from 'react-native'
 import React, { FC, PropsWithChildren } from 'react'
+import { cn } from '../../utils/cnUtil'
 
-export const MChatButton: FC<PressableProps> = ({
+type MChatProps = PressableProps & { loading?: boolean }
+
+export const MChatButton = ({
   children,
+  loading,
+  className,
   ...props
-}: PropsWithChildren<PressableProps>) => {
+}: PropsWithChildren<MChatProps>) => {
   return (
     <Pressable
       {...props}
-      className="rounded-lg text-center text-orange-900 p-2 shadow-sm play-button bg-[--color-primary]   bg-orange-50 active:bg-orange-200 border-orange-100 ">
+      className={cn(
+        'rounded-lg text-center p-2 gap-2  play-button   flex flex-row bg-primary ',
+        className,
+        { 'bg-gray-50': loading }
+      )}>
+      {loading && <ActivityIndicator size="small" color="#0000ff" />}
       {children}
     </Pressable>
   )

@@ -1157,6 +1157,42 @@ PODS:
   - RNSVG (14.1.0):
     - React-Core
   - SocketRocket (0.6.1)
+  - Stripe (23.21.1):
+    - StripeApplePay (= 23.21.1)
+    - StripeCore (= 23.21.1)
+    - StripePayments (= 23.21.1)
+    - StripePaymentsUI (= 23.21.1)
+    - StripeUICore (= 23.21.1)
+  - stripe-react-native (0.36.0):
+    - React-Core
+    - Stripe (~> 23.21.0)
+    - StripeApplePay (~> 23.21.0)
+    - StripeFinancialConnections (~> 23.21.0)
+    - StripePayments (~> 23.21.0)
+    - StripePaymentSheet (~> 23.21.0)
+    - StripePaymentsUI (~> 23.21.0)
+  - StripeApplePay (23.21.1):
+    - StripeCore (= 23.21.1)
+  - StripeCore (23.21.1)
+  - StripeFinancialConnections (23.21.1):
+    - StripeCore (= 23.21.1)
+    - StripeUICore (= 23.21.1)
+  - StripePayments (23.21.1):
+    - StripeCore (= 23.21.1)
+    - StripePayments/Stripe3DS2 (= 23.21.1)
+  - StripePayments/Stripe3DS2 (23.21.1):
+    - StripeCore (= 23.21.1)
+  - StripePaymentSheet (23.21.1):
+    - StripeApplePay (= 23.21.1)
+    - StripeCore (= 23.21.1)
+    - StripePayments (= 23.21.1)
+    - StripePaymentsUI (= 23.21.1)
+  - StripePaymentsUI (23.21.1):
+    - StripeCore (= 23.21.1)
+    - StripePayments (= 23.21.1)
+    - StripeUICore (= 23.21.1)
+  - StripeUICore (23.21.1):
+    - StripeCore (= 23.21.1)
   - SwiftAudioEx (1.0.0)
   - Yoga (1.14.0)
 
@@ -1245,6 +1281,7 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSnackbar (from `../node_modules/react-native-snackbar`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - "stripe-react-native (from `../node_modules/@stripe/stripe-react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1266,6 +1303,14 @@ SPEC REPOS:
     - MMKVCore
     - OpenSSL-Universal
     - SocketRocket
+    - Stripe
+    - StripeApplePay
+    - StripeCore
+    - StripeFinancialConnections
+    - StripePayments
+    - StripePaymentSheet
+    - StripePaymentsUI
+    - StripeUICore
     - SwiftAudioEx
 
 EXTERNAL SOURCES:
@@ -1388,6 +1433,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-snackbar"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  stripe-react-native:
+    :path: "../node_modules/@stripe/stripe-react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1468,6 +1515,15 @@ SPEC CHECKSUMS:
   RNSnackbar: 3727b42bf6c4314a53c18185b5203e915a4ab020
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
+  Stripe: d55e7338dabc599eddeee3b09eacd5c13457e1a2
+  stripe-react-native: ee7309aeca7aeb9cabeec8e1434c84f114fdf74b
+  StripeApplePay: 48973391091a96e30e6ef6b9b331dbaa31449dcb
+  StripeCore: 2ad2bf779ed5b34c1af0800d8304222d3a98440f
+  StripeFinancialConnections: d75c000ffe2f09b14f9aebf02a571d91658ae73b
+  StripePayments: 9961532054e6d4176f54d681cab876cefe60de14
+  StripePaymentSheet: 2ef84d80a938e8c6c59ba0639007b4108d0a6bfb
+  StripePaymentsUI: 1f8addf41697d0f298fd8a15e4edf3999fbc66bc
+  StripeUICore: 95c5235db01a2d90b5bb72c85a804eaed4e64f17
   SwiftAudioEx: 6f511018b7a0fdfd14ed1bb4081f953588245cc0
   Yoga: e64aa65de36c0832d04e8c7bd614396c77a80047
 

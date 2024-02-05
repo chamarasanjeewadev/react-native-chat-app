@@ -47,7 +47,7 @@ const schema = yup.object().shape({
 
 const ProfileScreen = () => {
   const { data: user } = useGetUsersQuery()
-  const { mutate } = useUserPost()
+  const { mutate, isPending } = useUserPost()
   const { t } = useTranslation()
   const [autoRecord, autoSubmitThreadhold, themeColor, notation, setThemeColor, setUserState] =
     useSettingStore(state => [
@@ -93,7 +93,7 @@ const ProfileScreen = () => {
       <ScrollView automaticallyAdjustContentInsets={false} className="mb-30">
         <View className="mx-2 mt-2 mb-16 ">
           <MSection>
-            <View className="flex flex-row justify-between  ">
+            <View className="flex flex-row justify-between ">
               <View>
                 <MText className="text-lg font-semibold ">
                   {t('settings.personal-info.title')}
@@ -103,6 +103,7 @@ const ProfileScreen = () => {
                 </MLabelTextDescription>
               </View>
               <MButton
+                loading={false}
                 buttonText={t('save')}
                 className="m-3 p-3 text-center"
                 onPress={handleSubmit(onSubmit)}

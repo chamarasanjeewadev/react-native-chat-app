@@ -1,4 +1,12 @@
-import { Alert, Button, Pressable, Text, TouchableOpacity, View } from 'react-native'
+import {
+  ActivityIndicator,
+  Alert,
+  Button,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native'
 import { useCallback, useState } from 'react'
 import { useGetUsersQuery } from '../hooks/queries'
 import { getAuthToken } from '../utils/authUtil'
@@ -11,17 +19,13 @@ import { useAuthStore } from '../stores/AuthStore'
 // id token is handled explicitly. In future it will be encrypted and maintain seperatly.
 const SignInScreen = () => {
   const { data: user, isLoading, refetch: getUserInfo } = useGetUsersQuery()
-  const { setIdToken: setAuthToken, idToken: authToken, setUser } = useAuthStore()
-  const [loading, setLoading] = useState(false)
+  const { setUser } = useAuthStore()
 
   const handleAuthorize = useCallback(async () => {
     try {
-      setLoading(true)
       await getAuthToken()
-      getUserInfo().then(res => {
-        console.log('loginUser....', user)
-        setUser(user)
-        setLoading(false)
+      getUserInfo().then(() => {
+        setUser(user?.user)
       })
     } catch (error) {
       console.log(error)
@@ -29,18 +33,18 @@ const SignInScreen = () => {
         text: error.message,
         duration: Snackbar.LENGTH_SHORT
       })
-      // Alert.alert('Failed to log in',)
     }
   }, [])
   return (
     <View className="flex items-center justify-center h-screen">
       {
         <MChatButton
-          disabled={loading}
-          className="bg-green w-[100px] mb-2 p-0 text-center h-auto"
+          loading={isLoading}
+          disabled={isLoading}
+          className=""
           onPress={() => handleAuthorize()}>
-          <Text className="dark:text-white text-lg text-center py-2 ">
-            {loading ? 'loading..' : 'authorize'}
+          <Text className="dark:text-white text-lg text-center py-2 align-middle items-center justify-center ">
+            Authorize
           </Text>
         </MChatButton>
       }

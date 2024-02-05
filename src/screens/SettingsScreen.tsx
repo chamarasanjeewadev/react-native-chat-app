@@ -24,7 +24,7 @@ const SettingsScreen: FC = () => {
             className={clsx(
               'text-sm font-semibold py-2 rounded-lg cursor-pointer',
               index === activeTab
-                ? 'bg-blue-50 shadow-sm text-blue-700 dark:bg-blue-600 dark:text-slate-50'
+                ? 'bg-blue-50 shadow-sm text-blue-700 dark:text-slate-50'
                 : 'text-slate-500',
               index === 0 && activeTab !== 0 ? 'pl-0 pr-3' : 'px-3'
             )}

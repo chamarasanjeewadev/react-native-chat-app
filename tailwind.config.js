@@ -12,7 +12,8 @@ module.exports = {
         accent: {
           1: 'var(--accent1)'
         },
-        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
         baseOne: 'rgb(var(--baseOne))',
         baseTwo: 'rgb(var(--baseTwo))',
         baseThree: 'rgb(var(--baseThree))',
@@ -20,5 +21,13 @@ module.exports = {
       }
     }
   },
-  plugins: [({ addBase }) => addBase({ root: { '--color-primary': '51 51 255' } })]
+  plugins: [
+    ({ addBase }) =>
+      addBase({
+        root: {
+          '--color-primary': 'rgb(255, 115, 179)',
+          '--color-secondary': 'rgb(255,0,0)'
+        }
+      })
+  ]
 }
