@@ -17,4 +17,4 @@ const FeatureCard: FC<FeatureCardProps> = ({ icon, title, description }) => (
   </View>
 )
 
-export default FeatureCard
+export { FeatureCard }

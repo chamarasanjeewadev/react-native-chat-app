@@ -6,6 +6,7 @@ import { ConversationLogo } from '../assets/icons/ConversationLogo'
 import ProgressCircle from '../assets/icons/ProgressCircle'
 import { ConversationProgress, StudyMode } from '../utils/enums'
 import { fontFamily } from '../utils/fonts/fontFamily'
+import { FadeIn } from '../components/molecules/Skeletons/FadeIn'
 
 const ChatsScreen = ({ navigation }) => {
   const { data } = useGetMilaChats()
@@ -13,12 +14,12 @@ const ChatsScreen = ({ navigation }) => {
     <View>
       <Suspense fallback={<View>Loading...</View>}>
         {data?.sections?.map((section: Section, index: number) => (
+          // <FadeIn key={index} />
           <View
             key={index}
             className="flex flex-row m-1 shadow-lg justify-between px-8 align-baseline rounded-lg bg-white">
-            <View className=" justify-center">
-              <ConversationLogo />
-            </View>
+            {/* <FadeIn /> */}
+
             <View className={'flex flex-col gap-0.5 ¥align-middle flex-grow mx-5  '}>
               <Text
                 className="text-lg font-normal  text-slate-700 dark:text-white"

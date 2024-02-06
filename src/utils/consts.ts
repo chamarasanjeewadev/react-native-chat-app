@@ -1,6 +1,7 @@
 import { UK_O } from './../assets/icons/Flags'
 import { Track } from 'react-native-track-player'
 import { LanguageEnum } from './enums'
+import { Platform } from 'react-native'
 
 export const themeColor = 'blue'
 export const playListData: Track[] = [
@@ -60,3 +61,8 @@ export const proficiencyOptions: IOption[] = [
 ]
 
 export const FREE_TRIAL = 'price_trial'
+
+export const API_URL = Platform.OS === 'android' ? 'http://10.0.2.2:4242' : 'http://localhost:4242'
+export const MERCHANT_ID = 'merchant.com.stripe.react.native'
+export const PUBLISHABLE_kEY =
+  'pk_test_51NXxwoHwFwFEWRRtmOOsXlcemv7xVSq9G06LFieeOhkEYvYKg5KgSxQMkP6B7yffm2odmwpyYcRnr8WWh6xGyehk004xHJUjBX'

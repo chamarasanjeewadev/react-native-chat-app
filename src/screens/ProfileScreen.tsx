@@ -2,6 +2,7 @@ import Slider from '@react-native-community/slider'
 import clsx from 'clsx'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
+import PaymentSheetSubscriptionExample from './../components/PaymentSheetSubscription'
 import {
   Image,
   Pressable,

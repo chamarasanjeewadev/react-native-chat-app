@@ -7,7 +7,6 @@ import { FC, useState } from 'react'
 import { PLANS } from '../atoms/stripe'
 import { t } from 'i18next'
 import { useAuthStore } from '../../stores/AuthStore'
-import FeatureCard from '.'
 import {
   PremiumFeatureIcon1,
   PremiumFeatureIcon2,
@@ -17,6 +16,8 @@ import {
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { MText } from '../atoms/MText'
+import { FeatureCard } from './'
+import StripeSubscription from '../PaymentSheetSubscription'
 export const Membership = () => {
   const [isSubscribing, setSubscribing] = useState(false)
   const [isReactivating, setReactivating] = useState(false)
@@ -100,8 +101,8 @@ export const Membership = () => {
             </View>
           </>
         )}
-
-        {true && (
+        <StripeSubscription />
+        {/* {true && (
           <View className="mt-4 w-full">
             <Button
               title={t('subscription.unlock-premium')}
@@ -111,8 +112,8 @@ export const Membership = () => {
               // onClick={onSubscribe}
               // isLoading={isSubscribing}
             />
-          </View>
-        )}
+          </View> */}
+        {/* )} */}
 
         <MText className="my-6 px-4 text-2xl font-semibold text-blue-950 dark:text-white">
           {t('subscription.manage-subscription')}
