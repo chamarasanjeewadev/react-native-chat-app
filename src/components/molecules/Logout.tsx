@@ -16,7 +16,8 @@ export const Logout = () => {
   }
   return (
     <MButton
-      buttonText="Log out"
+      buttonText={'Log out'}
+      className="m-3 p-3 "
       onPress={() => {
         handleLogout()
       }}

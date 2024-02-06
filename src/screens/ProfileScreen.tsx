@@ -105,7 +105,7 @@ const ProfileScreen = () => {
                 </MLabelTextDescription>
               </View>
               <MButton
-                loading={true}
+                loading={isPending}
                 buttonText={t('save')}
                 className="m-3 p-3 text-center"
                 onPress={handleSubmit(onSubmit)}

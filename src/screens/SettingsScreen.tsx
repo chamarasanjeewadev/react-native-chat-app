@@ -1,6 +1,5 @@
 import { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Gear } from '../assets/icons/Gear'
 import clsx from 'clsx'
 import ProfileScreen from './ProfileScreen'
 import { Membership } from '../components/molecules/Membership'

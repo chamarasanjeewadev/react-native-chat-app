@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import { themes } from './src/utils/theme'
 module.exports = {
   darkMode: 'class',
   // NOTE: Update this to include the paths to all of your component files.
@@ -12,22 +13,26 @@ module.exports = {
         accent: {
           1: 'var(--accent1)'
         },
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        baseOne: 'rgb(var(--baseOne))',
-        baseTwo: 'rgb(var(--baseTwo))',
-        baseThree: 'rgb(var(--baseThree))',
-        baseFour: 'rgb(var(--baseFour))'
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        success: 'var(--success)',
+        info: 'var(--info)',
+        warning: 'var(--warning)',
+        danger: 'var(--danger)',
+        muted: 'var(--muted)',
+        textprimary: 'var(--text-primary)',
+        textsecondary: 'var(--text-secondary)'
       }
     }
   },
   plugins: [
-    ({ addBase }) =>
-      addBase({
+    ({ addBase }) => {
+      const defaultColors = themes['blue']['light']
+      return addBase({
         root: {
-          '--color-primary': 'rgb(255, 115, 179)',
-          '--color-secondary': 'rgb(255,0,0)'
+          ...defaultColors
         }
       })
+    }
   ]
 }
