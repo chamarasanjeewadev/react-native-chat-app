@@ -35,6 +35,7 @@ import { MTextInput } from '../components/atoms/MTextInput'
 import { SelectSubLanguage } from '../components/molecules/SubLanguageSelect'
 import { MSection } from '../components/atoms/MSection'
 import { Logout } from '../components/molecules/Logout'
+import { Tick } from '../assets/icons/CheckIcon'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -377,21 +378,20 @@ const ProfileScreen = () => {
             </ScrollView>
           </MSection>
           <MHairLine />
-          <MSection className="gap-2 ">
+          <MSection className=" ">
             <MLabelText> {t('settings.theme')}</MLabelText>
-            <View className="flex gap-2 flex-row">
+            <View className="flex gap-2  flex-row">
               {themeColors.map((color, index) => (
                 <Pressable
+                  style={{ backgroundColor: color.bgColor }}
                   className={clsx(
-                    color.bgColor,
-                    themeColor === color.bgColor ? 'bg-red ' : 'bg-green',
-                    'w-[60] h-[50] text-center  flex-row rounded-lg flex justify-center items-center'
+                    ' text-center w-12 h-12 flex-row  rounded-lg flex justify-center items-center'
                   )}
                   key={index}
                   onPress={() => {
                     setThemeColor(color.color)
                   }}>
-                  <MText className="text-center "> {color.color}</MText>
+                  {color.color === themeColor && <Tick />}
                 </Pressable>
               ))}
             </View>

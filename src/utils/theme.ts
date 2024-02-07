@@ -63,7 +63,7 @@ export const themes = {
   },
   pink: {
     light: {
-      '--primary': ' rgb(255, 192, 203)',
+      '--primary': colors.pink[600],
       '--secondary': ' rgb(255, 173, 186) ',
       '--success': ' rgb(40, 167, 69)',
       '--info': ' rgb(23, 162, 184)',

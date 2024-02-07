@@ -1,7 +1,6 @@
-import { UK_O } from './../assets/icons/Flags'
 import { Track } from 'react-native-track-player'
-import { LanguageEnum } from './enums'
 import { Platform } from 'react-native'
+import { themes } from './theme'
 
 export const themeColor = 'blue'
 export const playListData: Track[] = [
@@ -25,15 +24,15 @@ export const playListData: Track[] = [
 export const themeColors: IThemeColorOptions[] = [
   {
     color: 'blue',
-    bgColor: 'bg-blue-300'
+    bgColor: themes.blue.light['--primary']
   },
   {
     color: 'orange',
-    bgColor: 'bg-orange-300'
+    bgColor: themes.orange.light['--primary']
   },
   {
     color: 'pink',
-    bgColor: 'bg-pink-300'
+    bgColor: themes.pink.light['--primary']
   }
 ]
 
