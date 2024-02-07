@@ -351,8 +351,8 @@ const ProfileScreen = () => {
           {/* target language */}
           <MSection>
             <MLabelText>{t('settings.target-language')}</MLabelText>
-            <ScrollView horizontal>
-              <View className="flex flex-row gap-1 ">
+            <ScrollView horizontal className="p-2">
+              <View className="flex flex-row gap-1">
                 {targetLanguages.map((option, index) => (
                   <Controller
                     key={index}
@@ -364,13 +364,10 @@ const ProfileScreen = () => {
                         onPress={() => {
                           onChange(option.value)
                         }}
-                        className={clsx(
-                          'mx-2 flex justify-center border',
-                          value === option.value
-                            ? 'border-blue-400 rounded-lg'
-                            : 'border-transparent'
-                        )}>
-                        <View className="text-sm font-semibold text-center mt-2">
+                        className={clsx('mx-2 px-2  flex justify-center ', {
+                          'border border-blue-400 rounded-lg': value === option.value
+                        })}>
+                        <View className="text-sm  text-textprimary font-semibold text-center mt-2">
                           <View>{option.flag}</View>
                           <MText className="text-sm mt-2">{option.label}</MText>
                           <MText className="text-sm text-center">{option.shortText}</MText>

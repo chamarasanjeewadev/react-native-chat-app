@@ -13,7 +13,7 @@ export const themes = {
       '--dark': ' rgb(52, 58, 64)',
       '--muted': colors.slate[200],
       '--text-primary': colors.slate[700],
-      '--text-secondary': ' rgb(255,255,255)',
+      '--text-secondary': colors.white,
       '--text-muted': colors.slate[200],
       '--text-border': colors.slate[200],
       '--text-focus': colors.gray[300]
@@ -46,9 +46,11 @@ export const themes = {
       '--light': ' rgb(248, 249, 250)',
       '--dark': ' rgb(52, 58, 64)',
       '--muted': ' rgb(52, 58, 64)',
-      '--text-primary': colors.white,
-      '--text-secondary': ' rgb(0, 0, 0)',
-      '--text-muted': ' rgb(0, 0, 0)'
+      '--text-primary': colors.slate[700],
+      '--text-secondary': colors.white,
+      '--text-muted': colors.slate[200],
+      '--text-border': colors.slate[200],
+      '--text-focus': colors.gray[300]
     },
     dark: {
       '--primary': ' rgb(0, 123, 255)',
@@ -76,9 +78,11 @@ export const themes = {
       '--light': ' rgb(248, 249, 250)',
       '--dark': ' rgb(52, 58, 64)',
       '--muted': ' rgb(52, 58, 64)',
-      '--text-primary': ' rgb(0, 0, 0)',
-      '--text-secondary': ' rgb(0, 0, 0)',
-      '--text-muted': ' rgb(0, 0, 0)'
+      '--text-primary': colors.slate[700],
+      '--text-secondary': colors.white,
+      '--text-muted': colors.slate[200],
+      '--text-border': colors.slate[200],
+      '--text-focus': colors.gray[300]
     },
     dark: {
       '--primary': ' rgb(0, 123, 255)',
