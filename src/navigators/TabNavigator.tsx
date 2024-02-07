@@ -28,7 +28,7 @@ export const TabNavigator = () => {
     <Tab.Navigator
       initialRouteName={'settings'}
       screenOptions={{
-        tabBarStyle: { paddingTop: 10, paddingBottom: 10, height: 50 }
+        tabBarStyle: { paddingTop: 5, paddingBottom: 5, height: 50 }
       }}>
       <Tab.Screen
         options={{
