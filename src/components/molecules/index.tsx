@@ -1,5 +1,6 @@
-import { FC, JSX } from 'react'
-import { Text, View } from 'react-native'
+import React, { FC, JSX } from 'react'
+import { View } from 'react-native'
+import { MLabelText } from '../atoms/MText'
 
 interface FeatureCardProps {
   icon: JSX.Element
@@ -8,11 +9,11 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: FC<FeatureCardProps> = ({ icon, title, description }) => (
-  <View className="bg-slate-50 dark:bg-mila-gray-25 shadow-[0_1px_2px_0_rgba(2,6,23,0.30)] flex gap-2 rounded-2xl p-6">
-    <View className="min-w-[40px] min-h-[40px]">{icon}</View>
-    <View className="flex flex-col gap-2">
-      <Text className="text-lg font-semibold dark:text-white">{title}</Text>
-      <Text className="text-sm font-medium dark:text-white">{description}</Text>
+  <View className="bg-background shadow-[0_1px_2px_0_rgba(2,6,23,0.30)] flex flex-row  rounded-2xl gap-2 px-2 py-6 align-middle items-center">
+    <View className="">{icon}</View>
+    <View className="flex flex-1  gap-1 overflow-hidden">
+      <MLabelText className="text-lg font-semibold  dark:text-white">{title}</MLabelText>
+      <MLabelText className="text-sm   dark:text-white ">{description}</MLabelText>
     </View>
   </View>
 )

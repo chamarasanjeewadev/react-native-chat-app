@@ -20,6 +20,7 @@ module.exports = {
         warning: 'var(--warning)',
         danger: 'var(--danger)',
         muted: 'var(--muted)',
+        background: 'var(--background)',
         textprimary: 'var(--text-primary)',
         textsecondary: 'var(--text-secondary)',
         textmutedcolor: 'var(--text-muted)',

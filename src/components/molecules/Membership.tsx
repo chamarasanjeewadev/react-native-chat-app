@@ -18,6 +18,7 @@ import { useTranslation } from 'react-i18next'
 import { MText } from '../atoms/MText'
 import { FeatureCard } from './'
 import StripeSubscription from '../PaymentSheetSubscription'
+import { MScreenView } from '../atoms/MScreenView'
 export const Membership = () => {
   const [isSubscribing, setSubscribing] = useState(false)
   const [isReactivating, setReactivating] = useState(false)
@@ -29,80 +30,81 @@ export const Membership = () => {
   const expireDate = dayjs(new Date(user?.plan_expired_on)).format('MMM D, YYYY')
   return (
     <ScrollView>
-      <View>
-        <View className="flex md:items-center p-4 gap-4 max-md:flex-col bg-slate-50 dark:bg-mila-gray-25 shadow-[0_1px_2px_0_rgba(2,6,23,0.30)] rounded-2xl">
-          <View className="min-w-[131px]">
-            {/* <Image source={isCancelScheduled() ? PremiumCancelMila : Mila} /> */}
-          </View>
-          <View>
-            <MText className="text-blue-950 dark:text-white font-semibold text-2xl">
-              {currentPlan
-                ? 'Mila Premium'
-                : isFreeTrial()
-                  ? 'Mila Premium(Free Trial)'
-                  : 'Mila Starter'}
-            </MText>
-            <MText className="mt-2 text-xl font-medium text-slate-800 dark:text-slate-100">
-              {isFreeUser()
-                ? t('subscription.say-goodbye-to-limited-ai')
-                : isFreeTrial()
-                  ? t('subscription.subscription-will-expire-on', { date: expireDate })
-                  : isCancelScheduled()
+      <MScreenView>
+        <View>
+          <View className="flex md:items-center p-4 gap-4 max-md:flex-col bg-slate-50 dark:bg-mila-gray-25 shadow-[0_1px_2px_0_rgba(2,6,23,0.30)] rounded-2xl">
+            <View className="min-w-[131px]">
+              {/* <Image source={isCancelScheduled() ? PremiumCancelMila : Mila} /> */}
+            </View>
+            <View>
+              <MText className="text-blue-950 dark:text-white font-semibold text-2xl">
+                {currentPlan
+                  ? 'Mila Premium'
+                  : isFreeTrial()
+                    ? 'Mila Premium(Free Trial)'
+                    : 'Mila Starter'}
+              </MText>
+              <MText className="mt-2 text-xl font-medium text-slate-800 dark:text-slate-100">
+                {isFreeUser()
+                  ? t('subscription.say-goodbye-to-limited-ai')
+                  : isFreeTrial()
                     ? t('subscription.subscription-will-expire-on', { date: expireDate })
-                    : t('subscription.thanks-for-support')}
-            </MText>
+                    : isCancelScheduled()
+                      ? t('subscription.subscription-will-expire-on', { date: expireDate })
+                      : t('subscription.thanks-for-support')}
+              </MText>
+            </View>
           </View>
         </View>
-      </View>
-      <MText className="my-6 px-4 text-2xl font-semibold text-blue-950 dark:text-white">
-        {t('subscription.premium-benefits')}
-      </MText>
-      <View className="grid grid-cols-2 max-md:grid-cols-1 gap-2">
-        <FeatureCard
-          icon={<PremiumFeatureIcon1 />}
-          title={t('subscription.unlimited-ai-conversations')}
-          description={t('subscription.unlimited-ai-conversations.description')}
-        />
-        <FeatureCard
-          icon={<PremiumFeatureIcon2 />}
-          title={t('subscription.interactive-pronunciation-practice')}
-          description={t('subscription.interactive-pronunciation-practice.description')}
-        />
-        <FeatureCard
-          icon={<PremiumFeatureIcon3 />}
-          title={t('subscription.contextual-language-support')}
-          description={t('subscription.contextual-language-support.description')}
-        />
-        <FeatureCard
-          icon={<PremiumFeatureIcon4 />}
-          title={t('subscription.ai-tutor-grammar-review')}
-          description={t('subscription.ai-tutor-grammar-review.description')}
-        />
-        {true && (
-          <>
-            <MText className="my-6 px-4 text-2xl font-semibold text-blue-950 dark:text-white">
-              {t('subscription.find-best-subscription-plan')}
-            </MText>
-            <View className="flex flex-col gap-3">
-              {PLANS.map(plan => (
-                <MembershipItem
-                  bestDeal={plan.bestDeal}
-                  icon={plan.icon}
-                  key={plan.id}
-                  priceId={plan.id}
-                  title={plan.title}
-                  price={plan.price}
-                  priceDescription={plan.priceDescription}
-                  paymentLink={plan.paymentLink}
-                  active={plan.id === activeId}
-                  onClick={() => setActiveId(plan.id)}
-                />
-              ))}
-            </View>
-          </>
-        )}
-        <StripeSubscription />
-        {/* {true && (
+        <MText className="my-6 px-4 text-2xl font-semibold text-blue-950 dark:text-white">
+          {t('subscription.premium-benefits')}
+        </MText>
+        <View className="flex gap-2">
+          <FeatureCard
+            icon={<PremiumFeatureIcon1 />}
+            title={t('subscription.unlimited-ai-conversations')}
+            description={t('subscription.unlimited-ai-conversations.description')}
+          />
+          <FeatureCard
+            icon={<PremiumFeatureIcon2 />}
+            title={t('subscription.interactive-pronunciation-practice')}
+            description={t('subscription.interactive-pronunciation-practice.description')}
+          />
+          <FeatureCard
+            icon={<PremiumFeatureIcon3 />}
+            title={t('subscription.contextual-language-support')}
+            description={t('subscription.contextual-language-support.description')}
+          />
+          <FeatureCard
+            icon={<PremiumFeatureIcon4 />}
+            title={t('subscription.ai-tutor-grammar-review')}
+            description={t('subscription.ai-tutor-grammar-review.description')}
+          />
+          {true && (
+            <>
+              <MText className="my-6 px-4 text-2xl font-semibold text-blue-950 dark:text-white">
+                {t('subscription.find-best-subscription-plan')}
+              </MText>
+              <View className="flex flex-col gap-3">
+                {PLANS.map(plan => (
+                  <MembershipItem
+                    bestDeal={plan.bestDeal}
+                    icon={plan.icon}
+                    key={plan.id}
+                    priceId={plan.id}
+                    title={plan.title}
+                    price={plan.price}
+                    priceDescription={plan.priceDescription}
+                    paymentLink={plan.paymentLink}
+                    active={plan.id === activeId}
+                    onClick={() => setActiveId(plan.id)}
+                  />
+                ))}
+              </View>
+            </>
+          )}
+          <StripeSubscription />
+          {/* {true && (
           <View className="mt-4 w-full">
             <Button
               title={t('subscription.unlock-premium')}
@@ -113,71 +115,72 @@ export const Membership = () => {
               // isLoading={isSubscribing}
             />
           </View> */}
-        {/* )} */}
+          {/* )} */}
 
-        <MText className="my-6 px-4 text-2xl font-semibold text-blue-950 dark:text-white">
-          {t('subscription.manage-subscription')}
-        </MText>
-        <View className="flex flex-row items-center gap-6">
-          <View className="min-w-[150px]">
-            <View className="bg-green-50 text-green-700 dark:bg-mila-gray-25 dark:text-white dark:border-none text-sm font-medium border border-green-200 rounded-2xl px-3 py-1 w-fit h-fit whitespace-nowrap">
-              <MText> {t('subscription.current-plan')}</MText>
-            </View>
-          </View>
-          <MText className="text-slate-800 font-semibold dark:text-white">
-            {currentPlan
-              ? currentPlan.title
-              : isFreeTrial()
-                ? 'Mila Premium(Free Trial)'
-                : 'Mila Starter'}
+          <MText className="my-6 px-4 text-2xl font-semibold text-blue-950 dark:text-white">
+            {t('subscription.manage-subscription')}
           </MText>
-        </View>
-
-        <View className="flex  gap-6">
-          <View className="min-w-[150px]" />
-
-          {!isFreeUser() && !isCancelScheduled() && !isFreeTrial() && (
-            <Pressable
-              className="text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100 flex gap-1 font-semibold"
-              disabled={isCancelling}
-              onClick={() => onCancelSubscription()}>
-              {isCancelling && <Spinner />}
-              <MText> {t('subscription.cancel-subscription')}</MText>
-            </Pressable>
-          )}
-          {isCancelScheduled() && (
-            <Pressable
-              className="text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100 flex gap-1 font-semibold"
-              disabled={isReactivating}
-              onClick={() => onReactivateSubscription()}>
-              {isReactivating && <Spinner />}
-              <MText>{t('subscription.reactivate-subscription')}</MText>
-            </Pressable>
-          )}
-        </View>
-
-        {!isFreeUser() && (
-          <View className="flex flex-row items-center gap-6 mt-4">
+          <View className="flex flex-row items-center gap-6">
             <View className="min-w-[150px]">
               <View className="bg-green-50 text-green-700 dark:bg-mila-gray-25 dark:text-white dark:border-none text-sm font-medium border border-green-200 rounded-2xl px-3 py-1 w-fit h-fit whitespace-nowrap">
-                <MText> {t('subscription.next-payment')}</MText>
+                <MText> {t('subscription.current-plan')}</MText>
               </View>
             </View>
-            <View className="text-slate-800 text-sm dark:text-white">
-              <MText className="text-wrap">
-                {!isFreeTrial() &&
-                  (isCancelScheduled()
-                    ? t('subscription.will-expire-on', { date: expireDate })
-                    : t('subscription.will-charged-on', {
-                        date: expireDate,
-                        price: currentPlan && currentPlan.priceValue * currentPlan.duration
-                      }))}
-              </MText>
-              {/* {isFreeTrial() && t('subscription.trial-expire-on', { date: expireDate })} */}
-            </View>
+            <MText className="text-slate-800 font-semibold dark:text-white">
+              {currentPlan
+                ? currentPlan.title
+                : isFreeTrial()
+                  ? 'Mila Premium(Free Trial)'
+                  : 'Mila Starter'}
+            </MText>
           </View>
-        )}
-      </View>
+
+          <View className="flex  gap-6">
+            <View className="min-w-[150px]" />
+
+            {!isFreeUser() && !isCancelScheduled() && !isFreeTrial() && (
+              <Pressable
+                className="text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100 flex gap-1 font-semibold"
+                disabled={isCancelling}
+                onClick={() => onCancelSubscription()}>
+                {isCancelling && <Spinner />}
+                <MText> {t('subscription.cancel-subscription')}</MText>
+              </Pressable>
+            )}
+            {isCancelScheduled() && (
+              <Pressable
+                className="text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100 flex gap-1 font-semibold"
+                disabled={isReactivating}
+                onClick={() => onReactivateSubscription()}>
+                {isReactivating && <Spinner />}
+                <MText>{t('subscription.reactivate-subscription')}</MText>
+              </Pressable>
+            )}
+          </View>
+
+          {!isFreeUser() && (
+            <View className="flex flex-row items-center gap-6 mt-4">
+              <View className="min-w-[150px]">
+                <View className="bg-green-50 text-green-700 dark:bg-mila-gray-25 dark:text-white dark:border-none text-sm font-medium border border-green-200 rounded-2xl px-3 py-1 w-fit h-fit whitespace-nowrap">
+                  <MText> {t('subscription.next-payment')}</MText>
+                </View>
+              </View>
+              <View className="text-slate-800 text-sm dark:text-white">
+                <MText className="text-wrap">
+                  {!isFreeTrial() &&
+                    (isCancelScheduled()
+                      ? t('subscription.will-expire-on', { date: expireDate })
+                      : t('subscription.will-charged-on', {
+                          date: expireDate,
+                          price: currentPlan && currentPlan.priceValue * currentPlan.duration
+                        }))}
+                </MText>
+                {/* {isFreeTrial() && t('subscription.trial-expire-on', { date: expireDate })} */}
+              </View>
+            </View>
+          )}
+        </View>
+      </MScreenView>
     </ScrollView>
   )
 }

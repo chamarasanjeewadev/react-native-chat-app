@@ -8,7 +8,7 @@ import { Pressable, Text, View } from 'react-native'
 const SettingsScreen: FC = () => {
   const { t } = useTranslation()
 
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeTab, setActiveTab] = useState(1)
   const tabs = [t('settings.tab.personal-info'), t('settings.tab.subscription')]
 
   const onChangeTab = (tabIndex: number) => {

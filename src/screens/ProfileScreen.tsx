@@ -37,6 +37,7 @@ import { MSection } from '../components/atoms/MSection'
 import { Logout } from '../components/molecules/Logout'
 import { Tick } from '../assets/icons/CheckIcon'
 import Snackbar from 'react-native-snackbar'
+import { MScreenView } from '../components/atoms/MScreenView'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -100,7 +101,7 @@ const ProfileScreen = () => {
   return (
     <View>
       <ScrollView automaticallyAdjustContentInsets={false} className="mb-30">
-        <View className="mx-2 mt-2 mb-16 ">
+        <MScreenView>
           <MSection>
             <View className="flex flex-row justify-between align-middle items-center ">
               <View>
@@ -428,7 +429,7 @@ const ProfileScreen = () => {
               </TouchableOpacity>
             </View>
           </MSection>
-        </View>
+        </MScreenView>
       </ScrollView>
     </View>
   )
