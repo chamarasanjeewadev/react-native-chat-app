@@ -10,7 +10,7 @@ export const MLabelText: FC<TextProps> = ({ ...props }: PropsWithChildren<TextPr
   return (
     <Text
       {...props}
-      className="text-sm font-semibold "
+      className="text-sm font-semibold color-textprimary "
       style={{ fontFamily: fontFamily.poppins400 }}></Text>
   )
 }
@@ -21,7 +21,7 @@ export const MLabelTextDescription: FC<TextProps> = ({
   return (
     <Text
       {...props}
-      className="text-sm font-semibold text-[--muted]"
+      className="text-sm  color-textprimary"
       style={{ fontFamily: fontFamily.poppins400 }}></Text>
   )
 }

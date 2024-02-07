@@ -16,7 +16,7 @@ import {
 } from 'react-native'
 import { avatarBackgroundColors, avatarImages } from '../utils/avatar'
 import { LanguageEnum } from '../utils/enums'
-import { proficiencyOptions, themeColors } from '../utils/consts'
+import { MESSAGES, proficiencyOptions, themeColors } from '../utils/consts'
 import { useColorScheme } from 'nativewind'
 import MButton from '../components/atoms/MButton'
 import { CN_O, ES_O, FR_O, GE_O, JP_O, MX_O, UK_O, US_O } from '../assets/icons/Flags'
@@ -36,6 +36,7 @@ import { SelectSubLanguage } from '../components/molecules/SubLanguageSelect'
 import { MSection } from '../components/atoms/MSection'
 import { Logout } from '../components/molecules/Logout'
 import { Tick } from '../assets/icons/CheckIcon'
+import Snackbar from 'react-native-snackbar'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -81,14 +82,19 @@ const ProfileScreen = () => {
   const latestIconId = watch('icon_id')
   const backgroundId = watch('background_id')
   const selectedLanguage = watch('target_language')
-  const onSubmit = data => {
-    setUserState({
-      language: notationState.lang,
-      notation: notationState.notation,
-      autoRecord: autoRecordEnabled,
-      autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0
-    })
-    mutate(data)
+  const onSubmit = async data => {
+    try {
+      setUserState({
+        language: notationState.lang,
+        notation: notationState.notation,
+        autoRecord: autoRecordEnabled,
+        autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0
+      })
+      await mutate(data)
+      Snackbar.show({ text: MESSAGES.USER_UPDATE_SUCCESS })
+    } catch (error) {
+      console.log('error')
+    }
   }
 
   return (
@@ -96,7 +102,7 @@ const ProfileScreen = () => {
       <ScrollView automaticallyAdjustContentInsets={false} className="mb-30">
         <View className="mx-2 mt-2 mb-16 ">
           <MSection>
-            <View className="flex flex-row justify-between ">
+            <View className="flex flex-row justify-between align-middle items-center ">
               <View>
                 <MText className="text-lg font-semibold ">
                   {t('settings.personal-info.title')}
@@ -136,7 +142,9 @@ const ProfileScreen = () => {
           <MHairLine />
           <MSection>
             <MLabelText>{t('settings.personal-info.email')}</MLabelText>
-            <MTextInput editable={false} value={user?.user?.email} readOnly />
+            <MText className="border border-textbordercolor bg-textmutedcolor rounded-lg  text-sm p-2">
+              {user?.user?.email}
+            </MText>
           </MSection>
 
           <MHairLine />
@@ -160,7 +168,9 @@ const ProfileScreen = () => {
           {/* avatar */}
           <MSection>
             <View className="flex flex-col py-2 ">
-              <MText className="text-sm font-semibold">{t('settings.choose-avatar')}</MText>
+              <MLabelText className="text-sm font-semibold">
+                {t('settings.choose-avatar')}
+              </MLabelText>
               <Image source={{ uri: avatarImages[user?.user?.icon_id] }} className="py-1" />
               <ScrollView horizontal>
                 <View className="flex flex-row gap-2 mb-4  slim-scrollbar">
@@ -179,9 +189,9 @@ const ProfileScreen = () => {
             </View>
 
             {/* background color */}
-            <MText className="text-sm font-semibold ">
+            <MLabelText className="text-sm font-semibold ">
               {t('settings.choose-background-color')}
-            </MText>
+            </MLabelText>
             <ScrollView horizontal className="py-2">
               <View className="flex flex-row gap-5 overflow-x-auto slim-scrollbar">
                 {avatarBackgroundColors.map((c, index) => (
@@ -203,7 +213,7 @@ const ProfileScreen = () => {
           <MSection>
             <View className="flex gap-2 mt-2">
               <View className="">
-                <MText className="text-sm font-semibold  ">Dark Mode</MText>
+                <MLabelText className="text-sm font-semibold  ">Dark Mode</MLabelText>
               </View>
               <View>
                 <Switch
@@ -225,7 +235,7 @@ const ProfileScreen = () => {
           <MHairLine />
           {/* auto submit */}
           <MSection>
-            <View className="">
+            <View>
               <MLabelText className="text-sm font-semibold ">
                 {t('settings.auto-submit')}
               </MLabelText>
@@ -256,7 +266,7 @@ const ProfileScreen = () => {
                 name="autoSubmitThreadhold"
               />
             </View>
-            <MLabelTextDescription className="text-sm ">
+            <MLabelTextDescription className="">
               {t('settings.auto-submit.description', { seconds: 0 })}
             </MLabelTextDescription>
           </MSection>
@@ -306,9 +316,7 @@ const ProfileScreen = () => {
           <MHairLine />
           {/* daily commitment */}
           <MSection className="gap-1">
-            <MLabelText className="text-sm font-semibold  ">
-              {t('settings.daily-commit')}
-            </MLabelText>
+            <MLabelText>{t('settings.daily-commit')}</MLabelText>
             <View className=" ">
               <Controller
                 control={control}
@@ -317,7 +325,7 @@ const ProfileScreen = () => {
                 )}
                 name="daily_commitment"
               />
-              <MLabelTextDescription className="mt-2 text-sm ">
+              <MLabelTextDescription className="mt-2">
                 {t('settings.daily-commit.description')}
               </MLabelTextDescription>
             </View>
@@ -342,9 +350,7 @@ const ProfileScreen = () => {
           <MHairLine />
           {/* target language */}
           <MSection>
-            <MLabelText className="text-sm font-semibold ">
-              {t('settings.target-language')}
-            </MLabelText>
+            <MLabelText>{t('settings.target-language')}</MLabelText>
             <ScrollView horizontal>
               <View className="flex flex-row gap-1 ">
                 {targetLanguages.map((option, index) => (
@@ -359,7 +365,7 @@ const ProfileScreen = () => {
                           onChange(option.value)
                         }}
                         className={clsx(
-                          'm-2 p-2 flex justify-center border',
+                          'mx-2 flex justify-center border',
                           value === option.value
                             ? 'border-blue-400 rounded-lg'
                             : 'border-transparent'
@@ -378,7 +384,7 @@ const ProfileScreen = () => {
             </ScrollView>
           </MSection>
           <MHairLine />
-          <MSection className=" ">
+          <MSection>
             <MLabelText> {t('settings.theme')}</MLabelText>
             <View className="flex gap-2  flex-row">
               {themeColors.map((color, index) => (
@@ -407,24 +413,22 @@ const ProfileScreen = () => {
             </View>
           </MSection>
           <MSection>
-            <View className=" flex flex-col gap-4 text-sm pl-2">
-              <View className="flex flex-col text-[#475467] dark:text-slate-300 text-left gap-4">
-                <View className="flex flex-row">
-                  <MText> We care about your data in our</MText>
-                  <TouchableOpacity
-                    onPress={() => {
-                      Linking.openURL('https://milaai.app/help/privacy-policy')
-                    }}>
-                    <MText className="text-[#475467] underline ml-2">privacy policy.</MText>
-                  </TouchableOpacity>
-                </View>
+            <View className="flex gap-2 justify-center align-middle text-center">
+              <View className="flex flex-row">
+                <MText> We care about your data in our</MText>
                 <TouchableOpacity
                   onPress={() => {
-                    Linking.openURL('https://milaai.app/help/terms-conditions')
+                    Linking.openURL('https://milaai.app/help/privacy-policy')
                   }}>
-                  <MText className="text-[#475467] underline">Terms and Conditions</MText>
+                  <MText className="text-[#475467] underline ml-2">privacy policy.</MText>
                 </TouchableOpacity>
               </View>
+              <TouchableOpacity
+                onPress={() => {
+                  Linking.openURL('https://milaai.app/help/terms-conditions')
+                }}>
+                <MText className="text-[#475467] underline ">Terms and Conditions</MText>
+              </TouchableOpacity>
             </View>
           </MSection>
         </View>

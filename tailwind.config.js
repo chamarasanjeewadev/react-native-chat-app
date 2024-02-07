@@ -21,7 +21,10 @@ module.exports = {
         danger: 'var(--danger)',
         muted: 'var(--muted)',
         textprimary: 'var(--text-primary)',
-        textsecondary: 'var(--text-secondary)'
+        textsecondary: 'var(--text-secondary)',
+        textmutedcolor: 'var(--text-muted)',
+        textbordercolor: ',var(--text-border)',
+        textfocuscolor: 'var(--text-focus)'
       }
     }
   },

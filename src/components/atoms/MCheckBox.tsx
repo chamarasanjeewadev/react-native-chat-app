@@ -22,7 +22,7 @@ export const MCheckBoxWithCaption = ({ caption, ...checkBoxProps }: CaptionAndCh
   return (
     <View className="flex flex-row items-center gap-2 ">
       <MCheckBox {...checkBoxProps} />
-      <MLabelText className="text-sm font-semibold ">{caption}</MLabelText>
+      <MLabelText>{caption}</MLabelText>
     </View>
   )
 }

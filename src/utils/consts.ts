@@ -59,6 +59,13 @@ export const proficiencyOptions: IOption[] = [
   }
 ]
 
+export const MESSAGES = {
+  FEEDBACK_SUCCESS: 'Feedback sent successfully.',
+  USER_UPDATE_SUCCESS: 'User updated successfully.',
+  SUPPORT_SUCCESS: 'Message sent successfully.',
+  SUPPORT_ERROR: 'Message send error.'
+}
+
 export const FREE_TRIAL = 'price_trial'
 
 export const API_URL = Platform.OS === 'android' ? 'http://10.0.2.2:4242' : 'http://localhost:4242'

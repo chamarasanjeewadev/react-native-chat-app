@@ -11,10 +11,12 @@ export const themes = {
       '--danger': ' rgb(220, 53, 69)',
       '--light': ' rgb(248, 249, 250)',
       '--dark': ' rgb(52, 58, 64)',
-      '--muted': ' rgb(52, 58, 64)',
-      '--text-primary': ' rgb(255,255,255)',
-      '--text-secondary': ' rgb(0, 0, 0)',
-      '--text-muted': ' rgb(0, 0, 0)'
+      '--muted': colors.slate[200],
+      '--text-primary': colors.slate[700],
+      '--text-secondary': ' rgb(255,255,255)',
+      '--text-muted': colors.slate[200],
+      '--text-border': colors.slate[200],
+      '--text-focus': colors.gray[300]
     },
     dark: {
       '--primary': ' rgb(37, 99, 235)',
@@ -28,7 +30,9 @@ export const themes = {
       '--muted': ' rgb(52, 58, 64)',
       '--text-primary': ' rgb(255,255,255)',
       '--text-secondary': ' rgb(0, 0, 0)',
-      '--text-muted': ' rgb(0, 0, 0)'
+      '--text-muted': ' rgb(0, 0, 0)',
+      '--text-border': ' rgb(0, 0, 0)',
+      '--text-focus': colors.gray[300]
     }
   },
   orange: {

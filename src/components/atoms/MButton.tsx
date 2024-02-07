@@ -17,21 +17,9 @@ export const MButton = ({ loading, buttonText, className, ...props }: MButtonPro
         { 'bg-success': loading }
       )}>
       {/* {loading && <ActivityIndicator className="text-primary" size="small" />} */}
-      <MText className="text-center text-textprimary">{buttonText}</MText>
+      <MText className="text-center text-textsecondary font-semibold">{buttonText}</MText>
     </TouchableOpacity>
   )
 }
 
 export default MButton
-// return (
-//   <Pressable
-//     {...props}
-//     className={cn(
-//       'rounded-lg text-center p-2 gap-2  play-button   flex flex-row bg-[#4453] ',
-//       className,
-//       { 'bg-gray-50': loading }
-//     )}>
-//     {loading && <ActivityIndicator size="small" color="#0000ff" />}
-//     {children}
-//   </Pressable>
-// )
