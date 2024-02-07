@@ -1,6 +1,6 @@
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
+import { createJSONStorage, persist } from 'zustand/middleware'
 import { create } from 'zustand'
-import { zustandStorage } from '../utils/mmkvStorage'
+import { zustandMKKVStorage } from '../utils/mmkvStorage'
 
 interface AuthStoreInterface {
   isAADAuthenticated: boolean
@@ -61,7 +61,7 @@ const forPersist = persist<AuthStoreInterface>(
   }),
   {
     name: 'auth-storage',
-    storage: createJSONStorage(() => zustandStorage)
+    storage: createJSONStorage(() => zustandMKKVStorage)
   }
 )
 const useAuthStore = create<Partial<AuthStoreInterface>>()(forPersist)

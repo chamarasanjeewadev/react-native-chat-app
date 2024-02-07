@@ -21,7 +21,7 @@ export const clientPersister = createSyncStoragePersister({
 
 const zusStorage = new MMKV()
 
-export const zustandStorage: StateStorage = {
+export const zustandMKKVStorage: StateStorage = {
   setItem: (name, value) => {
     return zusStorage?.set(name, value)
   },

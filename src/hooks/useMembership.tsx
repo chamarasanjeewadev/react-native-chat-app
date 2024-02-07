@@ -3,31 +3,20 @@ import { FREE_TRIAL } from '../utils/consts'
 
 export const useMembership = () => {
   const [user] = useAuthStore(state => [state.user])
-  // const { toasts } = useToasterStore()
 
-  const isFreeUser = () => {
-    return user && user.stripe_price_id === null
-  }
+  const isFreeUser = !user?.stripe_price_id
+  const isCancelScheduled = !!user?.is_cancel_scheduled
 
-  const isCancelScheduled = () => {
-    return user && user.is_cancel_scheduled
-  }
+  const isFreeTrial = !!(user?.stripe_price_id === FREE_TRIAL)
 
-  const isFreeTrial = () => {
-    return user && user.stripe_price_id == FREE_TRIAL
-  }
-
-  const showMembershipError = (dailyLimitReached?: boolean) => {
-    // if (toasts.length >= 1) return
-    // toast.custom(t => <MembershipToast {...t} dailyLimitReached={dailyLimitReached} />, {
-    //   duration: 10000
-    // })
-  }
+  const shouldShowCancelSubscription = !isFreeUser && !isCancelScheduled && !isFreeTrial
+  const shouldShowReactivation = isCancelScheduled
 
   return {
-    showMembershipError,
     isFreeUser,
     isCancelScheduled,
-    isFreeTrial
+    isFreeTrial,
+    shouldShowCancelSubscription,
+    shouldShowReactivation
   }
 }

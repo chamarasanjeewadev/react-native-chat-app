@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
-import { zustandStorage } from '../utils/mmkvStorage'
+import { zustandMKKVStorage } from '../utils/mmkvStorage'
 interface UserState {
   language: Language
   notation: Notation
@@ -52,7 +52,7 @@ const forPersist = persist<Partial<SettingStoreState>>(
   }),
   {
     name: 'setting-storage',
-    storage: createJSONStorage(() => zustandStorage)
+    storage: createJSONStorage(() => zustandMKKVStorage)
   }
 )
 const useSettingStore = create<Partial<SettingStoreState>>()(forPersist)

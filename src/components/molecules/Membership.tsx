@@ -24,32 +24,37 @@ import { MSection, MSubSection } from '../atoms/MSection'
 import { TextProps } from 'react-native-svg'
 
 const useHeaderDesc = () => {
-  const [user, setUser] = useAuthStore(state => [state.user, state.setUser])
+  const [user] = useAuthStore(state => [state.user, state.setUser])
   const { isFreeUser, isCancelScheduled, isFreeTrial } = useMembership()
   const [currentPlan, setCurrentPlan] = useState(PLANS[0])
   const expireDate = dayjs(new Date(user?.plan_expired_on)).format('MMM D, YYYY')
 
-  const premiumHeaderDesc = isFreeUser()
+  const premiumHeaderDesc = isFreeUser
     ? t('subscription.say-goodbye-to-limited-ai')
-    : isFreeTrial()
+    : isFreeTrial
       ? t('subscription.subscription-will-expire-on', { date: expireDate })
-      : isCancelScheduled()
+      : isCancelScheduled
         ? t('subscription.subscription-will-expire-on', { date: expireDate })
         : t('subscription.thanks-for-support')
 
   const headerTitle = currentPlan
     ? 'Mila Premium'
-    : isFreeTrial()
+    : isFreeTrial
       ? 'Mila Premium(Free Trial)'
       : 'Mila Starter'
-  const image = isCancelScheduled() ? PremiumCancelMila : Mila
+  const image = isCancelScheduled ? PremiumCancelMila : Mila
   const currentPlanTitle = currentPlan
     ? currentPlan.title
-    : isFreeTrial()
+    : isFreeTrial
       ? 'Mila Premium(Free Trial)'
       : 'Mila Starter'
-  const shouldShowCancelSubscription = !isFreeUser() && !isCancelScheduled() && !isFreeTrial()
-  return { currentPlanTitle, premiumHeaderDesc, headerTitle, image, shouldShowCancelSubscription }
+
+  return {
+    currentPlanTitle,
+    premiumHeaderDesc,
+    headerTitle,
+    image
+  }
 }
 
 export const MSubTitle = ({ title }: { title: string } & TextProps) => {
@@ -57,15 +62,19 @@ export const MSubTitle = ({ title }: { title: string } & TextProps) => {
 }
 
 export const Membership = () => {
-  const [isSubscribing, setSubscribing] = useState(false)
   const [isReactivating, setReactivating] = useState(false)
   const [isCancelling, setCancelling] = useState(false)
   const [currentPlan, setCurrentPlan] = useState(PLANS[0])
-  const { premiumHeaderDesc, headerTitle, image, currentPlanTitle, shouldShowCancelSubscription } =
-    useHeaderDesc()
-  const [user, setUser] = useAuthStore(state => [state.user, state.setUser])
-  const { isFreeUser, isCancelScheduled, isFreeTrial } = useMembership()
-  const [activeId, setActiveId] = useState(user?.stripe_price_id)
+  const { premiumHeaderDesc, headerTitle, image, currentPlanTitle } = useHeaderDesc()
+  const [user] = useAuthStore(state => [state.user, state.setUser])
+  const {
+    isFreeUser,
+    isCancelScheduled,
+    isFreeTrial,
+    shouldShowCancelSubscription,
+    shouldShowReactivation
+  } = useMembership()
+  const [selectedPriceId, setSelectedPriceId] = useState(user?.stripe_price_id)
   const expireDate = dayjs(new Date(user?.plan_expired_on)).format('MMM D, YYYY')
 
   const onCancelSubscription = () => {
@@ -111,7 +120,7 @@ export const Membership = () => {
             />
           </View>
         </MSubSection>
-        {(isFreeUser() || isFreeTrial()) && (
+        {(isFreeUser || isFreeTrial) && (
           <>
             <MText className="my-6 px-4 text-2xl font-semibold text-textprimary">
               {t('subscription.find-best-subscription-plan')}
@@ -127,8 +136,8 @@ export const Membership = () => {
                   price={plan.price}
                   priceDescription={plan.priceDescription}
                   paymentLink={plan.paymentLink}
-                  active={plan.id === activeId}
-                  onClick={() => setActiveId(plan.id)}
+                  active={plan.id === selectedPriceId}
+                  onClick={() => setSelectedPriceId(plan.id)}
                 />
               ))}
             </View>
@@ -158,7 +167,7 @@ export const Membership = () => {
               <MText> {t('subscription.cancel-subscription')}</MText>
             </Pressable>
           )}
-          {isCancelScheduled() && (
+          {shouldShowReactivation && (
             <Pressable
               className="text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100 flex gap-1 font-semibold"
               disabled={isReactivating}
@@ -169,7 +178,7 @@ export const Membership = () => {
           )}
         </View>
 
-        {!isFreeUser() && (
+        {!isFreeUser && (
           <View className="flex flex-row items-center gap-6 mt-4">
             <View className="min-w-[150px]">
               <View className="bg-green-50 text-green-700 dark:bg-mila-gray-25 dark:text-white dark:border-none text-sm font-medium border border-green-200 rounded-2xl px-3 py-1 w-fit h-fit whitespace-nowrap">
@@ -177,16 +186,16 @@ export const Membership = () => {
               </View>
             </View>
             <View className="text-slate-800 text-sm dark:text-white">
-              <MText className="text-wrap">
-                {!isFreeTrial() &&
-                  (isCancelScheduled()
+              <MText className="">
+                {!isFreeTrial &&
+                  (isCancelScheduled
                     ? t('subscription.will-expire-on', { date: expireDate })
                     : t('subscription.will-charged-on', {
                         date: expireDate,
                         price: currentPlan && currentPlan.priceValue * currentPlan.duration
                       }))}
               </MText>
-              {/* { {isFreeTrial() && t('subscription.trial-expire-on', { date: expireDate })}  */}
+              {isFreeTrial && t('subscription.trial-expire-on', { date: expireDate })}
             </View>
           </View>
         )}

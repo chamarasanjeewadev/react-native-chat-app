@@ -6,7 +6,7 @@ import { t } from 'i18next'
 import Snackbar from 'react-native-snackbar'
 import MButton from './atoms/MButton'
 
-const StripeSubscription = ({}) => {
+const StripeSubscription = () => {
   const [ready, setReady] = useState(false)
   const { initPaymentSheet, presentPaymentSheet, loading } = usePaymentSheet()
 
@@ -35,7 +35,7 @@ const StripeSubscription = ({}) => {
       returnURL: 'milaai://stripe-redirect'
     })
     if (error) {
-      Snackbar.show({ title: `Error code: ${error.code} ${error.message}` })
+      Snackbar.show({ text: `Error code: ${error.code} ${error.message}` })
     } else {
       setReady(true)
     }
