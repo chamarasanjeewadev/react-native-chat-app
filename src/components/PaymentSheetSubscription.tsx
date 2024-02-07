@@ -1,7 +1,7 @@
 import { StripeProvider, usePaymentSheet } from '@stripe/stripe-react-native'
 import React, { useEffect, useState } from 'react'
-import { Button, Image, Text, View, Alert, StyleSheet } from 'react-native'
-import { MERCHANT_ID, API_URL, PUBLISHABLE_kEY } from './../utils/consts'
+import { View } from 'react-native'
+import { MERCHANT_ID, API_URL, PUBLISHABLE_kEY, MESSAGES } from './../utils/consts'
 import { t } from 'i18next'
 import Snackbar from 'react-native-snackbar'
 import MButton from './atoms/MButton'
@@ -35,7 +35,7 @@ const StripeSubscription = ({}) => {
       returnURL: 'milaai://stripe-redirect'
     })
     if (error) {
-      Alert.alert(`Error code: ${error.code}`, error.message)
+      Snackbar.show({ title: `Error code: ${error.code} ${error.message}` })
     } else {
       setReady(true)
     }
@@ -57,15 +57,14 @@ const StripeSubscription = ({}) => {
     }
   }
 
-  async function handleSubscription() {
-    console.log("handle subscription pressed")
+  const handleSubscription = async () => {
+    console.log('sub clickeed')
     const { error } = await presentPaymentSheet()
-
     if (error) {
-      Alert.alert(`Error code: ${error.code}`, error.message)
+      Snackbar.show({ title: `Error code: ${error.code} error.message` })
     } else {
       Snackbar.show({
-        text: 'The subscription was setup successfully',
+        text: MESSAGES.SUBSCRIPTION_SUCCESS,
         duration: Snackbar.LENGTH_LONG
       })
       setReady(false)
@@ -73,7 +72,7 @@ const StripeSubscription = ({}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View>
       <StripeProvider publishableKey={PUBLISHABLE_kEY} merchantIdentifier={MERCHANT_ID}>
         <MButton
           buttonText={t('subscription.unlock-premium')}
@@ -86,19 +85,3 @@ const StripeSubscription = ({}) => {
 }
 
 export default StripeSubscription
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    marginTop: 100
-  },
-  image: {
-    height: 250,
-    width: 250
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '50%'
-  }
-})

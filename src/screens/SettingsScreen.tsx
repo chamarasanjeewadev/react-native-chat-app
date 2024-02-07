@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import ProfileScreen from './ProfileScreen'
 import { Membership } from '../components/molecules/Membership'
 import { Pressable, Text, View } from 'react-native'
+import { MLabelText } from '../components/atoms/MText'
 
 const SettingsScreen: FC = () => {
   const { t } = useTranslation()
@@ -16,12 +17,12 @@ const SettingsScreen: FC = () => {
   }
 
   return (
-    <View className=" flex-1">
+    <View className=" flex-1 bg-white dark:bg-black">
       <View className=" py-2 rounded-2xl  flex flex-row justify-center">
         {tabs.map((tab, index) => (
           <Pressable
             className={clsx(
-              'text-sm font-semibold py-2 rounded-lg cursor-pointer',
+              'text-sm font-semibold  py-2 rounded-lg cursor-pointer',
               index === activeTab
                 ? 'bg-blue-50 shadow-sm text-blue-700 dark:text-slate-50'
                 : 'text-slate-500',
@@ -29,7 +30,7 @@ const SettingsScreen: FC = () => {
             )}
             key={index}
             onPress={() => onChangeTab(index)}>
-            <Text>{tab}</Text>
+            <MLabelText>{tab}</MLabelText>
           </Pressable>
         ))}
       </View>

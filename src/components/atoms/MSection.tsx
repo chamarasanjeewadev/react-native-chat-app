@@ -8,3 +8,11 @@ export const MSection = ({ children, ...props }: ViewProps) => {
     </View>
   )
 }
+
+export const MSubSection = ({ children, ...props }: ViewProps) => {
+  return (
+    <View className="mt-2 mb-2 pt-2 " {...props}>
+      {children}
+    </View>
+  )
+}

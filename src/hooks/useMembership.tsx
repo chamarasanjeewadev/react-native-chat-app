@@ -14,7 +14,7 @@ export const useMembership = () => {
   }
 
   const isFreeTrial = () => {
-    return user && user.stripe_price_id === FREE_TRIAL
+    return user && user.stripe_price_id == FREE_TRIAL
   }
 
   const showMembershipError = (dailyLimitReached?: boolean) => {

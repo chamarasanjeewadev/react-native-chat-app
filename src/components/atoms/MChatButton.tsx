@@ -1,5 +1,5 @@
 import { ActivityIndicator, Pressable, PressableProps } from 'react-native'
-import React, { FC, PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { cn } from '../../utils/cnUtil'
 
 type MChatProps = PressableProps & { loading?: boolean }
