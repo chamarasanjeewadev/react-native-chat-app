@@ -1,4 +1,5 @@
 {
+  "plugins": ["prettier-plugin-tailwindcss"],
   "semi": false,
   "arrowParens": "avoid",
   "tabWidth": 2,

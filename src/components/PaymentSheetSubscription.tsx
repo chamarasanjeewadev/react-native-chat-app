@@ -75,6 +75,7 @@ const StripeSubscription = () => {
     <View>
       <StripeProvider publishableKey={PUBLISHABLE_kEY} merchantIdentifier={MERCHANT_ID}>
         <MButton
+          className="py-4 text-lg"
           buttonText={t('subscription.unlock-premium')}
           onPress={handleSubscription}
           disabled={loading || !ready}

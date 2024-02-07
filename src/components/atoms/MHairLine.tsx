@@ -2,6 +2,6 @@ import { View } from 'react-native'
 
 export const MHairLine = () => {
   return (
-    <View className="border-t mt-2 mb-2 w-full h-0 border-[#E2E8F0] dark:border-mila-gray-25" />
+    <View className="dark:border-mila-gray-25 mb-2 mt-2 h-0 w-full border-t border-[#E2E8F0]" />
   )
 }

@@ -18,18 +18,19 @@ const SettingsScreen: FC = () => {
 
   return (
     <View className=" flex-1 bg-white dark:bg-black">
-      <View className=" py-2 rounded-2xl  flex flex-row justify-center">
+      <View className=" flex flex-row  justify-center rounded-2xl py-2">
         {tabs.map((tab, index) => (
           <Pressable
             className={clsx(
-              'text-sm font-semibold px-2  py-2 rounded-lg cursor-pointer',
+              'cursor-pointer rounded-lg px-2  py-2 text-sm font-semibold',
               index === activeTab
-                ? 'bg-blue-50 shadow-sm text-blue-700 dark:text-slate-50'
+                ? 'bg-blue-50 text-blue-700 shadow-sm dark:text-slate-50'
                 : 'text-slate-500',
               index === 0 && activeTab !== 0 ? 'pl-0 pr-3' : 'px-3'
             )}
             key={index}
-            onPress={() => onChangeTab(index)}>
+            onPress={() => onChangeTab(index)}
+          >
             <MLabelText>{tab}</MLabelText>
           </Pressable>
         ))}

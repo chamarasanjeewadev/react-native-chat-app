@@ -86,18 +86,18 @@ export const Membership = () => {
   return (
     <ScrollView>
       <MScreenView>
-        <View className="flex flex-row flex-1 flex-wrap  p-2  bg-slate-50  shadow-[0_1px_2px_0_rgba(2,6,23,0.30)] rounded-2xl">
+        <View className="flex flex-1 flex-row flex-wrap  rounded-2xl  bg-slate-50  p-2 shadow-[0_1px_2px_0_rgba(2,6,23,0.30)]">
           <View>
             <Image source={image} />
           </View>
           <View>
-            <MText className="text-texttitle  font-semibold text-2xl">{headerTitle}</MText>
+            <MText className="text-2xl  font-semibold text-texttitle">{headerTitle}</MText>
             <MText className="mt-2 text-xl font-medium text-texttitle">{premiumHeaderDesc}</MText>
           </View>
         </View>
         <MSubSection className="mt-4 ">
           <MSubTitle className={''} title={t('subscription.premium-benefits')} />
-          <View className="flex gap-2 mt-2">
+          <View className="mt-2 flex gap-2">
             <FeatureCard
               icon={<PremiumFeatureIcon1 />}
               title={t('subscription.unlimited-ai-conversations')}
@@ -146,13 +146,13 @@ export const Membership = () => {
         )}
         <MSection>
           <MSubTitle title={t('subscription.manage-subscription')} />
-          <View className="flex flex-row justify-between items-center">
+          <View className="flex flex-row items-center justify-between">
             <View className="min-w-[150px]">
-              <View className="bg-green-50 text-green-700 dark:bg-mila-gray-25 text-sm font-medium border border-green-200 rounded-2xl px-3 py-1 w-fit h-fit whitespace-nowrap">
+              <View className="dark:bg-mila-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700">
                 <MText> {t('subscription.current-plan')}</MText>
               </View>
             </View>
-            <MText className="text-slate-800 font-semibold">{currentPlanTitle}</MText>
+            <MText className="font-semibold text-slate-800">{currentPlanTitle}</MText>
           </View>
         </MSection>
         <View className="flex  gap-6">
@@ -160,18 +160,20 @@ export const Membership = () => {
 
           {shouldShowCancelSubscription && (
             <Pressable
-              className="text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100 flex gap-1 font-semibold"
+              className="flex gap-1 font-semibold text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100"
               disabled={isCancelling}
-              onClick={() => onCancelSubscription()}>
+              onClick={() => onCancelSubscription()}
+            >
               {isCancelling && <MSpinner />}
               <MText> {t('subscription.cancel-subscription')}</MText>
             </Pressable>
           )}
           {shouldShowReactivation && (
             <Pressable
-              className="text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100 flex gap-1 font-semibold"
+              className="flex gap-1 font-semibold text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100"
               disabled={isReactivating}
-              onClick={() => onReactivateSubscription()}>
+              onClick={() => onReactivateSubscription()}
+            >
               {isReactivating && <Spinner />}
               <MText>{t('subscription.reactivate-subscription')}</MText>
             </Pressable>
@@ -179,13 +181,13 @@ export const Membership = () => {
         </View>
 
         {!isFreeUser && (
-          <View className="flex flex-row items-center gap-6 mt-4">
+          <View className="mt-4 flex flex-row items-center gap-6">
             <View className="min-w-[150px]">
-              <View className="bg-green-50 text-green-700 dark:bg-mila-gray-25 dark:text-white dark:border-none text-sm font-medium border border-green-200 rounded-2xl px-3 py-1 w-fit h-fit whitespace-nowrap">
+              <View className="dark:bg-mila-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700 dark:border-none dark:text-white">
                 <MText> {t('subscription.next-payment')}</MText>
               </View>
             </View>
-            <View className="text-slate-800 text-sm dark:text-white">
+            <View className="text-sm text-slate-800 dark:text-white">
               <MText className="">
                 {!isFreeTrial &&
                   (isCancelScheduled
@@ -218,24 +220,25 @@ const MembershipItem: FC<MembershipItemProps> = ({
   return (
     <TouchableOpacity
       className={clsx(
-        'rounded-xl p-4  cursor-pointer bg-background shadow-shadow ',
+        'cursor-pointer rounded-xl  bg-background p-4 shadow-shadow ',
         active && 'bg-primary'
       )}
-      onPress={onClick}>
+      onPress={onClick}
+    >
       <View className=" flex flex-row">
         <View>{icon}</View>
-        <View className="px-2 flex-1">
+        <View className="flex-1 px-2">
           <View className="flex  flex-row justify-between ">
-            <MText className="text-textprimary text-lg  ">{title}</MText>
+            <MText className="text-lg text-textprimary  ">{title}</MText>
             <View className="flex items-center gap-2 ">
-              <MText className="text-slate-600 text-sm dark:text-white">{price}</MText>
+              <MText className="text-sm text-slate-600 dark:text-white">{price}</MText>
             </View>
           </View>
-          <View className="flex gap-1 flex-row">
-            <MText className="text-slate-600 dark:text-white mt-2">{priceDescription}</MText>
+          <View className="flex flex-row gap-1">
+            <MText className="mt-2 text-slate-600 dark:text-white">{priceDescription}</MText>
             {bestDeal && (
-              <View className="bg-green-50 border border-green-200 shadow-sm rounded-2xl px-3 py-1">
-                <MText className="text-green-900 font-medium text-sm">
+              <View className="rounded-2xl border border-green-200 bg-green-50 px-3 py-1 shadow-sm">
+                <MText className="text-sm font-medium text-green-900">
                   {t('subscription.best-deal')}
                 </MText>
               </View>

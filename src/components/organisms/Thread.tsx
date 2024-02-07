@@ -56,17 +56,18 @@ export const Thread = ({
 
   return (
     <>
-      <View className={clsx('flex m-1 rounded-md flex-row flex-wrap bg-white p-2')}>
+      <View className={clsx('m-1 flex flex-row flex-wrap rounded-md bg-white p-2')}>
         {thread?.type === 'USER' && (
           <View className={'flex flex-grow flex-col gap-1 p-2 align-middle  '}>
-            <Text className="relative tracking-tight font-medium  font-japanese text-lg  ">
+            <Text className="font-japanese relative text-lg  font-medium tracking-tight  ">
               {thread?.user_message}
             </Text>
-            <View className="flex justify-end flex-row gap-2 align-middle">
+            <View className="flex flex-row justify-end gap-2 align-middle">
               <MChatButton
                 onPress={async () => {
                   await refectchFeedbackGrammar()
-                }}>
+                }}
+              >
                 <MilaHint />
               </MChatButton>
               <MChatButton>
@@ -118,7 +119,7 @@ export const Thread = ({
           )}
         </View>
         {thread?.type !== 'USER' && (
-          <View className="pt-2 pr-2 flex flex-row gap-2 align-middle text-orange-900 ">
+          <View className="flex flex-row gap-2 pr-2 pt-2 align-middle text-orange-900 ">
             <MChatButton
               onPress={async () => {
                 console.log('press....', thread?.audio_response)
@@ -132,18 +133,20 @@ export const Thread = ({
                 } catch (error) {
                   console.log('issue playing track', error)
                 }
-              }}>
+              }}
+            >
               <PlayAudio />
             </MChatButton>
             <MChatButton
-              className="rounded-lg bg-orange-50 p-2 shadow-sm play-button dark:bg-slate-800 dark:active:bg-slate-400 dark:text-white  active:bg-orange-200 border-orange-100 text-orange-900"
+              className="play-button rounded-lg border-orange-100 bg-orange-50 p-2 text-orange-900 shadow-sm active:bg-orange-200  dark:bg-slate-800 dark:text-white dark:active:bg-slate-400"
               onPress={async () => {
                 console.log('translate', showToggleTranslate)
                 if (!showToggleTranslate) {
                   await refetch()
                 }
                 showToggleTranslate(x => !x)
-              }}>
+              }}
+            >
               <TranslateIcon />
             </MChatButton>
           </View>
@@ -151,7 +154,7 @@ export const Thread = ({
       </View>
 
       {feedbackTranslate && showTranslate && !isFetching && (
-        <View className="py-1 rounded-br-2xl rounded-bl-2xl bg-slate-200 text-slate-800 dark:bg-slate-600 dark:text-white">
+        <View className="rounded-bl-2xl rounded-br-2xl bg-slate-200 py-1 text-slate-800 dark:bg-slate-600 dark:text-white">
           <MText>{feedbackTranslate?.translated_text}</MText>
         </View>
       )}

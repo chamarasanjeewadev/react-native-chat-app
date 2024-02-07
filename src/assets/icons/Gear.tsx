@@ -35,7 +35,8 @@ export const Gear = () => (
         width="56"
         height="56"
         filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB">
+        colorInterpolationFilters="sRGB"
+      >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"

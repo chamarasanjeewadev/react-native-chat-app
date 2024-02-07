@@ -17,20 +17,23 @@ const ChatsScreen = ({ navigation }) => {
           // <FadeIn key={index} />
           <View
             key={index}
-            className="flex flex-row m-1 shadow-lg justify-between px-8 align-baseline rounded-lg bg-white">
+            className="m-1 flex flex-row justify-between rounded-lg bg-white px-8 align-baseline shadow-lg"
+          >
             {/* <FadeIn /> */}
 
-            <View className={'flex flex-col gap-0.5 ¥align-middle flex-grow mx-5  '}>
+            <View className={'¥align-middle mx-5 flex flex-grow flex-col gap-0.5  '}>
               <Text
                 className="text-lg font-normal  text-slate-700 dark:text-white"
-                style={{ fontFamily: fontFamily.poppins400 }}>
+                style={{ fontFamily: fontFamily.poppins400 }}
+              >
                 {section?.title}
               </Text>
-              <View className={'flex flex-row mb-2 flex-grow-1 justify-between '}>
+              <View className={'flex-grow-1 mb-2 flex flex-row justify-between '}>
                 <TouchableOpacity
                   onPress={() => {
                     navigation.push('Section', { section })
-                  }}>
+                  }}
+                >
                   <ProgressCircle
                     difficulty={StudyMode.CONVERSATION_EASY}
                     progress={ConversationProgress.STARTED}

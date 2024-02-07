@@ -1,4 +1,4 @@
-import { Layer1, Layer2, Layer3 } from "../../assets/icons/LayerIcons";
+import { Layer1, Layer2, Layer3 } from '../../assets/icons/LayerIcons'
 
 export const PLANS = [
   {

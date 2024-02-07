@@ -19,7 +19,8 @@ export const ChatNavigator = () => (
     screenOptions={{
       headerShown: true
     }}
-    initialRouteName="Chat">
+    initialRouteName="Chat"
+  >
     <ChatStack.Screen name="Chat" component={ChatsScreen} />
     <ChatStack.Screen name="Section" component={SectionsScreen} />
   </ChatStack.Navigator>

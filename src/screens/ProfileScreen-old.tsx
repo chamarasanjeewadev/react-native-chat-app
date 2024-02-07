@@ -50,35 +50,38 @@ const ProfileScreen = ({ navigation }) => {
           </View>
         </View>
         <View className="dark:bg-slate-600">
-          <Text className="  text-lg text-center bg-bl py-2 bg-baseOne ">Log out</Text>
+          <Text className="  bg-bl bg-baseOne py-2 text-center text-lg ">Log out</Text>
           <MChatButton
-            className="bg-green w-[100px] mb-2 p-0 text-center h-auto bg-mila-gray-50"
+            className="bg-green bg-mila-gray-50 mb-2 h-auto w-[100px] p-0 text-center"
             onPress={() => {
               handleLogout()
-            }}>
-            <Text className="dark:text-white text-lg text-center py-2 ">Log out</Text>
+            }}
+          >
+            <Text className="py-2 text-center text-lg dark:text-white ">Log out</Text>
           </MChatButton>
-          <View className="flex gap-2 flex-row">
+          <View className="flex flex-row gap-2">
             {themeColors.map((color, index) => (
               <TouchableOpacity
                 className={clsx(
                   color.bgColor,
-                  'w-[50px] h-[50px] text-center  flex-row rounded-lg cursor-pointer flex justify-center items-center'
+                  'flex h-[50px] w-[50px]  cursor-pointer flex-row items-center justify-center rounded-lg text-center'
                 )}
                 key={index}
-                onPress={() => {}}>
+                onPress={() => {}}
+              >
                 <Text> {color.color}</Text>
               </TouchableOpacity>
             ))}
           </View>
         </View>
-        <View className="space-y-10 flex flex-row justify-between align-middle">
+        <View className="flex flex-row justify-between space-y-10 align-middle">
           <Text>Change color scheme</Text>
           <Switch
             value={colorScheme === 'dark'}
             onChange={() => {
               toggleColorScheme()
-            }}></Switch>
+            }}
+          ></Switch>
         </View>
 
         <View style={[styles.sectionTitle, styles.sectionParentFlexBox]}>

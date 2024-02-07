@@ -9,7 +9,7 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: FC<FeatureCardProps> = ({ icon, title, description }) => (
-  <View className="bg-background shadow-[0_1px_2px_0_rgba(2,6,23,0.30)] flex flex-row  rounded-2xl gap-2 px-2 py-6 align-middle items-center">
+  <View className="flex flex-row items-center gap-2  rounded-2xl bg-background px-2 py-6 align-middle shadow-[0_1px_2px_0_rgba(2,6,23,0.30)]">
     <View className="">{icon}</View>
     <View className="flex flex-1  gap-1 overflow-hidden">
       <MLabelText className="text-lg font-semibold  dark:text-white">{title}</MLabelText>

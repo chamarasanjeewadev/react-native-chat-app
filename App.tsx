@@ -28,7 +28,8 @@ function App(): React.JSX.Element {
   return (
     <PersistQueryClientProvider
       client={queryClient}
-      persistOptions={{ persister: clientPersister }}>
+      persistOptions={{ persister: clientPersister }}
+    >
       <NavigationContainer ref={navigationRef}>
         <RootNavigator />
       </NavigationContainer>

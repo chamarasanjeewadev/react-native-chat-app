@@ -14,8 +14,8 @@ const pickerSelectStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     marginHorizontal: 2,
-    marginVertical:2,
-    paddingTop:2,
+    marginVertical: 2,
+    paddingTop: 2,
     paddingHorizontal: 4
   },
   inputAndroid: {

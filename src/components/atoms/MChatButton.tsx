@@ -14,10 +14,11 @@ export const MChatButton = ({
     <Pressable
       {...props}
       className={cn(
-        'rounded-lg text-center p-2 gap-2  play-button   flex flex-row bg-primary ',
+        'play-button flex flex-row gap-2  rounded-lg   bg-primary p-2 text-center ',
         className,
         { 'bg-gray-50': loading }
-      )}>
+      )}
+    >
       {loading && <ActivityIndicator size="small" color="#0000ff" />}
       {children}
     </Pressable>

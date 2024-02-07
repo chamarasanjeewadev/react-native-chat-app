@@ -103,7 +103,7 @@ const ProfileScreen = () => {
       <ScrollView automaticallyAdjustContentInsets={false} className="mb-30">
         <MScreenView>
           <MSection>
-            <View className="flex flex-row justify-between align-middle items-center ">
+            <View className="flex flex-row items-center justify-between align-middle ">
               <View>
                 <MText className="text-lg font-semibold ">
                   {t('settings.personal-info.title')}
@@ -143,7 +143,7 @@ const ProfileScreen = () => {
           <MHairLine />
           <MSection>
             <MLabelText>{t('settings.personal-info.email')}</MLabelText>
-            <MText className="border border-textbordercolor bg-textmutedcolor rounded-lg  text-sm p-2">
+            <MText className="rounded-lg border border-textbordercolor bg-textmutedcolor  p-2 text-sm">
               {user?.user?.email}
             </MText>
           </MSection>
@@ -160,9 +160,10 @@ const ProfileScreen = () => {
 
             <View
               className={clsx(
-                'mt-2 w-[50] h-[50] rounded-full flex  justify-center align-middle items-center',
+                'mt-2 flex h-[50] w-[50] items-center  justify-center rounded-full align-middle',
                 avatarBackgroundColors[backgroundId]?.bgColor
-              )}>
+              )}
+            >
               <Image resizeMode="cover" source={avatarImages[latestIconId]} />
             </View>
           </MSection>
@@ -174,14 +175,15 @@ const ProfileScreen = () => {
               </MLabelText>
               <Image source={{ uri: avatarImages[user?.user?.icon_id] }} className="py-1" />
               <ScrollView horizontal>
-                <View className="flex flex-row gap-2 mb-4  slim-scrollbar">
+                <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
                   {avatarImages.map((avatar, index) => (
                     <Pressable
-                      className="w-[50] h-[50] min-w-[50] min-h-[50]"
+                      className="h-[50] min-h-[50] w-[50] min-w-[50]"
                       key={index}
                       onPress={() => {
                         setValue('icon_id', index)
-                      }}>
+                      }}
+                    >
                       <Image resizeMode="cover" source={avatar} />
                     </Pressable>
                   ))}
@@ -194,12 +196,12 @@ const ProfileScreen = () => {
               {t('settings.choose-background-color')}
             </MLabelText>
             <ScrollView horizontal className="py-2">
-              <View className="flex flex-row gap-5 overflow-x-auto slim-scrollbar">
+              <View className="slim-scrollbar flex flex-row gap-5 overflow-x-auto">
                 {avatarBackgroundColors.map((c, index) => (
                   <Pressable
                     className={clsx(
                       c.bgColor,
-                      'w-[50px] h-[50px] rounded-full cursor-pointer min-w-[50px]'
+                      'h-[50px] w-[50px] min-w-[50px] cursor-pointer rounded-full'
                     )}
                     key={`bg-${index}`}
                     onPress={() => {
@@ -212,7 +214,7 @@ const ProfileScreen = () => {
           </MSection>
           {/* dark mode */}
           <MSection>
-            <View className="flex gap-2 mt-2">
+            <View className="mt-2 flex gap-2">
               <View className="">
                 <MLabelText className="text-sm font-semibold  ">Dark Mode</MLabelText>
               </View>
@@ -221,7 +223,8 @@ const ProfileScreen = () => {
                   value={colorScheme === 'dark'}
                   onChange={() => {
                     toggleColorScheme()
-                  }}></Switch>
+                  }}
+                ></Switch>
               </View>
             </View>
           </MSection>
@@ -283,7 +286,8 @@ const ProfileScreen = () => {
                 value={autoRecordEnabled}
                 onValueChange={value => {
                   setAutoRecordEnabled(value)
-                }}></Switch>
+                }}
+              ></Switch>
               <MLabelTextDescription className="text-sm ">
                 {t('settings.auto-record.description')}
               </MLabelTextDescription>
@@ -365,13 +369,14 @@ const ProfileScreen = () => {
                         onPress={() => {
                           onChange(option.value)
                         }}
-                        className={clsx('mx-2 px-2  flex justify-center ', {
-                          'border border-blue-400 rounded-lg': value === option.value
-                        })}>
-                        <View className="text-sm  text-textprimary font-semibold text-center mt-2">
+                        className={clsx('mx-2 flex  justify-center px-2 ', {
+                          'rounded-lg border border-blue-400': value === option.value
+                        })}
+                      >
+                        <View className="mt-2  text-center text-sm font-semibold text-textprimary">
                           <View>{option.flag}</View>
-                          <MText className="text-sm mt-2">{option.label}</MText>
-                          <MText className="text-sm text-center">{option.shortText}</MText>
+                          <MText className="mt-2 text-sm">{option.label}</MText>
+                          <MText className="text-center text-sm">{option.shortText}</MText>
                         </View>
                       </TouchableOpacity>
                     )}
@@ -384,17 +389,18 @@ const ProfileScreen = () => {
           <MHairLine />
           <MSection>
             <MLabelText> {t('settings.theme')}</MLabelText>
-            <View className="flex gap-2  flex-row">
+            <View className="flex flex-row  gap-2">
               {themeColors.map((color, index) => (
                 <Pressable
                   style={{ backgroundColor: color.bgColor }}
                   className={clsx(
-                    ' text-center w-12 h-12 flex-row  rounded-lg flex justify-center items-center'
+                    ' flex h-12 w-12 flex-row  items-center justify-center rounded-lg text-center'
                   )}
                   key={index}
                   onPress={() => {
                     setThemeColor(color.color)
-                  }}>
+                  }}
+                >
                   {color.color === themeColor && <Tick />}
                 </Pressable>
               ))}
@@ -411,20 +417,22 @@ const ProfileScreen = () => {
             </View>
           </MSection>
           <MSection>
-            <View className="flex gap-2 justify-center align-middle text-center">
+            <View className="flex justify-center gap-2 text-center align-middle">
               <View className="flex flex-row">
                 <MText> We care about your data in our</MText>
                 <TouchableOpacity
                   onPress={() => {
                     Linking.openURL('https://milaai.app/help/privacy-policy')
-                  }}>
-                  <MText className="text-[#475467] underline ml-2">privacy policy.</MText>
+                  }}
+                >
+                  <MText className="ml-2 text-[#475467] underline">privacy policy.</MText>
                 </TouchableOpacity>
               </View>
               <TouchableOpacity
                 onPress={() => {
                   Linking.openURL('https://milaai.app/help/terms-conditions')
-                }}>
+                }}
+              >
                 <MText className="text-[#475467] underline ">Terms and Conditions</MText>
               </TouchableOpacity>
             </View>

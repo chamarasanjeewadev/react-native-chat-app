@@ -29,7 +29,8 @@ export const TabNavigator = () => {
       initialRouteName={'settings'}
       screenOptions={{
         tabBarStyle: { paddingTop: 5, paddingBottom: 5, height: 50 }
-      }}>
+      }}
+    >
       <Tab.Screen
         options={{
           headerShown: false,

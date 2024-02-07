@@ -62,7 +62,8 @@ const SectionsScreen = ({ route, navigation }) => {
     <View className="flex-1 justify-between">
       <ScrollView
         ref={ref}
-        className="flex  flex-col p-8 thread min-w-[330px] relative transition-all duration-1000  thread-bot dark:bg-mila-gray-100 gap-y-2">
+        className="thread  thread-bot dark:bg-mila-gray-100 relative flex min-w-[330px] flex-col gap-y-2  p-8 transition-all duration-1000"
+      >
         {chatThreads.map((res, index) => (
           <View key={index} className={'shadow-md '}>
             <Thread key={index} thread={res} sectionId={section?.id} difficulty={difficulty} />
@@ -70,16 +71,16 @@ const SectionsScreen = ({ route, navigation }) => {
         ))}
       </ScrollView>
 
-      <View className="flex flex-row justify-between mr-2 ml-2 align-middle ">
+      <View className="ml-2 mr-2 flex flex-row justify-between align-middle ">
         <View className="w-[80%]">
           <MTextInput
             forwardedRef={textInputRef}
             onChangeText={text => setUserResponseMsg(text)}
-            className="border border-slate-950 rounded-2xl text-base h-14 font-medium outline-none  p-4 mb-2"
+            className="mb-2 h-14 rounded-2xl border border-slate-950 p-4 text-base  font-medium outline-none"
             placeholder="Type something ..."
           />
         </View>
-        <View className="flex flex-row gap-1 align-center">
+        <View className="align-center flex flex-row gap-1">
           <TouchableOpacity onPress={handleSendButtonPress} className="self-center">
             <Icon name="send" size={30} color="#900" />
           </TouchableOpacity>
@@ -89,7 +90,8 @@ const SectionsScreen = ({ route, navigation }) => {
             onPress={() => {
               console.log('')
             }}
-            className={'self-center'}>
+            className={'self-center'}
+          >
             <Icon name="settings-voice" size={30} color="#900" />
           </TouchableOpacity>
         </View>

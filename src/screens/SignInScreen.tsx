@@ -26,14 +26,15 @@ const SignInScreen = () => {
     }
   }, [])
   return (
-    <View className="flex items-center justify-center h-screen">
+    <View className="flex h-screen items-center justify-center">
       {
         <MChatButton
           loading={isLoading}
           disabled={isLoading}
           className=""
-          onPress={() => handleAuthorize()}>
-          <Text className="dark:text-white text-lg text-center py-2 align-middle items-center justify-center ">
+          onPress={() => handleAuthorize()}
+        >
+          <Text className="items-center justify-center py-2 text-center align-middle text-lg dark:text-white ">
             Authorize
           </Text>
         </MChatButton>

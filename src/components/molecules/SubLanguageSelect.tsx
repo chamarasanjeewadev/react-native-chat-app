@@ -26,11 +26,11 @@ export const SelectSubLanguage = ({
         value={isLanguageSelectionShown}
         onValueChange={newValue => setIsLanguageSelectionShown(newValue)}
       />
-      <MLabelTextDescription className="mt-4 text-[#475569] dark:text-slate-300 text-sm">
+      <MLabelTextDescription className="mt-4 text-sm text-[#475569] dark:text-slate-300">
         {t('settings.showPR.description')}
       </MLabelTextDescription>
       {isLanguageSelectionShown && (
-        <View className="my-5 gap-4   dark:border-mila-gray-25 flex flex-row">
+        <View className="dark:border-mila-gray-25 my-5   flex flex-row gap-4">
           {targetLanguage === 'Japanese' && (
             <>
               <MCheckBoxWithCaption

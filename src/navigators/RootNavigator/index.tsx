@@ -35,7 +35,8 @@ const RootNavigator = () => {
           fallback={<Text>Something went wrong!</Text>}
           onReset={() => {
             console.log('need to reset...')
-          }}>
+          }}
+        >
           {/* <StripeProvider
             publishableKey="pk_test_51NXxwoHwFwFEWRRtmOOsXlcemv7xVSq9G06LFieeOhkEYvYKg5KgSxQMkP6B7yffm2odmwpyYcRnr8WWh6xGyehk004xHJUjBX"
             // urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
@@ -52,7 +53,8 @@ const RootNavigator = () => {
           <RootStack.Navigator
             screenOptions={{
               headerShown: false
-            }}>
+            }}
+          >
             <>
               {!isUserAvailable ? (
                 <RootStack.Screen name="Login" component={SignInScreen} />
