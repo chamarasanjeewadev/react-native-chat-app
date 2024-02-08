@@ -5,7 +5,7 @@ import { Dropdown } from '../assets/icons/DropDown'
 import { ConversationLogo } from '../assets/icons/ConversationLogo'
 import ProgressCircle from '../assets/icons/ProgressCircle'
 import { ConversationProgress, StudyMode } from '../utils/enums'
-import { fontFamily } from '../utils/fonts/fontFamily'
+import { MFontFamily } from '../utils/fonts/fontFamily'
 import { FadeIn } from '../components/molecules/Skeletons/FadeIn'
 
 const ChatsScreen = ({ navigation }) => {
@@ -17,23 +17,20 @@ const ChatsScreen = ({ navigation }) => {
           // <FadeIn key={index} />
           <View
             key={index}
-            className="m-1 flex flex-row justify-between rounded-lg bg-white px-8 align-baseline shadow-lg"
-          >
+            className="m-1 flex flex-row justify-between rounded-lg bg-white px-8 align-baseline shadow-lg">
             {/* <FadeIn /> */}
 
             <View className={'¥align-middle mx-5 flex flex-grow flex-col gap-0.5  '}>
               <Text
                 className="text-lg font-normal  text-slate-700 dark:text-white"
-                style={{ fontFamily: fontFamily.poppins400 }}
-              >
+                style={{ fontFamily: MFontFamily.poppins400 }}>
                 {section?.title}
               </Text>
               <View className={'flex-grow-1 mb-2 flex flex-row justify-between '}>
                 <TouchableOpacity
                   onPress={() => {
                     navigation.push('Section', { section })
-                  }}
-                >
+                  }}>
                   <ProgressCircle
                     difficulty={StudyMode.CONVERSATION_EASY}
                     progress={ConversationProgress.STARTED}

@@ -5,6 +5,9 @@ import { MERCHANT_ID, API_URL, PUBLISHABLE_kEY, MESSAGES } from './../utils/cons
 import { t } from 'i18next'
 import Snackbar from 'react-native-snackbar'
 import MButton from './atoms/MButton'
+import { FontFamily } from '../utils/GlobalStyles'
+import { MFontFamily } from '../utils/fonts/fontFamily'
+import { SetupParams } from '@stripe/stripe-react-native/lib/typescript/src/types/PaymentSheet'
 
 const StripeSubscription = () => {
   const [ready, setReady] = useState(false)
@@ -17,23 +20,17 @@ const StripeSubscription = () => {
 
   const initialisePaymentSheet = async () => {
     const { setupIntent, ephemeralKey, customer } = await fetchPaymentSheetParams()
-
-    const { error } = await initPaymentSheet({
+    const setUpParams: SetupParams = {
+      primaryButtonLabel: 'Subscribe',
       customerId: customer,
       customerEphemeralKeySecret: ephemeralKey,
       setupIntentClientSecret: setupIntent,
-      merchantDisplayName: 'Example Inc.',
-      applePay: {
-        merchantCountryCode: 'US'
-      },
-      googlePay: {
-        merchantCountryCode: 'US',
-        testEnv: true,
-        currencyCode: 'usd'
-      },
+      merchantDisplayName: 'Mila AI',
+
       allowsDelayedPaymentMethods: true,
       returnURL: 'milaai://stripe-redirect'
-    })
+    }
+    const { error } = await initPaymentSheet(setUpParams)
     if (error) {
       Snackbar.show({ text: `Error code: ${error.code} ${error.message}` })
     } else {
@@ -58,7 +55,7 @@ const StripeSubscription = () => {
   }
 
   const handleSubscription = async () => {
-    const { error } = await presentPaymentSheet()
+    const { error } = await presentPaymentSheet({})
     if (error) {
       Snackbar.show({ title: `Error code: ${error.code} error.message` })
     } else {

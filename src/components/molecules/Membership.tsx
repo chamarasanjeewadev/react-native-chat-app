@@ -139,6 +139,7 @@ export const Membership = () => {
             <StripeSubscription />
           </>
         )}
+        <StripeSubscription />
         {/* subscriptions info */}
         <MSection>
           <MSubTitle title={t('subscription.manage-subscription')} />

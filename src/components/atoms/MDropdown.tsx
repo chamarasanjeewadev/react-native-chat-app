@@ -1,5 +1,5 @@
 import RNPickerSelect, { PickerSelectProps } from 'react-native-picker-select'
-import { fontFamily } from '../../utils/fonts/fontFamily'
+import { MFontFamily } from '../../utils/fonts/fontFamily'
 import { StyleSheet } from 'react-native'
 import colors, { black } from 'tailwindcss/colors'
 
@@ -8,7 +8,7 @@ export const MDropdown = (props: PickerSelectProps) => {
 }
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
-    fontFamily: fontFamily.poppins400,
+    fontFamily: MFontFamily.poppins400,
     borderColor: colors.slate[200],
     color: colors.slate[700],
     borderWidth: 1,
@@ -20,7 +20,7 @@ const pickerSelectStyles = StyleSheet.create({
   },
   inputAndroid: {
     color: colors.slate[700],
-    fontFamily: fontFamily.poppins400,
+    fontFamily: MFontFamily.poppins400,
     borderColor: colors.slate[200],
     borderRadius: 4
   }

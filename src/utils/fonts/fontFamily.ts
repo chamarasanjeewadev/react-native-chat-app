@@ -1,4 +1,4 @@
-export const fontFamily: FontFamily = {
+export const MFontFamily: FontFamily = {
   poppins100: 'Poppins-Thin',
   poppins200: 'Poppins-ExtraLight',
   poppins300: 'Poppins-Light',
