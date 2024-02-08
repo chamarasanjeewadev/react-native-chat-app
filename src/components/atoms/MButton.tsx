@@ -14,11 +14,13 @@ export const MButton = ({ loading, buttonText, className, ...props }: MButtonPro
       className={cn(
         'play-button flex  flex-row justify-center gap-1 rounded-lg  bg-primary align-middle shadow-sm ',
         className,
-        { 'bg-success': loading }
+        { 'opacity-65': loading }
+      )}>
+      {loading ? (
+        <ActivityIndicator className="px-2  text-primary" size="small" />
+      ) : (
+        <MText className="text-center font-semibold text-textsecondary ">{buttonText}</MText>
       )}
-    >
-      {loading && <ActivityIndicator className="text-primary" size="small" />}
-      <MText className="text-center font-semibold text-textsecondary ">{buttonText}</MText>
     </TouchableOpacity>
   )
 }
