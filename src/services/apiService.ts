@@ -1,11 +1,27 @@
 import { axiosInstance } from '../utils/axiosApiUtil'
 export const signIn = async () => {
   const result = await axiosInstance.post<AuthResponse>(`/user/login`)
+  const { user, user_metrics } = result.data
+  const mappedUser: User = {
+    ...user,
+    stripe_price_id: user_metrics.stripe_price_id,
+    proficiency: user_metrics?.proficiency,
+    plan_expired_on: user_metrics?.plan_expired_on,
+
+    experience: user_metrics?.experience,
+    level: user_metrics.level,
+    level_name: user_metrics?.level_name,
+    next_level_exp_req: user_metrics?.next_level_exp_req,
+    is_cancel_scheduled: user_metrics?.is_cancel_scheduled,
+    target_language: user_metrics?.target_language
+  }
+  result.data.user = mappedUser
   return result.data
 }
 
 export const getMilaUserChats = async () => {
   const result = await axiosInstance.get<AuthResponse>(`/user/sections/mila`, {})
+
   return result.data
 }
 export const postMessage = async ({

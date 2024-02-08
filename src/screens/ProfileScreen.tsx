@@ -2,7 +2,6 @@ import Slider from '@react-native-community/slider'
 import clsx from 'clsx'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
-import PaymentSheetSubscriptionExample from './../components/PaymentSheetSubscription'
 import {
   Image,
   Pressable,
@@ -11,8 +10,7 @@ import {
   Switch,
   Text,
   TouchableOpacity,
-  Linking,
-  ActivityIndicator
+  Linking
 } from 'react-native'
 import { avatarBackgroundColors, avatarImages } from '../utils/avatar'
 import { LanguageEnum } from '../utils/enums'
@@ -26,18 +24,18 @@ import { useUserPost } from '../hooks/mutations'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup' // install @hookform/resolvers (not @hookform/resolvers/yup)
 import * as yup from 'yup'
-import { useGetUsersQuery } from '../hooks/queries'
 import { MDropdown } from '../components/atoms/MDropdown'
 import { isLangJapaneseOrChinese } from '../utils/commonFunctions'
 import { useSettingStore } from '../stores/settingStore'
 import { useState } from 'react'
 import { MTextInput } from '../components/atoms/MTextInput'
 import { SelectSubLanguage } from '../components/molecules/SubLanguageSelect'
-import { MSection } from '../components/atoms/MSection'
 import { Logout } from '../components/molecules/Logout'
 import { Tick } from '../assets/icons/CheckIcon'
 import Snackbar from 'react-native-snackbar'
 import { MScreenView } from '../components/atoms/MScreenView'
+import { useAuthStore } from '../stores/AuthStore'
+import { MSection } from '../components/atoms/MSection'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -51,7 +49,7 @@ const schema = yup.object().shape({
 })
 
 const ProfileScreen = () => {
-  const { data: user } = useGetUsersQuery()
+  const { user } = useAuthStore()
   const { mutate, isPending } = useUserPost()
   const { t } = useTranslation()
   const [autoRecord, autoSubmitThreadhold, themeColor, notation, setThemeColor, setUserState] =
@@ -162,8 +160,7 @@ const ProfileScreen = () => {
               className={clsx(
                 'mt-2 flex h-[50] w-[50] items-center  justify-center rounded-full align-middle',
                 avatarBackgroundColors[backgroundId]?.bgColor
-              )}
-            >
+              )}>
               <Image resizeMode="cover" source={avatarImages[latestIconId]} />
             </View>
           </MSection>
@@ -182,8 +179,7 @@ const ProfileScreen = () => {
                       key={index}
                       onPress={() => {
                         setValue('icon_id', index)
-                      }}
-                    >
+                      }}>
                       <Image resizeMode="cover" source={avatar} />
                     </Pressable>
                   ))}
@@ -223,8 +219,7 @@ const ProfileScreen = () => {
                   value={colorScheme === 'dark'}
                   onChange={() => {
                     toggleColorScheme()
-                  }}
-                ></Switch>
+                  }}></Switch>
               </View>
             </View>
           </MSection>
@@ -286,8 +281,7 @@ const ProfileScreen = () => {
                 value={autoRecordEnabled}
                 onValueChange={value => {
                   setAutoRecordEnabled(value)
-                }}
-              ></Switch>
+                }}></Switch>
               <MLabelTextDescription className="text-sm ">
                 {t('settings.auto-record.description')}
               </MLabelTextDescription>
@@ -371,8 +365,7 @@ const ProfileScreen = () => {
                         }}
                         className={clsx('mx-2 flex  justify-center px-2 ', {
                           'rounded-lg border border-blue-400': value === option.value
-                        })}
-                      >
+                        })}>
                         <View className="mt-2  text-center text-sm font-semibold text-textprimary">
                           <View>{option.flag}</View>
                           <MText className="mt-2 text-sm">{option.label}</MText>
@@ -399,8 +392,7 @@ const ProfileScreen = () => {
                   key={index}
                   onPress={() => {
                     setThemeColor(color.color)
-                  }}
-                >
+                  }}>
                   {color.color === themeColor && <Tick />}
                 </Pressable>
               ))}
@@ -423,16 +415,14 @@ const ProfileScreen = () => {
                 <TouchableOpacity
                   onPress={() => {
                     Linking.openURL('https://milaai.app/help/privacy-policy')
-                  }}
-                >
+                  }}>
                   <MText className="ml-2 text-[#475467] underline">privacy policy.</MText>
                 </TouchableOpacity>
               </View>
               <TouchableOpacity
                 onPress={() => {
                   Linking.openURL('https://milaai.app/help/terms-conditions')
-                }}
-              >
+                }}>
                 <MText className="text-[#475467] underline ">Terms and Conditions</MText>
               </TouchableOpacity>
             </View>

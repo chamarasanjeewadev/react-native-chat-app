@@ -12,7 +12,7 @@ export const themes = {
       '--light': ' rgb(248, 249, 250)',
       '--dark': ' rgb(52, 58, 64)',
 
-      '--background': colors.white,
+      '--background': colors.slate[50],
       '--muted': colors.slate[200],
       '--shadow': colors.emerald[100],
       '--text-primary': colors.slate[700],

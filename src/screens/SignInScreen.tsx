@@ -15,7 +15,8 @@ const SignInScreen = () => {
     try {
       await getAuthToken()
       getUserInfo().then(data => {
-        setUser(data?.data?.user)
+        const { user } = data?.data || {}
+        setUser(user)
       })
     } catch (error) {
       console.log(error)
@@ -32,8 +33,7 @@ const SignInScreen = () => {
           loading={isLoading}
           disabled={isLoading}
           className=""
-          onPress={() => handleAuthorize()}
-        >
+          onPress={() => handleAuthorize()}>
           <Text className="items-center justify-center py-2 text-center align-middle text-lg dark:text-white ">
             Authorize
           </Text>

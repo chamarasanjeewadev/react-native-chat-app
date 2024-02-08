@@ -1,12 +1,6 @@
-import { Pressable, Text, TouchableOpacity, View } from 'react-native'
-import {
-  useContextTranslate,
-  useFeedbackGrammar,
-  useFeedbackTranslate,
-  useGetUsersQuery
-} from '../../hooks/queries'
+import { Text, View } from 'react-native'
+import { useContextTranslate, useFeedbackGrammar, useFeedbackTranslate } from '../../hooks/queries'
 import { BotWord } from './BotWord'
-import { LanguageEnum, ThreadType } from '../../utils/enums'
 import TrackPlayer from 'react-native-track-player'
 import { PlayAudio } from '../../assets/icons/PlayAudio'
 import { TranslateIcon } from '../../assets/icons/TranslateIcon'
@@ -15,9 +9,10 @@ import { MilaHint } from '../../assets/icons/MilaHintIcon'
 import { PlaySlow } from '../../assets/icons/PlaySlowIcon'
 import { RetryIcon } from '../../assets/icons/RetryIcon'
 import clsx from 'clsx'
-import { feedbackGrammar } from '../../services/apiService'
 import { MText } from '../atoms/MText'
 import MChatButton from '../atoms/MChatButton'
+import { useAuthStore } from '../../stores/AuthStore'
+import { LanguageEnum } from '../../utils/enums'
 const showRomaji = true
 const japaneseNotation = 'Furigana'
 const chineseNotation = 'Romaji'
@@ -52,7 +47,7 @@ export const Thread = ({
     thread?.response_message_id
   )
   const [showTranslate, showToggleTranslate] = useState(false)
-  const { data: user } = useGetUsersQuery()
+  const { user } = useAuthStore()
 
   return (
     <>
@@ -66,8 +61,7 @@ export const Thread = ({
               <MChatButton
                 onPress={async () => {
                   await refectchFeedbackGrammar()
-                }}
-              >
+                }}>
                 <MilaHint />
               </MChatButton>
               <MChatButton>
@@ -133,8 +127,7 @@ export const Thread = ({
                 } catch (error) {
                   console.log('issue playing track', error)
                 }
-              }}
-            >
+              }}>
               <PlayAudio />
             </MChatButton>
             <MChatButton
@@ -145,8 +138,7 @@ export const Thread = ({
                   await refetch()
                 }
                 showToggleTranslate(x => !x)
-              }}
-            >
+              }}>
               <TranslateIcon />
             </MChatButton>
           </View>

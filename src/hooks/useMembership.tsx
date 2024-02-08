@@ -6,17 +6,15 @@ export const useMembership = () => {
 
   const isFreeUser = !user?.stripe_price_id
   const isCancelScheduled = !!user?.is_cancel_scheduled
-
+  console.log('stripe price id...', user)
   const isFreeTrial = !!(user?.stripe_price_id === FREE_TRIAL)
 
   const shouldShowCancelSubscription = !isFreeUser && !isCancelScheduled && !isFreeTrial
-  const shouldShowReactivation = isCancelScheduled
 
   return {
     isFreeUser,
     isCancelScheduled,
     isFreeTrial,
-    shouldShowCancelSubscription,
-    shouldShowReactivation
+    shouldShowCancelSubscription
   }
 }

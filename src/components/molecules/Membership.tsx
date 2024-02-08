@@ -3,7 +3,7 @@ import { useMembership } from '../../hooks/useMembership'
 import PremiumCancelMila from './../../assets/images/mila/premium-cancel-mila.png'
 import dayjs from 'dayjs'
 import Mila from './../../assets/images/mila/premium-mila.png'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { PLANS } from '../atoms/stripe'
 import { t } from 'i18next'
 import { useAuthStore } from '../../stores/AuthStore'
@@ -23,10 +23,9 @@ import { MSpinner } from '../atoms/MSpinner'
 import { MSection, MSubSection } from '../atoms/MSection'
 import { TextProps } from 'react-native-svg'
 
-const useHeaderDesc = () => {
+const useHeaderDesc = ({ currentPlan }: { currentPlan: typeof PLANS }) => {
   const [user] = useAuthStore(state => [state.user, state.setUser])
   const { isFreeUser, isCancelScheduled, isFreeTrial } = useMembership()
-  const [currentPlan, setCurrentPlan] = useState(PLANS[0])
   const expireDate = dayjs(new Date(user?.plan_expired_on)).format('MMM D, YYYY')
 
   const premiumHeaderDesc = isFreeUser
@@ -37,14 +36,11 @@ const useHeaderDesc = () => {
         ? t('subscription.subscription-will-expire-on', { date: expireDate })
         : t('subscription.thanks-for-support')
 
-  const headerTitle = currentPlan
-    ? 'Mila Premium'
-    : isFreeTrial
-      ? 'Mila Premium(Free Trial)'
-      : 'Mila Starter'
+  const headerTitle =
+    currentPlan || {} ? 'Mila Premium' : isFreeTrial ? 'Mila Premium(Free Trial)' : 'Mila Starter'
   const image = isCancelScheduled ? PremiumCancelMila : Mila
   const currentPlanTitle = currentPlan
-    ? currentPlan.title
+    ? currentPlan?.title
     : isFreeTrial
       ? 'Mila Premium(Free Trial)'
       : 'Mila Starter'
@@ -65,17 +61,16 @@ export const Membership = () => {
   const [isReactivating, setReactivating] = useState(false)
   const [isCancelling, setCancelling] = useState(false)
   const [currentPlan, setCurrentPlan] = useState(PLANS[0])
-  const { premiumHeaderDesc, headerTitle, image, currentPlanTitle } = useHeaderDesc()
+  const { premiumHeaderDesc, headerTitle, image, currentPlanTitle } = useHeaderDesc({ currentPlan })
   const [user] = useAuthStore(state => [state.user, state.setUser])
-  const {
-    isFreeUser,
-    isCancelScheduled,
-    isFreeTrial,
-    shouldShowCancelSubscription,
-    shouldShowReactivation
-  } = useMembership()
+  const { isFreeUser, isCancelScheduled, isFreeTrial } = useMembership()
+
   const [selectedPriceId, setSelectedPriceId] = useState(user?.stripe_price_id)
   const expireDate = dayjs(new Date(user?.plan_expired_on)).format('MMM D, YYYY')
+
+  useEffect(() => {
+    setCurrentPlan(PLANS.find(plan => plan?.id === user.stripe_price_id))
+  }, [user.stripe_price_id])
 
   const onCancelSubscription = () => {
     console.log('cancel pressed')
@@ -96,7 +91,7 @@ export const Membership = () => {
           </View>
         </View>
         <MSubSection className="mt-4 ">
-          <MSubTitle className={''} title={t('subscription.premium-benefits')} />
+          <MSubTitle title={t('subscription.premium-benefits')} />
           <View className="mt-2 flex gap-2">
             <FeatureCard
               icon={<PremiumFeatureIcon1 />}
@@ -144,44 +139,39 @@ export const Membership = () => {
             <StripeSubscription />
           </>
         )}
+        {/* subscriptions info */}
         <MSection>
           <MSubTitle title={t('subscription.manage-subscription')} />
           <View className="flex flex-row items-center justify-between">
-            <View className="min-w-[150px]">
+            <View className="">
               <View className="dark:bg-mila-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700">
                 <MText> {t('subscription.current-plan')}</MText>
               </View>
             </View>
             <MText className="font-semibold text-slate-800">{currentPlanTitle}</MText>
           </View>
-        </MSection>
-        <View className="flex  gap-6">
-          <View className="min-w-[150px]" />
-
-          {shouldShowCancelSubscription && (
-            <Pressable
-              className="flex gap-1 font-semibold text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100"
+          {!isFreeUser && !isCancelScheduled && !isFreeTrial && (
+            <TouchableOpacity
+              className="flex gap-1 text-sm font-semibold text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100"
               disabled={isCancelling}
-              onClick={() => onCancelSubscription()}
-            >
+              onPress={() => onCancelSubscription()}>
               {isCancelling && <MSpinner />}
-              <MText> {t('subscription.cancel-subscription')}</MText>
-            </Pressable>
+              <MText className="text-blue-500"> {t('subscription.cancel-subscription')}</MText>
+            </TouchableOpacity>
           )}
-          {shouldShowReactivation && (
-            <Pressable
-              className="flex gap-1 font-semibold text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100"
+          {isCancelScheduled && (
+            <TouchableOpacity
+              className="flex gap-1 text-sm font-semibold "
               disabled={isReactivating}
-              onClick={() => onReactivateSubscription()}
-            >
-              {isReactivating && <Spinner />}
-              <MText>{t('subscription.reactivate-subscription')}</MText>
-            </Pressable>
+              onPress={() => onReactivateSubscription()}>
+              {isReactivating && <MSpinner />}
+              <MText className="text-blue-500">{t('subscription.reactivate-subscription')}</MText>
+            </TouchableOpacity>
           )}
-        </View>
+        </MSection>
 
         {!isFreeUser && (
-          <View className="mt-4 flex flex-row items-center gap-6">
+          <View className="mt-4 flex flex-1 flex-row flex-wrap items-center gap-2">
             <View className="min-w-[150px]">
               <View className="dark:bg-mila-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700 dark:border-none dark:text-white">
                 <MText> {t('subscription.next-payment')}</MText>
@@ -220,11 +210,10 @@ const MembershipItem: FC<MembershipItemProps> = ({
   return (
     <TouchableOpacity
       className={clsx(
-        'cursor-pointer rounded-xl  bg-background p-4 shadow-shadow ',
+        'cursor-pointer rounded-xl  bg-background bg-slate-50 p-4 shadow-shadow ',
         active && 'bg-primary'
       )}
-      onPress={onClick}
-    >
+      onPress={onClick}>
       <View className=" flex flex-row">
         <View>{icon}</View>
         <View className="flex-1 px-2">

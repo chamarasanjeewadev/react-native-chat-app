@@ -4,5 +4,15 @@
     "target": "es6",
     "module": "NodeNext",
     "strict": false
+  },
+  "paths": {
+    "src/*": ["src/*"],
+    "assets/*": ["src/assets/*"],
+    "screens/*": ["src/screens/*"],
+    "components/*": ["src/components/*"],
+    "navigators/*": ["src/navigators/*"],
+    "services/*": ["src/services/*"],
+    "utils/*": ["src/utils/*"],
+    "store/*": ["src/stores/*"]
   }
 }
