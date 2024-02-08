@@ -15,8 +15,8 @@ const SignInScreen = () => {
     try {
       await getAuthToken()
       getUserInfo().then(data => {
-        const { user } = data?.data || {}
-        setUser(user)
+        // TODO may be we dont need to update zustand storage
+        setUser(data.data)
       })
     } catch (error) {
       console.log(error)

@@ -24,7 +24,6 @@ export const getAuthToken = async () => {
     connectionTimeoutSeconds: 5000,
     iosPrefersEphemeralSession: true
   })
-  console.log('auth info at getAuthToken', authInfo)
   setIdToken(authInfo.idToken)
   setRefreshToken(authInfo.refreshToken)
   return authInfo
@@ -33,11 +32,9 @@ export const getAuthToken = async () => {
 export const getAuthTokenByRefreshToken = async () => {
   const refreshToken = getRefreshToken()
   const authInfo = await refresh(config, {
-    refreshToken: refreshToken!
+    refreshToken: refreshToken
   })
-
   setIdToken(authInfo?.idToken)
   setRefreshToken(authInfo?.refreshToken)
   return authInfo
-  // return null;
 }

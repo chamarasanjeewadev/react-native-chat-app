@@ -13,7 +13,6 @@ interface ThemeProps extends PropsWithChildren {
   name: string
 }
 export function Theme({ name, children }: ThemeProps) {
-  console.log('name', name)
   const colorScheme = useColorScheme()
   const theme = vars(themes[name ?? 'blue'][colorScheme.colorScheme ?? 'light'])
   return <View style={[{ flex: 1 }, theme]}>{children}</View>

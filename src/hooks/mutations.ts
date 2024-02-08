@@ -11,7 +11,7 @@ export const useUserPost = () => {
   const queryClient = useQueryClient()
   const mutation = useMutation({
     mutationFn: postUserInfo,
-    onSuccess: () => {
+    onSuccess: (data, variables) => {
       queryClient.invalidateQueries({ queryKey: ['user'] })
     }
   })

@@ -1,5 +1,4 @@
 import colors from 'tailwindcss/colors'
-console.log(colors.blue[200])
 export const themes = {
   blue: {
     light: {

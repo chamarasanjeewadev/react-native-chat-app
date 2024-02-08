@@ -36,6 +36,7 @@ import Snackbar from 'react-native-snackbar'
 import { MScreenView } from '../components/atoms/MScreenView'
 import { useAuthStore } from '../stores/AuthStore'
 import { MSection } from '../components/atoms/MSection'
+import { useGetUsersQuery } from '../hooks/queries'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -49,8 +50,9 @@ const schema = yup.object().shape({
 })
 
 const ProfileScreen = () => {
-  const { user } = useAuthStore()
+  const { data: user } = useGetUsersQuery()
   const { mutate, isPending } = useUserPost()
+  const { setUser, user: userOnState } = useAuthStore()
   const { t } = useTranslation()
   const [autoRecord, autoSubmitThreadhold, themeColor, notation, setThemeColor, setUserState] =
     useSettingStore(state => [
@@ -64,15 +66,15 @@ const ProfileScreen = () => {
   const { control, handleSubmit, setValue, watch } = useForm<Partial<User>>({
     resolver: yupResolver(schema),
     defaultValues: {
-      ...user?.user,
-      daily_commitment: user?.user?.daily_commitment,
-      proficiency: user?.user_metrics?.proficiency,
+      ...user,
+      daily_commitment: user?.daily_commitment,
+      proficiency: user?.proficiency,
       autoSubmitThreadhold: autoSubmitThreadhold
     }
   })
   const { colorScheme, toggleColorScheme } = useColorScheme()
   const [notationState, setNotationState] = useState<NotationType>({
-    lang: user?.user?.target_language,
+    lang: user?.target_language,
     notation: notation
   })
 
@@ -90,6 +92,7 @@ const ProfileScreen = () => {
         autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0
       })
       await mutate(data)
+      setUser({ ...userOnState, ...data })
       Snackbar.show({ text: MESSAGES.USER_UPDATE_SUCCESS })
     } catch (error) {
       console.log('error')
@@ -132,7 +135,7 @@ const ProfileScreen = () => {
                   placeholder="First name"
                   onBlur={onBlur}
                   onChangeText={onChange}
-                  defaultValue={user?.user?.full_name}
+                  defaultValue={user?.full_name}
                 />
               )}
               name="full_name"
@@ -142,7 +145,7 @@ const ProfileScreen = () => {
           <MSection>
             <MLabelText>{t('settings.personal-info.email')}</MLabelText>
             <MText className="rounded-lg border border-textbordercolor bg-textmutedcolor  p-2 text-sm">
-              {user?.user?.email}
+              {user?.email}
             </MText>
           </MSection>
 
@@ -170,7 +173,7 @@ const ProfileScreen = () => {
               <MLabelText className="text-sm font-semibold">
                 {t('settings.choose-avatar')}
               </MLabelText>
-              <Image source={{ uri: avatarImages[user?.user?.icon_id] }} className="py-1" />
+              <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" />
               <ScrollView horizontal>
                 <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
                   {avatarImages.map((avatar, index) => (

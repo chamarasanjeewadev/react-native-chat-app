@@ -58,7 +58,6 @@ const StripeSubscription = () => {
   }
 
   const handleSubscription = async () => {
-    console.log('sub clickeed')
     const { error } = await presentPaymentSheet()
     if (error) {
       Snackbar.show({ title: `Error code: ${error.code} error.message` })

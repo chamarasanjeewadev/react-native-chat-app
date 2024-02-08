@@ -30,8 +30,7 @@ axiosInstance.interceptors.response.use(
   async error => {
     const status = error.response ? error.response.status : null
     if (status === 403) {
-      console.log('recalculating refresh token....')
-      const refreshInfo = await getAuthTokenByRefreshToken()
+      await getAuthTokenByRefreshToken()
     }
     return Promise.reject(error)
   }

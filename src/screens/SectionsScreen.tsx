@@ -62,8 +62,7 @@ const SectionsScreen = ({ route, navigation }) => {
     <View className="flex-1 justify-between">
       <ScrollView
         ref={ref}
-        className="thread  thread-bot dark:bg-mila-gray-100 relative flex min-w-[330px] flex-col gap-y-2  p-8 transition-all duration-1000"
-      >
+        className="thread  thread-bot dark:bg-mila-gray-100 relative flex min-w-[330px] flex-col gap-y-2  p-8 transition-all duration-1000">
         {chatThreads.map((res, index) => (
           <View key={index} className={'shadow-md '}>
             <Thread key={index} thread={res} sectionId={section?.id} difficulty={difficulty} />
@@ -88,10 +87,9 @@ const SectionsScreen = ({ route, navigation }) => {
             disabled={!userResponseMsg}
             activeOpacity={0.7}
             onPress={() => {
-              console.log('')
+              console.log('pressed')
             }}
-            className={'self-center'}
-          >
+            className={'self-center'}>
             <Icon name="settings-voice" size={30} color="#900" />
           </TouchableOpacity>
         </View>

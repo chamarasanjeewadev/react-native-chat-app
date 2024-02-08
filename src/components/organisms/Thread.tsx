@@ -116,7 +116,6 @@ export const Thread = ({
           <View className="flex flex-row gap-2 pr-2 pt-2 align-middle text-orange-900 ">
             <MChatButton
               onPress={async () => {
-                console.log('press....', thread?.audio_response)
                 const url = thread?.audio_response
                 try {
                   await TrackPlayer.reset()
@@ -133,7 +132,6 @@ export const Thread = ({
             <MChatButton
               className="play-button rounded-lg border-orange-100 bg-orange-50 p-2 text-orange-900 shadow-sm active:bg-orange-200  dark:bg-slate-800 dark:text-white dark:active:bg-slate-400"
               onPress={async () => {
-                console.log('translate', showToggleTranslate)
                 if (!showToggleTranslate) {
                   await refetch()
                 }
