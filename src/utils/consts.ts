@@ -64,7 +64,8 @@ export const MESSAGES = {
   USER_UPDATE_SUCCESS: 'User updated successfully.',
   SUPPORT_SUCCESS: 'Message sent successfully.',
   SUPPORT_ERROR: 'Message send error.',
-  SUBSCRIPTION_SUCCESS: 'The subscription was setup successfully'
+  SUBSCRIPTION_SUCCESS: 'The subscription was setup successfully',
+  PAYMENT_SUCCESS: 'The payment was successfull'
 }
 
 export const FREE_TRIAL = 'price_trial'

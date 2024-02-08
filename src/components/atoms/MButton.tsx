@@ -17,7 +17,7 @@ export const MButton = ({ loading, buttonText, className, ...props }: MButtonPro
         { 'opacity-65': loading }
       )}>
       {loading ? (
-        <ActivityIndicator className="px-2  text-primary" size="small" />
+        <ActivityIndicator color={'white'} className="px-2  text-primary" size="small" />
       ) : (
         <MText className="text-center font-semibold text-textsecondary ">{buttonText}</MText>
       )}

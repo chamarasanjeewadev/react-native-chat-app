@@ -22,6 +22,7 @@ import { MScreenView } from '../atoms/MScreenView'
 import { MSpinner } from '../atoms/MSpinner'
 import { MSection, MSubSection } from '../atoms/MSection'
 import { TextProps } from 'react-native-svg'
+import PaymentSheet from '../organisms/PaymentSheet'
 
 const useHeaderDesc = ({ currentPlan }: { currentPlan: typeof PLANS }) => {
   const [user] = useAuthStore(state => [state.user, state.setUser])
@@ -136,11 +137,10 @@ export const Membership = () => {
                 />
               ))}
             </View>
-            <StripeSubscription />
+            <PaymentSheet />
           </>
         )}
-        <StripeSubscription />
-        {/* subscriptions info */}
+        {/* <PaymentSheet /> */}
         <MSection>
           <MSubTitle title={t('subscription.manage-subscription')} />
           <View className="flex flex-row items-center justify-between">
