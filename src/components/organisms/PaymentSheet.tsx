@@ -36,14 +36,14 @@ const PaymentSheet = () => {
       // },
       paymentIntentClientSecret: paymentIntent,
       merchantDisplayName: 'Mila AI',
-      // applePay: {
-      //   merchantCountryCode: 'US'
-      // },
-      // googlePay: {
-      //   merchantCountryCode: 'US',
-      //   testEnv: true,
-      //   currencyCode: 'usd'
-      // },
+      applePay: {
+        merchantCountryCode: 'US'
+      },
+      googlePay: {
+        merchantCountryCode: 'US',
+        testEnv: true,
+        currencyCode: 'usd'
+      },
       allowsDelayedPaymentMethods: true,
       returnURL: 'milaai://stripe-redirect'
     })

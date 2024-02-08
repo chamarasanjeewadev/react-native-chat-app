@@ -9,7 +9,7 @@ import { MLabelText } from '../components/atoms/MText'
 const SettingsScreen: FC = () => {
   const { t } = useTranslation()
 
-  const [activeTab, setActiveTab] = useState(1)
+  const [activeTab, setActiveTab] = useState(0)
   const tabs = [t('settings.tab.personal-info'), t('settings.tab.subscription')]
 
   const onChangeTab = (tabIndex: number) => {
