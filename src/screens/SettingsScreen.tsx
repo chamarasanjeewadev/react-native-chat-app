@@ -3,8 +3,9 @@ import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
 import ProfileScreen from './ProfileScreen'
 import { Membership } from '../components/molecules/Membership'
-import { Pressable, TouchableOpacity, View } from 'react-native'
-import { MLabelText } from '../components/atoms/MText'
+import { View } from 'react-native'
+import MButton from '../components/atoms/MButton'
+import { MScreenView } from '../components/atoms/MScreenView'
 
 const SettingsScreen: FC = () => {
   const { t } = useTranslation()
@@ -17,27 +18,22 @@ const SettingsScreen: FC = () => {
   }
 
   return (
-    <View className=" flex-1 bg-white dark:bg-black">
-      <View className=" flex flex-row  justify-center rounded-2xl py-2">
+    <MScreenView className="  ">
+      <View className=" flex flex-row  justify-center  ">
         {tabs.map((tab, index) => (
-          <TouchableOpacity
-            className={clsx(
-              'cursor-pointer rounded-lg px-2  py-2 text-sm font-semibold',
-              index === activeTab
-                ? 'bg-blue-50 text-blue-700 shadow-sm dark:text-slate-50'
-                : 'text-slate-500',
-              index === 0 && activeTab !== 0 ? 'pl-0 pr-3' : 'px-3'
-            )}
+          <MButton
+            className={clsx(index === activeTab ? 'shadow-sm ' : 'bg-muted')}
             key={index}
+            // text={!activeTab ? 'outlineText' : 'defaultText'}
             onPress={() => onChangeTab(index)}>
-            <MLabelText>{tab}</MLabelText>
-          </TouchableOpacity>
+            {tab}
+          </MButton>
         ))}
       </View>
 
       {activeTab === 0 && <ProfileScreen />}
       {activeTab === 1 && <Membership />}
-    </View>
+    </MScreenView>
   )
 }
 

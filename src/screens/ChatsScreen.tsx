@@ -7,6 +7,7 @@ import ProgressCircle from '../assets/icons/ProgressCircle'
 import { ConversationProgress, StudyMode } from '../utils/enums'
 import { MFontFamily } from '../utils/fonts/fontFamily'
 import { FadeIn } from '../components/molecules/Skeletons/FadeIn'
+import MButton from '../components/atoms/MButton'
 
 const ChatsScreen = ({ navigation }) => {
   const { data } = useGetMilaChats()
@@ -27,7 +28,8 @@ const ChatsScreen = ({ navigation }) => {
                 {section?.title}
               </Text>
               <View className={'flex-grow-1 mb-2 flex flex-row justify-between '}>
-                <TouchableOpacity
+                <MButton
+                  className="m-0 bg-transparent p-0 px-0 py-0"
                   onPress={() => {
                     navigation.push('Section', { section })
                   }}>
@@ -35,19 +37,27 @@ const ChatsScreen = ({ navigation }) => {
                     difficulty={StudyMode.CONVERSATION_EASY}
                     progress={ConversationProgress.STARTED}
                   />
-                </TouchableOpacity>
-                <TouchableOpacity>
+                </MButton>
+                <MButton
+                  className="m-0 bg-transparent p-0 px-0 py-0"
+                  onPress={() => {
+                    navigation.push('Section', { section })
+                  }}>
                   <ProgressCircle
                     difficulty={StudyMode.CONVERSATION_MEDIUM}
                     progress={ConversationProgress.STARTED}
                   />
-                </TouchableOpacity>
-                <TouchableOpacity>
+                </MButton>
+                <MButton
+                  className="m-0 bg-transparent p-0 px-0 py-0"
+                  onPress={() => {
+                    navigation.push('Section', { section })
+                  }}>
                   <ProgressCircle
-                    difficulty={StudyMode.CONVERSATION_HARD}
+                    difficulty={StudyMode.CONVERSATION_EASY}
                     progress={ConversationProgress.STARTED}
                   />
-                </TouchableOpacity>
+                </MButton>
               </View>
             </View>
             <View className="justify-center">

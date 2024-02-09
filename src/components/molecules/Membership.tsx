@@ -23,6 +23,7 @@ import { MSpinner } from '../atoms/MSpinner'
 import { MSection, MSubSection } from '../atoms/MSection'
 import { TextProps } from 'react-native-svg'
 import PaymentSheet from '../organisms/PaymentSheet'
+import MButton from '../atoms/MButton'
 
 const useHeaderDesc = ({ currentPlan }: { currentPlan: typeof PLANS }) => {
   const [user] = useAuthStore(state => [state.user, state.setUser])
@@ -152,22 +153,20 @@ export const Membership = () => {
             <MText className="font-semibold text-slate-800">{currentPlanTitle}</MText>
           </View>
           {!isFreeUser && !isCancelScheduled && !isFreeTrial && (
-            <TouchableOpacity
-              className="flex gap-1 text-sm font-semibold text-blue-700 hover:text-blue-500 active:text-blue-700 disabled:text-blue-100"
+            <MButton
               disabled={isCancelling}
+              loading={isCancelling}
               onPress={() => onCancelSubscription()}>
-              {isCancelling && <MSpinner />}
-              <MText className="text-blue-500"> {t('subscription.cancel-subscription')}</MText>
-            </TouchableOpacity>
+              {t('subscription.cancel-subscription')}
+            </MButton>
           )}
           {isCancelScheduled && (
-            <TouchableOpacity
-              className="flex gap-1 text-sm font-semibold "
+            <MButton
               disabled={isReactivating}
+              loading={isReactivating}
               onPress={() => onReactivateSubscription()}>
-              {isReactivating && <MSpinner />}
-              <MText className="text-blue-500">{t('subscription.reactivate-subscription')}</MText>
-            </TouchableOpacity>
+              {t('subscription.cancel-subscription')}
+            </MButton>
           )}
         </MSection>
 

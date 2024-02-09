@@ -37,7 +37,6 @@ import { MScreenView } from '../components/atoms/MScreenView'
 import { useAuthStore } from '../stores/AuthStore'
 import { MSection } from '../components/atoms/MSection'
 import { useGetUsersQuery } from '../hooks/queries'
-import { PlayAudio } from '../assets/icons/PlayAudio'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -103,10 +102,8 @@ const ProfileScreen = () => {
   const renderSave = () => {
     return (
       <MButton
-        leadingIcon={<PlayAudio />}
         intent="primary"
         size="medium"
-        text="destructiveText"
         loading={isPending}
         className="m-3  p-3 text-center"
         onPress={handleSubmit(onSubmit)}>
@@ -419,22 +416,26 @@ const ProfileScreen = () => {
             </View>
           </MSection>
           <MSection>
-            <View className="flex justify-center gap-2 text-center align-middle">
-              <View className="flex flex-row">
+            <View className="justify-left flex  gap-2 text-center ">
+              <View className="flex flex-row items-center gap-1">
                 <MText> We care about your data in our</MText>
-                <TouchableOpacity
+                <MButton
+                  text="linkText"
+                  intent="link"
                   onPress={() => {
                     Linking.openURL('https://milaai.app/help/privacy-policy')
                   }}>
-                  <MText className="ml-2 text-[#475467] underline">privacy policy.</MText>
-                </TouchableOpacity>
+                  {'Privacy policy'}
+                </MButton>
               </View>
-              <TouchableOpacity
+              <MButton
+                text="linkText"
+                intent="link"
                 onPress={() => {
                   Linking.openURL('https://milaai.app/help/terms-conditions')
                 }}>
-                <MText className="text-[#475467] underline ">Terms and Conditions</MText>
-              </TouchableOpacity>
+                {'Terms and Conditions'}
+              </MButton>
             </View>
           </MSection>
         </MScreenView>

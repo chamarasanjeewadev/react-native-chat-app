@@ -15,7 +15,7 @@ const myVarients = {
     destructiveText: 'text-destructive-foreground',
     outlineText: 'text-primary',
     ghostText: 'text-primary',
-    linkText: 'text-primary'
+    linkText: 'text-[#475467] underline'
   },
   intent: {
     default: 'bg-primary hover:bg-primary/90',
@@ -24,7 +24,7 @@ const myVarients = {
       'text-primary-foreground border border-input hover:bg-accent hover:text-accent-foreground',
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     ghost: 'hover:bg-accent hover:text-accent-foreground',
-    link: 'underline-offset-4 hover:underline text-primary',
+    link: ' underline text-primary    ',
     primary: ['bg-blue-500', 'text-white', 'border-transparent']
   },
   size: {
@@ -40,6 +40,10 @@ const buttonStyles = cva(['font-semibold', 'border', 'rounded-lg'], {
       intent: 'primary',
       size: 'small',
       className: ''
+    },
+    {
+      intent: 'link',
+      className: ' border-0 p-0 m-0 '
     }
   ],
   defaultVariants: {
@@ -59,13 +63,13 @@ export const MButton = ({
   trailingIcon,
   ...props
 }: MButtonProps & VariantProps<typeof buttonStyles>) => {
-  const textColor = myVarients['text'][text]
+  const textColor = myVarients['text'][text ?? 'defaultText']
   console.log(textColor)
   return (
     <TouchableOpacity
       {...props}
       className={cn(
-        'flex flex-row  items-center justify-center gap-1',
+        'flex flex-row  items-center justify-center gap-1 ',
         buttonStyles({ intent, size }),
         className,
         {
