@@ -1,15 +1,17 @@
 import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import { cn } from '../../utils/cnUtil'
 import { VariantProps, cva } from 'class-variance-authority'
+import { MFontFamily } from '../../utils/fonts/fontFamily'
 
 interface MButtonProps extends TouchableOpacityProps {
-  buttonText: string
   loading?: boolean
+  leadingIcon?: React.JSX.Element
+  trailingIcon?: React.JSX.Element
 }
 
 const myVarients = {
   text: {
-    defaultText: 'text-textsecondary',
+    defaultText: ['text-textsecondary font-semibold'],
     destructiveText: 'text-destructive-foreground',
     outlineText: 'text-[#6e9b0f44]',
     ghostText: 'text-primary',
@@ -26,18 +28,18 @@ const myVarients = {
     primary: ['bg-blue-500', 'text-white', 'border-transparent']
   },
   size: {
-    small: ['text-sm', 'py-1', 'px-2'],
+    small: ['text-sm', 'py-1', 'px-2', 'm-3', 'py-3'],
     medium: ['text-base', 'py-2', 'px-4']
   }
 }
 
-const buttonStyles = cva(['font-semibold', 'border', 'rounded'], {
+const buttonStyles = cva(['font-semibold', 'border', 'rounded-lg'], {
   variants: myVarients,
   compoundVariants: [
     {
       intent: 'primary',
       size: 'small',
-      className: 'bg-textprimary'
+      className: ''
     }
   ],
   defaultVariants: {
@@ -53,21 +55,35 @@ export const MButton = ({
   size,
   loading,
   className,
+  leadingIcon,
+  trailingIcon,
   ...props
 }: MButtonProps & VariantProps<typeof buttonStyles>) => {
   return (
     <TouchableOpacity
       {...props}
       className={cn(
+        'flex flex-row  items-center justify-center gap-1',
         buttonStyles({ intent, size }),
-        'play-button flex  flex-row justify-center gap-1 rounded-lg   align-middle shadow-sm ',
         className,
-        { 'opacity-65': loading }
+        {
+          'opacity-65': loading
+        }
       )}>
       {loading ? (
         <ActivityIndicator color={'white'} className="px-2  text-primary" size="small" />
       ) : (
-        <Text className={cn(myVarients['text'][text])}>{children}</Text>
+        <>
+          {leadingIcon && leadingIcon}
+          {children && (
+            <Text
+              style={{ fontFamily: MFontFamily.poppins400 }}
+              className={cn(myVarients['text'][text])}>
+              {children}
+            </Text>
+          )}
+          {trailingIcon && trailingIcon}
+        </>
       )}
     </TouchableOpacity>
   )

@@ -1,8 +1,6 @@
 import * as React from 'react'
-import MChatButton from '../atoms/MChatButton'
 import { deleteIdToken } from '../../utils/tokenUtils'
 import { useAuthStore } from '../../stores/AuthStore'
-import { Text } from 'react-native'
 import MButton from '../atoms/MButton'
 export const Logout = () => {
   const { setUser } = useAuthStore()
@@ -16,11 +14,13 @@ export const Logout = () => {
   }
   return (
     <MButton
-      buttonText={'Log out'}
-      className="m-3 p-3 "
+      intent="secondary"
+      size="small"
+      text="defaultText"
       onPress={() => {
         handleLogout()
-      }}
-    />
+      }}>
+      {'Log out'}
+    </MButton>
   )
 }

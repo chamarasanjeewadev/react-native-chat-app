@@ -46,7 +46,7 @@ const SectionsScreen = ({ route, navigation }) => {
             score: 0
           }
         },
-        lastAIMessage: chatThreads[chatThreads.length - 1].text_response,
+        lastAIMessage: chatThreads[chatThreads.length - 1]?.text_response,
         lastAIMessageId: chatThreads[chatThreads.length - 1].response_message_id
       }
     ])

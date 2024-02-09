@@ -10,9 +10,9 @@ import { PlaySlow } from '../../assets/icons/PlaySlowIcon'
 import { RetryIcon } from '../../assets/icons/RetryIcon'
 import clsx from 'clsx'
 import { MText } from '../atoms/MText'
-import MChatButton from '../atoms/MChatButton'
 import { useAuthStore } from '../../stores/AuthStore'
 import { LanguageEnum } from '../../utils/enums'
+import MButton from '../atoms/MButton'
 const showRomaji = true
 const japaneseNotation = 'Furigana'
 const chineseNotation = 'Romaji'
@@ -58,18 +58,14 @@ export const Thread = ({
               {thread?.user_message}
             </Text>
             <View className="flex flex-row justify-end gap-2 align-middle">
-              <MChatButton
+              <MButton
+                leadingIcon={<MilaHint />}
                 onPress={async () => {
                   await refectchFeedbackGrammar()
-                }}>
-                <MilaHint />
-              </MChatButton>
-              <MChatButton>
-                <RetryIcon />
-              </MChatButton>
-              <MChatButton>
-                <PlaySlow />
-              </MChatButton>
+                }}
+              />
+              <MButton leadingIcon={<RetryIcon />} />
+              <MButton leadingIcon={<PlaySlow />} />
             </View>
           </View>
         )}
@@ -114,7 +110,8 @@ export const Thread = ({
         </View>
         {thread?.type !== 'USER' && (
           <View className="flex flex-row gap-2 pr-2 pt-2 align-middle text-orange-900 ">
-            <MChatButton
+            <MButton
+              leadingIcon={<PlayAudio />}
               onPress={async () => {
                 const url = thread?.audio_response
                 try {
@@ -126,10 +123,11 @@ export const Thread = ({
                 } catch (error) {
                   console.log('issue playing track', error)
                 }
-              }}>
-              <PlayAudio />
-            </MChatButton>
-            <MChatButton
+              }}
+            />
+
+            <MButton
+              leadingIcon={<TranslateIcon />}
               className="play-button rounded-lg border-orange-100 bg-orange-50 p-2 text-orange-900 shadow-sm active:bg-orange-200  dark:bg-slate-800 dark:text-white dark:active:bg-slate-400"
               onPress={async () => {
                 if (!showToggleTranslate) {
@@ -138,7 +136,7 @@ export const Thread = ({
                 showToggleTranslate(x => !x)
               }}>
               <TranslateIcon />
-            </MChatButton>
+            </MButton>
           </View>
         )}
       </View>

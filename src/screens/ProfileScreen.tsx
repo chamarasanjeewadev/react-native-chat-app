@@ -37,6 +37,7 @@ import { MScreenView } from '../components/atoms/MScreenView'
 import { useAuthStore } from '../stores/AuthStore'
 import { MSection } from '../components/atoms/MSection'
 import { useGetUsersQuery } from '../hooks/queries'
+import { PlayAudio } from '../assets/icons/PlayAudio'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -102,12 +103,12 @@ const ProfileScreen = () => {
   const renderSave = () => {
     return (
       <MButton
-        intent="primary"
+        leadingIcon={<PlayAudio />}
+        intent="secondary"
         size="medium"
         text="defaultText"
         loading={isPending}
-        buttonText={t('save')}
-        className="m-3 p-3 text-center"
+        className="m-3  p-3 text-center"
         onPress={handleSubmit(onSubmit)}>
         {t('save')}
       </MButton>
