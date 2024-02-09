@@ -9,7 +9,7 @@ interface MButtonProps extends TouchableOpacityProps {
   trailingIcon?: React.JSX.Element
 }
 
-const myVarients = {
+const buttonVarients = {
   text: {
     defaultText: 'text-primary-foreground',
     destructiveText: 'text-destructive-foreground',
@@ -34,7 +34,7 @@ const myVarients = {
 }
 
 const buttonStyles = cva(['font-semibold', 'border', 'rounded-lg'], {
-  variants: myVarients,
+  variants: buttonVarients,
   compoundVariants: [
     {
       intent: 'primary',
@@ -63,13 +63,13 @@ export const MButton = ({
   trailingIcon,
   ...props
 }: MButtonProps & VariantProps<typeof buttonStyles>) => {
-  const textColor = myVarients['text'][text ?? 'defaultText']
+  const textColor = buttonVarients['text'][text ?? 'defaultText']
   console.log(textColor)
   return (
     <TouchableOpacity
       {...props}
       className={cn(
-        'flex flex-row  items-center justify-center gap-1 ',
+        'flex flex-row  items-center justify-center gap-1 focus:ring-1 ',
         buttonStyles({ intent, size }),
         className,
         {

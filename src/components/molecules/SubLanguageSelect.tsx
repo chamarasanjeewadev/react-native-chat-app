@@ -1,8 +1,8 @@
 import { View } from 'react-native'
 import { MCheckBoxWithCaption } from '../atoms/MCheckBox'
-import { MLabelTextDescription } from '../atoms/MText'
 import { t } from 'i18next'
 import { useState } from 'react'
+import { MText } from '../atoms/MText'
 
 interface TargetLangProps {
   targetLanguage: Language
@@ -26,9 +26,7 @@ export const SelectSubLanguage = ({
         value={isLanguageSelectionShown}
         onValueChange={newValue => setIsLanguageSelectionShown(newValue)}
       />
-      <MLabelTextDescription className="mt-4 text-sm text-[#475569] dark:text-slate-300">
-        {t('settings.showPR.description')}
-      </MLabelTextDescription>
+      <MText intent="description">{t('settings.showPR.description')}</MText>
       {isLanguageSelectionShown && (
         <View className="dark:border-mila-gray-25 my-5   flex flex-row gap-4">
           {targetLanguage === 'Japanese' && (

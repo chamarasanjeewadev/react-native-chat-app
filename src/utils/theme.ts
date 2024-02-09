@@ -14,7 +14,7 @@ export const themes = {
       '--muted': colors.slate[200],
       '--shadow': colors.emerald[100],
       '--foreground': colors.red[700],
-      '--muted-foreground': '100 116 139',
+      '--muted-foreground': colors.slate[700],
       '--popover': '255 255 255',
       '--popover-foreground': '15 23 42',
       '--border': '226 232 240',

@@ -19,7 +19,6 @@ import { useColorScheme } from 'nativewind'
 import MButton from '../components/atoms/MButton'
 import { CN_O, ES_O, FR_O, GE_O, JP_O, MX_O, UK_O, US_O } from '../assets/icons/Flags'
 import { MHairLine } from '../components/atoms/MHairLine'
-import { MLabelText, MLabelTextDescription, MText } from '../components/atoms/MText'
 import { useUserPost } from '../hooks/mutations'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup' // install @hookform/resolvers (not @hookform/resolvers/yup)
@@ -37,6 +36,7 @@ import { MScreenView } from '../components/atoms/MScreenView'
 import { useAuthStore } from '../stores/AuthStore'
 import { MSection } from '../components/atoms/MSection'
 import { useGetUsersQuery } from '../hooks/queries'
+import { MText } from '../components/atoms/MText'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -119,26 +119,24 @@ const ProfileScreen = () => {
           <MSection>
             <View className="flex flex-row items-center justify-between align-middle ">
               <View>
-                <MText className="text-lg font-semibold ">
+                <MText intent="label" size="large">
                   {t('settings.personal-info.title')}
                 </MText>
-                <MLabelTextDescription className="text-sm  ">
-                  {t('settings.personal-info.description')}
-                </MLabelTextDescription>
+                <MText intent="description">{t('settings.personal-info.description')}</MText>
               </View>
               {renderSave()}
             </View>
           </MSection>
           <MHairLine />
           <MSection className="flex gap-1 ">
-            <MLabelText>{t('settings.personal-info.name')}</MLabelText>
+            <MText intent="label">{t('settings.personal-info.name')}</MText>
             <Controller
               control={control}
               rules={{
                 required: true
               }}
               render={({ field: { onChange, onBlur } }) => (
-                <MTextInput
+                <MTextInput intent=''
                   key="firstName"
                   placeholder="First name"
                   onBlur={onBlur}
@@ -151,7 +149,7 @@ const ProfileScreen = () => {
           </MSection>
           <MHairLine />
           <MSection>
-            <MLabelText>{t('settings.personal-info.email')}</MLabelText>
+            <MText intent="label">{t('settings.personal-info.email')}</MText>
             <MText className="rounded-lg border border-textbordercolor bg-textmutedcolor  p-2 text-sm">
               {user?.email}
             </MText>
@@ -160,12 +158,12 @@ const ProfileScreen = () => {
           <MHairLine />
           {/* profilePic */}
           <MSection className="mt-2">
-            <MLabelText className="text-sm">
+            <MText intent="label" className="text-sm">
               {t('settings.personal-info.profile-picture')}
-            </MLabelText>
-            <MLabelTextDescription className="text-sm ">
+            </MText>
+            <MText intent="description" className="text-sm ">
               {t('settings.personal-info.profile-picture.description')}
-            </MLabelTextDescription>
+            </MText>
 
             <View
               className={clsx(
@@ -178,9 +176,9 @@ const ProfileScreen = () => {
           {/* avatar */}
           <MSection>
             <View className="flex flex-col py-2 ">
-              <MLabelText className="text-sm font-semibold">
+              <MText intent="label" className="text-sm font-semibold">
                 {t('settings.choose-avatar')}
-              </MLabelText>
+              </MText>
               <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" />
               <ScrollView horizontal>
                 <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
@@ -199,9 +197,9 @@ const ProfileScreen = () => {
             </View>
 
             {/* background color */}
-            <MLabelText className="text-sm font-semibold ">
+            <MText intent="label" className="text-sm font-semibold ">
               {t('settings.choose-background-color')}
-            </MLabelText>
+            </MText>
             <ScrollView horizontal className="py-2">
               <View className="slim-scrollbar flex flex-row gap-5 overflow-x-auto">
                 {avatarBackgroundColors.map((c, index) => (
@@ -223,7 +221,9 @@ const ProfileScreen = () => {
           <MSection>
             <View className="mt-2 flex gap-2">
               <View className="">
-                <MLabelText className="text-sm font-semibold  ">Dark Mode</MLabelText>
+                <MText intent="label" className="text-sm font-semibold  ">
+                  Dark Mode
+                </MText>
               </View>
               <View>
                 <Switch
@@ -237,18 +237,18 @@ const ProfileScreen = () => {
           {/* languageSettings */}
           <View className="mb-2 mt-2">
             <MText className="text-lg font-semibold ">{t('settings.language')}</MText>
-            <MLabelTextDescription className="text-sm ">
+            <MText intent="label" className="text-sm ">
               {t('settings.language.description')}
-            </MLabelTextDescription>
+            </MText>
           </View>
 
           <MHairLine />
           {/* auto submit */}
           <MSection>
             <View>
-              <MLabelText className="text-sm font-semibold ">
+              <MText intent="label" className="text-sm font-semibold ">
                 {t('settings.auto-submit')}
-              </MLabelText>
+              </MText>
             </View>
             <View>
               <Controller
@@ -276,16 +276,16 @@ const ProfileScreen = () => {
                 name="autoSubmitThreadhold"
               />
             </View>
-            <MLabelTextDescription className="">
+            <MText intent="label" className="">
               {t('settings.auto-submit.description', { seconds: 0 })}
-            </MLabelTextDescription>
+            </MText>
           </MSection>
           {/* auto recording */}
           <MSection>
             <View className="">
-              <MLabelText className="text-sm font-semibold ">
+              <MText intent="label" className="text-sm font-semibold ">
                 {t('settings.auto-record')}
-              </MLabelText>
+              </MText>
             </View>
             <View className="">
               <Switch
@@ -293,9 +293,9 @@ const ProfileScreen = () => {
                 onValueChange={value => {
                   setAutoRecordEnabled(value)
                 }}></Switch>
-              <MLabelTextDescription className="text-sm ">
+              <MText intent="label" className="text-sm ">
                 {t('settings.auto-record.description')}
-              </MLabelTextDescription>
+              </MText>
             </View>
           </MSection>
           {/* display notation */}
@@ -314,7 +314,7 @@ const ProfileScreen = () => {
           <MHairLine />
 
           <MSection className="gap-1">
-            <MLabelText>{t('settings.proficiencylevel')}</MLabelText>
+            <MText intent="label">{t('settings.proficiencylevel')}</MText>
             <Controller
               control={control}
               render={({ field: { onChange, value } }) => (
@@ -326,7 +326,7 @@ const ProfileScreen = () => {
           <MHairLine />
           {/* daily commitment */}
           <MSection className="gap-1">
-            <MLabelText>{t('settings.daily-commit')}</MLabelText>
+            <MText intent="label">{t('settings.daily-commit')}</MText>
             <View className=" ">
               <Controller
                 control={control}
@@ -335,15 +335,15 @@ const ProfileScreen = () => {
                 )}
                 name="daily_commitment"
               />
-              <MLabelTextDescription className="mt-2">
+              <MText intent="label" className="mt-2">
                 {t('settings.daily-commit.description')}
-              </MLabelTextDescription>
+              </MText>
             </View>
           </MSection>
           <MHairLine />
           {/* native language */}
           <MSection className="gap-1">
-            <MLabelText>{t('settings.native-language')}</MLabelText>
+            <MText intent="label">{t('settings.native-language')}</MText>
             <View className="">
               <Controller
                 control={control}
@@ -352,15 +352,13 @@ const ProfileScreen = () => {
                 )}
                 name="native_language"
               />
-              <MLabelTextDescription>
-                {t('settings.native-language.description')}
-              </MLabelTextDescription>
+              <MText intent="label">{t('settings.native-language.description')}</MText>
             </View>
           </MSection>
           <MHairLine />
           {/* target language */}
           <MSection>
-            <MLabelText>{t('settings.target-language')}</MLabelText>
+            <MText intent="label">{t('settings.target-language')}</MText>
             <ScrollView horizontal className="p-2">
               <View className="flex flex-row gap-1">
                 {targetLanguages.map((option, index) => (
@@ -392,7 +390,7 @@ const ProfileScreen = () => {
           </MSection>
           <MHairLine />
           <MSection>
-            <MLabelText> {t('settings.theme')}</MLabelText>
+            <MText intent="label"> {t('settings.theme')}</MText>
             <View className="flex flex-row  gap-2">
               {themeColors.map((color, index) => (
                 <Pressable

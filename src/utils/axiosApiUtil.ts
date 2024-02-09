@@ -14,9 +14,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   async config => {
     const idToken = getIdToken()
-    let authToken = idToken // storeState?.idToken ?? "";
     config.headers = {
-      Authorization: `Bearer ${authToken}`
+      Authorization: `Bearer ${idToken}`
     }
     return config
   },
@@ -29,7 +28,7 @@ axiosInstance.interceptors.response.use(
   response => response,
   async error => {
     const status = error.response ? error.response.status : null
-    if (status === 403) {
+    if (status === 401) {
       await getAuthTokenByRefreshToken()
     }
     return Promise.reject(error)

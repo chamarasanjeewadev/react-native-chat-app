@@ -15,7 +15,6 @@ import {
 } from '../../assets/icons/SubscriptionIcons'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
-import { MText } from '../atoms/MText'
 import { FeatureCard } from './'
 import StripeSubscription from '../PaymentSheetSubscription'
 import { MScreenView } from '../atoms/MScreenView'
@@ -24,6 +23,7 @@ import { MSection, MSubSection } from '../atoms/MSection'
 import { TextProps } from 'react-native-svg'
 import PaymentSheet from '../organisms/PaymentSheet'
 import MButton from '../atoms/MButton'
+import { MText } from '../atoms/MText'
 
 const useHeaderDesc = ({ currentPlan }: { currentPlan: typeof PLANS }) => {
   const [user] = useAuthStore(state => [state.user, state.setUser])
@@ -224,9 +224,9 @@ const MembershipItem: FC<MembershipItemProps> = ({
             </View>
           </View>
           <View className="flex flex-row gap-1">
-            <MText className="mt-2 text-slate-600 dark:text-white">{priceDescription}</MText>
+            <MText className="mt-2 text-slate-600 dark:text-white ">{priceDescription}</MText>
             {bestDeal && (
-              <View className="rounded-2xl border border-green-200 bg-green-50 px-3 py-1 shadow-sm">
+              <View className="rounded-2xl  border border-green-200 bg-green-50 px-3 py-1 shadow-sm">
                 <MText className="text-sm font-medium text-green-900">
                   {t('subscription.best-deal')}
                 </MText>

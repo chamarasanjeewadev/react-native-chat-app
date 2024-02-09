@@ -1,6 +1,5 @@
 import CheckBox, { CheckBoxProps } from '@react-native-community/checkbox'
 import { View } from 'react-native'
-import { MLabelText } from './MText'
 const MCheckBox = (checkBoxProps: CheckBoxProps) => {
   return (
     <CheckBox
@@ -22,7 +21,7 @@ export const MCheckBoxWithCaption = ({ caption, ...checkBoxProps }: CaptionAndCh
   return (
     <View className="flex flex-row items-center gap-2 ">
       <MCheckBox {...checkBoxProps} />
-      <MLabelText>{caption}</MLabelText>
+      <MText intent="label">{caption}</MText>
     </View>
   )
 }
