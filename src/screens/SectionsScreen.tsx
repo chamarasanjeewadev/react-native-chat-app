@@ -1,4 +1,4 @@
-import { View, Button, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import { useFirstChat } from '../hooks/queries'
 import { Thread } from '../components/organisms/Thread'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -75,7 +75,7 @@ const SectionsScreen = ({ route, navigation }) => {
           <MTextInput
             forwardedRef={textInputRef}
             onChangeText={text => setUserResponseMsg(text)}
-            className="mb-2 h-14 rounded-2xl border border-slate-950 p-4 text-base  font-medium outline-none"
+            className="mb-2  rounded-2xl border border-slate-950 text-base   outline-none"
             placeholder="Type something ..."
           />
         </View>

@@ -1,13 +1,11 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import { useGetMilaChats } from '../hooks/queries'
 import React, { Suspense } from 'react'
 import { Dropdown } from '../assets/icons/DropDown'
-import { ConversationLogo } from '../assets/icons/ConversationLogo'
 import ProgressCircle from '../assets/icons/ProgressCircle'
 import { ConversationProgress, StudyMode } from '../utils/enums'
-import { MFontFamily } from '../utils/fonts/fontFamily'
-import { FadeIn } from '../components/molecules/Skeletons/FadeIn'
 import MButton from '../components/atoms/MButton'
+import { MText } from '../components/atoms/MText'
 
 const ChatsScreen = ({ navigation }) => {
   const { data } = useGetMilaChats()
@@ -22,11 +20,9 @@ const ChatsScreen = ({ navigation }) => {
             {/* <FadeIn /> */}
 
             <View className={'¥align-middle mx-5 flex flex-grow flex-col gap-0.5  '}>
-              <Text
-                className="text-lg font-normal  text-slate-700 dark:text-white"
-                style={{ fontFamily: MFontFamily.poppins400 }}>
+              <MText intent="description" size="large">
                 {section?.title}
-              </Text>
+              </MText>
               <View className={'flex-grow-1 mb-2 flex flex-row justify-between '}>
                 <MButton
                   className="m-0 bg-transparent p-0 px-0 py-0"

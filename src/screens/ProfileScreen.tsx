@@ -113,332 +113,330 @@ const ProfileScreen = () => {
   }
 
   return (
-    <View>
-      <ScrollView automaticallyAdjustContentInsets={false} className="mb-30">
-        <MScreenView>
-          <MSection>
-            <View className="flex flex-row items-center justify-between align-middle ">
-              <View>
-                <MText intent="label" size="large">
-                  {t('settings.personal-info.title')}
-                </MText>
-                <MText intent="description">{t('settings.personal-info.description')}</MText>
-              </View>
-              {renderSave()}
-            </View>
-          </MSection>
-          <MHairLine />
-          <MSection className="flex gap-1 ">
-            <MText intent="label">{t('settings.personal-info.name')}</MText>
-            <Controller
-              control={control}
-              rules={{
-                required: true
-              }}
-              render={({ field: { onChange, onBlur } }) => (
-                <MTextInput
-                  key="firstName"
-                  placeholder="First name"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  defaultValue={user?.full_name}
-                />
-              )}
-              name="full_name"
-            />
-          </MSection>
-          <MHairLine />
-          <MSection>
-            <MText intent="label">{t('settings.personal-info.email')}</MText>
-            <MText className="rounded-lg border border-textbordercolor bg-textmutedcolor  p-2 text-sm">
-              {user?.email}
+    <>
+      <MSection>
+        <View className="flex flex-row items-center justify-between align-middle ">
+          <View>
+            <MText intent="label" size="large">
+              {t('settings.personal-info.title')}
             </MText>
-          </MSection>
-
-          <MHairLine />
-          {/* profilePic */}
-          <MSection className="mt-2">
-            <MText intent="label" className="text-sm">
-              {t('settings.personal-info.profile-picture')}
-            </MText>
-            <MText intent="description" className="text-sm ">
-              {t('settings.personal-info.profile-picture.description')}
-            </MText>
-
-            <View
-              className={clsx(
-                'mt-2 flex h-[50] w-[50] items-center  justify-center rounded-full align-middle',
-                avatarBackgroundColors[backgroundId]?.bgColor
-              )}>
-              <Image resizeMode="cover" source={avatarImages[latestIconId]} />
-            </View>
-          </MSection>
-          {/* avatar */}
-          <MSection>
-            <View className="flex flex-col py-2 ">
-              <MText intent="label" className="text-sm font-semibold">
-                {t('settings.choose-avatar')}
-              </MText>
-              <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" />
-              <ScrollView horizontal>
-                <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
-                  {avatarImages.map((avatar, index) => (
-                    <Pressable
-                      className="h-[50] min-h-[50] w-[50] min-w-[50]"
-                      key={index}
-                      onPress={() => {
-                        setValue('icon_id', index)
-                      }}>
-                      <Image resizeMode="cover" source={avatar} />
-                    </Pressable>
-                  ))}
-                </View>
-              </ScrollView>
-            </View>
-
-            {/* background color */}
-            <MText intent="label" className="text-sm font-semibold ">
-              {t('settings.choose-background-color')}
-            </MText>
-            <ScrollView horizontal className="py-2">
-              <View className="slim-scrollbar flex flex-row gap-5 overflow-x-auto">
-                {avatarBackgroundColors.map((c, index) => (
-                  <Pressable
-                    className={clsx(
-                      c.bgColor,
-                      'h-[50px] w-[50px] min-w-[50px] cursor-pointer rounded-full'
-                    )}
-                    key={`bg-${index}`}
-                    onPress={() => {
-                      setValue('background_id', index)
-                    }}
-                  />
-                ))}
-              </View>
-            </ScrollView>
-          </MSection>
-          {/* dark mode */}
-          <MSection>
-            <View className="mt-2 flex gap-2">
-              <View className="">
-                <MText intent="label" className="text-sm font-semibold  ">
-                  Dark Mode
-                </MText>
-              </View>
-              <View>
-                <Switch
-                  value={colorScheme === 'dark'}
-                  onChange={() => {
-                    toggleColorScheme()
-                  }}></Switch>
-              </View>
-            </View>
-          </MSection>
-          {/* languageSettings */}
-          <View className="mb-2 mt-2">
-            <MText className="text-lg font-semibold ">{t('settings.language')}</MText>
-            <MText intent="label" className="text-sm ">
-              {t('settings.language.description')}
-            </MText>
+            <MText intent="description">{t('settings.personal-info.description')}</MText>
           </View>
-
-          <MHairLine />
-          {/* auto submit */}
-          <MSection>
-            <View>
-              <MText intent="label" className="text-sm font-semibold ">
-                {t('settings.auto-submit')}
-              </MText>
-            </View>
-            <View>
-              <Controller
-                control={control}
-                rules={{
-                  required: true
-                }}
-                render={({ field: { onChange, value } }) => (
-                  <Slider
-                    minimumValue={0}
-                    maximumValue={10}
-                    value={value}
-                    onValueChange={onChange}
-                    tapToSeek
-                    StepMarker={({ stepMarked }) => {
-                      //TODO
-                      return <Text>0</Text>
-                    }}
-                    step={1}
-                    style={{ width: 300, height: 40 }}
-                    minimumTrackTintColor="#FFFFFF"
-                    maximumTrackTintColor="#000000"
-                  />
-                )}
-                name="autoSubmitThreadhold"
-              />
-            </View>
-            <MText intent="label" className="">
-              {t('settings.auto-submit.description', { seconds: 0 })}
-            </MText>
-          </MSection>
-          {/* auto recording */}
-          <MSection>
-            <View className="">
-              <MText intent="label" className="text-sm font-semibold ">
-                {t('settings.auto-record')}
-              </MText>
-            </View>
-            <View className="">
-              <Switch
-                value={autoRecordEnabled}
-                onValueChange={value => {
-                  setAutoRecordEnabled(value)
-                }}></Switch>
-              <MText intent="label" className="text-sm ">
-                {t('settings.auto-record.description')}
-              </MText>
-            </View>
-          </MSection>
-          {/* display notation */}
-          {isLangJapaneseOrChinese(selectedLanguage) && (
-            <>
-              <MHairLine />
-              <MSection className="mt-2">
-                <SelectSubLanguage
-                  notationInfo={notationState}
-                  setNotation={setNotationState}
-                  targetLanguage={selectedLanguage}
-                />
-              </MSection>
-            </>
-          )}
-          <MHairLine />
-
-          <MSection className="gap-1">
-            <MText intent="label">{t('settings.proficiencylevel')}</MText>
-            <Controller
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <MDropdown value={value} items={proficiencyOptions} onValueChange={onChange} />
-              )}
-              name="proficiency"
+          {renderSave()}
+        </View>
+      </MSection>
+      <MHairLine />
+      <MSection className="flex gap-1 ">
+        <MText intent="label">{t('settings.personal-info.name')}</MText>
+        <Controller
+          control={control}
+          rules={{
+            required: true
+          }}
+          render={({ field: { onChange, onBlur } }) => (
+            <MTextInput
+              key="firstName"
+              placeholder="First name"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              defaultValue={user?.full_name}
             />
-          </MSection>
-          <MHairLine />
-          {/* daily commitment */}
-          <MSection className="gap-1">
-            <MText intent="label">{t('settings.daily-commit')}</MText>
-            <View className=" ">
-              <Controller
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <MDropdown value={+value} items={dailyCommitOptions} onValueChange={onChange} />
-                )}
-                name="daily_commitment"
-              />
-              <MText intent="label" className="mt-2">
-                {t('settings.daily-commit.description')}
-              </MText>
-            </View>
-          </MSection>
-          <MHairLine />
-          {/* native language */}
-          <MSection className="gap-1">
-            <MText intent="label">{t('settings.native-language')}</MText>
-            <View className="">
-              <Controller
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <MDropdown value={value} items={nativeLanguageOptions} onValueChange={onChange} />
-                )}
-                name="native_language"
-              />
-              <MText intent="label">{t('settings.native-language.description')}</MText>
-            </View>
-          </MSection>
-          <MHairLine />
-          {/* target language */}
-          <MSection>
-            <MText intent="label">{t('settings.target-language')}</MText>
-            <ScrollView horizontal className="p-2">
-              <View className="flex flex-row gap-1">
-                {targetLanguages.map((option, index) => (
-                  <Controller
-                    key={index}
-                    control={control}
-                    render={({ field: { onChange, value } }) => (
-                      <TouchableOpacity
-                        value={value}
-                        key={index}
-                        onPress={() => {
-                          onChange(option.value)
-                        }}
-                        className={clsx('mx-2 flex  justify-center px-2 ', {
-                          'rounded-lg border border-blue-400': value === option.value
-                        })}>
-                        <View className="mt-2  text-center text-sm font-semibold text-textprimary">
-                          <View>{option.flag}</View>
-                          <MText className="mt-2 text-sm">{option.label}</MText>
-                          <MText className="text-center text-sm">{option.shortText}</MText>
-                        </View>
-                      </TouchableOpacity>
-                    )}
-                    name="target_language"
-                  />
-                ))}
-              </View>
-            </ScrollView>
-          </MSection>
-          <MHairLine />
-          <MSection>
-            <MText intent="label"> {t('settings.theme')}</MText>
-            <View className="flex flex-row  gap-2">
-              {themeColors.map((color, index) => (
+          )}
+          name="full_name"
+        />
+      </MSection>
+      <MHairLine />
+      <MSection>
+        <MText intent="label">{t('settings.personal-info.email')}</MText>
+        <MText className="border-textbordercolor bg-textmutedcolor rounded-lg border  p-2 text-sm">
+          {user?.email}
+        </MText>
+      </MSection>
+
+      <MHairLine />
+      {/* profilePic */}
+      <MSection className="mt-2">
+        <MText intent="label" className="text-sm">
+          {t('settings.personal-info.profile-picture')}
+        </MText>
+        <MText intent="description" className="text-sm ">
+          {t('settings.personal-info.profile-picture.description')}
+        </MText>
+
+        <View
+          className={clsx(
+            'mt-2 flex h-[50] w-[50] items-center  justify-center rounded-full align-middle',
+            avatarBackgroundColors[backgroundId]?.bgColor
+          )}>
+          <Image resizeMode="cover" source={avatarImages[latestIconId]} />
+        </View>
+      </MSection>
+      {/* avatar */}
+      <MSection>
+        <View className="flex flex-col py-2 ">
+          <MText intent="label" className="text-sm font-semibold">
+            {t('settings.choose-avatar')}
+          </MText>
+          <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" />
+          <ScrollView horizontal>
+            <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
+              {avatarImages.map((avatar, index) => (
                 <Pressable
-                  style={{ backgroundColor: color.bgColor }}
-                  className={clsx(
-                    ' flex h-12 w-12 flex-row  items-center justify-center rounded-lg text-center'
-                  )}
+                  className="h-[50] min-h-[50] w-[50] min-w-[50]"
                   key={index}
                   onPress={() => {
-                    setThemeColor(color.color)
+                    setValue('icon_id', index)
                   }}>
-                  {color.color === themeColor && <Tick />}
+                  <Image resizeMode="cover" source={avatar} />
                 </Pressable>
               ))}
             </View>
-          </MSection>
-          <MSection>
-            <View className="flex flex-row justify-between ">
-              <Logout />
-              {renderSave()}
-            </View>
-          </MSection>
-          <MSection>
-            <View className="justify-left flex  gap-2 text-center ">
-              <View className="flex flex-row items-center gap-1">
-                <MText> We care about your data in our</MText>
-                <MButton
-                  text="linkText"
-                  intent="link"
-                  onPress={() => {
-                    Linking.openURL('https://milaai.app/help/privacy-policy')
-                  }}>
-                  {'Privacy policy'}
-                </MButton>
-              </View>
-              <MButton
-                text="linkText"
-                intent="link"
+          </ScrollView>
+        </View>
+
+        {/* background color */}
+        <MText intent="label" className="text-sm font-semibold ">
+          {t('settings.choose-background-color')}
+        </MText>
+        <ScrollView horizontal className="py-2">
+          <View className="slim-scrollbar flex flex-row gap-5 overflow-x-auto">
+            {avatarBackgroundColors.map((c, index) => (
+              <Pressable
+                className={clsx(
+                  c.bgColor,
+                  'h-[50px] w-[50px] min-w-[50px] cursor-pointer rounded-full'
+                )}
+                key={`bg-${index}`}
                 onPress={() => {
-                  Linking.openURL('https://milaai.app/help/terms-conditions')
-                }}>
-                {'Terms and Conditions'}
-              </MButton>
-            </View>
+                  setValue('background_id', index)
+                }}
+              />
+            ))}
+          </View>
+        </ScrollView>
+      </MSection>
+      {/* dark mode */}
+      <MSection>
+        <View className="mt-2 flex gap-2">
+          <View className="">
+            <MText intent="label" className="text-sm font-semibold  ">
+              Dark Mode
+            </MText>
+          </View>
+          <View>
+            <Switch
+              value={colorScheme === 'dark'}
+              onChange={() => {
+                toggleColorScheme()
+              }}></Switch>
+          </View>
+        </View>
+      </MSection>
+      {/* languageSettings */}
+      <View className="mb-2 mt-2">
+        <MText className="text-lg font-semibold ">{t('settings.language')}</MText>
+        <MText intent="description" className="text-sm ">
+          {t('settings.language.description')}
+        </MText>
+      </View>
+
+      <MHairLine />
+      {/* auto submit */}
+      <MSection>
+        <View>
+          <MText intent="label" className="text-sm font-semibold ">
+            {t('settings.auto-submit')}
+          </MText>
+        </View>
+        <View>
+          <Controller
+            control={control}
+            rules={{
+              required: true
+            }}
+            render={({ field: { onChange, value } }) => (
+              <Slider
+                minimumValue={0}
+                maximumValue={10}
+                value={value}
+                onValueChange={onChange}
+                tapToSeek
+                StepMarker={({ stepMarked }) => {
+                  //TODO
+                  return <Text>0</Text>
+                }}
+                step={1}
+                style={{ width: 300, height: 40 }}
+                minimumTrackTintColor="#FFFFFF"
+                maximumTrackTintColor="#000000"
+              />
+            )}
+            name="autoSubmitThreadhold"
+          />
+        </View>
+        <MText intent="description" className="">
+          {t('settings.auto-submit.description', { seconds: 0 })}
+        </MText>
+      </MSection>
+      {/* auto recording */}
+      <MSection>
+        <View className="">
+          <MText intent="label" className="text-sm font-semibold ">
+            {t('settings.auto-record')}
+          </MText>
+        </View>
+        <View className="">
+          <Switch
+            value={autoRecordEnabled}
+            onValueChange={value => {
+              setAutoRecordEnabled(value)
+            }}></Switch>
+          <MText intent="description" className="text-sm ">
+            {t('settings.auto-record.description')}
+          </MText>
+        </View>
+      </MSection>
+      {/* display notation */}
+      {isLangJapaneseOrChinese(selectedLanguage) && (
+        <>
+          <MHairLine />
+          <MSection className="mt-2">
+            <SelectSubLanguage
+              notationInfo={notationState}
+              setNotation={setNotationState}
+              targetLanguage={selectedLanguage}
+            />
           </MSection>
-        </MScreenView>
-      </ScrollView>
-    </View>
+        </>
+      )}
+      <MHairLine />
+
+      <MSection className="gap-1">
+        <MText intent="label">{t('settings.proficiencylevel')}</MText>
+        <Controller
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <MDropdown value={value} items={proficiencyOptions} onValueChange={onChange} />
+          )}
+          name="proficiency"
+        />
+      </MSection>
+      <MHairLine />
+      {/* daily commitment */}
+      <MSection className="gap-1">
+        <MText intent="label">{t('settings.daily-commit')}</MText>
+        <View className=" ">
+          <Controller
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <MDropdown value={+value} items={dailyCommitOptions} onValueChange={onChange} />
+            )}
+            name="daily_commitment"
+          />
+          <MText intent="description" className="mt-2">
+            {t('settings.daily-commit.description')}
+          </MText>
+        </View>
+      </MSection>
+      <MHairLine />
+      {/* native language */}
+      <MSection className="gap-1">
+        <MText intent="label">{t('settings.native-language')}</MText>
+        <View className="">
+          <Controller
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <MDropdown value={value} items={nativeLanguageOptions} onValueChange={onChange} />
+            )}
+            name="native_language"
+          />
+          <MText intent="description">{t('settings.native-language.description')}</MText>
+        </View>
+      </MSection>
+      <MHairLine />
+      {/* target language */}
+      <MSection>
+        <MText intent="label">{t('settings.target-language')}</MText>
+        <ScrollView horizontal className="p-2">
+          <View className="flex flex-row gap-1">
+            {targetLanguages.map((option, index) => (
+              <Controller
+                key={index}
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <TouchableOpacity
+                    value={value}
+                    key={index}
+                    onPress={() => {
+                      onChange(option.value)
+                    }}
+                    className={clsx('mx-2 flex  justify-center px-2 ', {
+                      'rounded-lg border border-blue-400': value === option.value
+                    })}>
+                    <View className="text-textprimary  mt-2 text-center text-sm font-semibold">
+                      <View>{option.flag}</View>
+                      <MText className="mt-2 text-sm">{option.label}</MText>
+                      <MText className="text-center text-sm">{option.shortText}</MText>
+                    </View>
+                  </TouchableOpacity>
+                )}
+                name="target_language"
+              />
+            ))}
+          </View>
+        </ScrollView>
+      </MSection>
+      <MHairLine />
+      <MSection>
+        <MText intent="label"> {t('settings.theme')}</MText>
+        <View className="flex flex-row  gap-2">
+          {themeColors.map((color, index) => (
+            <Pressable
+              style={{ backgroundColor: color.bgColor }}
+              className={clsx(
+                ' flex h-12 w-12 flex-row  items-center justify-center rounded-lg text-center'
+              )}
+              key={index}
+              onPress={() => {
+                setThemeColor(color.color)
+              }}>
+              {color.color === themeColor && <Tick />}
+            </Pressable>
+          ))}
+        </View>
+      </MSection>
+      <MSection>
+        <View className="flex flex-row justify-between ">
+          <Logout />
+          {renderSave()}
+        </View>
+      </MSection>
+      <MSection>
+        <View className="justify-left flex  gap-2 text-center ">
+          <View className="flex flex-row items-center gap-1">
+            <MText size="medium" className="font-normal">
+              We care about your data in our
+            </MText>
+            <MButton
+              text="linkText"
+              intent="link"
+              onPress={() => {
+                Linking.openURL('https://milaai.app/help/privacy-policy')
+              }}>
+              {'Privacy policy'}
+            </MButton>
+          </View>
+          <MButton
+            text="linkText"
+            intent="link"
+            onPress={() => {
+              Linking.openURL('https://milaai.app/help/terms-conditions')
+            }}>
+            {'Terms and Conditions'}
+          </MButton>
+        </View>
+      </MSection>
+    </>
   )
 }
 
