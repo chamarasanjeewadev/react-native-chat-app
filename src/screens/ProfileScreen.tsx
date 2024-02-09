@@ -114,11 +114,15 @@ const ProfileScreen = () => {
                 </MLabelTextDescription>
               </View>
               <MButton
+                intent="primary"
+                size="medium"
+                text="outlineText"
                 loading={isPending}
                 buttonText={t('save')}
                 className="m-3 p-3 text-center"
-                onPress={handleSubmit(onSubmit)}
-              />
+                onPress={handleSubmit(onSubmit)}>
+                {t('save')}
+              </MButton>
             </View>
           </MSection>
           <MHairLine />
@@ -405,10 +409,14 @@ const ProfileScreen = () => {
             <View className="flex flex-row justify-between ">
               <Logout />
               <MButton
+                intent="primary"
+                size="small"
+                text="defaultText"
                 buttonText={t('save')}
                 className="m-3 p-3 text-center"
-                onPress={handleSubmit(onSubmit)}
-              />
+                onPress={handleSubmit(onSubmit)}>
+                {/* {t('save')} */}dfasfasdfdsafsdsfs
+              </MButton>
             </View>
           </MSection>
           <MSection>

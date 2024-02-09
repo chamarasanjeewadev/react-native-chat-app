@@ -29,6 +29,7 @@
     "add": "^2.0.6",
     "axios": "^1.6.2",
     "babel-plugin-module-resolver": "^5.0.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
     "i18next": "^23.8.2",
