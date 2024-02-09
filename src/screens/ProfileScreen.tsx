@@ -99,6 +99,21 @@ const ProfileScreen = () => {
     }
   }
 
+  const renderSave = () => {
+    return (
+      <MButton
+        intent="primary"
+        size="medium"
+        text="defaultText"
+        loading={isPending}
+        buttonText={t('save')}
+        className="m-3 p-3 text-center"
+        onPress={handleSubmit(onSubmit)}>
+        {t('save')}
+      </MButton>
+    )
+  }
+
   return (
     <View>
       <ScrollView automaticallyAdjustContentInsets={false} className="mb-30">
@@ -113,16 +128,7 @@ const ProfileScreen = () => {
                   {t('settings.personal-info.description')}
                 </MLabelTextDescription>
               </View>
-              <MButton
-                intent="primary"
-                size="medium"
-                text="outlineText"
-                loading={isPending}
-                buttonText={t('save')}
-                className="m-3 p-3 text-center"
-                onPress={handleSubmit(onSubmit)}>
-                {t('save')}
-              </MButton>
+              {renderSave()}
             </View>
           </MSection>
           <MHairLine />
@@ -408,15 +414,7 @@ const ProfileScreen = () => {
           <MSection>
             <View className="flex flex-row justify-between ">
               <Logout />
-              <MButton
-                intent="primary"
-                size="small"
-                text="defaultText"
-                buttonText={t('save')}
-                className="m-3 p-3 text-center"
-                onPress={handleSubmit(onSubmit)}>
-                {/* {t('save')} */}dfasfasdfdsafsdsfs
-              </MButton>
+              {renderSave()}
             </View>
           </MSection>
           <MSection>
@@ -443,6 +441,7 @@ const ProfileScreen = () => {
     </View>
   )
 }
+
 export default ProfileScreen
 
 export const targetLanguages: ITargetLanguageOption[] = [
