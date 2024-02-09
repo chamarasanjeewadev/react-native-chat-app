@@ -10,24 +10,44 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: {
-          1: 'var(--accent1)'
-        },
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
         success: 'var(--success)',
         info: 'var(--info)',
         warning: 'var(--warning)',
         danger: 'var(--danger)',
-        muted: 'var(--muted)',
         shadow: 'var(--shadow)',
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
         background: 'var(--background)',
-        textprimary: 'var(--text-primary)',
-        texttitle: 'var(--text-title)',
-        textsecondary: 'var(--text-secondary)',
-        textmutedcolor: 'var(--text-muted)',
-        textbordercolor: ',var(--text-border)',
-        textfocuscolor: 'var(--text-focus)'
+        foreground: 'var(--foreground)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)'
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)'
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)'
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)'
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)'
+        },
+        popover: {
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)'
+        },
+        card: {
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)'
+        }
       }
     }
   },

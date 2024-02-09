@@ -14,7 +14,7 @@ export const Logout = () => {
   }
   return (
     <MButton
-      intent="secondary"
+      intent="primary"
       size="small"
       text="defaultText"
       onPress={() => {

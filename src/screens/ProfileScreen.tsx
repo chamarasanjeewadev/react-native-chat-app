@@ -104,9 +104,9 @@ const ProfileScreen = () => {
     return (
       <MButton
         leadingIcon={<PlayAudio />}
-        intent="secondary"
+        intent="primary"
         size="medium"
-        text="defaultText"
+        text="destructiveText"
         loading={isPending}
         className="m-3  p-3 text-center"
         onPress={handleSubmit(onSubmit)}>

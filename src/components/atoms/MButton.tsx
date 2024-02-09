@@ -11,9 +11,9 @@ interface MButtonProps extends TouchableOpacityProps {
 
 const myVarients = {
   text: {
-    defaultText: ['text-textsecondary font-semibold'],
+    defaultText: 'text-primary-foreground',
     destructiveText: 'text-destructive-foreground',
-    outlineText: 'text-[#6e9b0f44]',
+    outlineText: 'text-primary',
     ghostText: 'text-primary',
     linkText: 'text-primary'
   },
@@ -59,6 +59,8 @@ export const MButton = ({
   trailingIcon,
   ...props
 }: MButtonProps & VariantProps<typeof buttonStyles>) => {
+  const textColor = myVarients['text'][text]
+  console.log(textColor)
   return (
     <TouchableOpacity
       {...props}
@@ -71,14 +73,12 @@ export const MButton = ({
         }
       )}>
       {loading ? (
-        <ActivityIndicator color={'white'} className="px-2  text-primary" size="small" />
+        <ActivityIndicator color={'white'} className="px-2 " size="small" />
       ) : (
         <>
           {leadingIcon && leadingIcon}
           {children && (
-            <Text
-              style={{ fontFamily: MFontFamily.poppins400 }}
-              className={cn(myVarients['text'][text])}>
+            <Text style={{ fontFamily: MFontFamily.poppins400 }} className={cn(textColor)}>
               {children}
             </Text>
           )}
