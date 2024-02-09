@@ -136,7 +136,7 @@ const ProfileScreen = () => {
                 required: true
               }}
               render={({ field: { onChange, onBlur } }) => (
-                <MTextInput intent=''
+                <MTextInput
                   key="firstName"
                   placeholder="First name"
                   onBlur={onBlur}

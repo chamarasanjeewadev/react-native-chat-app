@@ -6,7 +6,6 @@ module.exports = {
       {
         root: ['./'],
         alias: {
-          'moti/skeleton': 'moti/skeleton/react-native-linear-gradient',
           src: './src',
           assets: './src/assets',
           screens: './src/screens',
@@ -14,8 +13,9 @@ module.exports = {
           navigators: './src/navigators',
           services: './src/services',
           utils: './src/utils',
-          store: './src/store',
-          configs: './src/configs'
+          store: './src/stores',
+          configs: './src/configs',
+          'moti/skeleton': 'moti/skeleton/react-native-linear-gradient'
         }
       }
     ],

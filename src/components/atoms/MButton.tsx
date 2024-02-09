@@ -25,7 +25,7 @@ const buttonVarients = {
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     ghost: 'hover:bg-accent hover:text-accent-foreground',
     link: ' underline text-primary    ',
-    primary: ['bg-blue-500', 'text-white', 'border-transparent']
+    primary: ['bg-primary', 'text-white', 'border-transparent']
   },
   size: {
     small: ['text-sm', 'py-1', 'px-2', 'm-3', 'py-3'],
@@ -64,7 +64,6 @@ export const MButton = ({
   ...props
 }: MButtonProps & VariantProps<typeof buttonStyles>) => {
   const textColor = buttonVarients['text'][text ?? 'defaultText']
-  console.log(textColor)
   return (
     <TouchableOpacity
       {...props}

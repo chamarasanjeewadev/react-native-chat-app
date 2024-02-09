@@ -1,5 +1,7 @@
 import CheckBox, { CheckBoxProps } from '@react-native-community/checkbox'
 import { View } from 'react-native'
+import { MText } from './MText'
+
 const MCheckBox = (checkBoxProps: CheckBoxProps) => {
   return (
     <CheckBox
