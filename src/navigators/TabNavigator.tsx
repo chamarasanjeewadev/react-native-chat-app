@@ -13,7 +13,7 @@ import SettingsScreen from '../screens/SettingsScreen'
 
 export type BottomTabNavigatorParamList = {
   home: any | undefined // TODO: add proper typings
-  explore: any | undefined
+  chats: any | undefined
   practice: any | undefined
   profile: any | undefined
   settings: any
@@ -26,11 +26,10 @@ export const TabNavigator = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={'settings'}
+      initialRouteName={'chats'}
       screenOptions={{
         tabBarStyle: { paddingTop: 5, paddingBottom: 5, height: 50 }
-      }}
-    >
+      }}>
       <Tab.Screen
         options={{
           headerShown: false,
@@ -45,7 +44,7 @@ export const TabNavigator = () => {
           tabBarLabel: 'Chats',
           tabBarIcon: Explore
         }}
-        name="explore"
+        name="chats"
         component={ChatNavigator}
       />
       <Tab.Screen

@@ -1,4 +1,4 @@
-import { View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, TextInput, TouchableOpacity, ScrollView, Text } from 'react-native'
 import { useFirstChat } from '../hooks/queries'
 import { Thread } from '../components/organisms/Thread'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -6,12 +6,15 @@ import { usePostMessage } from '../hooks/mutations'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import React from 'react'
 import { MTextInput } from '../components/atoms/MTextInput'
+import useAudioRecorder from '../components/molecules/AudioRecorder'
 const difficulty = 1
 
 const SectionsScreen = ({ route, navigation }) => {
   const { section } = route.params
   let { data: firstChat, refetch } = useFirstChat(difficulty, section?.id)
   let [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([])
+  const [localrec, setLocalRec] = useState(false)
+  const { startRecording, stopRecording, isRecording, recording, recordings } = useAudioRecorder()
   const [userResponseMsg, setUserResponseMsg] = useState('')
   const textInputRef = useRef(null)
   const mutation = usePostMessage()
@@ -79,21 +82,38 @@ const SectionsScreen = ({ route, navigation }) => {
             placeholder="Type something ..."
           />
         </View>
-        <View className="align-center flex flex-row gap-1">
+        <View>
+          {recordings &&
+            recordings.map((recordingLine, index) => (
+              <TouchableOpacity key={index} onPress={() => recordingLine.sound.replayAsync()}>
+                <Text>Play</Text>
+              </TouchableOpacity>
+            ))}
+        </View>
+        <View className="align-center flex gap-1">
           <TouchableOpacity onPress={handleSendButtonPress} className="self-center">
             <Icon name="send" size={30} color="#900" />
           </TouchableOpacity>
+          {/* when press start button start recording
+when the recording is done send it to backend as a chat message
+get the response and append to chat */}
           <TouchableOpacity
-            disabled={!userResponseMsg}
-            activeOpacity={0.7}
-            onPress={() => {
-              console.log('pressed')
+            onPress={async () => {
+              try {
+                console.log('recording obe', isRecording)
+                isRecording ? stopRecording() : startRecording()
+              } catch (error) {
+                console.log('error occured whil recording', error)
+                // await stopRecording()
+              }
             }}
-            className={'self-center'}>
-            <Icon name="settings-voice" size={30} color="#900" />
+            // leadingIcon={<Icon name="settings-voice" size={30} color="#900" />}
+          >
+            <Text>record</Text>
           </TouchableOpacity>
         </View>
       </View>
+      {/* <useAudioRecorder /> */}
     </View>
   )
 }

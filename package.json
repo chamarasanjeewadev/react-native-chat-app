@@ -32,6 +32,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
+    "expo": "^50.0.0",
+    "expo-av": "~13.10.5",
     "i18next": "^23.8.2",
     "moti": "^0.27.2",
     "nativewind": "^4.0.23",

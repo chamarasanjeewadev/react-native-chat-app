@@ -13,6 +13,7 @@ import { MText } from '../atoms/MText'
 import { useAuthStore } from '../../stores/AuthStore'
 import { LanguageEnum } from '../../utils/enums'
 import MButton from '../atoms/MButton'
+import { usePlayAudio } from '../molecules/AudioRecorder'
 const showRomaji = true
 const japaneseNotation = 'Furigana'
 const chineseNotation = 'Romaji'
@@ -48,6 +49,7 @@ export const Thread = ({
   )
   const [showTranslate, showToggleTranslate] = useState(false)
   const { user } = useAuthStore()
+  // const { setUrl, playSound } = usePlayAudio()
 
   return (
     <>
@@ -113,7 +115,10 @@ export const Thread = ({
             <MButton
               leadingIcon={<PlayAudio />}
               onPress={async () => {
-                const url = thread?.audio_response
+                const url = thread?.audio_response;
+                console.log("url...",url)
+                // setUrl(url)
+                // await playSound()
                 try {
                   await TrackPlayer.reset()
                   await TrackPlayer.add({
