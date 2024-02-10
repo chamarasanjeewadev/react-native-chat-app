@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { Audio } from 'expo-av'
 
+type AudioType = {
+  sound: Audio.Sound
+  file: string
+}
+
 const useAudioRecorder = () => {
-  const [recording, setRecording] = useState(null)
+  const [recording, setRecording] = useState<Audio.Recording>(null)
   const [isRecording, setIsRecording] = useState(false)
-  const [recordings, setRecordings] = useState([])
+  const [recordings, setRecordings] = useState<AudioType[]>([])
 
   const startRecording = async () => {
-    console.log('inside start rec...')
     try {
       const { granted } = await Audio.requestPermissionsAsync()
       if (!granted) {
@@ -19,9 +23,8 @@ const useAudioRecorder = () => {
         playsInSilentModeIOS: true
       })
 
-      const recordingObject = new Audio.Recording()
-      await recordingObject.prepareToRecordAsync()
-      await recordingObject.startAsync()
+      const x = { ...Audio.RecordingOptionsPresets.HIGH_QUALITY, outputFormat: '.wav' }
+      const { recording: recordingObject } = await Audio.Recording.createAsync(x)
 
       setRecording(recordingObject)
       setIsRecording(x => !x)
@@ -50,7 +53,6 @@ const useAudioRecorder = () => {
           ...x,
           {
             sound: sound,
-            duration: getDurationFormatted(status.durationMillis),
             file: recording.getURI()
           }
         ])

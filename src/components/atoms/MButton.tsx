@@ -66,15 +66,15 @@ export const MButton = ({
   const textColor = buttonVarients['text'][text ?? 'defaultText']
   return (
     <TouchableOpacity
-      {...props}
       className={cn(
-        'flex flex-row  items-center justify-center gap-1 focus:ring-1 ',
+        'flex flex-row  items-center justify-center gap-1 ',
         buttonStyles({ intent, size }),
         className,
         {
           'opacity-65': loading
         }
-      )}>
+      )}
+      {...props}>
       {loading ? (
         <ActivityIndicator color={'white'} className="px-2 " size="small" />
       ) : (

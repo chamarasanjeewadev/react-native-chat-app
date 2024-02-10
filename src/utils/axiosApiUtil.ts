@@ -28,7 +28,8 @@ axiosInstance.interceptors.response.use(
   response => response,
   async error => {
     const status = error.response ? error.response.status : null
-    if (status === 401) {
+    console.log('axios status', status)
+    if (status === 401 || status === 403) {
       await getAuthTokenByRefreshToken()
     }
     return Promise.reject(error)
