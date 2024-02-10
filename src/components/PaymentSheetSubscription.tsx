@@ -3,14 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { MERCHANT_ID, API_URL, PUBLISHABLE_kEY, MESSAGES } from './../utils/consts'
 import { t } from 'i18next'
-import Snackbar from 'react-native-snackbar'
 import MButton from './atoms/MButton'
-import { FontFamily } from '../utils/GlobalStyles'
-import { MFontFamily } from '../utils/fonts/fontFamily'
 import { SetupParams } from '@stripe/stripe-react-native/lib/typescript/src/types/PaymentSheet'
+import useSnackBar from '../hooks/useSnackBar'
 
 const StripeSubscription = () => {
   const [ready, setReady] = useState(false)
+  const { showSnackBar } = useSnackBar()
   const { initPaymentSheet, presentPaymentSheet, loading } = usePaymentSheet()
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const StripeSubscription = () => {
     }
     const { error } = await initPaymentSheet(setUpParams)
     if (error) {
-      Snackbar.show({ text: `Error code: ${error.code} ${error.message}` })
+      showSnackBar({ text: `Error code: ${error.code} ${error.message}` })
     } else {
       setReady(true)
     }
@@ -57,11 +56,10 @@ const StripeSubscription = () => {
   const handleSubscription = async () => {
     const { error } = await presentPaymentSheet({})
     if (error) {
-      Snackbar.show({ title: `Error code: ${error.code} error.message` })
+      showSnackBar({ text: `Error code: ${error.code} error.message` })
     } else {
-      Snackbar.show({
-        text: MESSAGES.SUBSCRIPTION_SUCCESS,
-        duration: Snackbar.LENGTH_LONG
+      showSnackBar({
+        text: MESSAGES.SUBSCRIPTION_SUCCESS
       })
       setReady(false)
     }

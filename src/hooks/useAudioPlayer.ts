@@ -1,45 +1,52 @@
-import { useEffect, useState } from 'react';
-import { Audio } from 'expo-av';
+import { useEffect, useState } from 'react'
+import { Audio } from 'expo-av'
+import useSnackBar from './useSnackBar'
 
-const useAudioPlayer = (audioFile) => {
-  const [sound, setSound] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+const useAudioPlayer = audioFile => {
+  const [sound, setSound] = useState(null)
+  const { showSnackBar } = useSnackBar()
+  const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
     const loadAudio = async () => {
-      const { sound } = await Audio.Sound.createAsync(audioFile);
-      setSound(sound);
-    };
+      const { sound } = await Audio.Sound.createAsync({ uri: audioFile })
+      setSound(sound)
+    }
 
-    loadAudio();
+    loadAudio()
 
     // Cleanup function
     return () => {
       if (sound) {
-        sound.unloadAsync();
+        sound.unloadAsync()
       }
-    };
-  }, [audioFile]);
+    }
+  }, [audioFile])
 
   const playAudio = async () => {
-    if (sound) {
-      await sound.playAsync();
-      setIsPlaying(true);
+    try {
+      if (sound) {
+        await sound.playAsync()
+        setIsPlaying(true)
+      }
+    } catch (error) {
+      console.log('error occured', error)
+      showSnackBar({ text: error })
     }
-  };
+  }
 
   const stopAudio = async () => {
     if (sound) {
-      await sound.stopAsync();
-      setIsPlaying(false);
+      await sound.stopAsync()
+      setIsPlaying(false)
     }
-  };
+  }
 
   return {
     playAudio,
     stopAudio,
-    isPlaying,
-  };
-};
+    isPlaying
+  }
+}
 
-export default useAudioPlayer;
+export default useAudioPlayer

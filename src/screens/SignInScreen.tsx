@@ -5,11 +5,13 @@ import { getAuthToken } from '../utils/authUtil'
 import Snackbar from 'react-native-snackbar'
 import { useAuthStore } from '../stores/AuthStore'
 import MButton from '../components/atoms/MButton'
+import useSnackBar from '../hooks/useSnackBar'
 // when user log in, id token will be retrieved from azure and store on storage, user info will be stored automatically to storage
 // id token is handled explicitly. In future it will be encrypted and maintain seperatly.
 const SignInScreen = () => {
   const { isLoading, refetch: getUserInfo } = useGetUsersQuery()
   const { setUser } = useAuthStore()
+  const { showSnackBar } = useSnackBar()
 
   const handleAuthorize = useCallback(async () => {
     try {
@@ -20,7 +22,7 @@ const SignInScreen = () => {
       })
     } catch (error) {
       console.log(error)
-      Snackbar.show({
+      showSnackBar({
         text: error.message,
         duration: Snackbar.LENGTH_SHORT
       })

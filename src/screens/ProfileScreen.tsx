@@ -31,12 +31,11 @@ import { MTextInput } from '../components/atoms/MTextInput'
 import { SelectSubLanguage } from '../components/molecules/SubLanguageSelect'
 import { Logout } from '../components/molecules/Logout'
 import { Tick } from '../assets/icons/CheckIcon'
-import Snackbar from 'react-native-snackbar'
-import { MScreenView } from '../components/atoms/MScreenView'
 import { useAuthStore } from '../stores/AuthStore'
 import { MSection } from '../components/atoms/MSection'
 import { useGetUsersQuery } from '../hooks/queries'
 import { MText } from '../components/atoms/MText'
+import useSnackBar from '../hooks/useSnackBar'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -54,6 +53,7 @@ const ProfileScreen = () => {
   const { mutate, isPending } = useUserPost()
   const { setUser, user: userOnState } = useAuthStore()
   const { t } = useTranslation()
+  const { showSnackBar } = useSnackBar()
   const [autoRecord, autoSubmitThreadhold, themeColor, notation, setThemeColor, setUserState] =
     useSettingStore(state => [
       state.autoRecord,
@@ -89,11 +89,12 @@ const ProfileScreen = () => {
         language: notationState.lang,
         notation: notationState.notation,
         autoRecord: autoRecordEnabled,
-        autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0
+        autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0,
+        showRomaji: !!notationState.notation
       })
       await mutate(data)
       setUser({ ...userOnState, ...data })
-      Snackbar.show({ text: MESSAGES.USER_UPDATE_SUCCESS })
+      showSnackBar({ text: MESSAGES.USER_UPDATE_SUCCESS })
     } catch (error) {
       console.log('error')
     }

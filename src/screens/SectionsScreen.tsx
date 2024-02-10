@@ -1,12 +1,9 @@
-import { View, TextInput, TouchableOpacity, ScrollView, Text } from 'react-native'
+import { View, TextInput, ScrollView } from 'react-native'
 import { useFirstChat } from '../hooks/queries'
 import { Thread } from '../components/organisms/Thread'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePostMessage } from '../hooks/mutations'
-// import Icon from 'react-native-vector-icons/MaterialIcons'
 import React from 'react'
-// import { MTextInput } from '../components/atoms/MTextInput'
-import useAudioRecorder from '../components/molecules/AudioRecorder'
 import ChatBar from '../components/organisms/ChatBar'
 const difficulty = 1
 
@@ -17,7 +14,6 @@ const SectionsScreen = ({ route, navigation }) => {
   const textInputRef = useRef(null)
   const mutation = usePostMessage()
   const ref = useRef<TextInput>(null)
-  
 
   const scrollToBottom = () => {
     ref.current?.scrollToEnd({ animated: true })
@@ -35,8 +31,6 @@ const SectionsScreen = ({ route, navigation }) => {
   }, [])
 
   const handleSendButtonPress = async ({ userMessage }: { userMessage: string }) => {
-    // textInputRef.current.clear()
-    console.log('handle response....', userMessage)
     setChatThread(chatThreads => [
       ...chatThreads,
       {
@@ -50,14 +44,16 @@ const SectionsScreen = ({ route, navigation }) => {
           }
         },
         lastAIMessage: chatThreads[chatThreads.length - 1]?.text_response,
-        lastAIMessageId: chatThreads[chatThreads.length - 1].response_message_id
+        lastAIMessageId: chatThreads[chatThreads.length - 1]?.response_message_id
       }
     ])
     const data = await mutation.mutateAsync({
-      textInputValue: userResponseMsg,
+      textInputValue: userMessage,
       sectionId: section?.id
     })
     setChatThread(x => [...x, data])
+
+    // textInputRef.current.clear()
     scrollToBottom()
   }
 

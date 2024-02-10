@@ -15,11 +15,10 @@ export const Logout = () => {
   return (
     <MButton
       intent="primary"
-      size="small"
-      text="defaultText"
-      onPress={() => {
-        handleLogout()
-      }}>
+      size="large"
+      loading={false}
+      className="m-3  p-3 text-center"
+      onPress={handleLogout}>
       {'Log out'}
     </MButton>
   )

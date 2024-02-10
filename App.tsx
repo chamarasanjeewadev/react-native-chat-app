@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { QueryClient } from '@tanstack/react-query'
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
 import { clientPersister } from './src/utils/mmkvStorage'
-import { setupPlayer } from 'react-native-track-player/lib/trackPlayer'
+// import { setupPlayer } from 'react-native-track-player/lib/trackPlayer'
 import { navigationRef } from './src/navigators/rootNavigation'
 import './global.css'
 export const queryClient = new QueryClient({
@@ -19,7 +19,7 @@ export const queryClient = new QueryClient({
 function App(): React.JSX.Element {
   LogBox.ignoreAllLogs()
   async function setup() {
-    await setupPlayer()
+    // await setupPlayer()
   }
 
   useEffect(() => {
@@ -28,8 +28,7 @@ function App(): React.JSX.Element {
   return (
     <PersistQueryClientProvider
       client={queryClient}
-      persistOptions={{ persister: clientPersister }}
-    >
+      persistOptions={{ persister: clientPersister }}>
       <NavigationContainer ref={navigationRef}>
         <RootNavigator />
       </NavigationContainer>

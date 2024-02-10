@@ -1,4 +1,4 @@
-import { Text, TextInput, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
+import { View } from 'react-native'
 import { MTextInput } from '../atoms/MTextInput'
 import { useRef, useState } from 'react'
 import useAudioRecorder from '../molecules/AudioRecorder'
@@ -47,6 +47,7 @@ const ChatBar = ({
           <MButton
             onPress={() => {
               handleSendButtonPress({ userMessage: userResponseMsg })
+              setUserResponseMsg('sdddd')
             }}>
             <Icon name="send" size={30} color="#900" />
           </MButton>

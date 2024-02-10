@@ -1,14 +1,14 @@
 import { StripeProvider, usePaymentSheet } from '@stripe/stripe-react-native'
 import React, { useEffect, useState } from 'react'
-import { View, Alert, StyleSheet } from 'react-native'
 import MButton from '../atoms/MButton'
 import { API_URL, MERCHANT_ID, MESSAGES, PUBLISHABLE_kEY } from '../../utils/consts'
-import Snackbar from 'react-native-snackbar'
+import useSnackBar from '../../hooks/useSnackBar'
 
 const PaymentSheet = () => {
   const [ready, setReady] = useState(false)
   const { initPaymentSheet, presentPaymentSheet, loading } = usePaymentSheet()
 
+  const { showSnackBar } = useSnackBar()
   useEffect(() => {
     initialisePaymentSheet()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +48,7 @@ const PaymentSheet = () => {
       returnURL: 'milaai://stripe-redirect'
     })
     if (error) {
-      Alert.alert(`Error code: ${error.code}`, error.message)
+      showSnackBar({ text: `Error code: ${error.message}` })
     } else {
       setReady(true)
     }
@@ -75,11 +75,10 @@ const PaymentSheet = () => {
     const { error } = await presentPaymentSheet()
 
     if (error) {
-      Snackbar.show({ text: `Error code: ${error.code} error.message` })
+      showSnackBar({ text: `Error code: ${error.code} error.message` })
     } else {
-      Snackbar.show({
-        text: MESSAGES.PAYMENT_SUCCESS,
-        duration: Snackbar.LENGTH_LONG
+      showSnackBar({
+        text: MESSAGES.PAYMENT_SUCCESS
       })
       setReady(false)
     }

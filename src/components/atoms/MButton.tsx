@@ -28,8 +28,9 @@ const buttonVarients = {
     primary: ['bg-primary', 'text-white', 'border-transparent']
   },
   size: {
-    small: ['text-sm', 'py-1', 'px-2', 'm-3', 'py-3'],
-    medium: ['text-base', 'py-2', 'px-4']
+    small: ['text-sm', 'py-2', 'px-4'],
+    medium: ['text-base', 'py-2', 'px-4'],
+    large: ['text-lg', 'py-2', 'px-4']
   }
 }
 
@@ -64,6 +65,7 @@ export const MButton = ({
   ...props
 }: MButtonProps & VariantProps<typeof buttonStyles>) => {
   const textColor = buttonVarients['text'][text ?? 'defaultText']
+  // const textSize = buttonVarients['size'][size ?? 'sm']?.[0]//TODO
   return (
     <TouchableOpacity
       className={cn(
@@ -81,7 +83,9 @@ export const MButton = ({
         <>
           {leadingIcon && leadingIcon}
           {children && (
-            <Text style={{ fontFamily: MFontFamily.poppins400 }} className={cn(textColor)}>
+            <Text
+              style={{ fontFamily: MFontFamily.poppins400 }}
+              className={cn(textColor)}>
               {children}
             </Text>
           )}

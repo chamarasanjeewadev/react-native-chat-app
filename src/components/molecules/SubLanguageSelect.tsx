@@ -24,7 +24,7 @@ export const SelectSubLanguage = ({
         key={'selectNotation'}
         caption={t('settings.showPR')}
         value={isLanguageSelectionShown}
-        onValueChange={newValue => setIsLanguageSelectionShown(newValue)}
+        onValueChange={newLanguageInfo => setIsLanguageSelectionShown(newLanguageInfo)}
       />
       <MText intent="description">{t('settings.showPR.description')}</MText>
       {isLanguageSelectionShown && (
