@@ -5,6 +5,8 @@ import { MilaHint } from '../../assets/icons/MilaHintIcon'
 import { RetryIcon } from '../../assets/icons/RetryIcon'
 import { PlaySlow } from '../../assets/icons/PlaySlowIcon'
 import { ChatBox } from '../molecules/ChatBox'
+import { ThinkingMila } from '../../assets/icons/ThinkingMila'
+import LoadingDots from '../atoms/LoadingDots'
 type UserResponseProps = {
   userMessage: string
 }
@@ -31,3 +33,12 @@ const UserMessage = ({ userMessage }: UserResponseProps) => {
 }
 
 export default UserMessage
+
+export const ThinkingMessage = () => {
+  return (
+    <ChatBox loading={false} className="flex flex-col">
+      <LoadingDots dots={3} borderRadius={50} size={15} bounceHeight={2} />
+      <ThinkingMila />
+    </ChatBox>
+  )
+}

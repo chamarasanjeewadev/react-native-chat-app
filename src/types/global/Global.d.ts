@@ -142,6 +142,8 @@ interface MessageBack {
   feedback_text?: string
   user_message_id: number
   response_message_id: number
+  lastAIMessage?: string
+  lastAIMessageId?: number
 }
 
 type FeedbackTranslateType = {

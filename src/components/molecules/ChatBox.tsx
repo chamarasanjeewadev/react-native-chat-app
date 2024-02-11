@@ -28,8 +28,8 @@ export const ChatBox = ({
 }: MChatBoxProps & VariantProps<typeof chatBoxStyles>) => {
   return (
     <View className={cn(chatBoxStyles({ intent }), className)} {...props}>
-      {loading ? <LoadingDots dots={3} borderRadius={50} size={15} bounceHeight={2} /> : children}
-      {/* {children} */}
+      {/* {loading ? <LoadingDots dots={3} borderRadius={50} size={15} bounceHeight={2} /> : children} */}
+      {children}
     </View>
   )
 }

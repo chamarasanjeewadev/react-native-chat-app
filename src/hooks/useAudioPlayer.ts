@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react'
 import { Audio } from 'expo-av'
 import useSnackBar from './useSnackBar'
 
-const useAudioPlayer = audioFile => {
+const useAudioPlayer = audioUrl => {
   const [sound, setSound] = useState(null)
   const { showSnackBar } = useSnackBar()
   const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
     const loadAudio = async () => {
-      const { sound } = await Audio.Sound.createAsync({ uri: audioFile })
+      const { sound } = await Audio.Sound.createAsync({ uri: audioUrl })
       setSound(sound)
     }
 
@@ -21,11 +21,12 @@ const useAudioPlayer = audioFile => {
         sound.unloadAsync()
       }
     }
-  }, [audioFile])
+  }, [audioUrl])
 
   const playAudio = async () => {
     try {
       if (sound) {
+        console.log('playing audio....', sound)
         await sound.playAsync()
         setIsPlaying(true)
       }
