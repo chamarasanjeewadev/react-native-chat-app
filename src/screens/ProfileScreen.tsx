@@ -82,7 +82,7 @@ const ProfileScreen = () => {
 
   const latestIconId = watch('icon_id')
   const backgroundId = watch('background_id')
-  const selectedLanguage = watch('target_language')
+  const selectedLanguage = watch('target_language') as Language
   const onSubmit = async data => {
     try {
       setUserState({

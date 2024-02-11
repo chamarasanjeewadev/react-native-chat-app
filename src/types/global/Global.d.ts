@@ -92,7 +92,7 @@ type User = {
   email?: string
   full_name?: string
   native_language?: string
-  target_language?: string
+  target_language?: Language
   username?: string
   daily_commitment?: number
   stripe_customer_id?: string
