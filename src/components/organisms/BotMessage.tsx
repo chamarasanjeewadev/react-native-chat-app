@@ -7,10 +7,8 @@ import { TranslateIcon } from '../../assets/icons/TranslateIcon'
 import useAudioPlayer from '../../hooks/useAudioPlayer'
 import { useState } from 'react'
 import { useContextTranslate, useFeedbackTranslate } from '../../hooks/queries'
-import { ChatBox, TranslateBox } from '../molecules/ChatBox'
-import LoadingDots from '../atoms/LoadingDots'
-import { ThinkingMila } from '../../assets/icons/ThinkingMila'
-import { Audio } from 'expo-av'
+import { ChatBox } from '../molecules/ChatBox'
+import { PlaySlowIcon } from '../../assets/icons/PlaySlowIcon'
 
 const BotWord = ({
   audio,
@@ -21,7 +19,7 @@ const BotWord = ({
   value: string
   romanized_character: string
 }) => {
-  const { isPlaying, playAudio, stopAudio } = useAudioPlayer()
+  const { playAudio } = useAudioPlayer()
   return (
     <MButton
       intent="link"
@@ -57,53 +55,51 @@ export const BotMessage = ({
   const {
     data: translatedResponse,
     refetch,
-    isFetching,
-    isLoading
+    isFetching
   } = useFeedbackTranslate(text_response, difficulty, sectionId, response_message_id)
   const { playAudio } = useAudioPlayer()
 
   return (
     <>
-      <ChatBox loading={isFetching || isLoading} intent={'mila'} className="flex">
-        {isFetching ? (
-          <LoadingDots dots={3} borderRadius={50} size={15} bounceHeight={2} />
-        ) : (
+      <ChatBox loading={false} intent={'mila'} className="flex">
+        <View>
           <View>
-            <View>
-              <BotText
-                text_response={text_response}
-                response_message_id={response_message_id}
-                showRomaji={showRomaji}
-                {...props}
-              />
-            </View>
-            <View className="flex flex-row gap-2 ">
-              <MButton
-                leadingIcon={<PlayAudio />}
-                onPress={async () => {
-                  playAudio(audio_response)
-                }}
-              />
-              <MButton
-                leadingIcon={<TranslateIcon />}
-                onPress={async () => {
-                  console.log('isfetching....')
-                  // if (!showToggleTranslate) {
-                  await refetch()
-                  // }
-                  showToggleTranslate(x => !x)
-                }}
-              />
-            </View>
+            <BotText
+              text_response={text_response}
+              response_message_id={response_message_id}
+              showRomaji={showRomaji}
+              {...props}
+            />
           </View>
-        )}
+          <View className="flex flex-row gap-2 ">
+            <MButton
+              leadingIcon={<PlayAudio />}
+              onPress={async () => {
+                playAudio({ audioUrl: audio_response })
+              }}
+            />
+            <MButton
+              leadingIcon={<PlaySlowIcon />}
+              onPress={async () => {
+                playAudio({ audioUrl: audio_response, rate: 0.75 })
+              }}
+            />
+            <MButton
+              leadingIcon={<TranslateIcon />}
+              onPress={async () => {
+                // if (!showToggleTranslate) {
+                await refetch()
+                // }
+                showToggleTranslate(x => !x)
+              }}
+            />
+          </View>
+        </View>
+
         {translatedResponse && showTranslate && !isFetching && (
-          <TranslateBox>
-            <MText>{translatedResponse?.translated_text}</MText>
-          </TranslateBox>
+          <MText className=" flex-grow pt-2">{translatedResponse?.translated_text}</MText>
         )}
       </ChatBox>
-      {(isFetching || isLoading) && <ThinkingMila />}
     </>
   )
 }

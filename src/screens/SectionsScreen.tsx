@@ -5,7 +5,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePostMessage } from '../hooks/mutations'
 import React from 'react'
 import ChatBar from '../components/organisms/ChatBar'
-import { ThinkingMessage } from '../components/organisms/UserResponse'
+import { ThinkingMessage } from '../components/organisms/UserMessage'
+import { MScreenView } from '../components/atoms/MScreenView'
 const difficulty = 1
 
 const SectionsScreen = ({ route, navigation }) => {
@@ -14,7 +15,7 @@ const SectionsScreen = ({ route, navigation }) => {
   let [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([])
   const { mutateAsync, isPending } = usePostMessage()
 
-  const ref = useRef<TextInput>(null)
+  const ref = useRef<ScrollView>(null)
 
   const scrollToBottom = () => {
     ref.current?.scrollToEnd({ animated: true })
@@ -50,21 +51,34 @@ const SectionsScreen = ({ route, navigation }) => {
       sectionId: section?.id
     }).then(data => {
       setChatThread(x => [...x, data])
+      scrollToBottom()
     })
   }
 
+  const handleRetry = (retryBack: RetryBack) => {
+    console.log(retryBack)
+    setChatThread(chatThread => chatThread.slice(0, chatThreads.length - 2))
+  }
+
   return (
-    <View className="flex-1 justify-between">
-      <ScrollView className="thread  thread-bot dark:bg-mila-gray-100 relative flex min-w-[330px] flex-col gap-y-2  p-8 transition-all duration-1000">
+    <MScreenView intent="chat">
+      <ScrollView ref={ref}>
         <>
           {chatThreads.map((res, index) => (
-            <Thread key={index} thread={res} sectionId={section?.id} difficulty={difficulty} />
+            <Thread
+              handleRetry={handleRetry}
+              key={index}
+              thread={res}
+              sectionId={section?.id}
+              difficulty={difficulty}
+              isLast={index === chatThreads.length - 1 || index === chatThreads.length - 2}
+            />
           ))}
           {isPending && <ThinkingMessage />}
         </>
       </ScrollView>
       <ChatBar updateChatThread={updateChatThread} />
-    </View>
+    </MScreenView>
   )
 }
 

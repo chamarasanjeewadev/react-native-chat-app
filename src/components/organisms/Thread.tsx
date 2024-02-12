@@ -1,36 +1,39 @@
-import { useFeedbackGrammar } from '../../hooks/queries'
 import { BotMessage } from './BotMessage'
 import { useAuthStore } from '../../stores/AuthStore'
-import UserMessage from './UserResponse'
+import UserMessage from './UserMessage'
 import { useSettingStore } from '../../stores/settingStore'
+import { View } from 'react-native'
 
 export const Thread = ({
   thread: chatMessage,
   sectionId,
-  difficulty
+  difficulty,
+  isLast,
+  handleRetry
 }: {
   thread: Partial<MessageBack>
   sectionId: string
   difficulty: number
+  isLast: boolean
+  handleRetry: (retryBack: RetryBack) => void
 }) => {
-  const { data: grammerResponse, refetch: refectchFeedbackGrammar } = useFeedbackGrammar({
-    ai_text: chatMessage?.text_response ?? chatMessage?.lastAIMessage ?? '',
-    text: chatMessage?.user_message,
-    sectionId: sectionId,
-    difficulty_level: difficulty,
-    message_id: chatMessage?.response_message_id ?? chatMessage?.lastAIMessageId ?? 0
-  })
-
   const { user } = useAuthStore()
   const [notation, showRomaji] = useSettingStore(state => [state.notation, state.showRomaji])
   return (
-    <>
+    <View className="py-2">
       {chatMessage?.type === 'USER' ? (
-        <UserMessage userMessage={chatMessage?.user_message} />
+        <UserMessage
+          isLast={isLast}
+          handleRetry={handleRetry}
+          chatMessage={chatMessage}
+          sectionId={sectionId}
+          difficulty_level={difficulty}
+        />
       ) : (
         <BotMessage
           text_response={chatMessage?.text_response}
-          // tokenization_response={tokens?.tokenization_response}
+          sectionId={sectionId}
+          difficulty={difficulty}
           showRomaji={showRomaji}
           language={{
             lang: user.target_language,
@@ -40,6 +43,6 @@ export const Thread = ({
           audio_response={chatMessage?.audio_response}
         />
       )}
-    </>
+    </View>
   )
 }

@@ -230,3 +230,8 @@ type Language =
   | 'Mandarin Chinese'
 type Notation = 'Furigana' | 'Romaji' | 'Zhuyin'
 type NotationType = { lang: Language; notation: Notation }
+
+interface RetryBack {
+  end_conversation: boolean
+  message_count: number
+}

@@ -2,7 +2,9 @@ import {
   contextTranslate,
   feedbackGrammar,
   feedbackTranslate,
-  firstChat
+  firstChat,
+  getSlowAudio,
+  retry
 } from '../services/apiService'
 import { useQuery } from '@tanstack/react-query'
 import { getMilaUserChats, signIn } from '../services/apiService'
@@ -73,5 +75,18 @@ export const useFeedbackGrammar = (feedbackText: GrammarTranslateType) =>
   useQuery({
     queryKey: queryKeys.translate.feedbackGrammar(feedbackText).queryKey,
     queryFn: () => feedbackGrammar(feedbackText),
+    enabled: false
+  })
+
+export const useGetSlowAudio = ({ sectionId, text }: { sectionId: string; text: string }) =>
+  useQuery({
+    queryKey: queryKeys.translate.slowAudio(sectionId, text).queryKey,
+    queryFn: () => getSlowAudio(sectionId, text),
+    enabled: false
+  })
+export const useRetry = ({ sectionId, difficulty }: { sectionId: string; difficulty: number }) =>
+  useQuery({
+    queryKey: queryKeys.translate.retry(difficulty, sectionId).queryKey,
+    queryFn: () => retry(sectionId, difficulty),
     enabled: false
   })

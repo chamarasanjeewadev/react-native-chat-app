@@ -28,7 +28,13 @@ export const translateQueryKeys = createQueryKeys('translate', {
     sectionId,
     message_id
   ],
-  feedbackText: (text: string, sectionId: string, messageId: number) => [text, sectionId, messageId]
+  feedbackText: (text: string, sectionId: string, messageId: number) => [
+    text,
+    sectionId,
+    messageId
+  ],
+  slowAudio: (text: string, sectionId: string) => [text, sectionId],
+  retry: (difficulty: number, sectionId: string) => [difficulty, sectionId]
 })
 
 export const queryKeys = mergeQueryKeys(

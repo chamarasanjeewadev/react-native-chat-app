@@ -80,6 +80,19 @@ export const contextTranslate = async (text: string) => {
   })
   return result.data
 }
+
+export const getSlowAudio = async (sectionId: string, text: string) => {
+  const result = await axiosInstance.post<string>(`conversation/get_slow_audio/${sectionId}`, {
+    text
+  })
+  return result.data
+}
+
+export const retry = (sectionId: string, difficulty: number) =>
+  axiosInstance.post<RetryBack>(`/conversation/section/${sectionId}/retry`, {
+    difficulty_level: difficulty
+  })
+
 export const feedbackTranslate = async ({
   sectionId,
   ...feedbackParams

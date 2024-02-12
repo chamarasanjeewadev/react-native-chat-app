@@ -1,3 +1,4 @@
+import { PlaySlow } from './../assets/icons/PlaySlowIcon'
 import { useState } from 'react'
 import { Audio } from 'expo-av'
 import useSnackBar from './useSnackBar'
@@ -7,15 +8,21 @@ const useAudioPlayer = () => {
   const { showSnackBar } = useSnackBar()
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const playAudio = async (audioUrl: string) => {
+  type PlayAudioProps = {
+    audioUrl: string
+    rate?: number
+  }
+  const playAudio = async ({ audioUrl, rate = 1 }: PlayAudioProps) => {
     try {
       try {
         await Audio.setAudioModeAsync({
           playsInSilentModeIOS: true
         })
-        const { sound } = await Audio.Sound.createAsync({ uri: audioUrl }, { shouldPlay: true })
+        const { sound } = await Audio.Sound.createAsync({ uri: audioUrl })
+
         setSound(sound)
         console.log('Playing Sound')
+        await sound.setRateAsync(rate, true)
         await sound.playAsync()
         setIsPlaying(true)
       } catch (error) {
