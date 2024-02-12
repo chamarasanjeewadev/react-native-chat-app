@@ -1,42 +1,49 @@
-import { View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { MTextInput } from '../atoms/MTextInput'
 import { useRef, useState } from 'react'
 import useAudioRecorder from '../molecules/AudioRecorder'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import MButton from '../atoms/MButton'
 const ChatBar = ({
-  handleSendButtonPress
+  updateChatThread
 }: {
-  handleSendButtonPress: ({ userMessage }: { userMessage: string }) => void
+  updateChatThread: (userChat: Partial<MessageBack>) => void
 }) => {
   const textInputRef = useRef(null)
   const [userResponseMsg, setUserResponseMsg] = useState('')
 
-  const { startRecording, stopRecording, isRecording } = useAudioRecorder()
+  const handleSendButtonPress = async ({ userMessage }: { userMessage: string }) => {
+    updateChatThread({
+      type: 'USER',
+      user_message: userMessage
+    })
+    textInputRef.current.clear()
+  }
+
+  const { startRecording, stopRecording, isRecording, recordings } = useAudioRecorder()
+ 
   return (
     <>
-      <View>
-        {/* {recordings &&
-            recordings.map((recordingLine, index) => (
-              <TouchableOpacity
-                key={index}
-                onPress={async () => {
-                  setChatThread(x => [...x, data])
-                  await recordingLine.sound.replayAsync()
-                  const data = await mutation.mutateAsync({
-                    // textInputValue: userResponseMsg,
-                    sectionId: section?.id,
+      {/* <View>
+        {recordings &&
+          recordings.map((recordingLine, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={async () => {
+                await recordingLine.sound.replayAsync()
+                // const data = await mutation.mutateAsync({
+                //   // textInputValue: userResponseMsg,
+                //   sectionId: section?.id,
 
-                    audio: recordingLine.file
-                  })
-                }}>
-                <Text>Play</Text>
-              </TouchableOpacity>
-            ))} */}
-      </View>
+                //   audio: recordingLine.file
+                // })
+              }}>
+              <Text>Play</Text>
+            </TouchableOpacity>
+          ))}
+      </View> */}
       <View className="ml-2 mr-2 flex flex-row items-center gap-2  text-base">
         <MTextInput
-          ref={textInputRef}
           forwardedRef={textInputRef}
           onChangeText={setUserResponseMsg}
           className="mb-2  flex-grow border"

@@ -12,8 +12,8 @@ const SectionsScreen = ({ route, navigation }) => {
   const { section } = route.params
   let { data: firstChat, refetch } = useFirstChat(difficulty, section?.id)
   let [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([])
-  const textInputRef = useRef(null)
   const { mutateAsync, isPending } = usePostMessage()
+
   const ref = useRef<TextInput>(null)
 
   const scrollToBottom = () => {
@@ -24,46 +24,38 @@ const SectionsScreen = ({ route, navigation }) => {
     navigation.setOptions({ title: section?.title })
     await refetch()
     setChatThread([firstChat])
-    textInputRef.current.focus()
   }, [])
 
   useEffect(() => {
     getInitialChat()
   }, [])
 
-  const handleSendButtonPress = async ({ userMessage }: { userMessage: string }) => {
+  const updateChatThread = async (userChat: Partial<MessageBack>) => {
     setChatThread(chatThreads => [
       ...chatThreads,
       {
-        type: 'USER',
-        message: userMessage,
-        user_message: userMessage,
+        ...userChat,
+        lastAIMessage: chatThreads[chatThreads.length - 1]?.text_response,
+        lastAIMessageId: chatThreads[chatThreads.length - 1]?.response_message_id,
         grammar: {
           corrected_text: {
             feedback: '',
             score: 0
           }
-        },
-        lastAIMessage: chatThreads[chatThreads.length - 1]?.text_response,
-        lastAIMessageId: chatThreads[chatThreads.length - 1]?.response_message_id
+        }
       }
     ])
     await mutateAsync({
-      textInputValue: userMessage,
+      textInputValue: userChat?.user_message,
       sectionId: section?.id
     }).then(data => {
       setChatThread(x => [...x, data])
     })
-
-    // textInputRef.current.clear()
-    scrollToBottom()
   }
 
   return (
     <View className="flex-1 justify-between">
-      <ScrollView
-        ref={ref}
-        className="thread  thread-bot dark:bg-mila-gray-100 relative flex min-w-[330px] flex-col gap-y-2  p-8 transition-all duration-1000">
+      <ScrollView className="thread  thread-bot dark:bg-mila-gray-100 relative flex min-w-[330px] flex-col gap-y-2  p-8 transition-all duration-1000">
         <>
           {chatThreads.map((res, index) => (
             <Thread key={index} thread={res} sectionId={section?.id} difficulty={difficulty} />
@@ -71,7 +63,7 @@ const SectionsScreen = ({ route, navigation }) => {
           {isPending && <ThinkingMessage />}
         </>
       </ScrollView>
-      <ChatBar handleSendButtonPress={handleSendButtonPress} />
+      <ChatBar updateChatThread={updateChatThread} />
     </View>
   )
 }

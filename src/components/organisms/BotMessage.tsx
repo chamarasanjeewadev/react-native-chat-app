@@ -10,19 +10,27 @@ import { useContextTranslate, useFeedbackTranslate } from '../../hooks/queries'
 import { ChatBox, TranslateBox } from '../molecules/ChatBox'
 import LoadingDots from '../atoms/LoadingDots'
 import { ThinkingMila } from '../../assets/icons/ThinkingMila'
+import { Audio } from 'expo-av'
 
 const BotWord = ({
+  audio,
   value,
   romanized_character
 }: {
+  audio
   value: string
   romanized_character: string
 }) => {
+  const { isPlaying, playAudio, stopAudio } = useAudioPlayer()
   return (
-    <View>
+    <MButton
+      intent="link"
+      onPress={() => {
+        playAudio(audio)
+      }}>
       <MText>{romanized_character}</MText>
       <MText>{value}</MText>
-    </View>
+    </MButton>
   )
 }
 
@@ -47,12 +55,13 @@ export const BotMessage = ({
 }: BotMessageProps) => {
   const [showTranslate, showToggleTranslate] = useState(false)
   const {
-    data: feedbackTranslate,
+    data: translatedResponse,
     refetch,
     isFetching,
     isLoading
   } = useFeedbackTranslate(text_response, difficulty, sectionId, response_message_id)
-  const { playAudio } = useAudioPlayer(audio_response)
+  const { playAudio } = useAudioPlayer()
+
   return (
     <>
       <ChatBox loading={isFetching || isLoading} intent={'mila'} className="flex">
@@ -69,7 +78,12 @@ export const BotMessage = ({
               />
             </View>
             <View className="flex flex-row gap-2 ">
-              <MButton leadingIcon={<PlayAudio />} onPress={playAudio} />
+              <MButton
+                leadingIcon={<PlayAudio />}
+                onPress={async () => {
+                  playAudio(audio_response)
+                }}
+              />
               <MButton
                 leadingIcon={<TranslateIcon />}
                 onPress={async () => {
@@ -83,9 +97,9 @@ export const BotMessage = ({
             </View>
           </View>
         )}
-        {feedbackTranslate && showTranslate && !isFetching && (
+        {translatedResponse && showTranslate && !isFetching && (
           <TranslateBox>
-            <MText>{feedbackTranslate?.translated_text}</MText>
+            <MText>{translatedResponse?.translated_text}</MText>
           </TranslateBox>
         )}
       </ChatBox>
@@ -98,23 +112,30 @@ export const BotText = ({ text_response, showRomaji, language }: BotMessageProps
   return (
     <>
       <View className="flex flex-row flex-wrap">
-        {tokens?.tokenization_response?.map(({ token, furigana, romanization, zhuyin }, index) => (
-          <BotWord
-            key={index}
-            value={token}
-            romanized_character={
-              showRomaji
-                ? language.lang === LanguageEnum.Japanese
-                  ? language.notation === 'Furigana'
-                    ? furigana
-                    : romanization
-                  : language.notation === 'Romaji'
-                    ? romanization
-                    : zhuyin
-                : null
-            }
-          />
-        ))}
+        {tokens ? (
+          tokens?.tokenization_response?.map(
+            ({ token, furigana, romanization, zhuyin, audio }, index) => (
+              <BotWord
+                audio={audio}
+                key={index}
+                value={token}
+                romanized_character={
+                  showRomaji
+                    ? language.lang === LanguageEnum.Japanese
+                      ? language.notation === 'Furigana'
+                        ? furigana
+                        : romanization
+                      : language.notation === 'Romaji'
+                        ? romanization
+                        : zhuyin
+                    : null
+                }
+              />
+            )
+          )
+        ) : (
+          <MText>{text_response}</MText>
+        )}
       </View>
     </>
   )
