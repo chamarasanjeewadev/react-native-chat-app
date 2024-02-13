@@ -1,4 +1,4 @@
-import { ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { useFirstChat } from '../hooks/queries'
 import { Thread } from '../components/organisms/Thread'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -62,9 +62,9 @@ const SectionsScreen = ({ route, navigation }: Props) => {
     setChatThread(chatThread => chatThread.slice(0, chatThreads.length - 2))
   }
   return (
-    <MScreenView intent="chat">
+    <MScreenView intent="chat" className="">
       <ScrollView ref={ref}>
-        <>
+        <View className=" gap-2">
           {chatThreads?.map((res, index) => (
             <Thread
               handleRetry={handleRetry}
@@ -76,7 +76,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
             />
           ))}
           {isPending && <ThinkingMessage />}
-        </>
+        </View>
       </ScrollView>
       <ChatBar updateChatThread={updateChatThreadWithUserMessage} />
     </MScreenView>

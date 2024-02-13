@@ -1,6 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import ChatsScreen from '../screens/ChatsScreen'
+import ConversationsScreen from '../screens/ConversationsScreen'
 import SectionsScreen from '../screens/SectionsScreen'
 
 export type ChatStackParamList = {
@@ -16,7 +16,7 @@ export const ChatNavigator = () => (
       headerShown: true
     }}
     initialRouteName="Chat">
-    <ChatStack.Screen name="Chat" component={ChatsScreen} />
+    <ChatStack.Screen name="Chat" component={ConversationsScreen} />
     <ChatStack.Screen name="Section" component={SectionsScreen} />
   </ChatStack.Navigator>
 )

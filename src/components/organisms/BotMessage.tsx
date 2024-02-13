@@ -64,40 +64,36 @@ export const BotMessage = ({
 
   return (
     <>
-      <ChatBox loading={false} intent={'mila'} className="flex">
-        <View>
-          <View>
-            <BotText
-              // audio_response={audio_response}
-              text_response={text_response}
-              response_message_id={response_message_id}
-              showRomaji={showRomaji}
-              {...props}
-            />
-          </View>
-          <View className="flex flex-row gap-2 ">
-            <MButton
-              leadingIcon={<PlayAudio />}
-              onPress={async () => {
-                playAudio({ audioUrl: audio_response })
-              }}
-            />
-            <MButton
-              leadingIcon={<PlaySlowIcon />}
-              onPress={async () => {
-                playAudio({ audioUrl: audio_response, rate: 0.75 })
-              }}
-            />
-            <MButton
-              leadingIcon={<TranslateIcon />}
-              onPress={async () => {
-                // if (!showToggleTranslate) {
-                await refetch()
-                // }
-                showToggleTranslate(x => !x)
-              }}
-            />
-          </View>
+      <ChatBox loading={false} intent={'mila'}>
+        <BotText
+          // audio_response={audio_response}
+          text_response={text_response}
+          response_message_id={response_message_id}
+          showRomaji={showRomaji}
+          {...props}
+        />
+        <View className="flex flex-row gap-2 ">
+          <MButton
+            leadingIcon={<PlayAudio />}
+            onPress={async () => {
+              playAudio({ audioUrl: audio_response })
+            }}
+          />
+          <MButton
+            leadingIcon={<PlaySlowIcon />}
+            onPress={async () => {
+              playAudio({ audioUrl: audio_response, rate: 0.75 })
+            }}
+          />
+          <MButton
+            leadingIcon={<TranslateIcon />}
+            onPress={async () => {
+              // if (!showToggleTranslate) {
+              await refetch()
+              // }
+              showToggleTranslate(x => !x)
+            }}
+          />
         </View>
 
         {translatedResponse && showTranslate && !isFetching && (

@@ -8,12 +8,12 @@ interface MChatBoxProps extends ViewProps {
 }
 const chatBoxVarients = {
   intent: {
-    screen: 'mx-2 mb-16 ',
+    screen: 'mb-16 ',
     chat: 'flex flex-1 justify-between '
   }
 }
 
-const screenStyles = cva(['mx-2 mt-2 '], {
+const screenStyles = cva(['bg-white m-0 p-2  dark:bg-black '], {
   variants: chatBoxVarients,
   compoundVariants: [],
   defaultVariants: {
@@ -27,7 +27,6 @@ export const MScreenView = ({
   ...props
 }: MChatBoxProps & VariantProps<typeof screenStyles>) => {
   return (
-    // <View className="mx-2 mb-16" {...props}>
     <View className={cn(screenStyles({ intent }), className)} {...props}>
       {children}
     </View>

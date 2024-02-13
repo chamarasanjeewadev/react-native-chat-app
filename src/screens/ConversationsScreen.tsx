@@ -10,7 +10,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ChatStackParamList } from '../navigators/ChatNavigator'
 
 type Props = NativeStackScreenProps<ChatStackParamList, 'Chat'>
-const ChatsScreen = ({ navigation }: Props) => {
+const ConversationsScreen = ({ navigation }: Props) => {
   const { data } = useGetMilaChats()
   return (
     <ScrollView>
@@ -19,7 +19,7 @@ const ChatsScreen = ({ navigation }: Props) => {
           <View
             key={index}
             className="m-1 flex flex-row justify-between rounded-lg bg-white px-8 align-baseline shadow-lg">
-            <View className={'¥align-middle mx-5 flex flex-grow flex-col gap-0.5  '}>
+            <View className={'mx-5 flex flex-grow flex-col gap-0.5 align-middle  '}>
               <MText intent="description" size="large">
                 {section?.title}
               </MText>
@@ -65,4 +65,4 @@ const ChatsScreen = ({ navigation }: Props) => {
     </ScrollView>
   )
 }
-export default ChatsScreen
+export default ConversationsScreen

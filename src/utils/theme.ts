@@ -28,7 +28,11 @@ export const themes = {
       '--destructive': '255 0 0',
       '--destructive-foreground': colors.emerald[100],
       '--ring': '148 163 184',
-      '--radius': '0.5rem'
+      '--radius': '0.5rem',
+      '--bot-chat': colors.slate[800],
+      '--bot-chat-bg': colors.slate[100],
+      '--user-chat': colors.blue[700],
+      '--user-chat-bg': colors.blue[100]
     },
     dark: {
       '--primary': colors.blue[600],
@@ -57,7 +61,11 @@ export const themes = {
       '--destructive': '255 0 0',
       '--destructive-foreground': '248 250 252',
       '--ring': '148 163 184',
-      '--radius': '0.5rem'
+      '--radius': '0.5rem',
+      '--bot-chat': colors.slate[800],
+      '--bot-chat-bg': colors.slate[100],
+      '--user-chat': colors.blue[700],
+      '--user-chat-bg': colors.blue[25]
     }
   },
   orange: {
@@ -81,14 +89,18 @@ export const themes = {
       '--input': '226 232 240',
       '--card': '255 255 255',
       '--card-foreground': '15 23 42',
-      '--primary-foreground': colors.blue[100],
+      '--primary-foreground': colors.orange[100],
       '--secondary-foreground': '15 23 42',
       '--accent': '241 245 249',
       '--accent-foreground': '15 23 42',
       '--destructive': '255 0 0',
       '--destructive-foreground': '248 250 252',
       '--ring': '148 163 184',
-      '--radius': '0.5rem'
+      '--radius': '0.5rem',
+      '--bot-chat': colors.slate[800],
+      '--bot-chat-bg': colors.slate[100],
+      '--user-chat': colors.orange[700],
+      '--user-chat-bg': colors.slate[100]
     },
     dark: {
       '--primary': colors.blue[600],
@@ -102,7 +114,7 @@ export const themes = {
       '--background': colors.slate[50],
       '--muted': colors.slate[200],
       '--shadow': colors.emerald[100],
-      '--foreground': colors.red[700],
+      '--foreground': colors.orange[700],
       '--muted-foreground': '100 116 139',
       '--popover': '255 255 255',
       '--popover-foreground': '15 23 42',
@@ -110,14 +122,18 @@ export const themes = {
       '--input': '226 232 240',
       '--card': '255 255 255',
       '--card-foreground': '15 23 42',
-      '--primary-foreground': colors.blue[100],
+      '--primary-foreground': colors.orange[100],
       '--secondary-foreground': '15 23 42',
       '--accent': '241 245 249',
       '--accent-foreground': '15 23 42',
       '--destructive': '255 0 0',
       '--destructive-foreground': '248 250 252',
       '--ring': '148 163 184',
-      '--radius': '0.5rem'
+      '--radius': '0.5rem',
+      '--bot-chat': colors.slate[800],
+      '--bot-chat-bg': colors.slate[100],
+      '--user-chat': colors.orange[700],
+      '--user-chat-bg': colors.slate[100]
     }
   },
   pink: {
@@ -141,14 +157,18 @@ export const themes = {
       '--input': '226 232 240',
       '--card': '255 255 255',
       '--card-foreground': '15 23 42',
-      '--primary-foreground': colors.blue[100],
+      '--primary-foreground': colors.pink[100],
       '--secondary-foreground': '15 23 42',
       '--accent': '241 245 249',
       '--accent-foreground': '15 23 42',
       '--destructive': '255 0 0',
       '--destructive-foreground': '248 250 252',
       '--ring': '148 163 184',
-      '--radius': '0.5rem'
+      '--radius': '0.5rem',
+      '--bot-chat': colors.slate[800],
+      '--bot-chat-bg': colors.slate[100],
+      '--user-chat': colors.pink[700],
+      '--user-chat-bg': colors.slate[100]
     },
     dark: {
       '--primary': colors.blue[600],
@@ -170,14 +190,18 @@ export const themes = {
       '--input': '226 232 240',
       '--card': '255 255 255',
       '--card-foreground': '15 23 42',
-      '--primary-foreground': colors.blue[100],
+      '--primary-foreground': colors.pink[100],
       '--secondary-foreground': '15 23 42',
       '--accent': '241 245 249',
       '--accent-foreground': '15 23 42',
       '--destructive': '255 0 0',
       '--destructive-foreground': '248 250 252',
       '--ring': '148 163 184',
-      '--radius': '0.5rem'
+      '--radius': '0.5rem',
+      '--bot-chat': colors.slate[800],
+      '--bot-chat-bg': colors.slate[100],
+      '--user-chat': colors.pink[50],
+      '--user-chat-bg': colors.slate[100]
     }
   }
 }

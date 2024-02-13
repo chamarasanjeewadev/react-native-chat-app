@@ -16,7 +16,7 @@ type UserMessageProps = {
   sectionId: string
   difficulty_level: number
   isLast: boolean
-  handleRetry: (retryBack:RetryBack) => void
+  handleRetry: (retryBack: RetryBack) => void
 }
 const UserMessage = ({
   chatMessage,
@@ -45,46 +45,39 @@ const UserMessage = ({
 
   return (
     <ChatBox loading={false} intent={'user'}>
-      <View className={'flex flex-grow flex-col gap-1 p-2 align-middle  '}>
-        <MText size="large" className="font-normal">
-          {chatMessage?.user_message}
-        </MText>
-        <View className="flex flex-row justify-end gap-2 align-middle">
-          <MButton
-            leadingIcon={<MilaHint />}
-            onPress={async () => {
-              console.log('refetching grammar...')
-              await refectchFeedbackGrammar()
-              showToggleTranslate(x => !x)
-            }}
-          />
-          {isLast && (
-            <MButton
-              onPress={async () => {
-                await fetchRetry().then(data => {
-                  handleRetry(data.data);
-                  console.log('refetch response', data.data)
-                  //         setChatThreads(chatThreads.slice(0, chatThreads.length - 2))
-                  // setHint(null)
-                  // setRetrying(false)
-                  // setConversationEnded(res.end_conversation)
-                  // setMessageCount(res.message_count)
-                })
-              }}
-              leadingIcon={<RetryIcon />}
-            />
-          )}
+      <MText size="large" className="text-userchat font-normal ">
+        {chatMessage?.user_message}
+      </MText>
+      <View className=" flex-row justify-end gap-2 ">
+        <MButton
+          leadingIcon={<MilaHint />}
+          onPress={async () => {
+            await refectchFeedbackGrammar()
+            showToggleTranslate(x => !x)
+          }}
+        />
+        {isLast && (
           <MButton
             onPress={async () => {
-              await refetch().then(data => {
-                console.log('audio url', data.data)
-                playAudio({ audioUrl: data.data })
+              await fetchRetry().then(data => {
+                handleRetry(data.data)
+                console.log('refetch response', data.data)
               })
             }}
-            leadingIcon={<PlaySlowIcon />}
+            leadingIcon={<RetryIcon />}
           />
-        </View>
+        )}
+        <MButton
+          onPress={async () => {
+            await refetch().then(data => {
+              console.log('audio url', data.data)
+              playAudio({ audioUrl: data.data })
+            })
+          }}
+          leadingIcon={<PlaySlowIcon />}
+        />
       </View>
+      {/* </View> */}
       {grammerResponse && showTranslate && !isFetching && (
         <MText className=" flex-grow pt-2">{grammerResponse?.translated_text}</MText>
       )}
@@ -96,7 +89,7 @@ export default UserMessage
 
 export const ThinkingMessage = () => {
   return (
-    <ChatBox loading={false} className="flex flex-col">
+    <ChatBox intent="mila" loading={false} className="flex flex-col">
       <LoadingDots dots={3} borderRadius={50} size={15} bounceHeight={2} />
       <ThinkingMila />
     </ChatBox>

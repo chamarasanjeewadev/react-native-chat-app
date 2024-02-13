@@ -20,7 +20,7 @@ export const Thread = ({
   const { user } = useAuthStore()
   const [notation, showRomaji] = useSettingStore(state => [state.notation, state.showRomaji])
   return (
-    <View className="py-2">
+    <>
       {chatMessage?.type === 'USER' ? (
         <UserMessage
           isLast={isLast}
@@ -43,6 +43,6 @@ export const Thread = ({
           audio_response={chatMessage?.audio_response}
         />
       )}
-    </View>
+    </>
   )
 }

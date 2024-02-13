@@ -1,16 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { StyleSheet, Animated, Easing } from 'react-native'
 
-const defaultColors = ['#4dabf7', '#3bc9db', '#38d9a9', '#69db7c']
-
-function LoadingDots({
-  dots = 4,
-  colors = defaultColors,
-  size = 20,
-  bounceHeight = 10,
-  borderRadius,
-  components = null
-}) {
+function LoadingDots({ dots = 4, size = 20, bounceHeight = 10, borderRadius, components = null }) {
   const [animations, setAnimations] = useState([])
   const [reverse, setReverse] = useState(false)
 
@@ -87,6 +78,7 @@ function LoadingDots({
           </Animated.View>
         ) : (
           <Animated.View
+            className={'bg-primary'}
             key={`loading-anim-${index}`}
             style={[
               {
@@ -94,7 +86,6 @@ function LoadingDots({
                 height: size,
                 borderRadius: borderRadius || size / 2
               },
-              { backgroundColor: colors[index] || '#4dabf7' },
               { transform: [{ translateY: animation }] }
             ]}
           />

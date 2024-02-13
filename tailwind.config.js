@@ -20,6 +20,10 @@ module.exports = {
         ring: 'var(--ring)',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        botchat: 'var(--bot-chat)',
+        botchatbg: 'var(--bot-chat-bg)',
+        userchat: 'var(--user-chat)',
+        userchatbg: 'var(--user-chat-bg)',
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)'

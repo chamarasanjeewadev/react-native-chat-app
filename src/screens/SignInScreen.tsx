@@ -32,12 +32,12 @@ const SignInScreen = () => {
     <View className="flex h-screen items-center justify-center">
       {
         <MButton
-          buttonText="Authorize"
           loading={isLoading}
           disabled={isLoading}
-          className="px-2 py-2 text-lg"
-          onPress={() => handleAuthorize()}
-        />
+          className="text-lg"
+          onPress={() => handleAuthorize()}>
+          Authorize
+        </MButton>
       }
     </View>
   )
