@@ -32,7 +32,10 @@ export const themes = {
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
       '--user-chat': colors.blue[700],
-      '--user-chat-bg': colors.blue[100]
+      '--user-chat-bg': colors.blue[100],
+      '--chat-button-bg': colors.blue[200],
+      '--chat-button': colors.blue[100]
+
     },
     dark: {
       '--primary': colors.blue[600],
@@ -65,7 +68,9 @@ export const themes = {
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
       '--user-chat': colors.blue[700],
-      '--user-chat-bg': colors.blue[25]
+      '--user-chat-bg': colors.blue[25],
+      '--chat-button-bg': colors.blue[200],
+      '--chat-button': colors.blue[100]
     }
   },
   orange: {
@@ -100,7 +105,9 @@ export const themes = {
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
       '--user-chat': colors.orange[700],
-      '--user-chat-bg': colors.slate[100]
+      '--user-chat-bg': colors.slate[100],
+      '--chat-button-bg': colors.orange[200],
+      '--chat-button': colors.orange[100]
     },
     dark: {
       '--primary': colors.blue[600],
@@ -133,7 +140,9 @@ export const themes = {
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
       '--user-chat': colors.orange[700],
-      '--user-chat-bg': colors.slate[100]
+      '--user-chat-bg': colors.slate[100],
+      '--chat-button-bg': colors.orange[200],
+      '--chat-button': colors.orange[100]
     }
   },
   pink: {
@@ -168,7 +177,9 @@ export const themes = {
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
       '--user-chat': colors.pink[700],
-      '--user-chat-bg': colors.slate[100]
+      '--user-chat-bg': colors.slate[100],
+      '--chat-button-bg': colors.pink[200],
+      '--chat-button': colors.pink[100]
     },
     dark: {
       '--primary': colors.blue[600],
@@ -201,7 +212,9 @@ export const themes = {
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
       '--user-chat': colors.pink[50],
-      '--user-chat-bg': colors.slate[100]
+      '--user-chat-bg': colors.slate[100],
+      '--chat-button-bg': colors.pink[200],
+      '--chat-button': colors.pink[100]
     }
   }
 }

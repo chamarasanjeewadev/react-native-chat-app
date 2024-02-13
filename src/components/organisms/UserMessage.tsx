@@ -50,6 +50,7 @@ const UserMessage = ({
       </MText>
       <View className=" flex-row justify-end gap-2 ">
         <MButton
+          intent="buttonIcon"
           leadingIcon={<MilaHint />}
           onPress={async () => {
             await refectchFeedbackGrammar()
@@ -58,6 +59,7 @@ const UserMessage = ({
         />
         {isLast && (
           <MButton
+            intent="buttonIcon"
             onPress={async () => {
               await fetchRetry().then(data => {
                 handleRetry(data.data)
@@ -68,6 +70,7 @@ const UserMessage = ({
           />
         )}
         <MButton
+          intent="buttonIcon"
           onPress={async () => {
             await refetch().then(data => {
               console.log('audio url', data.data)

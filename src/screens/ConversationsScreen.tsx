@@ -9,6 +9,8 @@ import { MText } from '../components/atoms/MText'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ChatStackParamList } from '../navigators/ChatNavigator'
 
+import Logo from './../assets/icons/logo.svg'
+
 type Props = NativeStackScreenProps<ChatStackParamList, 'Chat'>
 const ConversationsScreen = ({ navigation }: Props) => {
   const { data } = useGetMilaChats()
@@ -39,6 +41,7 @@ const ConversationsScreen = ({ navigation }: Props) => {
                   onPress={() => {
                     navigation.push('Section', { section })
                   }}>
+                  <Logo width={120} height={40} />
                   <ProgressCircle
                     difficulty={StudyMode.CONVERSATION_MEDIUM}
                     progress={ConversationProgress.STARTED}

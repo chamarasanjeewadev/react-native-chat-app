@@ -26,7 +26,8 @@ const buttonVarients = {
     ghost: 'hover:bg-accent hover:text-accent-foreground',
     link: ' underline text-primary    ',
     primary: ['bg-primary', 'text-white', 'border-transparent'],
-    chat: ''
+    chat: '',
+    buttonIcon: 'bg-chatbuttonbg shadow-sm border-0 '
   },
   size: {
     small: ['text-sm', 'py-2', 'px-4'],
@@ -35,7 +36,7 @@ const buttonVarients = {
   }
 }
 
-const buttonStyles = cva(['font-semibold', 'border', 'rounded-lg'], {
+const buttonStyles = cva(['font-semibold border rounded-lg'], {
   variants: buttonVarients,
   compoundVariants: [
     {
@@ -50,6 +51,10 @@ const buttonStyles = cva(['font-semibold', 'border', 'rounded-lg'], {
     {
       intent: 'chat',
       className: ' border-0 p-0 m-0 '
+    },
+    {
+      intent: 'buttonIcon',
+      className: ' border-0 p-2'
     }
   ],
   defaultVariants: {
@@ -74,7 +79,7 @@ export const MButton = ({
   return (
     <TouchableOpacity
       className={cn(
-        'flex flex-row  items-center justify-center gap-1 ',
+        ' flex-row  items-center justify-center gap-1 ',
         buttonStyles({ intent, size }),
         className,
         {
@@ -89,7 +94,6 @@ export const MButton = ({
       ) : (
         <>
           {leadingIcon && leadingIcon}
-
           {children && (
             <Text style={{ fontFamily: MFontFamily.poppins400 }} className={cn(textColor)}>
               {children}

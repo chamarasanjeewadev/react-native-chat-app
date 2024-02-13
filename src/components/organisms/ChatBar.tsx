@@ -42,16 +42,17 @@ const ChatBar = ({
             </TouchableOpacity>
           ))}
       </View> */}
-      <View className="ml-2 mr-2 flex flex-row items-center gap-2  text-base">
+      <View className="flex-row gap-2 text-base">
         <MTextInput
           forwardedRef={textInputRef}
           onChangeText={setUserResponseMsg}
-          className="mb-2  flex-grow border"
+          className="flex-grow border border-muted"
           placeholder="Type something ....."
         />
 
         {userResponseMsg ? (
           <MButton
+            intent="buttonIcon"
             onPress={async () => {
               await handleSendButtonPress({ userMessage: userResponseMsg })
               setUserResponseMsg('')
@@ -60,6 +61,7 @@ const ChatBar = ({
           </MButton>
         ) : (
           <MButton
+            intent="buttonIcon"
             onPress={async () => {
               try {
                 isRecording ? stopRecording() : startRecording()

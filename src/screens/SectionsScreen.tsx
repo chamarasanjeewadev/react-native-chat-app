@@ -25,7 +25,8 @@ const SectionsScreen = ({ route, navigation }: Props) => {
   const getInitialChat = useCallback(async () => {
     navigation.setOptions({ title: section?.title })
     await refetch().then(data => {
-      data && setChatThread([data?.data])
+      const fetched = data?.data
+      fetched && setChatThread([fetched])
     })
   }, [])
 

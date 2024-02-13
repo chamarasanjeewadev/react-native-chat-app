@@ -24,6 +24,8 @@ module.exports = {
         botchatbg: 'var(--bot-chat-bg)',
         userchat: 'var(--user-chat)',
         userchatbg: 'var(--user-chat-bg)',
+        chatbuttonbg: 'var(--chat-button-bg)',
+        chatbutton: 'var(--chat-button)',
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)'
