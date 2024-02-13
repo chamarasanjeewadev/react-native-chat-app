@@ -2,7 +2,6 @@ import { BotMessage } from './BotMessage'
 import { useAuthStore } from '../../stores/AuthStore'
 import UserMessage from './UserMessage'
 import { useSettingStore } from '../../stores/settingStore'
-import { View } from 'react-native'
 
 export const Thread = ({
   thread: chatMessage,

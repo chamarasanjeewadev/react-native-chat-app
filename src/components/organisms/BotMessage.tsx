@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { useContextTranslate, useFeedbackTranslate } from '../../hooks/queries'
 import { ChatBox } from '../molecules/ChatBox'
 import PlaySlowIcon from '../../assets/icons/svgs/PlaySlow.svg'
+import clsx from 'clsx'
 
 const BotWord = ({
   audio,
@@ -55,6 +56,7 @@ export const BotMessage = ({
   ...props
 }: BotMessageProps) => {
   const [showTranslate, showToggleTranslate] = useState(false)
+  console.log(showTranslate)
   const {
     data: translatedResponse,
     refetch,
@@ -88,13 +90,14 @@ export const BotMessage = ({
             }}
           />
           <MButton
+            className={clsx(showTranslate ? 'bg-primary' : '')}
             intent="buttonIcon"
             leadingIcon={<TranslateIcon className="color-chatbutton" />}
             onPress={async () => {
-              // if (!showToggleTranslate) {
-              await refetch()
-              // }
               showToggleTranslate(x => !x)
+              if (!showToggleTranslate) {
+                await refetch()
+              }
             }}
           />
         </View>

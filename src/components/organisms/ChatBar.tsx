@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import { MTextInput } from '../atoms/MTextInput'
 import { useRef, useState } from 'react'
 import useAudioRecorder from '../molecules/AudioRecorder'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import MButton from '../atoms/MButton'
 const ChatBar = ({
   updateChatThread
@@ -70,7 +70,7 @@ const ChatBar = ({
                 // await stopRecording()
               }
             }}>
-            <Icon name="microphone" size={30} color="#900" />
+            <Icon name="microphone-settings" size={30} color="#900" />
           </MButton>
         )}
       </View>

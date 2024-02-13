@@ -92,8 +92,8 @@ export default UserMessage
 
 export const ThinkingMessage = () => {
   return (
-    <ChatBox intent="mila" loading={false} className="flex flex-col">
-      <LoadingDots dots={3} borderRadius={50} size={15} bounceHeight={2} />
+    <ChatBox intent="mila" loading={false} className="flex flex-col p-2">
+      <LoadingDots dots={3} borderRadius={50} size={10} bounceHeight={2} />
       <ThinkingMila />
     </ChatBox>
   )

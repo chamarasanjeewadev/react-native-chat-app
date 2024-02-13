@@ -2,7 +2,10 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeNavigator } from './HomeNavigator'
 import PracticeScreen from '../screens/PracticeScreen'
-import HomeSmile from '../assets/icons/HomeSmile'
+import HomeSmile from '../assets/icons/svgs/home.svg'
+import Chats from '../assets/icons/svgs/chats.svg'
+import Practise from '../assets/icons/svgs/practise.svg'
+import Settings from '../assets/icons/svgs/settings.svg'
 import Explore from '../assets/icons/ExploreIcon'
 import PracticeIcon from '../assets/icons/PracticeIcon'
 import { ProfileIcon } from '../assets/icons'
@@ -42,7 +45,7 @@ export const TabNavigator = () => {
         options={{
           headerShown: false,
           tabBarLabel: 'Chats',
-          tabBarIcon: Explore
+          tabBarIcon: Chats
         }}
         name="chats"
         component={ChatNavigator}
@@ -51,7 +54,7 @@ export const TabNavigator = () => {
         options={{
           headerShown: false,
           tabBarLabel: 'Practice',
-          tabBarIcon: PracticeIcon
+          tabBarIcon: Practise
         }}
         name="practice"
         component={PracticeScreen}
@@ -60,7 +63,7 @@ export const TabNavigator = () => {
         options={{
           headerShown: true,
           tabBarLabel: t('settings.title'),
-          tabBarIcon: ProfileIcon
+          tabBarIcon: Settings
         }}
         name="settings"
         component={SettingsScreen}

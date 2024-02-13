@@ -1,7 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { StyleSheet, Animated, Easing } from 'react-native'
 
-function LoadingDots({ dots = 4, size = 20, bounceHeight = 10, borderRadius, components = null }) {
+function LoadingDots({
+  dots = 4,
+  size = 5,
+  bounceHeight = 10,
+  borderRadius,
+  components = null
+}: {
+  dots: number
+  size: number
+  bounceHeight: number
+  borderRadius: number
+  components?: JSX.Element
+}) {
   const [animations, setAnimations] = useState([])
   const [reverse, setReverse] = useState(false)
 
@@ -9,8 +21,7 @@ function LoadingDots({ dots = 4, size = 20, bounceHeight = 10, borderRadius, com
 
   useEffect(() => {
     const dotAnimations = []
-    // dotAnimations.fill(new Animated.Value(0), 1, 3)
-    let animationsAmount = !!components && Array.isArray(components) ? components.length : dots
+    const animationsAmount = !!components && Array.isArray(components) ? components.length : dots
     for (let i = 0; i < animationsAmount; i++) {
       dotAnimations.push(new Animated.Value(0))
     }
