@@ -2,13 +2,13 @@ import { View } from 'react-native'
 import { MText } from '../atoms/MText'
 import { LanguageEnum } from '../../utils/enums'
 import MButton from '../atoms/MButton'
-import { PlayAudio } from '../../assets/icons/PlayAudio'
-import { TranslateIcon } from '../../assets/icons/TranslateIcon'
+import PlayAudio from '../../assets/icons/svgs/PlayAudio.svg'
+import TranslateIcon from '../../assets/icons/svgs/translate.svg'
 import useAudioPlayer from '../../hooks/useAudioPlayer'
 import { useState } from 'react'
 import { useContextTranslate, useFeedbackTranslate } from '../../hooks/queries'
 import { ChatBox } from '../molecules/ChatBox'
-import { PlaySlowIcon } from '../../assets/icons/PlaySlowIcon'
+import PlaySlowIcon from '../../assets/icons/svgs/PlaySlow.svg'
 
 const BotWord = ({
   audio,
@@ -74,19 +74,19 @@ export const BotMessage = ({
         />
         <View className="flex flex-row gap-2 ">
           <MButton
-            leadingIcon={<PlayAudio />}
+            leadingIcon={<PlayAudio className="text-chatbutton" />}
             onPress={async () => {
               playAudio({ audioUrl: audio_response })
             }}
           />
           <MButton
-            leadingIcon={<PlaySlowIcon />}
+            leadingIcon={<PlaySlowIcon className="text-chatbutton" />}
             onPress={async () => {
               playAudio({ audioUrl: audio_response, rate: 0.75 })
             }}
           />
           <MButton
-            leadingIcon={<TranslateIcon />}
+            leadingIcon={<TranslateIcon className="text-chatbutton bg-chatbuttonbg" />}
             onPress={async () => {
               // if (!showToggleTranslate) {
               await refetch()

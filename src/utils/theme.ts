@@ -70,7 +70,7 @@ export const themes = {
       '--user-chat': colors.blue[700],
       '--user-chat-bg': colors.blue[25],
       '--chat-button-bg': colors.blue[200],
-      '--chat-button': colors.blue[100]
+      '--chat-button': colors.slate[800]
     }
   },
   orange: {
