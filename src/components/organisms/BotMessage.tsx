@@ -74,19 +74,22 @@ export const BotMessage = ({
         />
         <View className="flex flex-row gap-2 ">
           <MButton
-            leadingIcon={<PlayAudio className="text-chatbutton" />}
+            intent="buttonIcon"
+            leadingIcon={<PlayAudio className="color-chatbutton" />}
             onPress={async () => {
               playAudio({ audioUrl: audio_response })
             }}
           />
           <MButton
-            leadingIcon={<PlaySlowIcon className="text-chatbutton" />}
+            intent="buttonIcon"
+            leadingIcon={<PlaySlowIcon className="color-chatbutton" />}
             onPress={async () => {
               playAudio({ audioUrl: audio_response, rate: 0.75 })
             }}
           />
           <MButton
-            leadingIcon={<TranslateIcon className="text-chatbutton bg-chatbuttonbg" />}
+            intent="buttonIcon"
+            leadingIcon={<TranslateIcon className="color-chatbutton" />}
             onPress={async () => {
               // if (!showToggleTranslate) {
               await refetch()

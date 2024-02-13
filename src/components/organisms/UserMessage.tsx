@@ -1,9 +1,9 @@
 import { View } from 'react-native'
 import { MText } from '../atoms/MText'
 import MButton from '../atoms/MButton'
-import { MilaHint } from '../../assets/icons/MilaHintIcon'
-import { RetryIcon } from '../../assets/icons/RetryIcon'
-import { PlaySlowIcon } from '../../assets/icons/PlaySlowIcon'
+import MilaHintIcon from '../../assets/icons/svgs/milaHint.svg'
+import RetryIcon from '../../assets/icons/svgs/retry.svg'
+import PlaySlowIcon from '../../assets/icons/svgs/PlaySlow.svg'
 import { ChatBox } from '../molecules/ChatBox'
 import { ThinkingMila } from '../../assets/icons/ThinkingMila'
 import LoadingDots from '../atoms/LoadingDots'
@@ -51,7 +51,7 @@ const UserMessage = ({
       <View className=" flex-row justify-end gap-2 ">
         <MButton
           intent="buttonIcon"
-          leadingIcon={<MilaHint />}
+          leadingIcon={<MilaHintIcon className="color-chatbutton" />}
           onPress={async () => {
             await refectchFeedbackGrammar()
             showToggleTranslate(x => !x)
@@ -66,7 +66,7 @@ const UserMessage = ({
                 console.log('refetch response', data.data)
               })
             }}
-            leadingIcon={<RetryIcon />}
+            leadingIcon={<RetryIcon className="color-chatbutton" />}
           />
         )}
         <MButton
@@ -77,7 +77,7 @@ const UserMessage = ({
               playAudio({ audioUrl: data.data })
             })
           }}
-          leadingIcon={<PlaySlowIcon />}
+          leadingIcon={<PlaySlowIcon className="color-chatbutton" />}
         />
       </View>
       {/* </View> */}

@@ -27,7 +27,7 @@ const buttonVarients = {
     link: ' underline text-primary    ',
     primary: ['bg-primary', 'text-white', 'border-transparent'],
     chat: '',
-    buttonIcon: 'bg-chatbuttonbg shadow-sm border-0 '
+    buttonIcon: 'bg-chatbuttonbg color-chatbutton   shadow-sm border-0  '
   },
   size: {
     small: ['text-sm', 'py-2', 'px-4'],
@@ -54,7 +54,7 @@ const buttonStyles = cva(['font-semibold border rounded-lg'], {
     },
     {
       intent: 'buttonIcon',
-      className: ' border-0 p-2'
+      className: ' border-0 p-2 color-chatbutton'
     }
   ],
   defaultVariants: {

@@ -31,10 +31,10 @@ export const themes = {
       '--radius': '0.5rem',
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
-      '--user-chat': colors.blue[700],
+      '--user-chat': colors.blue[900],
       '--user-chat-bg': colors.blue[100],
-      '--chat-button-bg': colors.blue[200],
-      '--chat-button': colors.blue[100]
+      '--chat-button-bg': colors.blue[50],
+      '--chat-button': colors.blue[900]
 
     },
     dark: {
@@ -104,10 +104,10 @@ export const themes = {
       '--radius': '0.5rem',
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
-      '--user-chat': colors.orange[700],
-      '--user-chat-bg': colors.slate[100],
-      '--chat-button-bg': colors.orange[200],
-      '--chat-button': colors.orange[100]
+      '--user-chat': colors.orange[50],
+      '--user-chat-bg': colors.orange[50],
+      '--chat-button-bg': colors.orange[50],
+      '--chat-button': colors.orange[900]
     },
     dark: {
       '--primary': colors.blue[600],
@@ -176,10 +176,10 @@ export const themes = {
       '--radius': '0.5rem',
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
-      '--user-chat': colors.pink[700],
-      '--user-chat-bg': colors.slate[100],
-      '--chat-button-bg': colors.pink[200],
-      '--chat-button': colors.pink[100]
+      '--user-chat': colors.pink[900],
+      '--user-chat-bg': colors.slate[50],
+      '--chat-button-bg': colors.pink[50],
+      '--chat-button': colors.pink[900]
     },
     dark: {
       '--primary': colors.blue[600],
