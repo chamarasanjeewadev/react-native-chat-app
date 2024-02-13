@@ -22,12 +22,15 @@ const BotWord = ({
   const { playAudio } = useAudioPlayer()
   return (
     <MButton
-      intent="link"
+      disabled={!audio}
+      intent="chat"
       onPress={() => {
-        playAudio(audio)
+        playAudio({ audioUrl: audio })
       }}>
-      <MText>{romanized_character}</MText>
-      <MText>{value}</MText>
+      <View>
+        <MText className="text-secondary">{romanized_character}</MText>
+        <MText>{value}</MText>
+      </View>
     </MButton>
   )
 }
@@ -65,6 +68,7 @@ export const BotMessage = ({
         <View>
           <View>
             <BotText
+              // audio_response={audio_response}
               text_response={text_response}
               response_message_id={response_message_id}
               showRomaji={showRomaji}
@@ -103,7 +107,12 @@ export const BotMessage = ({
     </>
   )
 }
-export const BotText = ({ text_response, showRomaji, language }: BotMessageProps) => {
+export const BotText = ({
+  audio_response,
+  text_response,
+  showRomaji,
+  language
+}: BotMessageProps) => {
   const { data: tokens } = useContextTranslate(text_response)
   return (
     <>

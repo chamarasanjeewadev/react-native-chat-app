@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { useGetMilaChats } from '../hooks/queries'
 import React, { Suspense } from 'react'
 import { Dropdown } from '../assets/icons/DropDown'
@@ -6,19 +6,19 @@ import ProgressCircle from '../assets/icons/ProgressCircle'
 import { ConversationProgress, StudyMode } from '../utils/enums'
 import MButton from '../components/atoms/MButton'
 import { MText } from '../components/atoms/MText'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { ChatStackParamList } from '../navigators/ChatNavigator'
 
-const ChatsScreen = ({ navigation }) => {
+type Props = NativeStackScreenProps<ChatStackParamList, 'Chat'>
+const ChatsScreen = ({ navigation }: Props) => {
   const { data } = useGetMilaChats()
   return (
-    <View>
+    <ScrollView>
       <Suspense fallback={<View>Loading...</View>}>
         {data?.sections?.map((section: Section, index: number) => (
-          // <FadeIn key={index} />
           <View
             key={index}
             className="m-1 flex flex-row justify-between rounded-lg bg-white px-8 align-baseline shadow-lg">
-            {/* <FadeIn /> */}
-
             <View className={'¥align-middle mx-5 flex flex-grow flex-col gap-0.5  '}>
               <MText intent="description" size="large">
                 {section?.title}
@@ -62,7 +62,7 @@ const ChatsScreen = ({ navigation }) => {
           </View>
         ))}
       </Suspense>
-    </View>
+    </ScrollView>
   )
 }
 export default ChatsScreen

@@ -1,4 +1,3 @@
-import { Platform } from 'react-native'
 import { axiosInstance } from '../utils/axiosApiUtil'
 export const signIn = async () => {
   const result = await axiosInstance.post<AuthResponse>(`/user/login`)
@@ -7,7 +6,7 @@ export const signIn = async () => {
 }
 
 export const getMilaUserChats = async () => {
-  const result = await axiosInstance.get<AuthResponse>(`/user/sections/mila`, {})
+  const result = await axiosInstance.get<ChatsResponse>(`/user/sections/mila`, {})
 
   return result.data
 }

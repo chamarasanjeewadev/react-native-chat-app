@@ -110,6 +110,10 @@ type User = {
   plan_expired_on: string
   autoSubmitThreadhold?: number
 }
+interface ChatsResponse {
+  sections: Section[]
+  new_continuation_token: string
+}
 
 type AuthResponse = {
   message: string

@@ -13,6 +13,13 @@ const useAudioPlayer = () => {
     rate?: number
   }
   const playAudio = async ({ audioUrl, rate = 1 }: PlayAudioProps) => {
+    console.log('insid play audio', audioUrl)
+
+    // audioUrl =
+    //   'https://landingmilaaidev.blob.core.windows.net/aimessages/British_to.wav?se=2024-02-13T10%3A53%3A40Z&sp=r&sv=2022-11-02&sr=b&sig=RNwUJ5jislKWb46wbUTZOJzgMFzGz8EDetAfUgf6IZo%3D'
+    // // audioUrl =
+    //   'https://landingmilaaidev.blob.core.windows.net/aimessages/Japanese_です.wav?se=2024-02-13T10%3A50%3A49Z&sp=r&sv=2022-11-02&sr=b&sig=6JO2FdbdRD3hju8P0MQoCedT2FlOItisZwnU14a3Weg%3D'
+    // const encodedUrl = encodeURIComponent(audioUrl)
     try {
       try {
         await Audio.setAudioModeAsync({

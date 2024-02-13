@@ -28,7 +28,7 @@ export const useGetUsersQuery = () =>
         level_name: user_metrics?.level_name,
         next_level_exp_req: user_metrics?.next_level_exp_req,
         is_cancel_scheduled: user_metrics?.is_cancel_scheduled,
-        target_language: user_metrics?.target_language
+        target_language: user_metrics?.target_language as Language
       }
       // setUser(mappedUser)
       return mappedUser
@@ -38,12 +38,13 @@ export const useGetUsersQuery = () =>
 export const useGetMilaChats = () =>
   useQuery({
     queryKey: queryKeys.chats.milaChats().queryKey,
-    queryFn: getMilaUserChats
+    queryFn: getMilaUserChats,
+    staleTime: 0
   })
 
 export const useFirstChat = (difficulty: number, id: string) =>
   useQuery({
-    queryKey: queryKeys.chats.chat(id).queryKey,
+    queryKey: [queryKeys.chats.chat(id).queryKey, 'firstchat', difficulty],
     queryFn: () => firstChat(difficulty, id),
     enabled: false
   })

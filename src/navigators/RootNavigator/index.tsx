@@ -9,6 +9,7 @@ import { themes } from '../../utils/theme'
 import { vars, useColorScheme } from 'nativewind'
 import { useSettingStore } from '../../stores/settingStore'
 import { useAuthStore } from '../../stores/AuthStore'
+import MButton from '../../components/atoms/MButton'
 interface ThemeProps extends PropsWithChildren {
   name: string
 }
@@ -16,6 +17,15 @@ export function Theme({ name, children }: ThemeProps) {
   const colorScheme = useColorScheme()
   const theme = vars(themes[name ?? 'blue'][colorScheme.colorScheme ?? 'light'])
   return <View style={[{ flex: 1 }, theme]}>{children}</View>
+}
+
+const Fallback = ({ error, resetErrorBoundary }: { error: any; resetErrorBoundary: any }) => {
+  return (
+    <View>
+      <Text>{error}</Text>
+      <MButton onPress={resetErrorBoundary}>Try again</MButton>
+    </View>
+  )
 }
 const RootStack = createNativeStackNavigator()
 const RootNavigator = () => {
@@ -31,7 +41,8 @@ const RootNavigator = () => {
           onError={() => {
             console.log('error occured')
           }}
-          fallback={<Text>Something went wrong!</Text>}
+          // fallback={<Text>something went wrong</Text>}
+          FallbackComponent={Fallback}
           onReset={() => {
             console.log('need to reset...')
           }}>

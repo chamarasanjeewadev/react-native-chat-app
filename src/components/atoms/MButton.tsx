@@ -25,7 +25,8 @@ const buttonVarients = {
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     ghost: 'hover:bg-accent hover:text-accent-foreground',
     link: ' underline text-primary    ',
-    primary: ['bg-primary', 'text-white', 'border-transparent']
+    primary: ['bg-primary', 'text-white', 'border-transparent'],
+    chat: ''
   },
   size: {
     small: ['text-sm', 'py-2', 'px-4'],
@@ -44,6 +45,10 @@ const buttonStyles = cva(['font-semibold', 'border', 'rounded-lg'], {
     },
     {
       intent: 'link',
+      className: ' border-0 p-0 m-0 '
+    },
+    {
+      intent: 'chat',
       className: ' border-0 p-0 m-0 '
     }
   ],
@@ -79,13 +84,14 @@ export const MButton = ({
       {...props}>
       {loading ? (
         <ActivityIndicator color={'white'} className="px-2 " size="small" />
+      ) : intent === 'chat' ? (
+        <>{children}</>
       ) : (
         <>
           {leadingIcon && leadingIcon}
+
           {children && (
-            <Text
-              style={{ fontFamily: MFontFamily.poppins400 }}
-              className={cn(textColor)}>
+            <Text style={{ fontFamily: MFontFamily.poppins400 }} className={cn(textColor)}>
               {children}
             </Text>
           )}

@@ -21,7 +21,7 @@ const ChatBar = ({
   }
 
   const { startRecording, stopRecording, isRecording, recordings } = useAudioRecorder()
- 
+
   return (
     <>
       {/* <View>
@@ -52,9 +52,9 @@ const ChatBar = ({
 
         {userResponseMsg ? (
           <MButton
-            onPress={() => {
-              handleSendButtonPress({ userMessage: userResponseMsg })
-              setUserResponseMsg('sdddd')
+            onPress={async () => {
+              await handleSendButtonPress({ userMessage: userResponseMsg })
+              setUserResponseMsg('')
             }}>
             <Icon name="send" size={30} color="#900" />
           </MButton>
