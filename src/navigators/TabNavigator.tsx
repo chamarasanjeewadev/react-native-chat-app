@@ -9,6 +9,7 @@ import Settings from '../assets/icons/svgs/settings.svg'
 import { useTranslation } from 'react-i18next'
 import { ChatNavigator } from './ChatNavigator'
 import SettingsScreen from '../screens/SettingsScreen'
+import { useSettingStore } from '../stores/settingStore'
 // import clsx from 'clsx'
 
 export type BottomTabNavigatorParamList = {
@@ -22,26 +23,29 @@ export type BottomTabNavigatorParamList = {
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>()
 
 export const TabNavigator = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
+  const [themeColor] = useSettingStore(state => [state.themeColor])
 
   return (
     <Tab.Navigator
       initialRouteName={'chats'}
       screenOptions={{
-        tabBarInactiveTintColor: 'red',
-        tabBarActiveTintColor: 'yellow',
+        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: themeColor,
         tabBarStyle: { paddingTop: 5, paddingBottom: 5, height: 50 }
       }}>
       <Tab.Screen
         options={{
           headerShown: false,
-          // tabBarIcon: HomeSmile,
-          tabBarIcon: ({ focused, color }) => (
-            <HomeSmile
-            // className={clsx(focused ? 'color-black' : 'color-yellow')}
-            // color={focused ? 'bg-black' : 'bg-red'}
-            />
-          )
+          tabBarIcon: HomeSmile
+          // tabBarIcon: ({ focused, color }) => (
+          //   <HomeSmile
+          //     style={{ borderColor: 'red' }}
+
+          //     // className={clsx(focused ? 'color-black' : 'color-yellow')}
+          //     // color={focused ? 'bg-black' : 'bg-red'}
+          //   />
+          // )
         }}
         name="home"
         component={HomeNavigator}
