@@ -20,14 +20,17 @@ export const postMessage = async ({
   audio?: string
 }) => {
   const formData = new FormData()
-  formData.append('text', textInputValue ?? '')
   formData.append('section_model', JSON.stringify({ difficulty_level: 1 }))
-  console.log('audio uri..........', audio)
-  formData.append('audio', {
-    uri: audio,
-    name: 'audio.wav',
-    type: 'audio/x-wav'
-  })
+  if (textInputValue) {
+    formData.append('text', textInputValue ?? '')
+  }
+  if (audio) {
+    formData.append('audio', {
+      uri: audio,
+      name: 'audio.wav',
+      type: 'audio/x-wav'
+    })
+  }
   // const audioBlob = await new Promise((resolve, reject) => {
   //   const xhr = new XMLHttpRequest()
   //   xhr.onload = function () {
@@ -53,12 +56,12 @@ export const postMessage = async ({
   // })
   const result = await axiosInstance.post<MessageBack>(
     `/conversation/section/${sectionId}/message`,
-    formData
-    // {
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded'
-    //   }
-    // }
+    formData,
+    {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
   )
   return result.data
 }

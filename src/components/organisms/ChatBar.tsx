@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import { MTextInput } from '../atoms/MTextInput'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useAudioRecorder from '../molecules/AudioRecorder'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import MButton from '../atoms/MButton'
@@ -11,6 +11,10 @@ const ChatBar = ({
 }) => {
   const textInputRef = useRef(null)
   const [userResponseMsg, setUserResponseMsg] = useState('')
+
+  useEffect(() => {
+    textInputRef.current.focus()
+  }, [])
 
   const handleSendButtonPress = async ({ userMessage }: { userMessage: string }) => {
     updateChatThread({
