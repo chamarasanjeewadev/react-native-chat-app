@@ -13,7 +13,7 @@ export const themes = {
       '--background': colors.slate[50],
       '--muted': colors.slate[200],
       '--shadow': colors.emerald[100],
-      '--foreground': colors.red[700],
+      '--foreground': colors.blue[700],
       '--muted-foreground': colors.slate[700],
       '--popover': '255 255 255',
       '--popover-foreground': '15 23 42',

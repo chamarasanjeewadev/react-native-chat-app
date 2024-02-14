@@ -80,11 +80,18 @@ const ProfileScreen = () => {
 
   const [autoRecordEnabled, setAutoRecordEnabled] = useState(autoRecord)
 
-  const latestIconId = watch('icon_id')
-  const backgroundId = watch('background_id')
-  const selectedLanguage = watch('target_language') as Language
+  // const latestIconId = watch('icon_id')
+  // const backgroundId = watch('background_id')
+  // const selectedLanguage = watch('target_language') as Language
+  const [latestIconId, backgroundId, selectedLanguage, threadhold] = watch([
+    'icon_id',
+    'background_id',
+    'target_language',
+    'autoSubmitThreadhold'
+  ])
   const onSubmit = async data => {
     try {
+      await mutate(data)
       setUserState({
         language: notationState.lang,
         notation: notationState.notation,
@@ -92,7 +99,7 @@ const ProfileScreen = () => {
         autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0,
         showRomaji: !!notationState.notation
       })
-      await mutate(data)
+
       setUser({ ...userOnState, ...data })
       showSnackBar({ text: MESSAGES.USER_UPDATE_SUCCESS })
     } catch (error) {
@@ -149,9 +156,7 @@ const ProfileScreen = () => {
       <MHairLine />
       <MSection>
         <MText intent="label">{t('settings.personal-info.email')}</MText>
-        <MText className="border-textbordercolor bg-textmutedcolor rounded-lg border  p-2 text-sm">
-          {user?.email}
-        </MText>
+        <MText intent="disabledInput">{user?.email}</MText>
       </MSection>
 
       <MHairLine />
@@ -244,39 +249,33 @@ const ProfileScreen = () => {
       <MHairLine />
       {/* auto submit */}
       <MSection>
-        <View>
-          <MText intent="label" className="text-sm font-semibold ">
-            {t('settings.auto-submit')}
-          </MText>
-        </View>
-        <View>
-          <Controller
-            control={control}
-            rules={{
-              required: true
-            }}
-            render={({ field: { onChange, value } }) => (
-              <Slider
-                minimumValue={0}
-                maximumValue={10}
-                value={value}
-                onValueChange={onChange}
-                tapToSeek
-                StepMarker={({ stepMarked }) => {
-                  //TODO
-                  return <Text>0</Text>
-                }}
-                step={1}
-                style={{ width: 300, height: 40 }}
-                minimumTrackTintColor="#FFFFFF"
-                maximumTrackTintColor="#000000"
-              />
-            )}
-            name="autoSubmitThreadhold"
-          />
-        </View>
-        <MText intent="description" className="">
-          {t('settings.auto-submit.description', { seconds: 0 })}
+        <MText intent="label">{t('settings.auto-submit')}</MText>
+        <Controller
+          control={control}
+          rules={{
+            required: true
+          }}
+          render={({ field: { onChange, value } }) => (
+            <Slider
+              minimumValue={0}
+              maximumValue={10}
+              value={value}
+              onValueChange={onChange}
+              tapToSeek
+              StepMarker={({ stepMarked }) => {
+                //TODO
+                return <Text>0</Text>
+              }}
+              step={1}
+              style={{ width: 300, height: 40 }}
+              minimumTrackTintColor={themeColor}
+              maximumTrackTintColor={'bg-mute'}
+            />
+          )}
+          name="autoSubmitThreadhold"
+        />
+        <MText intent="description">
+          {t('settings.auto-submit.description', { seconds: threadhold })}
         </MText>
       </MSection>
       {/* auto recording */}
@@ -372,10 +371,10 @@ const ProfileScreen = () => {
                       onChange(option.value)
                     }}
                     className={clsx('mx-2 flex  justify-center px-2 ', {
-                      'rounded-lg border border-blue-400': value === option.value
+                      'rounded-lg border border-primary': value === option.value
                     })}>
-                    <View className="text-textprimary  mt-2 text-center text-sm font-semibold">
-                      <View>{option.flag}</View>
+                    <View className="mt-2">
+                      <View className="bg-red">{option.flag}</View>
                       <MText className="mt-2 text-sm">{option.label}</MText>
                       <MText className="text-center text-sm">{option.shortText}</MText>
                     </View>

@@ -8,7 +8,8 @@ const textStyles = cva(['text-sm', 'font-semibold'], {
   variants: {
     intent: {
       label: 'text-muted-foreground ',
-      description: 'text-slate-500'
+      description: 'text-slate-500',
+      disabledInput: 'bg-muted border font-normal  border-muted rounded-md p-2'
     },
     size: {
       small: ['text-sm'],
