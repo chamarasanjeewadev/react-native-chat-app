@@ -5,7 +5,7 @@ interface MChatBoxProps extends ViewProps {
   loading?: boolean
 }
 
-const chatBoxStyles = cva(['w-[90%]  p-2  gap-1   rounded-xl'], {
+const chatBoxStyles = cva(['w-[90%]  p-2 pb-3  gap-1   rounded-xl'], {
   variants: {
     intent: {
       user: 'bg-userchatbg w-[90%] rounded-tr-none flex-reverse self-end',

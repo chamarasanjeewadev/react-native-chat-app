@@ -88,8 +88,8 @@ export const Membership = () => {
             <Image source={image} />
           </View>
           <View>
-            <MText className="text-2xl  font-semibold text-texttitle">{headerTitle}</MText>
-            <MText className="mt-2 text-xl font-medium text-texttitle">{premiumHeaderDesc}</MText>
+            <MText className="text-texttitle  text-2xl font-semibold">{headerTitle}</MText>
+            <MText className="text-texttitle mt-2 text-xl font-medium">{premiumHeaderDesc}</MText>
           </View>
         </View>
         <MSubSection className="mt-4 ">
@@ -119,7 +119,7 @@ export const Membership = () => {
         </MSubSection>
         {(isFreeUser || isFreeTrial) && (
           <>
-            <MText className="my-6 px-4 text-2xl font-semibold text-textprimary">
+            <MText className="text-textprimary my-6 px-4 text-2xl font-semibold">
               {t('subscription.find-best-subscription-plan')}
             </MText>
             <View className="flex flex-col gap-3">
@@ -210,7 +210,7 @@ const MembershipItem: FC<MembershipItemProps> = ({
   return (
     <TouchableOpacity
       className={clsx(
-        'cursor-pointer rounded-xl  bg-background bg-slate-50 p-4 shadow-shadow ',
+        'rounded-xl  bg-background bg-slate-50 p-4 shadow-shadow ',
         active && 'bg-primary'
       )}
       onPress={onClick}>
@@ -218,7 +218,7 @@ const MembershipItem: FC<MembershipItemProps> = ({
         <View>{icon}</View>
         <View className="flex-1 px-2">
           <View className="flex  flex-row justify-between ">
-            <MText className="text-lg text-textprimary  ">{title}</MText>
+            <MText className="text-textprimary text-lg  ">{title}</MText>
             <View className="flex items-center gap-2 ">
               <MText className="text-sm text-slate-600 dark:text-white">{price}</MText>
             </View>

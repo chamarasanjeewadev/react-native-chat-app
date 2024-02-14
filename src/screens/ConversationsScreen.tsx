@@ -18,7 +18,7 @@ const ConversationsScreen = ({ navigation }: Props) => {
         {data?.sections?.map((section: Section, index: number) => (
           <View
             key={index}
-            className="m-1 flex flex-row justify-between rounded-lg bg-white px-8 align-baseline shadow-lg">
+            className="m-1 flex flex-row justify-between rounded-lg bg-white px-8  shadow-lg">
             <View className={'mx-5 flex flex-grow flex-col gap-0.5 align-middle'}>
               <MText intent="description" size="large">
                 {section?.title}

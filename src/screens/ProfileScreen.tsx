@@ -208,10 +208,7 @@ const ProfileScreen = () => {
           <View className="slim-scrollbar flex flex-row gap-5 overflow-x-auto">
             {avatarBackgroundColors.map((c, index) => (
               <Pressable
-                className={clsx(
-                  c.bgColor,
-                  'h-[50px] w-[50px] min-w-[50px] cursor-pointer rounded-full'
-                )}
+                className={clsx(c.bgColor, 'h-[50px] w-[50px] min-w-[50px]  rounded-full')}
                 key={`bg-${index}`}
                 onPress={() => {
                   setValue('background_id', index)
