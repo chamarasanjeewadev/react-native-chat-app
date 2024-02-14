@@ -15,7 +15,9 @@ const buttonVarients = {
     destructiveText: 'text-destructive-foreground',
     outlineText: 'text-primary',
     ghostText: 'text-primary',
-    linkText: 'text-[#475467] underline'
+    linkText: 'text-[#475467] underline',
+    settingsActiveText: 'color-card-foreground',
+    settingsDeactiveText: 'color-card-foreground'
   },
   intent: {
     default: 'bg-primary hover:bg-primary/90',
@@ -27,7 +29,9 @@ const buttonVarients = {
     link: ' underline text-primary    ',
     primary: ['bg-primary', 'text-white', 'border-transparent'],
     chat: '',
-    buttonIcon: 'bg-chatbuttonbg color-chatbutton   shadow-sm border-0  '
+    buttonIcon: 'bg-chatbuttonbg color-chatbutton   shadow-sm border-0  ',
+    settingsActive: 'bg-card color-card-foreground border-transparent',
+    settingsDeActive: 'bg-muted color-card-foreground border-transparent'
   },
   size: {
     small: ['text-sm', 'py-2', 'px-4'],

@@ -29,7 +29,7 @@ const BotWord = ({
         playAudio({ audioUrl: audio })
       }}>
       <View>
-        <MText className="text-secondary">{romanized_character}</MText>
+        {romanized_character && <MText className="text-secondary">{romanized_character}</MText>}
         <MText>{value}</MText>
       </View>
     </MButton>
@@ -55,8 +55,7 @@ export const BotMessage = ({
   showRomaji,
   ...props
 }: BotMessageProps) => {
-  const [showTranslate, showToggleTranslate] = useState(false)
-  console.log(showTranslate)
+  const [toggleTranslate, setToggleTranslate] = useState(false)
   const {
     data: translatedResponse,
     refetch,
@@ -90,22 +89,27 @@ export const BotMessage = ({
             }}
           />
           <MButton
-            className={clsx(showTranslate ? 'bg-primary' : '')}
+            loading={isFetching}
+            className={clsx(toggleTranslate ? 'bg-primary' : '')}
             intent="buttonIcon"
             leadingIcon={<TranslateIcon className="color-chatbutton" />}
             onPress={async () => {
-              showToggleTranslate(x => !x)
-              if (!showToggleTranslate) {
+              setToggleTranslate(x => !x)
+              if (!toggleTranslate) {
                 await refetch()
               }
             }}
           />
         </View>
-
-        {translatedResponse && showTranslate && !isFetching && (
-          <MText className=" flex-grow pt-2">{translatedResponse?.translated_text}</MText>
-        )}
       </ChatBox>
+      {translatedResponse && toggleTranslate && !isFetching && (
+        <ChatBox
+          loading={false}
+          intent={'mila'}
+          className="-mt-3 rounded-t-none bg-card text-card-foreground">
+          <MText className=" flex-grow pt-2">{translatedResponse?.translated_text}</MText>
+        </ChatBox>
+      )}
     </>
   )
 }

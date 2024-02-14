@@ -13,12 +13,15 @@ const useAudioPlayer = () => {
     rate?: number
   }
   const playAudio = async ({ audioUrl, rate = 1 }: PlayAudioProps) => {
-    console.log('insid play audio', audioUrl)
+    if (isPlaying) {
+      await stopAudio()
+    }
 
     // audioUrl =
-    //   'https://landingmilaaidev.blob.core.windows.net/aimessages/British_to.wav?se=2024-02-13T10%3A53%3A40Z&sp=r&sv=2022-11-02&sr=b&sig=RNwUJ5jislKWb46wbUTZOJzgMFzGz8EDetAfUgf6IZo%3D'
-    // // audioUrl =
-    //   'https://landingmilaaidev.blob.core.windows.net/aimessages/Japanese_です.wav?se=2024-02-13T10%3A50%3A49Z&sp=r&sv=2022-11-02&sr=b&sig=6JO2FdbdRD3hju8P0MQoCedT2FlOItisZwnU14a3Weg%3D'
+    //   'https://landingmilaaidev.blob.core.windows.net/aimessages/user_10_1707894556.wav?se=2024-02-14T09%3A14%3A28Z&sp=r&sv=2022-11-02&sr=b&sig=U5x4kP5BguwlFBHWSVEDlIchrkkJ7R%2BfEo9G4WRltDc%3D'
+    // audioUrl ="https://landingmilaaidev.blob.core.windows.net/aimessages/Mandarin_太好了.wav?se=2024-02-14T09%3A16%3A42Z&sp=r&sv=2022-11-02&sr=b&sig=YD8qdiao0lq/876giNHG2FNXHWgMQVfSIY9hlERi3aw%3D"
+    console.log('insid play audio', audioUrl)
+
     // const encodedUrl = encodeURIComponent(audioUrl)
     try {
       try {
@@ -28,7 +31,6 @@ const useAudioPlayer = () => {
         const { sound } = await Audio.Sound.createAsync({ uri: audioUrl })
 
         setSound(sound)
-        console.log('Playing Sound')
         await sound.setRateAsync(rate, true)
         await sound.playAsync()
         setIsPlaying(true)

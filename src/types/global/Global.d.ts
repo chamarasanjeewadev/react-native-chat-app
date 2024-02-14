@@ -76,6 +76,13 @@ type TranslateBack = {
   }>
 }
 
+interface GrammarBack {
+  corrected_text: {
+    score: number
+    feedback: string
+  }
+}
+
 type Token = {
   audio: string
   learned?: boolean

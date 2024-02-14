@@ -10,6 +10,7 @@ import LoadingDots from '../atoms/LoadingDots'
 import { useFeedbackGrammar, useGetSlowAudio, useRetry } from '../../hooks/queries'
 import { useState } from 'react'
 import useAudioPlayer from '../../hooks/useAudioPlayer'
+import clsx from 'clsx'
 
 type UserMessageProps = {
   chatMessage: Partial<MessageBack>
@@ -41,49 +42,58 @@ const UserMessage = ({
   const { refetch: fetchRetry } = useRetry({ sectionId, difficulty: difficulty_level })
   const { playAudio } = useAudioPlayer()
 
-  const [showTranslate, showToggleTranslate] = useState(false)
+  const [toggleTranslate, setToggleTranslate] = useState(false)
   return (
-    <ChatBox loading={false} intent={'user'}>
-      <MText size="large" className="text-userchat font-normal ">
-        {chatMessage?.user_message}
-      </MText>
-      <View className=" flex-row justify-end gap-2 ">
-        <MButton
-          intent="buttonIcon"
-          leadingIcon={<MilaHintIcon className="color-chatbutton" />}
-          onPress={async () => {
-            await refectchFeedbackGrammar()
-            showToggleTranslate(x => !x)
-          }}
-        />
-        {isLast && (
+    <>
+      <ChatBox loading={false} intent={'user'}>
+        <MText size="large" className="font-normal text-userchat ">
+          {chatMessage?.user_message}
+        </MText>
+        <View className=" flex-row justify-end gap-2 ">
+          <MButton
+            loading={isFetching}
+            className={clsx(toggleTranslate ? 'bg-primary' : '')}
+            intent="buttonIcon"
+            leadingIcon={<MilaHintIcon className="color-chatbutton" />}
+            onPress={async () => {
+              setToggleTranslate(x => !x)
+              if (!toggleTranslate) {
+                await refectchFeedbackGrammar()
+              }
+            }}
+          />
+          {isLast && (
+            <MButton
+              intent="buttonIcon"
+              onPress={async () => {
+                await fetchRetry().then(data => {
+                  handleRetry(data.data)
+                  console.log('refetch response', data.data)
+                })
+              }}
+              leadingIcon={<RetryIcon className="color-chatbutton" />}
+            />
+          )}
           <MButton
             intent="buttonIcon"
             onPress={async () => {
-              await fetchRetry().then(data => {
-                handleRetry(data.data)
-                console.log('refetch response', data.data)
+              await refetch().then(data => {
+                playAudio({ audioUrl: data.data })
               })
             }}
-            leadingIcon={<RetryIcon className="color-chatbutton" />}
+            leadingIcon={<PlaySlowIcon className="color-chatbutton" />}
           />
-        )}
-        <MButton
-          intent="buttonIcon"
-          onPress={async () => {
-            await refetch().then(data => {
-              console.log('audio url', data.data)
-              playAudio({ audioUrl: data.data })
-            })
-          }}
-          leadingIcon={<PlaySlowIcon className="color-chatbutton" />}
-        />
-      </View>
-      {/* </View> */}
-      {grammerResponse && showTranslate && !isFetching && (
-        <MText className=" flex-grow pt-2">{grammerResponse?.translated_text}</MText>
+        </View>
+      </ChatBox>
+      {grammerResponse && toggleTranslate && !isFetching && (
+        <ChatBox
+          loading={false}
+          intent={'user'}
+          className="-mt-3 rounded-t-none bg-card text-card-foreground">
+          <MText className=" flex-grow pt-2">{grammerResponse?.corrected_text?.feedback}</MText>
+        </ChatBox>
       )}
-    </ChatBox>
+    </>
   )
 }
 

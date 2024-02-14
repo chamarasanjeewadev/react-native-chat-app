@@ -106,7 +106,7 @@ export const feedbackTranslate = async ({
   return result.data
 }
 export const feedbackGrammar = async ({ sectionId, ...feedbackParams }: GrammarTranslateType) => {
-  const result = await axiosInstance.post<TranslateBack>(
+  const result = await axiosInstance.post<GrammarBack>(
     `/feedback/grammar/${sectionId}`,
     feedbackParams
   )

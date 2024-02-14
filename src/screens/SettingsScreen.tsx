@@ -18,10 +18,11 @@ const SettingsScreen: FC = () => {
 
   return (
     <View className="mb-2 bg-white">
-      <View className=" flex flex-row  justify-center  ">
+      <View className=" flex flex-row  justify-center gap-2 ">
         {tabs.map((tab, index) => (
           <MButton
-            intent={activeTab === index ? 'primary' : 'secondary'}
+            text={activeTab === index ? 'settingsActiveText' : 'settingsDeactiveText'}
+            intent={activeTab === index ? 'settingsActive' : 'settingsDeActive'}
             key={index}
             onPress={() => onChangeTab(index)}>
             {tab}

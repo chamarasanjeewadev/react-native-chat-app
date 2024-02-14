@@ -9,7 +9,7 @@ interface MTextInputProps extends TextInputProps {
 }
 
 const textStyles = cva(
-  ['text-sm', 'editable:bg-muted rounded-lg p-2 outline-none focus:border disabled:bg-muted'],
+  ['text-sm', 'editable:bg-muted rounded-lg p-2 focus:border disabled:bg-muted'],
 
   {
     variants: {

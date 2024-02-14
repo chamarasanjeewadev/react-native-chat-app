@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native'
+import { View } from 'react-native'
 import { MTextInput } from '../atoms/MTextInput'
 import { useEffect, useRef, useState } from 'react'
 import useAudioRecorder from '../molecules/AudioRecorder'

@@ -2,13 +2,13 @@ import { View, ViewProps } from 'react-native'
 import { cn } from '../../utils/cnUtil'
 import { VariantProps, cva } from 'class-variance-authority'
 interface MChatBoxProps extends ViewProps {
-  loading: boolean
+  loading?: boolean
 }
 
 const chatBoxStyles = cva(['w-[90%]  p-2  gap-1   rounded-xl'], {
   variants: {
     intent: {
-      user: 'bg-userchatbg w-[60%] rounded-tr-none flex-reverse self-end',
+      user: 'bg-userchatbg w-[90%] rounded-tr-none flex-reverse self-end',
       mila: 'bg-botchatbg  text-primary  rounded-tl-none'
     }
   },
