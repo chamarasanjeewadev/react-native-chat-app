@@ -256,21 +256,19 @@ const ProfileScreen = () => {
             required: true
           }}
           render={({ field: { onChange, value } }) => (
-            <Slider
-              minimumValue={0}
-              maximumValue={10}
-              value={value}
-              onValueChange={onChange}
-              tapToSeek
-              StepMarker={({ stepMarked }) => {
-                //TODO
-                return <Text>0</Text>
-              }}
-              step={1}
-              style={{ width: 300, height: 40 }}
-              minimumTrackTintColor={themeColor}
-              maximumTrackTintColor={'bg-mute'}
-            />
+            <>
+              <Slider
+                minimumValue={0}
+                maximumValue={10}
+                value={value}
+                onValueChange={onChange}
+                tapToSeek
+                step={1}
+                style={{ width: 300, height: 40 }}
+                minimumTrackTintColor={themeColor}
+                maximumTrackTintColor={'bg-mute'}
+              />
+            </>
           )}
           name="autoSubmitThreadhold"
         />
@@ -280,11 +278,9 @@ const ProfileScreen = () => {
       </MSection>
       {/* auto recording */}
       <MSection>
-        <View className="">
-          <MText intent="label" className="text-sm font-semibold ">
-            {t('settings.auto-record')}
-          </MText>
-        </View>
+        <MText intent="label" className="text-sm font-semibold ">
+          {t('settings.auto-record')}
+        </MText>
         <View className="">
           <Switch
             value={autoRecordEnabled}
