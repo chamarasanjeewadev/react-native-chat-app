@@ -104,7 +104,7 @@ export const themes = {
       '--radius': '0.5rem',
       '--bot-chat': colors.slate[800],
       '--bot-chat-bg': colors.slate[100],
-      '--user-chat': colors.orange[50],
+      '--user-chat': colors.orange[900],
       '--user-chat-bg': colors.orange[50],
       '--chat-button-bg': colors.orange[50],
       '--chat-button': colors.orange[900]

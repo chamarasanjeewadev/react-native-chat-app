@@ -42,7 +42,6 @@ const UserMessage = ({
   const { playAudio } = useAudioPlayer()
 
   const [showTranslate, showToggleTranslate] = useState(false)
-
   return (
     <ChatBox loading={false} intent={'user'}>
       <MText size="large" className="text-userchat font-normal ">
@@ -92,7 +91,7 @@ export default UserMessage
 
 export const ThinkingMessage = () => {
   return (
-    <ChatBox intent="mila" loading={false} className="flex flex-col p-2">
+    <ChatBox intent="mila" loading={false} className="flex flex-col p-4">
       <LoadingDots dots={3} borderRadius={50} size={10} bounceHeight={2} />
       <ThinkingMila />
     </ChatBox>
