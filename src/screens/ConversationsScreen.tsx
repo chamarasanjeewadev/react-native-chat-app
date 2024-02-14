@@ -27,7 +27,10 @@ const ConversationsScreen = ({ navigation }: Props) => {
                 <MButton
                   className="m-0 bg-transparent p-0 px-0 py-0"
                   onPress={() => {
-                    navigation.push('Section', { section })
+                    navigation.push('Section', {
+                      section,
+                      difficulty: StudyMode.CONVERSATION_EASY
+                    })
                   }}>
                   <ProgressCircle
                     difficulty={StudyMode.CONVERSATION_EASY}
@@ -37,7 +40,10 @@ const ConversationsScreen = ({ navigation }: Props) => {
                 <MButton
                   className="m-0 bg-transparent p-0 px-0 py-0"
                   onPress={() => {
-                    navigation.push('Section', { section })
+                    navigation.push('Section', {
+                      section,
+                      difficulty: StudyMode.CONVERSATION_MEDIUM
+                    })
                   }}>
                   <ProgressCircle
                     difficulty={StudyMode.CONVERSATION_MEDIUM}
@@ -47,10 +53,10 @@ const ConversationsScreen = ({ navigation }: Props) => {
                 <MButton
                   className="m-0 bg-transparent p-0 px-0 py-0"
                   onPress={() => {
-                    navigation.push('Section', { section })
+                    navigation.push('Section', { section, difficulty: StudyMode.CONVERSATION_HARD })
                   }}>
                   <ProgressCircle
-                    difficulty={StudyMode.CONVERSATION_EASY}
+                    difficulty={StudyMode.CONVERSATION_HARD}
                     progress={ConversationProgress.STARTED}
                   />
                 </MButton>

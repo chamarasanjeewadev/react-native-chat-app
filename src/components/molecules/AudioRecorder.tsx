@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Audio } from 'expo-av'
+import useSnackBar from '../../hooks/useSnackBar'
 
 type AudioType = {
   sound: Audio.Sound
@@ -10,12 +11,18 @@ const useAudioRecorder = () => {
   const [recording, setRecording] = useState<Audio.Recording>(null)
   const [isRecording, setIsRecording] = useState(false)
   const [recordings, setRecordings] = useState<AudioType[]>([])
+  const { showSnackBar } = useSnackBar()
 
   const startRecording = async () => {
     try {
       const { granted } = await Audio.requestPermissionsAsync()
       if (!granted) {
+        showSnackBar({ text: 'Permission to access microphone denied' })
         throw new Error('Permission to access microphone denied')
+      }
+
+      if (isRecording) {
+        await stopRecording()
       }
 
       await Audio.setAudioModeAsync({
@@ -31,6 +38,8 @@ const useAudioRecorder = () => {
       console.log('record started...', recordingObject)
     } catch (error) {
       console.error('Failed to start recording:', error)
+      showSnackBar({ text: 'Failed to start recording' })
+      await stopRecording()
     }
   }
 

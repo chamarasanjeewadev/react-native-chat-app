@@ -9,10 +9,10 @@ import { ThinkingMessage } from '../components/organisms/UserMessage'
 import { MScreenView } from '../components/atoms/MScreenView'
 import { ChatStackParamList } from '../navigators/ChatNavigator'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-const difficulty = 1
 type Props = NativeStackScreenProps<ChatStackParamList, 'Section'>
 const SectionsScreen = ({ route, navigation }: Props) => {
-  const { section } = route.params
+  const { section, difficulty } = route.params
+  console.log(difficulty)
   const { refetch } = useFirstChat(difficulty, section?.id)
   const [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([])
   const { mutateAsync, isPending } = usePostMessage()
@@ -58,8 +58,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
     })
   }
 
-  const handleRetry = (retryBack: RetryBack) => {
-    console.log(retryBack)
+  const handleRetry = () => {
     setChatThread(chatThread => chatThread.slice(0, chatThreads.length - 2))
   }
   return (

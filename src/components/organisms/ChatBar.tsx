@@ -28,10 +28,12 @@ const ChatBar = ({
 
   return (
     <>
+      {/* for demo */}
       {/* <View>
         {recordings &&
-          recordings.map((recordingLine, index) => (
-            <TouchableOpacity
+          [recordings[recordings.length - 1]]?.map((recordingLine, index) => (
+            <MButton
+              className="mb-2"
               key={index}
               onPress={async () => {
                 await recordingLine.sound.replayAsync()
@@ -42,8 +44,8 @@ const ChatBar = ({
                 //   audio: recordingLine.file
                 // })
               }}>
-              <Text>Play</Text>
-            </TouchableOpacity>
+              Play
+            </MButton>
           ))}
       </View> */}
       <View className="flex-row gap-2 text-base">
@@ -66,14 +68,15 @@ const ChatBar = ({
         ) : (
           <MButton
             intent="buttonIcon"
-            onPress={async () => {
+            onPressIn={async () => {
               try {
                 isRecording ? stopRecording() : startRecording()
               } catch (error) {
                 console.log('error occured whil recording', error)
-                // await stopRecording()
+                await stopRecording()
               }
-            }}>
+            }}
+            onPressOut={stopRecording}>
             <Icon name="microphone-settings" size={30} color="#900" />
           </MButton>
         )}

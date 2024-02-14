@@ -5,7 +5,7 @@ import SectionsScreen from '../screens/SectionsScreen'
 
 export type ChatStackParamList = {
   Chat: undefined
-  Section: { section?: { title: string; id?: string } }
+  Section: { section?: { title: string; id?: string }; difficulty: number }
 }
 
 const ChatStack = createNativeStackNavigator<ChatStackParamList>()
