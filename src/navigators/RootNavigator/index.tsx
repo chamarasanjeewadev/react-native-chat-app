@@ -22,7 +22,7 @@ export function Theme({ name, children }: ThemeProps) {
 const Fallback = ({ error, resetErrorBoundary }: { error: any; resetErrorBoundary: any }) => {
   return (
     <View>
-      <Text>{error}</Text>
+      <Text>{JSON.stringify(error?.message)}</Text>
       <MButton onPress={resetErrorBoundary}>Try again</MButton>
     </View>
   )
@@ -41,7 +41,6 @@ const RootNavigator = () => {
           onError={() => {
             console.log('error occured')
           }}
-          // fallback={<Text>something went wrong</Text>}
           FallbackComponent={Fallback}
           onReset={() => {
             console.log('need to reset...')

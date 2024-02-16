@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { getIdToken } from './tokenUtils'
 import { getAuthTokenByRefreshToken } from './authUtil'
+import { MESSAGES } from './consts'
 
 const API_BASE_URL = 'https://backend.milaai.app'
 
@@ -28,9 +29,18 @@ axiosInstance.interceptors.response.use(
   response => response,
   async error => {
     const status = error.response ? error.response.status : null
-    console.log('axios status', status, 'error response', error.response?.message)
-    if (status === 401 || status === 403) {
+    const message = error.response ? error.response?.data?.message : null
+    if (status === 403) {
+      if (message === MESSAGES.CREDENTIALS_ERROR) {
+        await getAuthTokenByRefreshToken()
+        return
+      } else if (message === MESSAGES.UPGRADE_TO_PREMIUM_ERROR) {
+        return Promise.reject(error)
+      }
+      console.log('subscription Error', message)
+    } else if (status === 401) {
       await getAuthTokenByRefreshToken()
+      return
     }
     return Promise.reject(error)
   }

@@ -7,12 +7,16 @@ import { FC, useEffect, useState } from 'react'
 import { PLANS } from '../atoms/stripe'
 import { t } from 'i18next'
 import { useAuthStore } from '../../stores/AuthStore'
-import {
-  PremiumFeatureIcon1,
-  PremiumFeatureIcon2,
-  PremiumFeatureIcon3,
-  PremiumFeatureIcon4
-} from '../../assets/icons/SubscriptionIcons'
+import PremiumFeatureIcon1 from '../../assets/icons/svgs/premiumFeatureIcon1.svg'
+import PremiumFeatureIcon2 from '../../assets/icons/svgs/premiumFeatureIcon2.svg'
+import PremiumFeatureIcon3 from '../../assets/icons/svgs/premiumFeatureIcon3.svg'
+import PremiumFeatureIcon4 from '../../assets/icons/svgs/premiumFeatureIcon4.svg'
+// import {
+//   PremiumFeatureIcon1,
+//   PremiumFeatureIcon2,
+//   PremiumFeatureIcon3,
+//   PremiumFeatureIcon4
+// } from '../../assets/icons/SubscriptionIcons'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { FeatureCard } from './'

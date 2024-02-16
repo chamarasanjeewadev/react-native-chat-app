@@ -63,7 +63,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
   }
   return (
     <MScreenView intent="chat" className="">
-      <ScrollView ref={ref}>
+      <ScrollView ref={ref} onContentSizeChange={() => ref.current.scrollToEnd({ animated: true })}>
         <View className=" gap-2">
           {chatThreads?.map((res, index) => (
             <Thread

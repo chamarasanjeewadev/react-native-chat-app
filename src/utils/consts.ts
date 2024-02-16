@@ -42,12 +42,15 @@ export const proficiencyOptions: IOption[] = [
 ]
 
 export const MESSAGES = {
+  TOEN_ERROR: 'token error',
   FEEDBACK_SUCCESS: 'Feedback sent successfully.',
   USER_UPDATE_SUCCESS: 'User updated successfully.',
   SUPPORT_SUCCESS: 'Message sent successfully.',
   SUPPORT_ERROR: 'Message send error.',
   SUBSCRIPTION_SUCCESS: 'The subscription was setup successfully',
-  PAYMENT_SUCCESS: 'The payment was successfull'
+  PAYMENT_SUCCESS: 'The payment was successfull',
+  UPGRADE_TO_PREMIUM_ERROR: 'Upgrade to premium',
+  CREDENTIALS_ERROR: 'Could not validate credentials'
 }
 
 export const FREE_TRIAL = 'price_trial'

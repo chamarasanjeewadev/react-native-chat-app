@@ -1,6 +1,7 @@
 import { authorize, refresh } from 'react-native-app-auth'
 import { getRefreshToken, setIdToken, setRefreshToken } from './tokenUtils'
-let config = {
+import { MESSAGES } from './consts'
+const config = {
   clientId: '7dd575b5-bd13-486f-adaa-047a664bd355',
   redirectUrl: 'milaai://oauthredirect/',
   additionalParameters: {},
@@ -24,17 +25,28 @@ export const getAuthToken = async () => {
     connectionTimeoutSeconds: 5000,
     iosPrefersEphemeralSession: true
   })
-  setIdToken(authInfo.idToken)
-  setRefreshToken(authInfo.refreshToken)
-  return authInfo
+  console.log('id token', authInfo.idToken)
+  if (authInfo?.idToken) {
+    setIdToken(authInfo.idToken)
+    setRefreshToken(authInfo.refreshToken)
+    return authInfo
+  }
+  {
+    throw new Error('No id token')
+  }
 }
 
 export const getAuthTokenByRefreshToken = async () => {
-  const refreshToken = getRefreshToken()
-  const authInfo = await refresh(config, {
-    refreshToken: refreshToken
-  })
-  setIdToken(authInfo?.idToken)
-  setRefreshToken(authInfo?.refreshToken)
-  return authInfo
+  try {
+    const refreshToken = getRefreshToken()
+    const authInfo = await refresh(config, {
+      refreshToken: refreshToken
+    })
+    setIdToken(authInfo?.idToken)
+    setRefreshToken(authInfo?.refreshToken)
+    return authInfo
+  } catch (error) {
+    // log out
+    throw new Error(MESSAGES.TOEN_ERROR)
+  }
 }

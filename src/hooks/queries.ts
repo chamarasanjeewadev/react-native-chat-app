@@ -53,7 +53,8 @@ export const useContextTranslate = (text: string) =>
   useQuery({
     queryKey: queryKeys.translate.translateText(text).queryKey,
     queryFn: () => contextTranslate(text),
-    enabled: !!text
+    enabled: !!text,
+    // throwOnError: true // error => error?.status >= 400
   })
 export const useFeedbackTranslate = (
   text: string,

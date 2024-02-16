@@ -15,8 +15,7 @@ export const FadeIn = () => {
           type: 'timing'
         }}
         style={[styles.container, styles.padded]}
-        animate={{ backgroundColor: dark ? '#696161' : '#ffffff' }}
-      >
+        animate={{ backgroundColor: dark ? '#696161' : '#ffffff' }}>
         <Skeleton colorMode={colorMode} radius="round" height={50} width={50} />
         <Spacer />
         <Skeleton colorMode={colorMode} width={250} />

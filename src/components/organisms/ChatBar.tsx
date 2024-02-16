@@ -29,7 +29,7 @@ const ChatBar = ({
   return (
     <>
       {/* for demo */}
-      {/* <View>
+      <View>
         {recordings &&
           [recordings[recordings.length - 1]]?.map((recordingLine, index) => (
             <MButton
@@ -47,7 +47,7 @@ const ChatBar = ({
               Play
             </MButton>
           ))}
-      </View> */}
+      </View>
       <View className="flex-row gap-2 text-base">
         <MTextInput
           forwardedRef={textInputRef}
