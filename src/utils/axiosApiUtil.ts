@@ -15,6 +15,10 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   async config => {
     const idToken = getIdToken()
+    if (!idToken) {
+      // Check if idToken is empty
+      throw new Error('Empty id token') // Throw error if idToken is empty
+    }
     config.headers = {
       Authorization: `Bearer ${idToken}`
     }

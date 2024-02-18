@@ -15,18 +15,29 @@
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"
         android:exported="true">
-        <intent-filter android:label="filter_react_native">
+        <!-- <intent-filter android:label="filter_react_native">
           <action android:name="android.intent.action.VIEW" />
           <category android:name="android.intent.category.DEFAULT" />
           <category android:name="android.intent.category.BROWSABLE" />
           <data android:scheme="milaai" />
-        </intent-filter>
+        </intent-filter> -->
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
-      
+     <activity
+        android:name="net.openid.appauth.RedirectUriReceiverActivity" 
+        android:exported="true">
+          <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="milaai"
+                    android:scheme="milaai" />
+            </intent-filter>
+      </activity> 
     </application>
 
 </manifest>

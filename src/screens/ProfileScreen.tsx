@@ -174,7 +174,7 @@ const ProfileScreen = () => {
             'mt-2 flex h-[50] w-[50] items-center  justify-center rounded-full align-middle',
             avatarBackgroundColors[backgroundId]?.bgColor
           )}>
-          <Image resizeMode="cover" source={{ uri: avatarImages?.[latestIconId]?.toString() }} />
+          {/* <Image resizeMode="cover" source={{ uri: avatarImages?.[latestIconId]?.toString() }} /> */}
         </View>
       </MSection>
       {/* avatar */}
@@ -183,7 +183,7 @@ const ProfileScreen = () => {
           <MText intent="label" className="text-sm font-semibold">
             {t('settings.choose-avatar')}
           </MText>
-          <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" />
+          {/* <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" /> */}
           <ScrollView horizontal>
             <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
               {avatarImages.map((avatar, index) => (
