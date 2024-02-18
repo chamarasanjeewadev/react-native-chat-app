@@ -20,19 +20,22 @@ const config = {
   }
 }
 export const getAuthToken = async () => {
-  const authInfo = await authorize({
-    ...config,
-    connectionTimeoutSeconds: 5000,
-    iosPrefersEphemeralSession: true
-  })
-  console.log('id token', authInfo.idToken)
-  if (authInfo?.idToken) {
-    setIdToken(authInfo.idToken)
-    setRefreshToken(authInfo.refreshToken)
-    return authInfo
-  }
-  {
-    throw new Error('No id token')
+  try {
+    const authInfo = await authorize({
+      ...config,
+      connectionTimeoutSeconds: 5000,
+      iosPrefersEphemeralSession: true
+    })
+    console.log('id token', authInfo.idToken)
+    if (authInfo?.idToken) {
+      setIdToken(authInfo.idToken)
+      setRefreshToken(authInfo.refreshToken)
+      return authInfo
+    } else {
+      throw new Error('No id token')
+    }
+  } catch (error) {
+    console.log('error at getauthtoken', error)
   }
 }
 

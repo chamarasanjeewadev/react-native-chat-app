@@ -21,11 +21,11 @@ const SignInScreen = () => {
         setUser(data.data)
       })
     } catch (error) {
-      console.log(error)
-      showSnackBar({
-        text: error.message,
-        duration: Snackbar.LENGTH_SHORT
-      })
+      console.log('error at sign in', error)
+      // showSnackBar({
+      //   text: error.message,
+      //   duration: Snackbar.LENGTH_SHORT
+      // })
     }
   }, [])
   return (

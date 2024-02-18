@@ -10,10 +10,12 @@ import { navigationRef } from './src/navigators/rootNavigation'
 import './global.css'
 import Snackbar from 'react-native-snackbar'
 import { getDisplayError } from './src/utils/errorUtil'
+import BootSplash from 'react-native-bootsplash'
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error: Error) => {
-      const errormessage = error?.response?.data?.message 
+      console.log('error at query cache', error)
+      const errormessage = error?.response?.data?.message
       const displayMessage = getDisplayError(errormessage)
       Snackbar.show({ text: displayMessage })
     }
@@ -38,6 +40,17 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     setup()
+  }, [])
+
+  useEffect(() => {
+    const init = async () => {
+      // …do multiple sync or async tasks
+    }
+
+    init().finally(async () => {
+      await BootSplash.hide({ fade: true })
+      console.log('BootSplash has been hidden successfully')
+    })
   }, [])
   return (
     <PersistQueryClientProvider
