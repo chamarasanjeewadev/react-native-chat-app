@@ -174,7 +174,7 @@ const ProfileScreen = () => {
             'mt-2 flex h-[50] w-[50] items-center  justify-center rounded-full align-middle',
             avatarBackgroundColors[backgroundId]?.bgColor
           )}>
-          <Image resizeMode="cover" source={{ uri: avatarImages?.[latestIconId]?.toString() }} />
+          {/* <Image resizeMode="cover" source={{ uri: avatarImages?.[latestIconId]?.toString() }} /> */}
         </View>
       </MSection>
       {/* avatar */}

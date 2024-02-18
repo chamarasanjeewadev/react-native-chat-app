@@ -3,7 +3,7 @@ import { getRefreshToken, setIdToken, setRefreshToken } from './tokenUtils'
 import { MESSAGES } from './consts'
 const config = {
   clientId: '7dd575b5-bd13-486f-adaa-047a664bd355',
-  redirectUrl: 'milaai://oauthredirect/',
+  redirectUrl: 'milaai.auth://oauthredirect/',
   additionalParameters: {},
   issuer: 'https://milaaisignin.b2clogin.com/15f24d55-d779-4709-a421-5a8006d76e14/v2.0/',
   scopes: [
@@ -20,19 +20,22 @@ const config = {
   }
 }
 export const getAuthToken = async () => {
-  const authInfo = await authorize({
-    ...config,
-    connectionTimeoutSeconds: 5000,
-    iosPrefersEphemeralSession: true
-  })
-  console.log('id token', authInfo.idToken)
-  if (authInfo?.idToken) {
-    setIdToken(authInfo.idToken)
-    setRefreshToken(authInfo.refreshToken)
-    return authInfo
-  }
-  {
-    throw new Error('No id token')
+  try {
+    const authInfo = await authorize({
+      ...config,
+      connectionTimeoutSeconds: 5000,
+      iosPrefersEphemeralSession: true
+    })
+    console.log('id token', authInfo.idToken)
+    if (authInfo?.idToken) {
+      setIdToken(authInfo.idToken)
+      setRefreshToken(authInfo.refreshToken)
+      return authInfo
+    } else {
+      throw new Error('No id token')
+    }
+  } catch (error) {
+    console.log('error at getauthtoken', error)
   }
 }
 
