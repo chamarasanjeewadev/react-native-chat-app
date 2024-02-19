@@ -1,5 +1,5 @@
 import { Button, View } from 'react-native'
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useGetUsersQuery } from '../hooks/queries'
 import { getAuthToken } from '../utils/authUtil'
 import Snackbar from 'react-native-snackbar'
@@ -20,6 +20,7 @@ import { MScreenView } from '../components/atoms/MScreenView'
 // when user log in, id token will be retrieved from azure and store on storage, user info will be stored automatically to storage
 // id token is handled explicitly. In future it will be encrypted and maintain seperatly.
 const SignInScreen = () => {
+  const [idtoken, setIdToken] = useState('')
   function onAuthStateChanged(user) {
     console.log('user', user)
   }
@@ -27,7 +28,8 @@ const SignInScreen = () => {
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ['profile', 'email', 'openid'],
-      webClientId: '428763486515-ifkgpqeaieivn7uirslu854j9h0bjsqg.apps.googleusercontent.com' // client ID of type WEB for your server. Required to get the idToken on the user object, and for offline access.
+      webClientId: '893224056607-efodmdrlm5gr0eug0judgksoa21hlioi.apps.googleusercontent.com'
+      // webClientId: '428763486515-ifkgpqeaieivn7uirslu854j9h0bjsqg.apps.googleusercontent.com' // client ID of type WEB for your server. Required to get the idToken on the user object, and for offline access.
     })
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged)
     return subscriber // unsubscribe on unmount
@@ -53,16 +55,21 @@ const SignInScreen = () => {
   }, [])
 
   async function onGoogleButtonPress() {
-    // Check if your device supports Google Play
-    // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
-    // Get the users ID token
-    const { idToken } = await GoogleSignin.signIn()
-    console.log('idToken', idToken)
-    // Create a Google credential with the token
-    // const googleCredential = auth.GoogleAuthProvider.credential(idToken)
+    try {
+      // Check if your device supports Google Play
+      // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
+      // Get the users ID token
+      const { idToken } = await GoogleSignin.signIn()
+      console.log('idToken', idToken)
+      setIdToken(idToken)
+      // Create a Google credential with the token
+      // const googleCredential = auth.GoogleAuthProvider.credential(idToken)
 
-    // // Sign-in the user with the credential
-    // return auth().signInWithCredential(googleCredential)
+      // // Sign-in the user with the credential
+      // return auth().signInWithCredential(googleCredential)
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <MScreenView className="bg-corefig flex h-screen items-center justify-center">
@@ -74,15 +81,15 @@ const SignInScreen = () => {
         onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
         sign in with google
       </MButton>
-      {
-        <MButton
-          loading={isLoading}
-          disabled={isLoading}
-          className="text-lg"
-          onPress={() => handleAuthorize()}>
-          Authorize
-        </MButton>
-      }
+
+      {/* <MButton
+        loading={isLoading}
+        disabled={isLoading}
+        className="text-lg"
+        onPress={() => handleAuthorize()}>
+        Authorize
+      </MButton> */}
+      {idtoken && <MText>{idtoken}</MText>}
     </MScreenView>
   )
 }

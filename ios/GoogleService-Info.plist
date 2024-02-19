@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>428763486515-e4ml09r82fo0crjpmhmflua0kclm10q0.apps.googleusercontent.com</string>
+	<string>893224056607-54a8a3f97v1lbj868sdbu78ag3mottmf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.428763486515-e4ml09r82fo0crjpmhmflua0kclm10q0</string>
+	<string>com.googleusercontent.apps.893224056607-54a8a3f97v1lbj868sdbu78ag3mottmf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAZRXacVfoJxUumXDT1epINmlzMDxLnlog</string>
+	<string>AIzaSyB31rkhfaivGwfQVfE20rz0N3VDN4Dr80w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>428763486515</string>
+	<string>893224056607</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.milaai.app</string>
 	<key>PROJECT_ID</key>
-	<string>mila-fcc9e</string>
+	<string>mila-ai-394512</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mila-fcc9e.appspot.com</string>
+	<string>mila-ai-394512.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:428763486515:ios:6ee8ea5b37b5fddae0c646</string>
+	<string>1:893224056607:ios:249e10a08edad95da8222a</string>
 </dict>
 </plist>
