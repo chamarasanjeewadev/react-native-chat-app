@@ -12,6 +12,10 @@ import {
   statusCodes
 } from '@react-native-google-signin/google-signin'
 import auth from '@react-native-firebase/auth'
+import LoginLogo from '../assets/icons/svgs/loginLogo.svg'
+import GoogleLogo from '../assets/icons/svgs/google.svg'
+import { MText } from '../components/atoms/MText'
+import { MScreenView } from '../components/atoms/MScreenView'
 
 // when user log in, id token will be retrieved from azure and store on storage, user info will be stored automatically to storage
 // id token is handled explicitly. In future it will be encrypted and maintain seperatly.
@@ -61,11 +65,15 @@ const SignInScreen = () => {
     // return auth().signInWithCredential(googleCredential)
   }
   return (
-    <View className="flex h-screen items-center justify-center">
-      <Button
-        title="Google Sign-In"
-        onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
-      />
+    <MScreenView className="bg-corefig flex h-screen items-center justify-center">
+      <LoginLogo />
+      <MText intent="primaryHeading">Create an account</MText>
+      <MButton
+        className="bg-ash w-full rounded-2xl"
+        leadingIcon={<GoogleLogo />}
+        onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+        sign in with google
+      </MButton>
       {
         <MButton
           loading={isLoading}
@@ -75,7 +83,7 @@ const SignInScreen = () => {
           Authorize
         </MButton>
       }
-    </View>
+    </MScreenView>
   )
 }
 

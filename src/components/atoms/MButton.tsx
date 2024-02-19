@@ -11,7 +11,7 @@ interface MButtonProps extends TouchableOpacityProps {
 
 const buttonVarients = {
   text: {
-    defaultText: 'text-primary-foreground',
+    defaultText: 'text-slate font-semibold text-lg',
     destructiveText: 'text-destructive-foreground',
     outlineText: 'text-primary',
     ghostText: 'text-primary',

@@ -7,6 +7,7 @@ import { cn } from '../../utils/cnUtil'
 const textStyles = cva(['text-sm', 'font-semibold'], {
   variants: {
     intent: {
+      primaryHeading: 'font-semibold',
       label: 'text-muted-foreground ',
       description: 'text-slate-500',
       disabledInput: 'bg-muted border font-normal  border-muted rounded-md p-2'

@@ -10,6 +10,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        coreprune: 'var(--coreprune)',
+        coreplum: 'var(--coreplum)',
+        corefig: 'var(--corefig)',
+        peach: 'var(--peach)',
+        tangerine: 'var(--tangerine)',
+        lemon: 'var(--lemon)',
+        lime: 'var(--lime)',
+        blueberry: 'var(--blueberry)',
+        plum: 'var(--plum)',
+        grape: 'var(--grape)',
+        obsedian: 'var(--obsedian)',
+        slate: 'var(--slate)',
+        shale: 'var(--shale)',
+        ash: 'var(--ash)',
+        salt: 'var(--salt)',
+        snow: 'var(--snow)',
         success: 'var(--success)',
         info: 'var(--info)',
         warning: 'var(--warning)',
