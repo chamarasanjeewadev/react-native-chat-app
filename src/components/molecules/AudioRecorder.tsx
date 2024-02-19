@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Audio } from 'expo-av'
 import useSnackBar from '../../hooks/useSnackBar'
+import { AndroidAudioEncoder, AndroidOutputFormat, IOSAudioQuality } from 'expo-av/build/Audio'
 
 type AudioType = {
   sound: Audio.Sound
@@ -30,8 +31,26 @@ const useAudioRecorder = () => {
         playsInSilentModeIOS: true
       })
 
-      const x = { ...Audio.RecordingOptionsPresets.HIGH_QUALITY, outputFormat: '.wav' }
-      const { recording: recordingObject } = await Audio.Recording.createAsync(x)
+      const recordOptions: Audio.RecordingOptions = {
+        ...Audio.RecordingOptionsPresets.HIGH_QUALITY,
+        android: {
+          bitRate: 16000, //TODO put these in config
+          sampleRate: 12000,
+          numberOfChannels: 1,
+          extension: '.wav',
+          outputFormat: AndroidOutputFormat.DEFAULT,
+          audioEncoder: AndroidAudioEncoder.AAC
+        },
+        ios: {
+          bitRate: 16000,
+          sampleRate: 12000,
+          numberOfChannels: 1,
+          extension: '.wav',
+          outputFormat: AndroidOutputFormat.DEFAULT,
+          audioQuality: IOSAudioQuality.MEDIUM
+        }
+      }
+      const { recording: recordingObject } = await Audio.Recording.createAsync(recordOptions)
 
       setRecording(recordingObject)
       setIsRecording(x => !x)

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "428763486515",
+    "project_id": "mila-fcc9e",
+    "storage_bucket": "mila-fcc9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428763486515:android:dc9fa21b616e25c2e0c646",
+        "android_client_info": {
+          "package_name": "com.milaai.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428763486515-qu4j7983nas781mrorjfsgn2nf2rm42r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNNMjrlnxPy0HaalZYKCTJxNPInNoVc_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428763486515-ifkgpqeaieivn7uirslu854j9h0bjsqg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "428763486515-e4ml09r82fo0crjpmhmflua0kclm10q0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.milaai.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
