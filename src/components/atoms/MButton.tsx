@@ -89,12 +89,13 @@ export const MButton = ({
   return (
     <TouchableOpacity
       className={cn(
-        ' flex-row  items-center justify-between ',
+        ' flex-row  items-center justify-center ',
         buttonStyles({ intent, size }),
         className,
         {
           'opacity-65': loading
-        }
+        },
+        { 'justify-between': leadingIcon || trailingIcon }
       )}
       {...props}>
       {loading ? (

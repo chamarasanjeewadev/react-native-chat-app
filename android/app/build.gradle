@@ -6,6 +6,7 @@ project.ext.vectoricons = [
     iconFontNames: ["MaterialCommunityIcons.ttf", 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Specify font files
 ]
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * This is the configuration block to customize your React Native Android app.
