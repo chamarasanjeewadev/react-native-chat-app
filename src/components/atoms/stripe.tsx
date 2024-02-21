@@ -2,7 +2,7 @@ import { Layer1, Layer2, Layer3 } from '../../assets/icons/LayerIcons'
 
 export const PLANS = [
   {
-    id: 1,
+    id: 'price_1O7cS4LjRcuP1fi9Rj2vxNVU',
     icon: <Layer3 />,
     title: 'Mila Premium 12 Months',
     priceValue: 10,
@@ -13,7 +13,7 @@ export const PLANS = [
     bestDeal: true
   },
   {
-    id: 2,
+    id: 'price_1O7cRkLjRcuP1fi9iSuURM40',
     icon: <Layer2 />,
     title: 'Mila Premium 6 Months',
     priceValue: 12.5,
@@ -24,7 +24,7 @@ export const PLANS = [
     bestDeal: false
   },
   {
-    id: 3,
+    id: 'price_1NqOKCLjRcuP1fi9C5enNkfE',
     icon: <Layer1 />,
     title: 'Mila Premium 1 Month',
     priceValue: 15,

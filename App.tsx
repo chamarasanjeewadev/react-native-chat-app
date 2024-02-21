@@ -11,26 +11,33 @@ import './global.css'
 import Snackbar from 'react-native-snackbar'
 import { getDisplayError } from './src/utils/errorUtil'
 import BootSplash from 'react-native-bootsplash'
-export const queryClient = new QueryClient({
-  queryCache: new QueryCache({
-    onError: (error: Error) => {
-      console.log('error at query cache', error)
-      const errormessage = error?.response?.data?.message
-      const displayMessage = getDisplayError(errormessage)
-      Snackbar.show({ text: displayMessage })
-    }
-  }),
-  mutationCache: new MutationCache({
-    onError: error => {
-      console.log('error at mutation cache', error)
-    }
-  }),
-  defaultOptions: {
-    queries: {
-      gcTime: 1000 * 60 * 60 * 24
-    }
-  }
-})
+import Reactotron, { networking } from 'reactotron-react-native'
+import { QueryClientManager, reactotronReactQuery } from 'reactotron-react-query'
+import { queryClient } from './src/utils/queryClient'
+
+if (__DEV__) {
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+}
+// export const queryClient = new QueryClient({
+//   queryCache: new QueryCache({
+//     onError: (error: Error) => {
+//       console.log('error at query cache', error)
+//       const errormessage = error?.response?.data?.message
+//       const displayMessage = getDisplayError(errormessage)
+//       Snackbar.show({ text: displayMessage })
+//     }
+//   }),
+//   mutationCache: new MutationCache({
+//     onError: error => {
+//       console.log('error at mutation cache', error)
+//     }
+//   }),
+//   defaultOptions: {
+//     queries: {
+//       gcTime: 1000 * 60 * 60 * 24
+//     }
+//   }
+// })
 
 function App(): React.JSX.Element {
   LogBox.ignoreAllLogs()

@@ -111,6 +111,24 @@
 		<string>Poppins-SemiBoldItalic.ttf</string>
 		<string>Poppins-Thin.ttf</string>
 		<string>Poppins-ThinItalic.ttf</string>
+		<string>NotoSansJP-Black.ttf</string>
+		<string>NotoSansJP-Bold.ttf</string>
+		<string>NotoSansJP-ExtraBold.ttf</string>
+		<string>NotoSansJP-ExtraLight.ttf</string>
+		<string>NotoSansJP-Light.ttf</string>
+		<string>NotoSansJP-Medium.ttf</string>
+		<string>NotoSansJP-Regular.ttf</string>
+		<string>NotoSansJP-SemiBold.ttf</string>
+		<string>NotoSansJP-Thin.ttf</string>
+		<string>NotoSansSC-Black.ttf</string>
+		<string>NotoSansSC-Bold.ttf</string>
+		<string>NotoSansSC-ExtraBold.ttf</string>
+		<string>NotoSansSC-ExtraLight.ttf</string>
+		<string>NotoSansSC-Light.ttf</string>
+		<string>NotoSansSC-Medium.ttf</string>
+		<string>NotoSansSC-Regular.ttf</string>
+		<string>NotoSansSC-SemiBold.ttf</string>
+		<string>NotoSansSC-Thin.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>BootSplash.storyboard</string>

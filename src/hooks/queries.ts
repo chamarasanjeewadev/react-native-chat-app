@@ -4,7 +4,8 @@ import {
   feedbackTranslate,
   firstChat,
   getSlowAudio,
-  retry
+  retry,
+  subscriptionIntent
 } from '../services/apiService'
 import { QueryOptions, useQuery } from '@tanstack/react-query'
 import { getMilaUserChats, signIn } from '../services/apiService'
@@ -91,4 +92,10 @@ export const useRetry = ({ sectionId, difficulty }: { sectionId: string; difficu
     queryKey: queryKeys.translate.retry(difficulty, sectionId).queryKey,
     queryFn: () => retry(sectionId, difficulty),
     enabled: false
+  })
+export const useStripeSubscription = ({ priceId }: { priceId: string }) =>
+  useQuery({
+    queryKey: ['priceId', priceId],
+    queryFn: () => subscriptionIntent(priceId),
+    enabled: true
   })

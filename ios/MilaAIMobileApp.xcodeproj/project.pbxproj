@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		05C81781DCFA41408000D5B7 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4E3E619608C438EB7A87047 /* Poppins-Light.ttf */; };
 		0756100AA1FC4060BA027F1E /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C713F385C4134AA58DD8F59D /* Poppins-Black.ttf */; };
+		0D03A5ADA51540749B2518B9 /* NotoSansSC-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 365D5928F2F945EA8664F314 /* NotoSansSC-Thin.ttf */; };
+		12FD83D98FF64D4985859C99 /* NotoSansJP-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDAB75013F394FA2AB896AD0 /* NotoSansJP-Bold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		15C247EBCC604ADE9ACF89AE /* NotoSansSC-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 375FD5E9FEA644C6B2C6FD8F /* NotoSansSC-Light.ttf */; };
 		182D7E662B8342D900EEE7DA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182D7E652B8342D600EEE7DA /* GoogleService-Info.plist */; };
 		18C485CC2B81ED6900B524AA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA82539F308A4BABB741E559 /* BootSplash.storyboard */; };
 		18C5EC672B65A3B00035EE9D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18C5EC542B65A3AF0035EE9D /* Fontisto.ttf */; };
@@ -34,25 +37,40 @@
 		18C5EC782B65A3B00035EE9D /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18C5EC652B65A3AF0035EE9D /* FontAwesome6_Brands.ttf */; };
 		18C5EC792B65A3B00035EE9D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18C5EC662B65A3AF0035EE9D /* MaterialIcons.ttf */; };
 		18EDD1622B63BE8100BD1558 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDD1612B63BE8100BD1558 /* dummy.swift */; };
+		1C368550A9C4961BF31BDAE8 /* Pods_MilaAIMobileApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20BF652820395891A331F59 /* Pods_MilaAIMobileApp.framework */; };
+		22F905DD9DD2451DA13FC7C0 /* NotoSansSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DCCF902CA864C8290D94F57 /* NotoSansSC-Bold.ttf */; };
 		2360F34A294CB9125E35AA0E /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96768183056A1D59C749E62 /* ExpoModulesProvider.swift */; };
+		2F041F63A8754219AC59DE8D /* NotoSansSC-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1167F9BA6834C1BAFEDE0FD /* NotoSansSC-SemiBold.ttf */; };
 		372A62F2644546839731AD4E /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81BC5220390D4210A02CD79F /* Poppins-BoldItalic.ttf */; };
+		4A4B9C6E66014C3386985131 /* NotoSansSC-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF84CCFFBE804288B62CB9FA /* NotoSansSC-ExtraLight.ttf */; };
+		4D4AC15AAD1C4B2FA0959878 /* NotoSansJP-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E671899335F143F3A3AD221D /* NotoSansJP-Thin.ttf */; };
+		59A606A577101BB6D3AED3BA /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B32C99E4F2A36DC494A93EC /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */; };
 		5A88FC0CFF4B499689F09AC3 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89D8C7F53F474180B05A1379 /* Poppins-ExtraBoldItalic.ttf */; };
+		5C21EF0797E948B79890304C /* NotoSansJP-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56574F28C7EF4A30A0C7AAF9 /* NotoSansJP-ExtraBold.ttf */; };
 		62BE802385AE4B479DA87900 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CCF3631E40E488597FA7D9D /* Poppins-ThinItalic.ttf */; };
 		691A3B14B3554623B399A2B1 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 951CEB1823EF4A8293842C65 /* Poppins-ExtraBold.ttf */; };
+		6AF3738F97CF4C1FAD2EA538 /* NotoSansJP-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6DA91F5AEE5421CAAA0D57A /* NotoSansJP-Light.ttf */; };
+		6B53F5324D2D4BBA92C177E9 /* NotoSansJP-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBCA121244C946F98697024B /* NotoSansJP-Regular.ttf */; };
 		771D5944B61440A59BAA972F /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60680A7D2F684480996A9A6A /* Poppins-Italic.ttf */; };
 		7A0B45CC91994B9B9CA0B94F /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CAD886202992492CACFC2DDF /* Poppins-LightItalic.ttf */; };
 		83186530BAD8492C98F99BFB /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64F74772816C455C94F0E4DF /* Poppins-BlackItalic.ttf */; };
+		8A3EBD5B14784F4BAFC01CBC /* NotoSansJP-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02D5B74271C5411987821CA6 /* NotoSansJP-Medium.ttf */; };
+		8BE62D0D017C4C51B2B061EF /* NotoSansJP-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81865D40DB0445F4B99F9524 /* NotoSansJP-ExtraLight.ttf */; };
 		A503613C5CF44E0FB920AD75 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96362C6148CF4BBABF736BEA /* Poppins-ExtraLightItalic.ttf */; };
 		A75E20521B1F4CED92EA7FF3 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE2C196BCCB848559BA32AF5 /* Poppins-Bold.ttf */; };
-		B726D52F789AD0880C2FF80B /* Pods_MilaAIMobileApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E013ED734DF8E1C5CA70FA9 /* Pods_MilaAIMobileApp.framework */; };
 		B88D28A2F07F477594EC2C1A /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BA9EF7AC27245C0A34834F7 /* Poppins-Regular.ttf */; };
 		B89EEA1A065F447498D89FD1 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22A26C5D28684397B8FFF247 /* Poppins-MediumItalic.ttf */; };
+		BBFBF7E2A1174F089D6DFFCC /* NotoSansJP-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 435F8C895E9848E1ACCD3AD3 /* NotoSansJP-SemiBold.ttf */; };
 		C7DBEE102B764ED084F11EA4 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC2A307D6451454CA21E325B /* Poppins-Thin.ttf */; };
 		C94C6F905C0646EF8BC1F019 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84E0CBD5B9A643109D2DC097 /* Poppins-Medium.ttf */; };
+		CAAE5BD6C76B4321BC2DB04E /* NotoSansSC-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 843C44E0B63F46CAB6A54783 /* NotoSansSC-Medium.ttf */; };
 		D119FEA2DFB648279E07BC00 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F1029398DC0405AB6BB4F4A /* Poppins-ExtraLight.ttf */; };
-		D66475BABEA5FE47B6D16387 /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731048AE2F8473A6BF499861 /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */; };
+		D9E4A21A5CBC46A0A7C130FA /* NotoSansSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E05690CDEA148FB8669D22D /* NotoSansSC-Regular.ttf */; };
+		E30639D5A8004C62B22B8F73 /* NotoSansJP-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FADF96174AC4178B2CF16B7 /* NotoSansJP-Black.ttf */; };
 		E97E9E9FA1FA4656B739443C /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC5A34733594CFDA1764DB8 /* Poppins-SemiBoldItalic.ttf */; };
+		E98956B2905A439D990C5B57 /* NotoSansSC-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7576719FE66B49E49D3B25A3 /* NotoSansSC-ExtraBold.ttf */; };
 		F29961D1C6510B256F579474 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B58FF5212930E59A8733D6 /* ExpoModulesProvider.swift */; };
+		F31ACD2BC1C847248F44B30B /* NotoSansSC-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 667290E3D7AA44B3B9DD452B /* NotoSansSC-Black.ttf */; };
 		F6881FDE2B4046B09799CFB5 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 194BD726D5F140929DFEB06D /* Poppins-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* MilaAIMobileAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilaAIMobileAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		02D5B74271C5411987821CA6 /* NotoSansJP-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Medium.ttf"; path = "../src/assets/fonts/NotoSansJP-Medium.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* MilaAIMobileApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilaAIMobileApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MilaAIMobileApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MilaAIMobileApp/AppDelegate.mm; sourceTree = "<group>"; };
@@ -98,31 +117,48 @@
 		18EDD1602B63BE8100BD1558 /* MilaAIMobileApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MilaAIMobileApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		18EDD1612B63BE8100BD1558 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 		194BD726D5F140929DFEB06D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		1FADF96174AC4178B2CF16B7 /* NotoSansJP-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Black.ttf"; path = "../src/assets/fonts/NotoSansJP-Black.ttf"; sourceTree = "<group>"; };
 		22A26C5D28684397B8FFF247 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../src/assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-MilaAIMobileApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp.debug.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp.debug.xcconfig"; sourceTree = "<group>"; };
+		365D5928F2F945EA8664F314 /* NotoSansSC-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Thin.ttf"; path = "../src/assets/fonts/NotoSansSC-Thin.ttf"; sourceTree = "<group>"; };
+		375FD5E9FEA644C6B2C6FD8F /* NotoSansSC-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Light.ttf"; path = "../src/assets/fonts/NotoSansSC-Light.ttf"; sourceTree = "<group>"; };
+		3B32C99E4F2A36DC494A93EC /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FC5A34733594CFDA1764DB8 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		435F8C895E9848E1ACCD3AD3 /* NotoSansJP-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-SemiBold.ttf"; path = "../src/assets/fonts/NotoSansJP-SemiBold.ttf"; sourceTree = "<group>"; };
 		4F1029398DC0405AB6BB4F4A /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../src/assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-MilaAIMobileApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp.release.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		56574F28C7EF4A30A0C7AAF9 /* NotoSansJP-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-ExtraBold.ttf"; path = "../src/assets/fonts/NotoSansJP-ExtraBold.ttf"; sourceTree = "<group>"; };
+		5E05690CDEA148FB8669D22D /* NotoSansSC-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Regular.ttf"; path = "../src/assets/fonts/NotoSansSC-Regular.ttf"; sourceTree = "<group>"; };
 		60680A7D2F684480996A9A6A /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../src/assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		64F74772816C455C94F0E4DF /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../src/assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
-		731048AE2F8473A6BF499861 /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		667290E3D7AA44B3B9DD452B /* NotoSansSC-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Black.ttf"; path = "../src/assets/fonts/NotoSansSC-Black.ttf"; sourceTree = "<group>"; };
+		73E375B1C5AE7A15C990813F /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		7576719FE66B49E49D3B25A3 /* NotoSansSC-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-ExtraBold.ttf"; path = "../src/assets/fonts/NotoSansSC-ExtraBold.ttf"; sourceTree = "<group>"; };
 		7CCF3631E40E488597FA7D9D /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ThinItalic.ttf"; path = "../src/assets/fonts/Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
-		7E013ED734DF8E1C5CA70FA9 /* Pods_MilaAIMobileApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilaAIMobileApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81865D40DB0445F4B99F9524 /* NotoSansJP-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-ExtraLight.ttf"; path = "../src/assets/fonts/NotoSansJP-ExtraLight.ttf"; sourceTree = "<group>"; };
 		81BC5220390D4210A02CD79F /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BoldItalic.ttf"; path = "../src/assets/fonts/Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		843C44E0B63F46CAB6A54783 /* NotoSansSC-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Medium.ttf"; path = "../src/assets/fonts/NotoSansSC-Medium.ttf"; sourceTree = "<group>"; };
 		84E0CBD5B9A643109D2DC097 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		89D8C7F53F474180B05A1379 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		8BA9EF7AC27245C0A34834F7 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		951CEB1823EF4A8293842C65 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBold.ttf"; path = "../src/assets/fonts/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		96362C6148CF4BBABF736BEA /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		9DCCF902CA864C8290D94F57 /* NotoSansSC-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Bold.ttf"; path = "../src/assets/fonts/NotoSansSC-Bold.ttf"; sourceTree = "<group>"; };
+		A1167F9BA6834C1BAFEDE0FD /* NotoSansSC-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-SemiBold.ttf"; path = "../src/assets/fonts/NotoSansSC-SemiBold.ttf"; sourceTree = "<group>"; };
+		A20BF652820395891A331F59 /* Pods_MilaAIMobileApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilaAIMobileApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6DA91F5AEE5421CAAA0D57A /* NotoSansJP-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Light.ttf"; path = "../src/assets/fonts/NotoSansJP-Light.ttf"; sourceTree = "<group>"; };
+		ACCD4CA66F4ED88D2CE62684 /* Pods-MilaAIMobileApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp.debug.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp.debug.xcconfig"; sourceTree = "<group>"; };
+		BBCA121244C946F98697024B /* NotoSansJP-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Regular.ttf"; path = "../src/assets/fonts/NotoSansJP-Regular.ttf"; sourceTree = "<group>"; };
+		C518E7665D5FAADECB683F8C /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C713F385C4134AA58DD8F59D /* Poppins-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Black.ttf"; path = "../src/assets/fonts/Poppins-Black.ttf"; sourceTree = "<group>"; };
 		CAD886202992492CACFC2DDF /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-LightItalic.ttf"; path = "../src/assets/fonts/Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		CC2A307D6451454CA21E325B /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		CF84CCFFBE804288B62CB9FA /* NotoSansSC-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-ExtraLight.ttf"; path = "../src/assets/fonts/NotoSansSC-ExtraLight.ttf"; sourceTree = "<group>"; };
 		D4E3E619608C438EB7A87047 /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		D754B8454E1BB0763A1D9DCB /* Pods-MilaAIMobileApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp.release.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp.release.xcconfig"; sourceTree = "<group>"; };
 		D96768183056A1D59C749E62 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MilaAIMobileApp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		DE2C196BCCB848559BA32AF5 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		E671899335F143F3A3AD221D /* NotoSansJP-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Thin.ttf"; path = "../src/assets/fonts/NotoSansJP-Thin.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EDAB75013F394FA2AB896AD0 /* NotoSansJP-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Bold.ttf"; path = "../src/assets/fonts/NotoSansJP-Bold.ttf"; sourceTree = "<group>"; };
 		FA82539F308A4BABB741E559 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = /Users/apple/Documents/mila/MilaAI.MobileApp/ios/MilaAIMobileApp/BootSplash.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D66475BABEA5FE47B6D16387 /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework in Frameworks */,
+				59A606A577101BB6D3AED3BA /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B726D52F789AD0880C2FF80B /* Pods_MilaAIMobileApp.framework in Frameworks */,
+				1C368550A9C4961BF31BDAE8 /* Pods_MilaAIMobileApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,8 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7E013ED734DF8E1C5CA70FA9 /* Pods_MilaAIMobileApp.framework */,
-				731048AE2F8473A6BF499861 /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */,
+				A20BF652820395891A331F59 /* Pods_MilaAIMobileApp.framework */,
+				3B32C99E4F2A36DC494A93EC /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,6 +314,24 @@
 				3FC5A34733594CFDA1764DB8 /* Poppins-SemiBoldItalic.ttf */,
 				CC2A307D6451454CA21E325B /* Poppins-Thin.ttf */,
 				7CCF3631E40E488597FA7D9D /* Poppins-ThinItalic.ttf */,
+				1FADF96174AC4178B2CF16B7 /* NotoSansJP-Black.ttf */,
+				EDAB75013F394FA2AB896AD0 /* NotoSansJP-Bold.ttf */,
+				56574F28C7EF4A30A0C7AAF9 /* NotoSansJP-ExtraBold.ttf */,
+				81865D40DB0445F4B99F9524 /* NotoSansJP-ExtraLight.ttf */,
+				A6DA91F5AEE5421CAAA0D57A /* NotoSansJP-Light.ttf */,
+				02D5B74271C5411987821CA6 /* NotoSansJP-Medium.ttf */,
+				BBCA121244C946F98697024B /* NotoSansJP-Regular.ttf */,
+				435F8C895E9848E1ACCD3AD3 /* NotoSansJP-SemiBold.ttf */,
+				E671899335F143F3A3AD221D /* NotoSansJP-Thin.ttf */,
+				667290E3D7AA44B3B9DD452B /* NotoSansSC-Black.ttf */,
+				9DCCF902CA864C8290D94F57 /* NotoSansSC-Bold.ttf */,
+				7576719FE66B49E49D3B25A3 /* NotoSansSC-ExtraBold.ttf */,
+				CF84CCFFBE804288B62CB9FA /* NotoSansSC-ExtraLight.ttf */,
+				375FD5E9FEA644C6B2C6FD8F /* NotoSansSC-Light.ttf */,
+				843C44E0B63F46CAB6A54783 /* NotoSansSC-Medium.ttf */,
+				5E05690CDEA148FB8669D22D /* NotoSansSC-Regular.ttf */,
+				A1167F9BA6834C1BAFEDE0FD /* NotoSansSC-SemiBold.ttf */,
+				365D5928F2F945EA8664F314 /* NotoSansSC-Thin.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -285,10 +339,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-MilaAIMobileApp.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-MilaAIMobileApp.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */,
+				ACCD4CA66F4ED88D2CE62684 /* Pods-MilaAIMobileApp.debug.xcconfig */,
+				D754B8454E1BB0763A1D9DCB /* Pods-MilaAIMobileApp.release.xcconfig */,
+				C518E7665D5FAADECB683F8C /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */,
+				73E375B1C5AE7A15C990813F /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -300,13 +354,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MilaAIMobileAppTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				2E5F464DF6A6D8481221CA0E /* [CP] Check Pods Manifest.lock */,
 				58237F905E7F0B549B4E89AE /* [Expo] Configure project */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				CD14DA598E8A53A5C00E8407 /* [CP] Embed Pods Frameworks */,
+				248821E53882885D2C33CB13 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -322,15 +376,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MilaAIMobileApp" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				A5780BA546127703F41B17F8 /* [CP] Check Pods Manifest.lock */,
 				0C792BF6E8DD83FBC4C153A4 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				9A3C2885B05592EC027CC5F2 /* [CP-User] [RNFB] Core Configuration */,
+				0FB5A6414D2685CD65CBDF0D /* [CP] Embed Pods Frameworks */,
+				2315ED24107DC675BFFEA92F /* [CP] Copy Pods Resources */,
+				BC55B692BACBF7A038101437 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -429,6 +483,24 @@
 				E97E9E9FA1FA4656B739443C /* Poppins-SemiBoldItalic.ttf in Resources */,
 				C7DBEE102B764ED084F11EA4 /* Poppins-Thin.ttf in Resources */,
 				62BE802385AE4B479DA87900 /* Poppins-ThinItalic.ttf in Resources */,
+				E30639D5A8004C62B22B8F73 /* NotoSansJP-Black.ttf in Resources */,
+				12FD83D98FF64D4985859C99 /* NotoSansJP-Bold.ttf in Resources */,
+				5C21EF0797E948B79890304C /* NotoSansJP-ExtraBold.ttf in Resources */,
+				8BE62D0D017C4C51B2B061EF /* NotoSansJP-ExtraLight.ttf in Resources */,
+				6AF3738F97CF4C1FAD2EA538 /* NotoSansJP-Light.ttf in Resources */,
+				8A3EBD5B14784F4BAFC01CBC /* NotoSansJP-Medium.ttf in Resources */,
+				6B53F5324D2D4BBA92C177E9 /* NotoSansJP-Regular.ttf in Resources */,
+				BBFBF7E2A1174F089D6DFFCC /* NotoSansJP-SemiBold.ttf in Resources */,
+				4D4AC15AAD1C4B2FA0959878 /* NotoSansJP-Thin.ttf in Resources */,
+				F31ACD2BC1C847248F44B30B /* NotoSansSC-Black.ttf in Resources */,
+				22F905DD9DD2451DA13FC7C0 /* NotoSansSC-Bold.ttf in Resources */,
+				E98956B2905A439D990C5B57 /* NotoSansSC-ExtraBold.ttf in Resources */,
+				4A4B9C6E66014C3386985131 /* NotoSansSC-ExtraLight.ttf in Resources */,
+				15C247EBCC604ADE9ACF89AE /* NotoSansSC-Light.ttf in Resources */,
+				CAAE5BD6C76B4321BC2DB04E /* NotoSansSC-Medium.ttf in Resources */,
+				D9E4A21A5CBC46A0A7C130FA /* NotoSansSC-Regular.ttf in Resources */,
+				2F041F63A8754219AC59DE8D /* NotoSansSC-SemiBold.ttf in Resources */,
+				0D03A5ADA51540749B2518B9 /* NotoSansSC-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,23 +523,6 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0C792BF6E8DD83FBC4C153A4 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -487,39 +542,58 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-MilaAIMobileApp/expo-configure-project.sh\"\n";
 		};
-		58237F905E7F0B549B4E89AE /* [Expo] Configure project */ = {
+		0FB5A6414D2685CD65CBDF0D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/expo-configure-project.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		9A3C2885B05592EC027CC5F2 /* [CP-User] [RNFB] Core Configuration */ = {
+		2315ED24107DC675BFFEA92F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP-User] [RNFB] Core Configuration";
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		248821E53882885D2C33CB13 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E5F464DF6A6D8481221CA0E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -541,7 +615,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		58237F905E7F0B549B4E89AE /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/expo-configure-project.sh\"\n";
+		};
+		A5780BA546127703F41B17F8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -563,7 +656,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		BC55B692BACBF7A038101437 /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+		};
+		CD14DA598E8A53A5C00E8407 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -578,40 +684,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -649,7 +721,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */;
+			baseConfigurationReference = C518E7665D5FAADECB683F8C /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -678,7 +750,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */;
+			baseConfigurationReference = 73E375B1C5AE7A15C990813F /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -704,7 +776,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-MilaAIMobileApp.debug.xcconfig */;
+			baseConfigurationReference = ACCD4CA66F4ED88D2CE62684 /* Pods-MilaAIMobileApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -734,7 +806,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-MilaAIMobileApp.release.xcconfig */;
+			baseConfigurationReference = D754B8454E1BB0763A1D9DCB /* Pods-MilaAIMobileApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -840,7 +912,10 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -919,7 +994,10 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

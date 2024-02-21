@@ -76,6 +76,13 @@ export const firstChat = async (difficulty_level: number, sectionId: string) => 
   })
   return result.data
 }
+
+export const subscriptionIntent = async (priceId: string) => {
+  const result = await axiosInstance.post<MessageBack>(`/stripe/create-payment-intent`, {
+    price_id: priceId
+  })
+  return result.data
+}
 export const contextTranslate = async (text: string) => {
   const result = await axiosInstance.post<ContextTranslateBack>(`/feedback/contexttranslate`, {
     text

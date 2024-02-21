@@ -28,6 +28,7 @@ import { TextProps } from 'react-native-svg'
 import PaymentSheet from '../organisms/PaymentSheet'
 import MButton from '../atoms/MButton'
 import { MText } from '../atoms/MText'
+import PaymentSheetSubscription from '../PaymentSheetSubscription'
 
 const useHeaderDesc = ({ currentPlan }: { currentPlan: typeof PLANS }) => {
   const [user] = useAuthStore(state => [state.user, state.setUser])
@@ -87,7 +88,7 @@ export const Membership = () => {
   return (
     <ScrollView>
       <MScreenView>
-        <View className="flex flex-1 flex-row flex-wrap  rounded-2xl  bg-slate-50  p-2 shadow-[0_1px_2px_0_rgba(2,6,23,0.30)]">
+        <View className="bg-slate-50 flex flex-1 flex-row  flex-wrap  rounded-2xl  p-2 shadow-[0_1px_2px_0_rgba(2,6,23,0.30)]">
           <View>
             <Image source={image} />
           </View>
@@ -142,10 +143,11 @@ export const Membership = () => {
                 />
               ))}
             </View>
-            <PaymentSheet />
+            {/* <PaymentSheet /> */}
           </>
         )}
         {/* <PaymentSheet /> */}
+        <PaymentSheetSubscription priceId={PLANS?.[0]?.id} />
         <MSection>
           <MSubTitle title={t('subscription.manage-subscription')} />
           <View className="flex flex-row items-center justify-between">
@@ -154,7 +156,7 @@ export const Membership = () => {
                 <MText> {t('subscription.current-plan')}</MText>
               </View>
             </View>
-            <MText className="font-semibold text-slate-800">{currentPlanTitle}</MText>
+            <MText className="text-slate-800 font-semibold">{currentPlanTitle}</MText>
           </View>
           {!isFreeUser && !isCancelScheduled && !isFreeTrial && (
             <MButton
@@ -181,7 +183,7 @@ export const Membership = () => {
                 <MText> {t('subscription.next-payment')}</MText>
               </View>
             </View>
-            <View className="text-sm text-slate-800 dark:text-white">
+            <View className="text-slate-800 text-sm dark:text-white">
               <MText className="">
                 {!isFreeTrial &&
                   (isCancelScheduled
@@ -214,7 +216,7 @@ const MembershipItem: FC<MembershipItemProps> = ({
   return (
     <TouchableOpacity
       className={clsx(
-        'rounded-xl  bg-background bg-slate-50 p-4 shadow-shadow ',
+        'bg-slate-50  rounded-xl bg-background p-4 shadow-shadow ',
         active && 'bg-primary'
       )}
       onPress={onClick}>
@@ -224,11 +226,11 @@ const MembershipItem: FC<MembershipItemProps> = ({
           <View className="flex  flex-row justify-between ">
             <MText className="text-textprimary text-lg  ">{title}</MText>
             <View className="flex items-center gap-2 ">
-              <MText className="text-sm text-slate-600 dark:text-white">{price}</MText>
+              <MText className="text-slate-600 text-sm dark:text-white">{price}</MText>
             </View>
           </View>
           <View className="flex flex-row gap-1">
-            <MText className="mt-2 text-slate-600 dark:text-white ">{priceDescription}</MText>
+            <MText className="text-slate-600 mt-2 dark:text-white ">{priceDescription}</MText>
             {bestDeal && (
               <View className="rounded-2xl  border border-green-200 bg-green-50 px-3 py-1 shadow-sm">
                 <MText className="text-sm font-medium text-green-900">

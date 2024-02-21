@@ -1,4 +1,10 @@
-import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import {
+  ActivityIndicator,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View
+} from 'react-native'
 import { cn } from '../../utils/cnUtil'
 import { VariantProps, cva } from 'class-variance-authority'
 import { MFontFamily } from '../../utils/fonts/fontFamily'
@@ -83,7 +89,7 @@ export const MButton = ({
   return (
     <TouchableOpacity
       className={cn(
-        ' flex-row  items-center justify-center gap-1 ',
+        ' flex-row  items-center justify-between ',
         buttonStyles({ intent, size }),
         className,
         {
@@ -97,13 +103,13 @@ export const MButton = ({
         <>{children}</>
       ) : (
         <>
-          {leadingIcon && leadingIcon}
+          <View>{leadingIcon && leadingIcon}</View>
           {children && (
             <Text style={{ fontFamily: MFontFamily.poppins400 }} className={cn(textColor)}>
               {children}
             </Text>
           )}
-          {trailingIcon && trailingIcon}
+          <View>{trailingIcon && trailingIcon}</View>
         </>
       )}
     </TouchableOpacity>

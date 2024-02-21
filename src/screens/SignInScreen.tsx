@@ -72,23 +72,23 @@ const SignInScreen = () => {
     }
   }
   return (
-    <MScreenView className="bg-corefig flex h-screen items-center justify-center">
+    <MScreenView className="flex h-screen items-center justify-center bg-corefig">
       <LoginLogo />
       <MText intent="primaryHeading">Create an account</MText>
       <MButton
-        className="bg-ash w-full rounded-2xl"
+        className="w-full rounded-2xl bg-ash"
         leadingIcon={<GoogleLogo />}
         onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
         sign in with google
       </MButton>
 
-      {/* <MButton
+      <MButton
         loading={isLoading}
         disabled={isLoading}
         className="text-lg"
         onPress={() => handleAuthorize()}>
         Authorize
-      </MButton> */}
+      </MButton>
       {idtoken && <MText>{idtoken}</MText>}
     </MScreenView>
   )
