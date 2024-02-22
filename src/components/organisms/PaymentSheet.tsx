@@ -1,7 +1,7 @@
 import { StripeProvider, usePaymentSheet } from '@stripe/stripe-react-native'
 import React, { useEffect, useState } from 'react'
 import MButton from '../atoms/MButton'
-import { API_URL, MERCHANT_ID, MESSAGES, PUBLISHABLE_kEY } from '../../utils/consts'
+import { MERCHANT_ID, MESSAGES, PUBLISHABLE_kEY } from '../../utils/consts'
 import useSnackBar from '../../hooks/useSnackBar'
 
 const PaymentSheet = () => {
@@ -54,21 +54,21 @@ const PaymentSheet = () => {
     }
   }
 
-  const fetchPaymentSheetParams = async () => {
-    const response = await fetch(`${API_URL}/payment-sheet`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const { paymentIntent, ephemeralKey, customer } = await response.json()
+  // const fetchPaymentSheetParams = async () => {
+  //   const response = await fetch(`${API_URL}/payment-sheet`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   const { paymentIntent, ephemeralKey, customer } = await response.json()
 
-    return {
-      paymentIntent,
-      ephemeralKey,
-      customer
-    }
-  }
+  //   return {
+  //     paymentIntent,
+  //     ephemeralKey,
+  //     customer
+  //   }
+  // }
 
   async function buy() {
     console.log('press buy...')

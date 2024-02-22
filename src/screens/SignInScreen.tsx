@@ -16,6 +16,8 @@ import LoginLogo from '../assets/icons/svgs/loginLogo.svg'
 import GoogleLogo from '../assets/icons/svgs/google.svg'
 import { MText } from '../components/atoms/MText'
 import { MScreenView } from '../components/atoms/MScreenView'
+import { Config } from 'react-native-config'
+console.log('firebase enabled............', Config.FIREBASE_ENABLED)
 
 // when user log in, id token will be retrieved from azure and store on storage, user info will be stored automatically to storage
 // id token is handled explicitly. In future it will be encrypted and maintain seperatly.
@@ -39,6 +41,7 @@ const SignInScreen = () => {
   const { showSnackBar } = useSnackBar()
 
   const handleAuthorize = useCallback(async () => {
+    console.log('handle authorize')
     try {
       await getAuthToken()
       getUserInfo().then(data => {
@@ -54,7 +57,7 @@ const SignInScreen = () => {
     }
   }, [])
 
-  async function onGoogleButtonPress() {
+  async function handleFirebaseSignIn() {
     try {
       // Check if your device supports Google Play
       // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
@@ -78,16 +81,10 @@ const SignInScreen = () => {
       <MButton
         className="w-full rounded-2xl bg-ash"
         leadingIcon={<GoogleLogo />}
-        onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+        onPress={() =>
+          Config.FIREBASE_ENABLED.trim() === 'TRUE' ? handleFirebaseSignIn() : handleAuthorize()
+        }>
         sign in with google
-      </MButton>
-
-      <MButton
-        loading={isLoading}
-        disabled={isLoading}
-        className="text-lg"
-        onPress={() => handleAuthorize()}>
-        Authorize
       </MButton>
       {idtoken && <MText>{idtoken}</MText>}
     </MScreenView>

@@ -1,7 +1,7 @@
 import { StripeProvider, usePaymentSheet } from '@stripe/stripe-react-native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { MERCHANT_ID, API_URL, PUBLISHABLE_kEY, MESSAGES } from './../utils/consts'
+import { MERCHANT_ID, PUBLISHABLE_KEY, MESSAGES } from './../utils/consts'
 import { t } from 'i18next'
 import MButton from './atoms/MButton'
 import { SetupParams } from '@stripe/stripe-react-native/lib/typescript/src/types/PaymentSheet'
@@ -75,13 +75,10 @@ const StripeSubscription = ({ priceId }: { priceId: string }) => {
 
   return (
     <View>
-      <StripeProvider publishableKey={PUBLISHABLE_kEY} merchantIdentifier={MERCHANT_ID}>
-        <MButton
-          className="py-4 text-lg"
-          text={t('subscription.unlock-premium')}
-          onPress={handleSubscription}
-          // disabled={loading || !ready}
-        />
+      <StripeProvider publishableKey={PUBLISHABLE_KEY} merchantIdentifier={MERCHANT_ID}>
+        <MButton className=" text-lg" onPress={handleSubscription}>
+          {t('subscription.unlock-premium')}
+        </MButton>
       </StripeProvider>
     </View>
   )

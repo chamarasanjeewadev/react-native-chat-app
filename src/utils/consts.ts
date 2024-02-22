@@ -56,6 +56,6 @@ export const MESSAGES = {
 
 export const FREE_TRIAL = 'price_trial'
 
-export const API_URL = Platform.OS === 'android' ? 'http://10.0.2.2:4242' : 'http://localhost:4242'
+// export const API_URL = Platform.OS === 'android' ? 'http://10.0.2.2:4242' : 'http://localhost:4242'
 export const MERCHANT_ID = 'merchant.com.stripe.react.native'
-export const PUBLISHABLE_kEY = Config.PUBLISHABLE_kEY
+export const PUBLISHABLE_KEY = Config.PUBLISHABLE_KEY

@@ -6,7 +6,9 @@ declare module '*.svg' {
 }
 declare module 'react-native-config' {
   export interface NativeConfig {
-    PUBLISHABLE_kEY?: string
+    FIREBASE_ENABLED?: string
+    PUBLISHABLE_KEY?: string
+    // API_URL?: string
   }
 
   export const Config: NativeConfig
