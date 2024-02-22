@@ -8,6 +8,11 @@ project.ext.vectoricons = [
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
+project.ext.envConfigFiles = [
+        development: ".env.development",
+        staging :".env.staging",
+        production:'.env.production'
+]
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -87,7 +92,24 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-         manifestPlaceholders = [appAuthRedirectScheme: 'milaai']
+        manifestPlaceholders = [appAuthRedirectScheme: 'milaai']
+        resValue 'string', 'build_config_package','com.milaai.app'
+    }
+
+    flavorDimensions 'env'
+    productFlavors {
+        development {
+            dimension 'env'
+            applicationIdSuffix ".development"
+        }
+        staging {
+            dimension 'env'
+            applicationIdSuffix ".staging"
+        }
+        production {
+            dimension 'env'
+            applicationIdSuffix ""
+        }
     }
     signingConfigs {
         debug {
