@@ -33,7 +33,7 @@ const RootNavigator = () => {
   // const { data: userInfo } = useGetUsersQuery() // this is expected to be fetched from storage
   const idToken = getIdToken()
   const [themeColor] = useSettingStore(state => [state.themeColor])
-  const isUserAvailable = idToken && userInfo
+  const isUserAvailable = idToken
   return (
     <SafeAreaView style={styles.safeArea}>
       <Theme name={themeColor}>

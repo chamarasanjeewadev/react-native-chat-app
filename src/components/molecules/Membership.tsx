@@ -29,6 +29,8 @@ import PaymentSheet from '../organisms/PaymentSheet'
 import MButton from '../atoms/MButton'
 import { MText } from '../atoms/MText'
 import PaymentSheetSubscription from '../PaymentSheetSubscription'
+import { useCancelStripeSubscription, useReactivateStripeSubscription } from '../../hooks/mutations'
+import { useGetUsersQuery } from '../../hooks/queries'
 
 const useHeaderDesc = ({ currentPlan }: { currentPlan: typeof PLANS }) => {
   const [user] = useAuthStore(state => [state.user, state.setUser])
@@ -69,21 +71,32 @@ export const Membership = () => {
   const [isCancelling, setCancelling] = useState(false)
   const [currentPlan, setCurrentPlan] = useState(PLANS[0])
   const { premiumHeaderDesc, headerTitle, image, currentPlanTitle } = useHeaderDesc({ currentPlan })
-  const [user] = useAuthStore(state => [state.user, state.setUser])
+  const { refetch } = useGetUsersQuery()
+  const [user, setUser] = useAuthStore(state => [state.user, state.setUser])
   const { isFreeUser, isCancelScheduled, isFreeTrial } = useMembership()
+  const { mutate: cancelSubscription } = useCancelStripeSubscription()
+  const { mutate: reactivateSubscription } = useReactivateStripeSubscription()
 
   const [selectedPriceId, setSelectedPriceId] = useState(user?.stripe_price_id)
   const expireDate = dayjs(new Date(user?.plan_expired_on)).format('MMM D, YYYY')
 
+  console.log('is cancel scheduled', isCancelScheduled)
   useEffect(() => {
     setCurrentPlan(PLANS.find(plan => plan?.id === user.stripe_price_id))
   }, [user.stripe_price_id])
 
-  const onCancelSubscription = () => {
-    console.log('cancel pressed')
+  const onCancelSubscription = async () => {
+    await cancelSubscription()
+    await refetch().then(data => {
+      setUser({ ...user, ...data?.data })
+    })
   }
-  const onReactivateSubscription = () => {
-    console.log('reactivate pressed')
+  const onReactivateSubscription = async () => {
+    await reactivateSubscription()
+    await refetch().then(data => {
+      console.log('data on refetch', { ...user, ...data?.data })
+      setUser({ ...user, ...data?.data })
+    })
   }
   return (
     <ScrollView>
@@ -143,11 +156,10 @@ export const Membership = () => {
                 />
               ))}
             </View>
-            {/* <PaymentSheet /> */}
+            <PaymentSheetSubscription priceId={selectedPriceId} />
           </>
         )}
-        {/* <PaymentSheet /> */}
-        <PaymentSheetSubscription priceId={PLANS?.[0]?.id} />
+
         <MSection>
           <MSubTitle title={t('subscription.manage-subscription')} />
           <View className="flex flex-row items-center justify-between">
@@ -171,7 +183,7 @@ export const Membership = () => {
               disabled={isReactivating}
               loading={isReactivating}
               onPress={() => onReactivateSubscription()}>
-              {t('subscription.cancel-subscription')}
+              {t('subscription.reactivate-subscription')}
             </MButton>
           )}
         </MSection>

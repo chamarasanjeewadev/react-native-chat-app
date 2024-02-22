@@ -78,9 +78,17 @@ export const firstChat = async (difficulty_level: number, sectionId: string) => 
 }
 
 export const subscriptionIntent = async (priceId: string) => {
-  const result = await axiosInstance.post<MessageBack>(`/stripe/create-payment-intent`, {
+  const result = await axiosInstance.post<StripePaymentIntent>(`/stripe/create-payment-intent`, {
     price_id: priceId
   })
+  return result.data
+}
+export const cancelSubscription = async () => {
+  const result = await axiosInstance.post<string>(`/stripe/cancel-subscription`)
+  return result.data
+}
+export const reactivateSubscription = async () => {
+  const result = await axiosInstance.post<string>(`/stripe/reactivate-subscription`)
   return result.data
 }
 export const contextTranslate = async (text: string) => {

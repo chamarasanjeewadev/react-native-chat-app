@@ -8,6 +8,7 @@ declare module 'react-native-config' {
   export interface NativeConfig {
     FIREBASE_ENABLED?: string
     PUBLISHABLE_KEY?: string
+    WEB_CLIENT_ID?: string
     // API_URL?: string
   }
 

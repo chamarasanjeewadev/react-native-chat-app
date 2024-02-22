@@ -157,6 +157,13 @@ interface MessageBack {
   lastAIMessageId?: number
 }
 
+interface StripePaymentIntent {
+  setup_intent: string
+  payment_intent: string
+  ephemeral_key: string
+  customer_id: string
+}
+
 type FeedbackTranslateType = {
   sectionId: string
   difficulty_level: number

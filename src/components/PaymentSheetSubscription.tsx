@@ -7,6 +7,7 @@ import MButton from './atoms/MButton'
 import { SetupParams } from '@stripe/stripe-react-native/lib/typescript/src/types/PaymentSheet'
 import useSnackBar from '../hooks/useSnackBar'
 import { useStripeSubscription } from '../hooks/queries'
+import { useCancelStripeSubscription, useReactivateStripeSubscription } from '../hooks/mutations'
 
 const StripeSubscription = ({ priceId }: { priceId: string }) => {
   const [ready, setReady] = useState(false)
@@ -15,29 +16,28 @@ const StripeSubscription = ({ priceId }: { priceId: string }) => {
   const { data } = useStripeSubscription({ priceId })
 
   useEffect(() => {
-    if (data?.customer) {
-      console.log('inside setup intent', data?.paymentIntent)
+    if (data?.customer_id) {
+      console.log('inside setup intent', data?.payment_intent)
       initialisePaymentSheet()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data?.customer])
+  }, [data?.customer_id])
 
   const initialisePaymentSheet = async () => {
     // const { setupIntent, ephemeralKey, customer } = await fetchPaymentSheetParams()
     const setUpParams: SetupParams = {
       primaryButtonLabel: 'Subscribe',
-      customerId: data?.customer,
-      customerEphemeralKeySecret: data?.ephemeralKey,
-      setupIntentClientSecret: data?.paymentIntent,
+      customerId: data?.customer_id,
+      customerEphemeralKeySecret: data?.ephemeral_key,
+      setupIntentClientSecret: data?.setup_intent,
+      paymentIntentClientSecret: data?.payment_intent,
       merchantDisplayName: 'Mila AI',
       allowsDelayedPaymentMethods: true,
       returnURL: 'milaai://stripe-redirect'
     }
-    console.log('inside init payment sheet...........', setUpParams)
     const { error } = await initPaymentSheet(setUpParams)
     if (error) {
       showSnackBar({ text: `Error code: ${error.code} ${error.message}` })
-      console.log('error initializing..................', error)
     } else {
       setReady(true)
     }

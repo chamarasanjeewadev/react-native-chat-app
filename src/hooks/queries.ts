@@ -10,6 +10,7 @@ import {
 import { QueryOptions, useQuery } from '@tanstack/react-query'
 import { getMilaUserChats, signIn } from '../services/apiService'
 import { queryKeys } from './queryKeys'
+import { useAuthStore } from '../stores/AuthStore'
 // import { useAuthStore } from '../stores/AuthStore'
 
 export const useGetUsersQuery = () =>
