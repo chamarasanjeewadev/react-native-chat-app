@@ -14,6 +14,7 @@ import {
 import auth from '@react-native-firebase/auth'
 import LoginLogo from '../assets/icons/svgs/loginLogo.svg'
 import GoogleLogo from '../assets/icons/svgs/google.svg'
+import AppleLogo from '../assets/icons/svgs/appleIcon.svg'
 import { MText } from '../components/atoms/MText'
 import { MScreenView } from '../components/atoms/MScreenView'
 import { Config } from 'react-native-config'
@@ -75,18 +76,41 @@ const SignInScreen = () => {
     }
   }
   return (
-    <MScreenView className="flex h-screen items-center justify-center bg-corefig">
-      <LoginLogo />
-      <MText intent="primaryHeading">Create an account</MText>
-      <MButton
-        className="w-full rounded-2xl bg-ash"
-        leadingIcon={<GoogleLogo />}
-        onPress={() =>
-          Config.FIREBASE_ENABLED.trim() === 'TRUE' ? handleFirebaseSignIn() : handleAuthorize()
-        }>
-        sign in with google
-      </MButton>
-      {idtoken && <MText>{idtoken}</MText>}
+    <MScreenView className="flex h-screen   bg-corefig">
+      <View className="mt-20 items-center gap-2">
+        <LoginLogo />
+        <View className="w-3/6  items-center">
+          <MText intent="primaryHeading" className=" text-lg ">
+            Log in to your account
+          </MText>
+          <MText intent="primaryHeading" className=" text-center font-normal  ">
+            Welcome back! Please enter your details.
+          </MText>
+        </View>
+        <MButton
+          className="w-full rounded-2xl bg-ash"
+          leadingIcon={<GoogleLogo />}
+          onPress={() =>
+            Config.FIREBASE_ENABLED.trim() !== 'TRUE' ? handleFirebaseSignIn() : handleAuthorize()
+          }>
+          Log in with google
+        </MButton>
+        <MButton
+          className="w-full rounded-2xl bg-ash"
+          leadingIcon={<AppleLogo />}
+          onPress={() => {
+            console.log('sign in with apple')
+          }}>
+          Log in with apple
+        </MButton>
+        <View className="align-center flex-row items-center  justify-center gap-2 ">
+          <MText>Don’t have an account?</MText>
+          <MButton intent="link" size="large">
+            Sign up.
+          </MButton>
+        </View>
+        {idtoken && <MText>{idtoken}</MText>}
+      </View>
     </MScreenView>
   )
 }
