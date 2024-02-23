@@ -17,6 +17,7 @@ interface SettingStoreState {
   autoSubmitThreadhold: number
   audioOnly: boolean
   colorMode: ColorMode
+  premiumModal: boolean
 
   setThemeColor: (themeColor: ThemeColor) => void
 
@@ -26,6 +27,7 @@ interface SettingStoreState {
 
   setAutoRecord: (autoRecord: boolean) => void
 
+  setPremiumModal: (premiumModal: boolean) => void
   setAudioOnly: (audioOnly: boolean) => void
 
   setColorMode: (colorMode: ColorMode) => void
@@ -39,12 +41,14 @@ const forPersist = persist<Partial<SettingStoreState>>(
     showRomaji: false,
     autoRecord: false,
     autoSubmitThreadhold: 6,
+    premiumModal: false,
     setThemeColor: (themeColor: ThemeColor) => set({ themeColor }),
 
     setAutoSubmitThreadhold: (autoSubmitThreadhold: number) => set({ autoSubmitThreadhold }),
 
     setAutoRecord: (autoRecord: boolean) => set({ autoRecord }),
 
+    setPremiumModal: (premiumModal: boolean) => set({ premiumModal }),
     setAudioOnly: (audioOnly: boolean) => set({ audioOnly }),
 
     setColorMode: (colorMode: 'light' | 'dark') => set({ colorMode }),

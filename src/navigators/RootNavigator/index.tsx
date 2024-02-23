@@ -10,6 +10,8 @@ import { vars, useColorScheme } from 'nativewind'
 import { useSettingStore } from '../../stores/settingStore'
 import { useAuthStore } from '../../stores/AuthStore'
 import MButton from '../../components/atoms/MButton'
+import MModal from '../../components/organisms/Modal'
+import { SubscriptionAlert } from '../../components/organisms/SubscriptionAlert'
 interface ThemeProps extends PropsWithChildren {
   name: string
 }
@@ -30,6 +32,7 @@ const Fallback = ({ error, resetErrorBoundary }: { error: any; resetErrorBoundar
 const RootStack = createNativeStackNavigator()
 const RootNavigator = () => {
   const { user: userInfo } = useAuthStore()
+  const { setPremiumModal, premiumModal } = useSettingStore()
   // const { data: userInfo } = useGetUsersQuery() // this is expected to be fetched from storage
   const idToken = getIdToken()
   const [themeColor] = useSettingStore(state => [state.themeColor])
@@ -53,12 +56,21 @@ const RootNavigator = () => {
               <RootStack.Screen name="Login" component={SignInScreen} />
             </RootStack.Navigator>
           ) : (
-            <RootStack.Navigator
-              screenOptions={{
-                headerShown: false
-              }}>
-              <RootStack.Screen name="Home" component={TabNavigator} />
-            </RootStack.Navigator>
+            <>
+              <RootStack.Navigator
+                screenOptions={{
+                  headerShown: false
+                }}>
+                <RootStack.Screen name="Home" component={TabNavigator} />
+              </RootStack.Navigator>
+              <MModal
+                visible={premiumModal}
+                onClose={() => {
+                  setPremiumModal(false)
+                }}>
+                <SubscriptionAlert />
+              </MModal>
+            </>
           )}
         </ErrorBoundary>
       </Theme>

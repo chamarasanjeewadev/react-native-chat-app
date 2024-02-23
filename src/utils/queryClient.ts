@@ -1,6 +1,7 @@
 import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query'
 import Snackbar from 'react-native-snackbar'
 import { getDisplayError } from './errorUtil'
+import { useSettingStore } from '../stores/settingStore'
 
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -9,6 +10,8 @@ export const queryClient = new QueryClient({
       const errormessage = error?.response?.data?.message
       const displayMessage = getDisplayError(errormessage)
       Snackbar.show({ text: displayMessage })
+      useSettingStore.getState().setPremiumModal(true)
+      // write logic to update zustand state
     }
   }),
   mutationCache: new MutationCache({

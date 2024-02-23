@@ -11,7 +11,7 @@ interface ModalProps {
   children: ReactNode
 }
 
-const CustomModal: React.FC<ModalProps> = ({ visible, onClose, children }) => {
+const MModal: React.FC<ModalProps> = ({ visible, onClose, children }) => {
   return (
     <Modal
       style={{ backgroundColor: 'red' }}
@@ -32,4 +32,4 @@ const CustomModal: React.FC<ModalProps> = ({ visible, onClose, children }) => {
   )
 }
 
-export default CustomModal
+export default MModal
