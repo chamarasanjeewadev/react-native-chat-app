@@ -88,7 +88,7 @@ const SignInScreen = () => {
               className="w-full rounded-2xl bg-ash"
               leadingIcon={<GoogleLogo />}
               onPress={() =>
-                Config.FIREBASE_ENABLED.trim() === 'TRUE'
+                Config.FIREBASE_ENABLED.trim() !== 'TRUE'
                   ? handleFirebaseSignIn()
                   : handleAuthorize()
               }>

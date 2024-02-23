@@ -90,6 +90,6 @@ Gemfile.lock
 .metro-health-check*
 
 .env
-.env.development
 .env.staging
 .env.production
+.env.development

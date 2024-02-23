@@ -82,8 +82,8 @@ export const Membership = () => {
 
   console.log('is cancel scheduled', isCancelScheduled)
   useEffect(() => {
-    setCurrentPlan(PLANS.find(plan => plan?.id === user.stripe_price_id))
-  }, [user.stripe_price_id])
+    setCurrentPlan(PLANS.find(plan => plan?.id === user?.stripe_price_id))
+  }, [user?.stripe_price_id])
 
   const onCancelSubscription = async () => {
     await cancelSubscription()
@@ -156,7 +156,7 @@ export const Membership = () => {
                 />
               ))}
             </View>
-            <PaymentSheetSubscription priceId={selectedPriceId} />
+            <PaymentSheetSubscription priceId={PLANS?.[0]?.id} />
           </>
         )}
 

@@ -17,6 +17,7 @@ interface MButtonProps extends TouchableOpacityProps {
 
 const buttonVarients = {
   text: {
+    whiteText: 'text-white',
     defaultText: 'text-slate font-semibold text-lg',
     destructiveText: 'text-destructive-foreground',
     outlineText: 'text-primary',
@@ -46,7 +47,7 @@ const buttonVarients = {
   }
 }
 
-const buttonStyles = cva(['font-semibold border rounded-lg'], {
+const buttonStyles = cva(['font-semibold border rounded-3xl'], {
   variants: buttonVarients,
   compoundVariants: [
     {
