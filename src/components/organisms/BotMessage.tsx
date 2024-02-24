@@ -85,6 +85,7 @@ export const BotMessage = ({
             intent="buttonIcon"
             leadingIcon={<PlaySlowIcon className="color-chatbutton" />}
             onPress={async () => {
+              console.log('audio pressed...', audio_response)
               playAudio({ audioUrl: audio_response, rate: 0.75 })
             }}
           />

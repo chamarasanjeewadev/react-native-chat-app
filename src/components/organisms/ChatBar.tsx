@@ -36,6 +36,7 @@ const ChatBar = ({
               className="mb-2"
               key={index}
               onPress={async () => {
+                
                 await recordingLine.sound.replayAsync()
                 // const data = await mutation.mutateAsync({
                 //   // textInputValue: userResponseMsg,
