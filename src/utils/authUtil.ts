@@ -36,6 +36,7 @@ export const getAuthToken = async () => {
     }
   } catch (error) {
     console.log('error at getauthtoken', error)
+    throw error
   }
 }
 

@@ -3,8 +3,8 @@ import { create } from 'zustand'
 import { zustandMKKVStorage } from '../utils/mmkvStorage'
 
 interface AuthStoreInterface {
-  isAADAuthenticated: boolean
-  setAADAuthenticated: (isAADAuthenticated: boolean) => void
+  isAuthenticated: boolean
+  setAuthenticated: (isAADAuthenticated: boolean) => void
   idToken: string
   setIdToken: (idToken: string) => void
 
@@ -38,8 +38,8 @@ const forPersist = persist<AuthStoreInterface>(
     idToken: '',
     setIdToken: (idToken: string) => set({ idToken }),
 
-    isAADAuthenticated: false,
-    setAADAuthenticated: (isAADAuthenticated: boolean) => set({ isAADAuthenticated }),
+    isAuthenticated: false,
+    setAuthenticated: (isAuthenticated: boolean) => set({ isAuthenticated: isAuthenticated }),
 
     user: null,
     setUser: (user: User | null) => set({ user }),

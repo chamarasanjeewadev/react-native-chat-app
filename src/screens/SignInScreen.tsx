@@ -1,4 +1,4 @@
-import { Button, View } from 'react-native'
+import { View } from 'react-native'
 import { useCallback, useEffect, useState } from 'react'
 import { useGetUsersQuery } from '../hooks/queries'
 import { getAuthToken } from '../utils/authUtil'
@@ -19,25 +19,24 @@ import { MText } from '../components/atoms/MText'
 import { MScreenView } from '../components/atoms/MScreenView'
 import { Config } from 'react-native-config'
 import { LoginInComp } from '../components/organisms/LoginIn'
-console.log('firebase enabled............', Config.FIREBASE_ENABLED)
 
 const SignInScreen = () => {
   const [isUserRegistering, setIsUserRegistering] = useState(false)
-  const [idtoken, setIdToken] = useState('')
-  function onAuthStateChanged(user) {
-    console.log('user', user)
-  }
+  const { setAuthenticated } = useAuthStore()
+  // function onAuthStateChanged(user) {
+  //   console.log('user', user)
+  // }
 
-  useEffect(() => {
-    GoogleSignin.configure({
-      scopes: ['profile', 'email', 'openid'],
-      webClientId: Config.WEB_CLIENT_ID
-    })
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged)
-    return subscriber // unsubscribe on unmount
-  }, [])
+  // useEffect(() => {
+  //   GoogleSignin.configure({
+  //     scopes: ['profile', 'email', 'openid'],
+  //     webClientId: Config.WEB_CLIENT_ID
+  //   })
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged)
+  //   return subscriber // unsubscribe on unmount
+  // }, [])
 
-  const { isLoading, refetch: getUserInfo } = useGetUsersQuery()
+  const { refetch: getUserInfo } = useGetUsersQuery()
   const { setUser } = useAuthStore()
   const { showSnackBar } = useSnackBar()
 
@@ -46,30 +45,28 @@ const SignInScreen = () => {
       setIsUserRegistering(true)
       await getAuthToken()
       getUserInfo().then(data => {
-        // TODO may be we dont need to update zustand storage
         setUser(data.data)
-        setIsUserRegistering(false)
+        setAuthenticated(true)
       })
     } catch (error) {
-      console.log('error at sign in', error)
+      setIsUserRegistering(false)
       showSnackBar({
         text: error.message,
         duration: Snackbar.LENGTH_SHORT
       })
-    } finally {
-      setIsUserRegistering(false)
     }
   }, [])
 
-  async function handleFirebaseSignIn() {
-    try {
-      const { idToken } = await GoogleSignin.signIn()
-      console.log('idToken', idToken)
-      setIdToken(idToken)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // async function handleFirebaseSignIn() {
+  //   try {
+  //     const { idToken } = await GoogleSignin.signIn()
+  //     console.log('idToken', idToken)
+  //     // setIdToken(idToken)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
   return (
     <MScreenView className="flex h-screen   bg-corefig">
       <View className="mt-20">
@@ -110,7 +107,7 @@ const SignInScreen = () => {
                 Sign up.
               </MButton>
             </View>
-            {idtoken && <MText>{idtoken}</MText>}
+            {/* {idtoken && <MText>{idtoken}</MText>} */}
           </View>
         ) : (
           <LoginInComp />

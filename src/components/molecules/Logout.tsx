@@ -4,11 +4,12 @@ import { useAuthStore } from '../../stores/AuthStore'
 import MButton from '../atoms/MButton'
 import { queryClient } from '../../utils/queryClient'
 export const Logout = () => {
-  const { setUser } = useAuthStore()
+  const { setUser, setAuthenticated } = useAuthStore()
   const handleLogout = async () => {
     try {
       deleteIdToken()
       setUser(null)
+      setAuthenticated(false)
       queryClient.invalidateQueries({ queryKey: ['user'] })
     } catch (error) {
       console.log('error deleting token...')

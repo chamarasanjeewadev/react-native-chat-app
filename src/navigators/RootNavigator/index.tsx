@@ -12,6 +12,7 @@ import { useAuthStore } from '../../stores/AuthStore'
 import MButton from '../../components/atoms/MButton'
 import MModal from '../../components/organisms/Modal'
 import { SubscriptionAlert } from '../../components/organisms/SubscriptionAlert'
+import { useGetUsersQuery } from '../../hooks/queries'
 interface ThemeProps extends PropsWithChildren {
   name: string
 }
@@ -31,12 +32,12 @@ const Fallback = ({ error, resetErrorBoundary }: { error: any; resetErrorBoundar
 }
 const RootStack = createNativeStackNavigator()
 const RootNavigator = () => {
-  const { user: userInfo } = useAuthStore()
   const { setPremiumModal, premiumModal } = useSettingStore()
-  // const { data: userInfo } = useGetUsersQuery() // this is expected to be fetched from storage
+  const { isAuthenticated } = useAuthStore()
+  useGetUsersQuery() // this is expected to be fetched from storage
   const idToken = getIdToken()
   const [themeColor] = useSettingStore(state => [state.themeColor])
-  const isUserAvailable = idToken
+  const isUserAvailable = isAuthenticated && idToken
   return (
     <SafeAreaView style={styles.safeArea}>
       <Theme name={themeColor}>
