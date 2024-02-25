@@ -12,7 +12,6 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 type Props = NativeStackScreenProps<ChatStackParamList, 'Section'>
 const SectionsScreen = ({ route, navigation }: Props) => {
   const { section, difficulty } = route.params
-  console.log(difficulty)
   const { refetch } = useFirstChat(difficulty, section?.id)
   const [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([])
   const { mutateAsync, isPending } = usePostMessage()
