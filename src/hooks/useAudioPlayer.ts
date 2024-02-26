@@ -8,6 +8,14 @@ const useAudioPlayer = () => {
   const { showSnackBar } = useSnackBar()
   const [isPlaying, setIsPlaying] = useState(false)
 
+  const playAudioBySound = async (sound: Audio.Sound) => {
+    // if (isPlaying) {
+    await stopAudio()
+    // }
+    setIsPlaying(true)
+    await sound.replayAsync()
+    setIsPlaying(false)
+  }
   const playAudio = async ({ audioUrl, rate = 1 }: PlayAudioProps) => {
     if (isPlaying) {
       await stopAudio()
@@ -28,8 +36,9 @@ const useAudioPlayer = () => {
 
         setSound(sound)
         await sound.setRateAsync(rate, true)
-        await sound.playAsync()
         setIsPlaying(true)
+        await sound.playAsync()
+        setIsPlaying(false)
       } catch (error) {
         console.log(error)
       }
@@ -49,7 +58,8 @@ const useAudioPlayer = () => {
   return {
     playAudio,
     stopAudio,
-    isPlaying
+    isPlaying,
+    playAudioBySound
   }
 }
 

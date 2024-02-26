@@ -1,10 +1,10 @@
 import { View } from 'react-native'
 import { MTextInput } from '../atoms/MTextInput'
 import { useEffect, useRef, useState } from 'react'
-import useAudioRecorder from '../../hooks/useAudioRecorder'
 import Send from './../../assets/icons/svgs/chat/send.svg'
 import Mic from './../../assets/icons/svgs/chat/microphone.svg'
 import MButton from '../atoms/MButton'
+import { useAudio } from '../../hooks/AudioProvider'
 
 const ChatBar = ({
   updateAudioChat,
@@ -28,7 +28,7 @@ const ChatBar = ({
     textInputRef.current.clear()
   }
 
-  const { startRecording, stopRecording, isRecording, recordings } = useAudioRecorder()
+  const { startRecording, stopRecording, recordings } = useAudio()
 
   return (
     <View className="flex-row gap-2 text-base">

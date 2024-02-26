@@ -9,7 +9,6 @@ import { ThinkingMila } from '../../assets/icons/ThinkingMila'
 import LoadingDots from '../atoms/LoadingDots'
 import { useFeedbackGrammar, useGetSlowAudio, useRetry } from '../../hooks/queries'
 import { useState } from 'react'
-import useAudioPlayer from '../../hooks/useAudioPlayer'
 import clsx from 'clsx'
 import { PlayAudio } from '../../assets/icons/PlayAudio'
 import { useAudio } from '../../hooks/AudioProvider'
@@ -42,7 +41,7 @@ const UserMessage = ({
 
   const { refetch } = useGetSlowAudio({ sectionId, text: chatMessage?.user_message })
   const { refetch: fetchRetry } = useRetry({ sectionId, difficulty: difficulty_level })
-  const { playAudio } = useAudio()
+  const { playAudio, playAudioBySound } = useAudio()
 
   const [toggleTranslate, setToggleTranslate] = useState(false)
   return (
@@ -57,7 +56,7 @@ const UserMessage = ({
               intent="buttonIcon"
               leadingIcon={<PlayAudio className="color-chatbutton" />}
               onPress={async () => {
-                await chatMessage?.audio?.replayAsync()
+                await playAudioBySound(chatMessage?.audio)
               }}
             />
           )}
