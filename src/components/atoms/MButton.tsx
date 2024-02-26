@@ -101,9 +101,10 @@ export const MButton = ({
       {...props}>
       {loading ? (
         <ActivityIndicator color={'white'} className="px-2 " size="small" />
-      ) : intent === 'chat' ? (
-        <>{children}</>
       ) : (
+        // : intent === 'chat' ? (
+        //   <>{children}</>
+        // )
         <>
           <View>{leadingIcon && leadingIcon}</View>
           {children && (

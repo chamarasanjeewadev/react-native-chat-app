@@ -13,12 +13,11 @@ import MButton from '../../components/atoms/MButton'
 import MModal from '../../components/organisms/Modal'
 import { SubscriptionAlert } from '../../components/organisms/SubscriptionAlert'
 import { useGetUsersQuery } from '../../hooks/queries'
-interface ThemeProps extends PropsWithChildren {
-  name: string
-}
-export function Theme({ name, children }: ThemeProps) {
-  const colorScheme = useColorScheme()
-  const theme = vars(themes[name ?? 'blue'][colorScheme.colorScheme ?? 'light'])
+import { useMTheme } from '../../hooks/useMTheme'
+import { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
+
+export const Theme = ({ children }: ViewProps) => {
+  const { theme } = useMTheme()
   return <View style={[{ flex: 1 }, theme]}>{children}</View>
 }
 
@@ -36,11 +35,10 @@ const RootNavigator = () => {
   const { isAuthenticated } = useAuthStore()
   useGetUsersQuery() // this is expected to be fetched from storage
   const idToken = getIdToken()
-  const [themeColor] = useSettingStore(state => [state.themeColor])
   const isUserAvailable = isAuthenticated && idToken
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Theme name={themeColor}>
+      <Theme>
         <ErrorBoundary
           onError={() => {
             console.log('error occured')

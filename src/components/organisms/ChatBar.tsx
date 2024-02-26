@@ -3,12 +3,18 @@ import { MTextInput } from '../atoms/MTextInput'
 import { useEffect, useRef, useState } from 'react'
 import useAudioRecorder from '../molecules/AudioRecorder'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Send from './../../assets/icons/svgs/chat/send.svg'
+import Mic from './../../assets/icons/svgs/chat/microphone.svg'
 import MButton from '../atoms/MButton'
+import { usePostMessage } from '../../hooks/mutations'
 const ChatBar = ({
+  sectionId,
   updateChatThread
 }: {
+  sectionId: string
   updateChatThread: (userChat: Partial<MessageBack>) => void
 }) => {
+  const { mutateAsync, isPending } = usePostMessage()
   const textInputRef = useRef(null)
   const [userResponseMsg, setUserResponseMsg] = useState('')
 
@@ -36,14 +42,18 @@ const ChatBar = ({
               className="mb-2"
               key={index}
               onPress={async () => {
-                
                 await recordingLine.sound.replayAsync()
-                // const data = await mutation.mutateAsync({
-                //   // textInputValue: userResponseMsg,
-                //   sectionId: section?.id,
-
-                //   audio: recordingLine.file
-                // })
+                const data = await mutateAsync({
+                  sectionId: sectionId,
+                  audio: recordingLine.file
+                }).then(data => {
+                  updateChatThread({
+                    type: 'BOT',
+                    ...data,
+                    user_message: data?.text_response,
+                    audio_response: data?.audio_response
+                  })
+                })
               }}>
               Play
             </MButton>
@@ -53,33 +63,65 @@ const ChatBar = ({
         <MTextInput
           forwardedRef={textInputRef}
           onChangeText={setUserResponseMsg}
-          className="flex-grow border border-muted"
+          className="flex-grow border border-muted bg-muted"
           placeholder="Type something ....."
         />
 
         {userResponseMsg ? (
           <MButton
+            className="justify-right"
             intent="buttonIcon"
+            leadingIcon={<Send />}
             onPress={async () => {
               await handleSendButtonPress({ userMessage: userResponseMsg })
               setUserResponseMsg('')
             }}>
-            <Icon name="send" size={30} color="#900" />
+            {/* <Send /> */}
+            {/* <Icon name="send" size={30} /> */}
           </MButton>
         ) : (
           <MButton
+            leadingIcon={<Mic />}
             intent="buttonIcon"
-            onPressIn={async () => {
+            onPressOut={async () => {
               try {
-                isRecording ? stopRecording() : startRecording()
+                console.log('is recording.....', isRecording)
+                // if (isRecording) {
+                console.log('is recording.....')
+                await stopRecording()
+                const recordingLine = recordings[recordings.length - 1]
+                await mutateAsync({
+                  sectionId: sectionId,
+                  audio: recordingLine.file
+                }).then(data => {
+                  if (data) {
+                    updateChatThread({
+                      type: 'USER',
+                      // ...data,
+                      user_message: data?.user_message,
+                      audio_response: recordingLine?.file
+                    })
+                    updateChatThread({
+                      type: 'BOT',
+                      // ...data,
+                      user_message: data?.text_response,
+                      audio_response: data?.audio_response
+                    })
+                  }
+                })
+                // } else {
+                //   await startRecording()
+                // }
+                // isRecording ? stopRecording() : startRecording()
               } catch (error) {
                 console.log('error occured whil recording', error)
-                await stopRecording()
+                // await stopRecording()
               }
             }}
-            onPressOut={stopRecording}>
-            <Icon name="microphone-settings" size={30} color="#900" />
-          </MButton>
+            onPressIn={() => {
+              console.log('is pressout.....')
+              startRecording()
+            }}></MButton>
         )}
       </View>
     </>

@@ -5,8 +5,7 @@ export const Light = ({ width = '24', height = '24' }) => (
     height={height}
     viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+    xmlns="http://www.w3.org/2000/svg">
     <Path
       opacity="0.12"
       d="M14 17.6586C13.3744 17.8797 12.7013 18 12 18C11.2987 18 10.6256 17.8797 10 17.6586V22H14V17.6586Z"

@@ -61,7 +61,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
     setChatThread(chatThread => chatThread.slice(0, chatThreads.length - 2))
   }
   return (
-    <MScreenView intent="chat" className="">
+    <MScreenView intent="chat">
       <ScrollView ref={ref} onContentSizeChange={() => ref.current.scrollToEnd({ animated: true })}>
         <View className=" gap-2">
           {chatThreads?.map((res, index) => (
@@ -77,7 +77,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
           {isPending && <ThinkingMessage />}
         </View>
       </ScrollView>
-      <ChatBar updateChatThread={updateChatThreadWithUserMessage} />
+      <ChatBar sectionId={section?.id} updateChatThread={updateChatThreadWithUserMessage} />
     </MScreenView>
   )
 }

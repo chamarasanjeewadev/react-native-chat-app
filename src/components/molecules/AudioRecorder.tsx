@@ -42,13 +42,19 @@ const useAudioRecorder = () => {
           audioEncoder: AndroidAudioEncoder.AAC
         },
         ios: {
-          bitRate: 16000,
-          sampleRate: 12000,
-          numberOfChannels: 1,
-          extension: '.wav',
-          outputFormat: AndroidOutputFormat.DEFAULT,
-          audioQuality: IOSAudioQuality.MEDIUM
+          ...Audio.RecordingOptionsPresets.HIGH_QUALITY.ios, // Copy other settings from HIGH_QUALITY preset
+          // extension: '.wav',
+          sampleRate: 44100, // Set the sample rate to 44.1 kHz, a common standard for audio recording
+          bitRate: 128000
         }
+        // ios: {
+        //   bitRate: 16000,
+        //   sampleRate: 12000,
+        //   numberOfChannels: 1,
+        //   extension: '.wav',
+        //   outputFormat: AndroidOutputFormat.DEFAULT,
+        //   audioQuality: IOSAudioQuality.MEDIUM
+        // }
       }
       const { recording: recordingObject } = await Audio.Recording.createAsync(recordOptions)
 
