@@ -9,6 +9,7 @@ import { ThinkingMessage } from '../components/organisms/UserMessage'
 import { MScreenView } from '../components/atoms/MScreenView'
 import { ChatStackParamList } from '../navigators/ChatNavigator'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { AudioProvider } from '../hooks/AudioProvider'
 type Props = NativeStackScreenProps<ChatStackParamList, 'Section'>
 const SectionsScreen = ({ route, navigation }: Props) => {
   const { section, difficulty } = route.params
@@ -57,10 +58,10 @@ const SectionsScreen = ({ route, navigation }: Props) => {
     })
   }
 
-  const updateChatWithAudioMessage = async (audioFile: string) => {
+  const updateChatWithAudioMessage = async (audio: AudioType) => {
     try {
       await mutateAsync({
-        audio: audioFile,
+        audio: audio?.file,
         sectionId: section?.id
       }).then(data => {
         setChatThread(x => [
@@ -69,7 +70,8 @@ const SectionsScreen = ({ route, navigation }: Props) => {
             type: 'USER',
             ...data,
             user_message: data?.user_message,
-            audio_response: audioFile
+            audio_response: audio?.file,
+            audio: audio.sound
           },
           {
             type: 'BOT',
@@ -91,19 +93,21 @@ const SectionsScreen = ({ route, navigation }: Props) => {
   return (
     <MScreenView intent="chat">
       <ScrollView ref={ref} onContentSizeChange={() => ref.current.scrollToEnd({ animated: true })}>
-        <View className=" gap-2">
-          {chatThreads?.map((res, index) => (
-            <Thread
-              handleRetry={handleRetry}
-              key={index}
-              thread={res}
-              sectionId={section?.id}
-              difficulty={difficulty}
-              isLast={index === chatThreads.length - 1 || index === chatThreads.length - 2}
-            />
-          ))}
-          {isPending && <ThinkingMessage />}
-        </View>
+        <AudioProvider>
+          <View className=" gap-2">
+            {chatThreads?.map((res, index) => (
+              <Thread
+                handleRetry={handleRetry}
+                key={index}
+                thread={res}
+                sectionId={section?.id}
+                difficulty={difficulty}
+                isLast={index === chatThreads.length - 1 || index === chatThreads.length - 2}
+              />
+            ))}
+            {isPending && <ThinkingMessage />}
+          </View>
+        </AudioProvider>
       </ScrollView>
       <ChatBar
         updateChatThread={updateChatThreadWithUserMessage}

@@ -11,6 +11,8 @@ import { useFeedbackGrammar, useGetSlowAudio, useRetry } from '../../hooks/queri
 import { useState } from 'react'
 import useAudioPlayer from '../../hooks/useAudioPlayer'
 import clsx from 'clsx'
+import { PlayAudio } from '../../assets/icons/PlayAudio'
+import { useAudio } from '../../hooks/AudioProvider'
 
 type UserMessageProps = {
   chatMessage: Partial<MessageBack>
@@ -40,7 +42,7 @@ const UserMessage = ({
 
   const { refetch } = useGetSlowAudio({ sectionId, text: chatMessage?.user_message })
   const { refetch: fetchRetry } = useRetry({ sectionId, difficulty: difficulty_level })
-  const { playAudio } = useAudioPlayer()
+  const { playAudio } = useAudio()
 
   const [toggleTranslate, setToggleTranslate] = useState(false)
   return (
@@ -50,7 +52,16 @@ const UserMessage = ({
           {chatMessage?.user_message}
         </MText>
         <View className=" flex-row justify-end gap-2 ">
-          <MButton
+          {chatMessage?.audio && (
+            <MButton
+              intent="buttonIcon"
+              leadingIcon={<PlayAudio className="color-chatbutton" />}
+              onPress={async () => {
+                await chatMessage?.audio?.replayAsync()
+              }}
+            />
+          )}
+          <MButton // disabled as of instructions
             loading={isFetching}
             className={clsx(toggleTranslate ? 'bg-primary' : '')}
             intent="buttonIcon"
@@ -74,7 +85,7 @@ const UserMessage = ({
               leadingIcon={<RetryIcon className="color-chatbutton" />}
             />
           )}
-          <MButton
+          <MButton // disabled as of instructions
             intent="buttonIcon"
             onPress={async () => {
               await refetch().then(data => {

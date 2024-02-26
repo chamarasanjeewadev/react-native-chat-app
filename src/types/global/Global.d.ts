@@ -155,6 +155,7 @@ interface MessageBack {
   response_message_id: number
   lastAIMessage?: string
   lastAIMessageId?: number
+  audio?: Audio.Sound
 }
 
 interface StripePaymentIntent {
@@ -252,4 +253,14 @@ type NotationType = { lang: Language; notation: Notation }
 interface RetryBack {
   end_conversation: boolean
   message_count: number
+}
+
+type AudioType = {
+  sound: Audio.Sound
+  file: string
+}
+
+type PlayAudioProps = {
+  audioUrl: string
+  rate?: number
 }

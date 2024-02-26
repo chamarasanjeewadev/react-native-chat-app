@@ -1,7 +1,7 @@
 import { View } from 'react-native'
 import { MTextInput } from '../atoms/MTextInput'
 import { useEffect, useRef, useState } from 'react'
-import useAudioRecorder from '../molecules/AudioRecorder'
+import useAudioRecorder from '../../hooks/useAudioRecorder'
 import Send from './../../assets/icons/svgs/chat/send.svg'
 import Mic from './../../assets/icons/svgs/chat/microphone.svg'
 import MButton from '../atoms/MButton'
@@ -10,7 +10,7 @@ const ChatBar = ({
   updateAudioChat,
   updateChatThread
 }: {
-  updateAudioChat: (audioUrl: string) => void
+  updateAudioChat: (audio: AudioType) => void
   updateChatThread: (userChat: Partial<MessageBack>) => void
 }) => {
   const textInputRef = useRef(null)
@@ -56,7 +56,7 @@ const ChatBar = ({
             try {
               await stopRecording()
               const recordingLine = recordings[recordings.length - 1]
-              await updateAudioChat(recordingLine?.file)
+              await updateAudioChat(recordingLine)
             } catch (error) {
               console.log('error occured while handling audio ', error)
             }

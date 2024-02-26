@@ -9,7 +9,7 @@ interface MChatBoxProps extends ViewProps {
 const chatBoxVarients = {
   intent: {
     screen: 'mb-16 ',
-    chat: 'flex flex-1 justify-between bg-snow '
+    chat: 'flex flex-1 justify-between '
   }
 }
 

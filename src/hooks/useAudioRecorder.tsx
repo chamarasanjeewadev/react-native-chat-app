@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import { Audio } from 'expo-av'
-import useSnackBar from '../../hooks/useSnackBar'
+import useSnackBar from './useSnackBar'
 import { AndroidAudioEncoder, AndroidOutputFormat, IOSAudioQuality } from 'expo-av/build/Audio'
-
-type AudioType = {
-  sound: Audio.Sound
-  file: string
-}
 
 const useAudioRecorder = () => {
   const [recording, setRecording] = useState<Audio.Recording>(null)
@@ -60,7 +55,6 @@ const useAudioRecorder = () => {
 
       setRecording(recordingObject)
       setIsRecording(x => !x)
-      console.log('record started...', recordingObject)
     } catch (error) {
       console.error('Failed to start recording:', error)
       showSnackBar({ text: 'Failed to start recording' })
@@ -68,21 +62,13 @@ const useAudioRecorder = () => {
     }
   }
 
-  function getDurationFormatted(milliseconds) {
-    const minutes = milliseconds / 1000 / 60
-    const seconds = Math.round((minutes - Math.floor(minutes)) * 60)
-    return seconds < 10 ? `${Math.floor(minutes)}:0${seconds}` : `${Math.floor(minutes)}:${seconds}`
-  }
-
   const stopRecording = async () => {
-    console.log('inside stop recording...')
     if (isRecording) {
       try {
         await recording.stopAndUnloadAsync()
-        const { sound, status } = await recording.createNewLoadedSoundAsync()
+        const { sound } = await recording.createNewLoadedSoundAsync()
         setIsRecording(false)
         setRecording(null)
-        const uri = recording.getURI()
         setRecordings(x => [
           ...x,
           {
@@ -90,7 +76,6 @@ const useAudioRecorder = () => {
             file: recording.getURI()
           }
         ])
-        console.log('record', uri)
       } catch (error) {
         console.error('Failed to stop recording:', error)
       }

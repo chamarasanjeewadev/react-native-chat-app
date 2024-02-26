@@ -8,10 +8,6 @@ const useAudioPlayer = () => {
   const { showSnackBar } = useSnackBar()
   const [isPlaying, setIsPlaying] = useState(false)
 
-  type PlayAudioProps = {
-    audioUrl: string
-    rate?: number
-  }
   const playAudio = async ({ audioUrl, rate = 1 }: PlayAudioProps) => {
     if (isPlaying) {
       await stopAudio()

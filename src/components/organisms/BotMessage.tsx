@@ -10,6 +10,7 @@ import { useContextTranslate, useFeedbackTranslate } from '../../hooks/queries'
 import { ChatBox } from '../molecules/ChatBox'
 import PlaySlowIcon from '../../assets/icons/svgs/PlaySlow.svg'
 import clsx from 'clsx'
+import { useAudio } from '../../hooks/AudioProvider'
 
 const BotWord = ({
   audio,
@@ -20,7 +21,7 @@ const BotWord = ({
   value: string
   romanized_character: string
 }) => {
-  const { playAudio } = useAudioPlayer()
+  const { playAudio } = useAudio()
   return (
     <MButton
       disabled={!audio}
@@ -61,7 +62,7 @@ export const BotMessage = ({
     refetch,
     isFetching
   } = useFeedbackTranslate(text_response, difficulty, sectionId, response_message_id)
-  const { playAudio } = useAudioPlayer()
+  const { playAudio } = useAudio()
 
   return (
     <>

@@ -8,6 +8,7 @@ import MButton from '../components/atoms/MButton'
 import { MText } from '../components/atoms/MText'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ChatStackParamList } from '../navigators/ChatNavigator'
+import { AudioProvider } from '../hooks/AudioProvider'
 
 type Props = NativeStackScreenProps<ChatStackParamList, 'Chat'>
 const ConversationsScreen = ({ navigation }: Props) => {
@@ -53,7 +54,10 @@ const ConversationsScreen = ({ navigation }: Props) => {
                 <MButton
                   className="m-0 bg-transparent p-0 px-0 py-0"
                   onPress={() => {
-                    navigation.push('Section', { section, difficulty: StudyMode.CONVERSATION_HARD })
+                    navigation.push('Section', {
+                      section,
+                      difficulty: StudyMode.CONVERSATION_HARD
+                    })
                   }}>
                   <ProgressCircle
                     difficulty={StudyMode.CONVERSATION_HARD}

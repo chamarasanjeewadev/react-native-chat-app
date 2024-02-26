@@ -27,6 +27,8 @@ export const Thread = ({
           chatMessage={chatMessage}
           sectionId={sectionId}
           difficulty_level={difficulty}
+          // audio_response={chatMessage?.audio_response}
+          // user_response={chatMessage?.user_response}
         />
       ) : (
         <BotMessage
