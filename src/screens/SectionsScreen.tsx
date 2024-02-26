@@ -57,6 +57,34 @@ const SectionsScreen = ({ route, navigation }: Props) => {
     })
   }
 
+  const updateChatWithAudioMessage = async (audioFile: string) => {
+    try {
+      await mutateAsync({
+        audio: audioFile,
+        sectionId: section?.id
+      }).then(data => {
+        setChatThread(x => [
+          ...x,
+          {
+            type: 'USER',
+            ...data,
+            user_message: data?.user_message,
+            audio_response: audioFile
+          },
+          {
+            type: 'BOT',
+            ...data,
+            user_message: data?.text_response,
+            audio_response: data?.audio_response
+          }
+        ])
+        scrollToBottom()
+      })
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+
   const handleRetry = () => {
     setChatThread(chatThread => chatThread.slice(0, chatThreads.length - 2))
   }
@@ -77,7 +105,10 @@ const SectionsScreen = ({ route, navigation }: Props) => {
           {isPending && <ThinkingMessage />}
         </View>
       </ScrollView>
-      <ChatBar sectionId={section?.id} updateChatThread={updateChatThreadWithUserMessage} />
+      <ChatBar
+        updateChatThread={updateChatThreadWithUserMessage}
+        updateAudioChat={updateChatWithAudioMessage}
+      />
     </MScreenView>
   )
 }
