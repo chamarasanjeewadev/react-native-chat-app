@@ -34,7 +34,7 @@ const buttonVarients = {
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     ghost: 'hover:bg-accent hover:text-accent-foreground',
     link: ' underline text-primary    ',
-    primary: ['bg-primary', 'text-white', 'border-transparent'],
+    primary: ['bg-primary', 'text-white', 'border-transparent,rounded-2xl'],
     chat: '',
     buttonIcon: 'bg-white color-chatbutton   shadow-sm border-0 rounded-xl  ',
     settingsActive: 'bg-card color-card-foreground border-transparent',
@@ -47,7 +47,7 @@ const buttonVarients = {
   }
 }
 
-const buttonStyles = cva(['font-semibold border '], {
+const buttonStyles = cva(['font-semibold border, rounded-2xl '], {
   variants: buttonVarients,
   compoundVariants: [
     {
