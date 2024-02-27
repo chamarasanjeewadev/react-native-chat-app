@@ -35,7 +35,7 @@ const ChatBar = ({
       <MTextInput
         forwardedRef={textInputRef}
         onChangeText={setUserResponseMsg}
-        className="flex-grow border border-muted bg-muted"
+        className="flex-grow text-wrap border border-muted bg-muted"
         placeholder="Type something ....."
       />
 

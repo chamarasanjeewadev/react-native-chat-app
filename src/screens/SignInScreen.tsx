@@ -82,7 +82,7 @@ const SignInScreen = () => {
               </MText>
             </View>
             <MButton
-              className="w-full rounded-2xl bg-ash"
+              className="w-full rounded-3xl bg-ash"
               leadingIcon={<GoogleLogo />}
               onPress={() =>
                 // Config.FIREBASE_ENABLED.trim() !== 'TRUE'
@@ -92,7 +92,7 @@ const SignInScreen = () => {
               Log in with google
             </MButton>
             <MButton
-              className="w-full rounded-2xl bg-ash"
+              className="w-full rounded-3xl bg-ash"
               leadingIcon={<AppleLogo />}
               onPress={() => {
                 console.log('sign in with apple')

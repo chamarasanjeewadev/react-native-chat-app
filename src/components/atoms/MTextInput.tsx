@@ -11,7 +11,7 @@ interface MTextInputProps extends TextInputProps {
 const textStyles = cva(
   [
     'text-sm',
-    'editable:bg-muted border border-muted rounded-lg p-2 focus:border-slate-500 disabled:bg-muted'
+    'editable:bg-muted items-center border border-muted rounded-lg p-2 focus:border-slate-500 disabled:bg-muted flex-1'
   ],
 
   {
@@ -41,6 +41,7 @@ export const MTextInput = ({
 }: MTextInputProps & VariantProps<typeof textStyles>) => {
   return (
     <TextInput
+      multiline
       ref={forwardedRef}
       style={{ fontFamily: MFontFamily.poppins400 }}
       {...props}

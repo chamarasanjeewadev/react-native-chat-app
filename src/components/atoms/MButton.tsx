@@ -47,7 +47,7 @@ const buttonVarients = {
   }
 }
 
-const buttonStyles = cva(['font-semibold border rounded-3xl'], {
+const buttonStyles = cva(['font-semibold border '], {
   variants: buttonVarients,
   compoundVariants: [
     {
