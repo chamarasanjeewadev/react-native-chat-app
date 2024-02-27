@@ -31,7 +31,7 @@ const ChatBar = ({
   const { startRecording, stopRecording, recordings } = useAudio()
 
   return (
-    <View className="flex-row gap-2 text-base">
+    <View className="mt-2 flex-row gap-2 text-base">
       <MTextInput
         forwardedRef={textInputRef}
         onChangeText={setUserResponseMsg}

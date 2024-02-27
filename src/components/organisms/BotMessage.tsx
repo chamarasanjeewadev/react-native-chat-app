@@ -103,11 +103,13 @@ export const BotMessage = ({
           />
         </View>
       </ChatBox>
-      {translatedResponse && toggleTranslate && !isFetching && (
+      {toggleTranslate && !isFetching && (
         <ChatBox
           intent={'mila'}
-          className="z-1 -mt-2 rounded-t-none bg-card pt-2 text-card-foreground">
-          <MText className=" flex-grow ">{translatedResponse?.translated_text}</MText>
+          className="z-1 -mt-1 rounded-t-none bg-card pt-2 text-card-foreground">
+          <MText className=" flex-grow ">
+            {translatedResponse?.translated_text ?? 'No translation found'}
+          </MText>
         </ChatBox>
       )}
     </>

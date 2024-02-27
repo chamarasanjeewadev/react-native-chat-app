@@ -9,15 +9,29 @@ import { ThinkingMessage } from '../components/organisms/UserMessage'
 import { MScreenView } from '../components/atoms/MScreenView'
 import { ChatStackParamList } from '../navigators/ChatNavigator'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { AudioProvider } from '../hooks/AudioProvider'
+import { useAudio } from '../hooks/AudioProvider'
+import { useFocusEffect } from '@react-navigation/native'
 type Props = NativeStackScreenProps<ChatStackParamList, 'Section'>
 const SectionsScreen = ({ route, navigation }: Props) => {
   const { section, difficulty } = route.params
   const { refetch } = useFirstChat(difficulty, section?.id)
   const [chatThreads, setChatThread] = useState<Partial<MessageBack>[]>([])
   const { mutateAsync, isPending } = usePostMessage()
+  const { playAudio, stopAudio } = useAudio()
   const ref = useRef<ScrollView>(null)
 
+  useFocusEffect(
+    React.useCallback(() => {
+      // Do something when the screen is focused
+
+      return () => {
+        console.log('unmount called...')
+        stopAudio()
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      }
+    }, [])
+  )
   const scrollToBottom = () => {
     ref.current?.scrollToEnd({ animated: true })
   }
@@ -27,6 +41,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
     await refetch().then(data => {
       const fetched = data?.data
       fetched && setChatThread([fetched])
+      playAudio({ audioUrl: fetched?.audio_response })
     })
   }, [])
 
@@ -55,6 +70,8 @@ const SectionsScreen = ({ route, navigation }: Props) => {
     }).then(data => {
       setChatThread(x => [...x, data])
       scrollToBottom()
+      console.log('play audio url', data?.audio_response)
+      playAudio({ audioUrl: data?.audio_response })
     })
   }
 
@@ -80,6 +97,8 @@ const SectionsScreen = ({ route, navigation }: Props) => {
             audio_response: data?.audio_response
           }
         ])
+        console.log('play audio url', data?.audio_response)
+        playAudio({ audioUrl: data?.audio_response })
         scrollToBottom()
       })
     } catch (error) {
@@ -92,29 +111,27 @@ const SectionsScreen = ({ route, navigation }: Props) => {
   }
   return (
     <MScreenView intent="chat">
-      <AudioProvider>
-        <ScrollView
-          ref={ref}
-          onContentSizeChange={() => ref.current.scrollToEnd({ animated: true })}>
-          <View className=" gap-2">
-            {chatThreads?.map((res, index) => (
-              <Thread
-                handleRetry={handleRetry}
-                key={index}
-                thread={res}
-                sectionId={section?.id}
-                difficulty={difficulty}
-                isLast={index === chatThreads.length - 1 || index === chatThreads.length - 2}
-              />
-            ))}
-            {isPending && <ThinkingMessage />}
-          </View>
-        </ScrollView>
-        <ChatBar
-          updateChatThread={updateChatThreadWithUserMessage}
-          updateAudioChat={updateChatWithAudioMessage}
-        />
-      </AudioProvider>
+      {/* <AudioProvider> */}
+      <ScrollView ref={ref} onContentSizeChange={() => ref.current.scrollToEnd({ animated: true })}>
+        <View className=" gap-2">
+          {chatThreads?.map((res, index) => (
+            <Thread
+              handleRetry={handleRetry}
+              key={index}
+              thread={res}
+              sectionId={section?.id}
+              difficulty={difficulty}
+              isLast={index === chatThreads.length - 1 || index === chatThreads.length - 2}
+            />
+          ))}
+          {isPending && <ThinkingMessage />}
+        </View>
+      </ScrollView>
+      <ChatBar
+        updateChatThread={updateChatThreadWithUserMessage}
+        updateAudioChat={updateChatWithAudioMessage}
+      />
+      {/* </AudioProvider> */}
     </MScreenView>
   )
 }

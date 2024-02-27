@@ -18,7 +18,7 @@ export type Audio = {
 }
 export const AudioContext = createContext<Audio>(null)
 
-const AudioProvider: React.FC<ToastContextProps> = ({ children }) => {
+const AudioProvider = ({ children }: ToastContextProps) => {
   const { playAudio, stopAudio, isPlaying, playAudioBySound } = useAudioPlayer()
   const {
     startRecording: startRecordingAudio,

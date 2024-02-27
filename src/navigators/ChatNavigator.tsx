@@ -2,6 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import ConversationsScreen from '../screens/ConversationsScreen'
 import SectionsScreen from '../screens/SectionsScreen'
+import { AudioProvider } from '../hooks/AudioProvider'
 
 export type ChatStackParamList = {
   Chat: undefined
@@ -11,12 +12,14 @@ export type ChatStackParamList = {
 const ChatStack = createNativeStackNavigator<ChatStackParamList>()
 
 export const ChatNavigator = () => (
-  <ChatStack.Navigator
-    screenOptions={{
-      headerShown: true
-    }}
-    initialRouteName="Chat">
-    <ChatStack.Screen name="Chat" component={ConversationsScreen} />
-    <ChatStack.Screen name="Section" component={SectionsScreen} />
-  </ChatStack.Navigator>
+  <AudioProvider>
+    <ChatStack.Navigator
+      screenOptions={{
+        headerShown: true
+      }}
+      initialRouteName="Chat">
+      <ChatStack.Screen name="Chat" component={ConversationsScreen} />
+      <ChatStack.Screen name="Section" component={SectionsScreen} />
+    </ChatStack.Navigator>
+  </AudioProvider>
 )

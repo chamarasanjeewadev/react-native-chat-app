@@ -17,9 +17,9 @@ const useAudioPlayer = () => {
     setIsPlaying(false)
   }
   const playAudio = async ({ audioUrl, rate = 1 }: PlayAudioProps) => {
-    if (isPlaying) {
-      await stopAudio()
-    }
+    // if (isPlaying) {
+    await stopAudio()
+    // }
 
     // audioUrl =
     //   'https://landingmilaaidev.blob.core.windows.net/aimessages/user_10_1707894556.wav?se=2024-02-14T09%3A14%3A28Z&sp=r&sv=2022-11-02&sr=b&sig=U5x4kP5BguwlFBHWSVEDlIchrkkJ7R%2BfEo9G4WRltDc%3D'
@@ -49,10 +49,11 @@ const useAudioPlayer = () => {
   }
 
   const stopAudio = async () => {
-    if (sound) {
-      await sound.stopAsync()
-      setIsPlaying(false)
-    }
+    console.log('stop audio.....')
+    // if (sound) {
+    await sound.stopAsync()
+    setIsPlaying(false)
+    // }
   }
 
   return {

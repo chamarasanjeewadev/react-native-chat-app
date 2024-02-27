@@ -36,7 +36,7 @@ const buttonVarients = {
     link: ' underline text-primary    ',
     primary: ['bg-primary', 'text-white', 'border-transparent'],
     chat: '',
-    buttonIcon: 'bg-chatbuttonbg color-chatbutton   shadow-sm border-0  ',
+    buttonIcon: 'bg-white color-chatbutton   shadow-sm border-0 rounded-xl  ',
     settingsActive: 'bg-card color-card-foreground border-transparent',
     settingsDeActive: 'bg-muted color-card-foreground border-transparent'
   },
@@ -100,11 +100,8 @@ export const MButton = ({
       )}
       {...props}>
       {loading ? (
-        <ActivityIndicator color={'white'} className="px-2 " size="small" />
+        <ActivityIndicator color={'white'} className="px-0.5 " size="small" />
       ) : (
-        // : intent === 'chat' ? (
-        //   <>{children}</>
-        // )
         <>
           <View>{leadingIcon && leadingIcon}</View>
           {children && (
