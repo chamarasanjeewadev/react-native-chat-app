@@ -36,7 +36,6 @@ import { MSection } from '../components/atoms/MSection'
 import { useGetUsersQuery } from '../hooks/queries'
 import { MText } from '../components/atoms/MText'
 import useSnackBar from '../hooks/useSnackBar'
-import { DarkTheme } from '@react-navigation/native'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -87,7 +86,7 @@ const ProfileScreen = () => {
   React.useEffect(() => {
     setColorScheme(colorMode)
   }, [colorMode])
-  //
+
   const [notationState, setNotationState] = useState<NotationType>({
     lang: user?.target_language,
     notation: notation

@@ -11,6 +11,7 @@ import { ChatStackParamList } from '../navigators/ChatNavigator'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useAudio } from '../hooks/AudioProvider'
 import { useFocusEffect } from '@react-navigation/native'
+import useSnackBar from '../hooks/useSnackBar'
 type Props = NativeStackScreenProps<ChatStackParamList, 'Section'>
 const SectionsScreen = ({ route, navigation }: Props) => {
   const { section, difficulty } = route.params
@@ -19,6 +20,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
   const { mutateAsync, isPending } = usePostMessage()
   const { playAudio, stopAudio } = useAudio()
   const ref = useRef<ScrollView>(null)
+  const snackBar = useSnackBar()
 
   useFocusEffect(
     React.useCallback(() => {
@@ -97,6 +99,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
       })
     } catch (error) {
       console.log('error', error)
+      snackBar.showSnackBar({ text: 'Something went wrong' })
     }
   }
 
@@ -106,7 +109,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
   return (
     <MScreenView intent="chat">
       <ScrollView ref={ref} onContentSizeChange={() => ref.current.scrollToEnd({ animated: true })}>
-        <View className=" gap-2">
+        <View className=" gap-2 p-2">
           {chatThreads?.map((res, index) => (
             <Thread
               handleRetry={handleRetry}
@@ -121,6 +124,7 @@ const SectionsScreen = ({ route, navigation }: Props) => {
         </View>
       </ScrollView>
       <KeyboardAvoidingView
+        className="p-2"
         behavior="padding"
         keyboardVerticalOffset={Platform.OS === 'ios' ? 105 : 0}>
         <ChatBar
