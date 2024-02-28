@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native'
+import { KeyboardAvoidingView, ScrollView, View, Platform } from 'react-native'
 import { useFirstChat } from '../hooks/queries'
 import { Thread } from '../components/organisms/Thread'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -92,7 +92,6 @@ const SectionsScreen = ({ route, navigation }: Props) => {
             audio_response: data?.audio_response
           }
         ])
-        console.log('play audio url', data?.audio_response)
         playAudio({ audioUrl: data?.audio_response })
         scrollToBottom()
       })
@@ -106,7 +105,6 @@ const SectionsScreen = ({ route, navigation }: Props) => {
   }
   return (
     <MScreenView intent="chat">
-      {/* <AudioProvider> */}
       <ScrollView ref={ref} onContentSizeChange={() => ref.current.scrollToEnd({ animated: true })}>
         <View className=" gap-2">
           {chatThreads?.map((res, index) => (
@@ -122,11 +120,14 @@ const SectionsScreen = ({ route, navigation }: Props) => {
           {isPending && <ThinkingMessage />}
         </View>
       </ScrollView>
-      <ChatBar
-        updateChatThread={updateChatThreadWithUserMessage}
-        updateAudioChat={updateChatWithAudioMessage}
-      />
-      {/* </AudioProvider> */}
+      <KeyboardAvoidingView
+        behavior="padding"
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 105 : 0}>
+        <ChatBar
+          updateChatThread={updateChatThreadWithUserMessage}
+          updateAudioChat={updateChatWithAudioMessage}
+        />
+      </KeyboardAvoidingView>
     </MScreenView>
   )
 }
