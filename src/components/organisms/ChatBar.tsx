@@ -15,7 +15,7 @@ const ChatBar = ({
 }) => {
   const textInputRef = useRef(null)
   const [userResponseMsg, setUserResponseMsg] = useState('')
-  const { startRecording, stopRecording, recodedAudio, recordedAudioRef, getRecorded } = useAudio()
+  const { startRecording, stopRecording, getRecorded } = useAudio()
 
   useEffect(() => {
     textInputRef.current.focus()

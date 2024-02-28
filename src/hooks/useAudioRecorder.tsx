@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { Audio } from 'expo-av'
 import useSnackBar from './useSnackBar'
-import { AndroidAudioEncoder, AndroidOutputFormat, IOSAudioQuality } from 'expo-av/build/Audio'
+import { AndroidAudioEncoder, AndroidOutputFormat } from 'expo-av/build/Audio'
 const recordOptions: Audio.RecordingOptions = {
   ...Audio.RecordingOptionsPresets.HIGH_QUALITY,
   android: {
@@ -30,7 +30,6 @@ const recordOptions: Audio.RecordingOptions = {
 
 const useAudioRecorder = () => {
   const recodingRef = useRef<Audio.Recording>(null)
-  const [recodedAudio, setRecordedAudio] = useState<AudioType>(null)
   const recordedAudioRef = useRef<AudioType>(null)
   const { showSnackBar } = useSnackBar()
 
@@ -44,7 +43,7 @@ const useAudioRecorder = () => {
   useEffect(() => {
     initRecorder()
     return () => {
-      // recodingRef.current.stopAndUnloadAsync()
+      recodingRef.current.stopAndUnloadAsync()
       // recodedAudioRef.current = null
     }
   }, [])
@@ -80,10 +79,6 @@ const useAudioRecorder = () => {
     try {
       await recodingRef.current.stopAndUnloadAsync()
       const { sound } = await recodingRef.current.createNewLoadedSoundAsync()
-      setRecordedAudio({
-        sound: sound,
-        file: recodingRef.current.getURI()
-      })
       recordedAudioRef.current = {
         sound: sound,
         file: recodingRef.current.getURI()
@@ -95,7 +90,6 @@ const useAudioRecorder = () => {
   return {
     startRecording,
     stopRecording,
-    recodedAudio,
     recordedAudioRef: recordedAudioRef.current,
     getRecorded
   }

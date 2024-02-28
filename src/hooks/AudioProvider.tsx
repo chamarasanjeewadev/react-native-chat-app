@@ -20,13 +20,7 @@ export const AudioContext = createContext<Audio>(null)
 
 const AudioProvider = ({ children }: AudioContextProps) => {
   const { playAudio, stopAudio, playAudioBySound } = useAudioPlayer()
-  const {
-    startRecording: startRecordingAudio,
-    stopRecording,
-    recodedAudio,
-    recordedAudioRef,
-    getRecorded
-  } = useAudioRecorder()
+  const { startRecording: startRecordingAudio, stopRecording, getRecorded } = useAudioRecorder()
   const startRecording = async () => {
     try {
       await stopAudio()
@@ -43,8 +37,6 @@ const AudioProvider = ({ children }: AudioContextProps) => {
         stopAudio,
         startRecording,
         stopRecording,
-        recodedAudio,
-        recordedAudioRef,
         playAudioBySound,
         getRecorded
       }}>
