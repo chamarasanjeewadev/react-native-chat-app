@@ -69,7 +69,8 @@ const ProfileScreen = () => {
       ...user,
       daily_commitment: user?.daily_commitment,
       proficiency: user?.proficiency,
-      autoSubmitThreadhold: autoSubmitThreadhold
+      autoSubmitThreadhold: autoSubmitThreadhold,
+      icon_id: user?.icon_id
     }
   })
   const { colorScheme, toggleColorScheme } = useColorScheme()
@@ -90,6 +91,7 @@ const ProfileScreen = () => {
     'autoSubmitThreadhold'
   ])
   const onSubmit = async data => {
+    console.log('data', data)
     try {
       await mutate(data)
       setUserState({
@@ -175,6 +177,7 @@ const ProfileScreen = () => {
             avatarBackgroundColors[backgroundId]?.bgColor
           )}>
           <Image resizeMode="cover" source={{ uri: avatarImages?.[latestIconId]?.toString() }} />
+          <Image source={avatarImages[latestIconId]} className="py-1" />
         </View>
       </MSection>
       {/* avatar */}
@@ -183,7 +186,6 @@ const ProfileScreen = () => {
           <MText intent="label" className="text-sm font-semibold">
             {t('settings.choose-avatar')}
           </MText>
-          <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" />
           <ScrollView horizontal>
             <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
               {avatarImages.map((avatar, index) => (

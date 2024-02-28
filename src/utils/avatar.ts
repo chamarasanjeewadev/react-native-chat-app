@@ -1,14 +1,14 @@
-import MILA_0 from '../assets/images/avatar/MILA-0.png'
-import MILA_1 from '../assets/images/avatar/MILA-1.png'
-import MILA_2 from '../assets/images/avatar/MILA-2.png'
-import MILA_3 from '../assets/images/avatar/MILA-3.png'
-import MILA_4 from '../assets/images/avatar/MILA-4.png'
-import MILA_5 from '../assets/images/avatar/MILA-5.png'
-import MILA_6 from '../assets/images/avatar/MILA-6.png'
-import MILA_7 from '../assets/images/avatar/MILA-7.png'
-import MILA_8 from '../assets/images/avatar/MILA-8.png'
-
-export const avatarImages = [MILA_0, MILA_1, MILA_2, MILA_3, MILA_4, MILA_5, MILA_6, MILA_7, MILA_8]
+export const avatarImages = [
+  require('../assets/images/avatar/MILA-0.png'),
+  require('../assets/images/avatar/MILA-1.png'),
+ require( '../assets/images/avatar/MILA-2.png'),
+ require( '../assets/images/avatar/MILA-3.png'),
+ require( '../assets/images/avatar/MILA-4.png'),
+ require( '../assets/images/avatar/MILA-5.png'),
+ require( '../assets/images/avatar/MILA-6.png'),
+ require( '../assets/images/avatar/MILA-7.png'),
+ require( '../assets/images/avatar/MILA-8.png')
+]
 
 export const avatarBackgroundColors: {
   color: string
