@@ -7,6 +7,7 @@ interface UserState {
   autoRecord: boolean
   autoSubmitThreadhold: number
   showRomaji: boolean
+  colorMode: ColorMode
 }
 interface SettingStoreState {
   themeColor: ThemeColor
@@ -31,7 +32,13 @@ interface SettingStoreState {
   setAudioOnly: (audioOnly: boolean) => void
 
   setColorMode: (colorMode: ColorMode) => void
-  setUserState: ({ language, notation, autoRecord, autoSubmitThreadhold }: UserState) => void
+  setUserState: ({
+    language,
+    notation,
+    autoRecord,
+    autoSubmitThreadhold,
+    colorMode
+  }: UserState) => void
 }
 const forPersist = persist<Partial<SettingStoreState>>(
   set => ({
@@ -58,8 +65,10 @@ const forPersist = persist<Partial<SettingStoreState>>(
       notation,
       autoRecord,
       autoSubmitThreadhold,
-      showRomaji
-    }: UserState) => set({ language, notation, autoRecord, autoSubmitThreadhold, showRomaji })
+      showRomaji,
+      colorMode
+    }: UserState) =>
+      set({ language, notation, autoRecord, autoSubmitThreadhold, showRomaji, colorMode })
   }),
   {
     name: 'setting-storage',

@@ -36,6 +36,7 @@ import { MSection } from '../components/atoms/MSection'
 import { useGetUsersQuery } from '../hooks/queries'
 import { MText } from '../components/atoms/MText'
 import useSnackBar from '../hooks/useSnackBar'
+import { DarkTheme } from '@react-navigation/native'
 
 const schema = yup.object().shape({
   background_id: yup.number(),
@@ -54,15 +55,23 @@ const ProfileScreen = () => {
   const { setUser, user: userOnState } = useAuthStore()
   const { t } = useTranslation()
   const { showSnackBar } = useSnackBar()
-  const [autoRecord, autoSubmitThreadhold, themeColor, notation, setThemeColor, setUserState] =
-    useSettingStore(state => [
-      state.autoRecord,
-      state.autoSubmitThreadhold,
-      state.themeColor,
-      state.notation,
-      state.setThemeColor,
-      state.setUserState
-    ])
+  const [
+    autoRecord,
+    autoSubmitThreadhold,
+    themeColor,
+    notation,
+    setThemeColor,
+    setUserState,
+    colorMode
+  ] = useSettingStore(state => [
+    state.autoRecord,
+    state.autoSubmitThreadhold,
+    state.themeColor,
+    state.notation,
+    state.setThemeColor,
+    state.setUserState,
+    state.colorMode
+  ])
   const { control, handleSubmit, setValue, watch } = useForm<Partial<User>>({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -73,7 +82,12 @@ const ProfileScreen = () => {
       icon_id: user?.icon_id
     }
   })
-  const { colorScheme, toggleColorScheme } = useColorScheme()
+  const { colorScheme, toggleColorScheme, setColorScheme } = useColorScheme()
+
+  React.useEffect(() => {
+    setColorScheme(colorMode)
+  }, [colorMode])
+  //
   const [notationState, setNotationState] = useState<NotationType>({
     lang: user?.target_language,
     notation: notation
@@ -81,9 +95,6 @@ const ProfileScreen = () => {
 
   const [autoRecordEnabled, setAutoRecordEnabled] = useState(autoRecord)
 
-  // const latestIconId = watch('icon_id')
-  // const backgroundId = watch('background_id')
-  // const selectedLanguage = watch('target_language') as Language
   const [latestIconId, backgroundId, selectedLanguage, threadhold] = watch([
     'icon_id',
     'background_id',
@@ -91,7 +102,6 @@ const ProfileScreen = () => {
     'autoSubmitThreadhold'
   ])
   const onSubmit = async data => {
-    console.log('data', data)
     try {
       await mutate(data)
       setUserState({
@@ -99,7 +109,8 @@ const ProfileScreen = () => {
         notation: notationState.notation,
         autoRecord: autoRecordEnabled,
         autoSubmitThreadhold: data?.autoSubmitThreadhold ?? 0,
-        showRomaji: !!notationState.notation
+        showRomaji: !!notationState.notation,
+        colorMode: colorScheme
       })
 
       setUser({ ...userOnState, ...data })
