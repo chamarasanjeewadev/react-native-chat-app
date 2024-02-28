@@ -1,25 +1,37 @@
-import { PlaySlow } from './../assets/icons/PlaySlowIcon'
-import { useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { Audio } from 'expo-av'
 import useSnackBar from './useSnackBar'
 
 const useAudioPlayer = () => {
-  const [sound, setSound] = useState(null)
   const { showSnackBar } = useSnackBar()
-  const [isPlaying, setIsPlaying] = useState(false)
+  const soundRef = useRef(new Audio.Sound())
+
+  // soundRef.current.setOnPlaybackStatusUpdate(status => {
+  //   if (status.) {
+  //     console.log('Sound has finished playing')
+  //   }
+  // })
+
+  const syncAudio = useCallback(async () => {
+    await Audio.setAudioModeAsync({
+      playsInSilentModeIOS: true
+    })
+  }, [])
+
+  useEffect(() => {
+    syncAudio()
+    return () => {
+      soundRef.current.unloadAsync()
+    }
+  }, [])
 
   const playAudioBySound = async (sound: Audio.Sound) => {
-    // if (isPlaying) {
     await stopAudio()
-    // }
-    setIsPlaying(true)
+    soundRef.current = sound
     await sound.replayAsync()
-    setIsPlaying(false)
   }
   const playAudio = async ({ audioUrl, rate = 1 }: PlayAudioProps) => {
-    // if (isPlaying) {
     await stopAudio()
-    // }
 
     // audioUrl =
     //   'https://landingmilaaidev.blob.core.windows.net/aimessages/user_10_1707894556.wav?se=2024-02-14T09%3A14%3A28Z&sp=r&sv=2022-11-02&sr=b&sig=U5x4kP5BguwlFBHWSVEDlIchrkkJ7R%2BfEo9G4WRltDc%3D'
@@ -27,39 +39,31 @@ const useAudioPlayer = () => {
     console.log('insid play audio', audioUrl)
 
     // const encodedUrl = encodeURIComponent(audioUrl)
-    try {
-      try {
-        await Audio.setAudioModeAsync({
-          playsInSilentModeIOS: true
-        })
-        const { sound } = await Audio.Sound.createAsync({ uri: audioUrl })
 
-        setSound(sound)
-        await sound.setRateAsync(rate, true)
-        setIsPlaying(true)
-        await sound.playAsync()
-        setIsPlaying(false)
-      } catch (error) {
-        console.log(error)
-      }
+    try {
+      const { sound } = await Audio.Sound.createAsync({ uri: audioUrl })
+      await sound.setRateAsync(rate, true)
+      soundRef.current = sound
+      await soundRef.current.playAsync()
     } catch (error) {
-      console.log('error occured', error)
+      console.log(error)
       showSnackBar({ text: error })
     }
   }
 
   const stopAudio = async () => {
-    console.log('stop audio.....')
-    // if (sound) {
-    await sound.stopAsync()
-    setIsPlaying(false)
-    // }
+    try {
+      console.log('stop audio.....', soundRef.current)
+      await soundRef.current.stopAsync()
+      // await soundRef.current.unloadAsync()
+    } catch (error) {
+      console.log('sound...', error)
+    }
   }
 
   return {
     playAudio,
     stopAudio,
-    isPlaying,
     playAudioBySound
   }
 }

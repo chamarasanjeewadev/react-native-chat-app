@@ -41,7 +41,7 @@ export const MTextInput = ({
 }: MTextInputProps & VariantProps<typeof textStyles>) => {
   return (
     <TextInput
-      multiline
+      // multiline
       ref={forwardedRef}
       style={{ fontFamily: MFontFamily.poppins400 }}
       {...props}

@@ -10,8 +10,8 @@ import LoadingDots from '../atoms/LoadingDots'
 import { useFeedbackGrammar, useGetSlowAudio, useRetry } from '../../hooks/queries'
 import { useState } from 'react'
 import clsx from 'clsx'
-import { PlayAudio } from '../../assets/icons/PlayAudio'
 import { useAudio } from '../../hooks/AudioProvider'
+import PlayAudio from '../../assets/icons/svgs/PlayAudio.svg'
 
 type UserMessageProps = {
   chatMessage: Partial<MessageBack>

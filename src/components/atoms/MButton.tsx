@@ -100,7 +100,11 @@ export const MButton = ({
       )}
       {...props}>
       {loading ? (
-        <ActivityIndicator color={'white'} className="px-0.5 " size="small" />
+        <ActivityIndicator
+          color={'white'}
+          className={cn({ 'px-0.5': intent === 'buttonIcon' }, { 'px-3': intent === 'primary' })}
+          size="small"
+        />
       ) : (
         <>
           <View>{leadingIcon && leadingIcon}</View>

@@ -3,34 +3,33 @@ import useAudioPlayer from './useAudioPlayer'
 import useAudioRecorder from './useAudioRecorder'
 import { Sound } from 'expo-av/build/Audio'
 
-interface ToastContextProps {
+interface AudioContextProps {
   children: React.ReactNode
 }
 export type Audio = {
   playAudio: ({ audioUrl, rate }: PlayAudioProps) => Promise<void>
-  stopAudio: () => void
+  stopAudio: () => Promise<void>
   startRecording: () => Promise<void>
   stopRecording: () => Promise<void>
-  isRecording: boolean
-  isPlaying: boolean
-  recordings: AudioType[]
+  recodedAudio: AudioType
+  recordedAudioRef: AudioType
   playAudioBySound: (sound: Sound) => Promise<void>
+  getRecorded: () => AudioType
 }
 export const AudioContext = createContext<Audio>(null)
 
-const AudioProvider = ({ children }: ToastContextProps) => {
-  const { playAudio, stopAudio, isPlaying, playAudioBySound } = useAudioPlayer()
+const AudioProvider = ({ children }: AudioContextProps) => {
+  const { playAudio, stopAudio, playAudioBySound } = useAudioPlayer()
   const {
     startRecording: startRecordingAudio,
     stopRecording,
-    isRecording,
-    recordings
+    recodedAudio,
+    recordedAudioRef,
+    getRecorded
   } = useAudioRecorder()
   const startRecording = async () => {
     try {
-      if (isPlaying) {
-        stopAudio()
-      }
+      await stopAudio()
       await startRecordingAudio()
     } catch (error) {
       console.log('error occured', error)
@@ -44,10 +43,10 @@ const AudioProvider = ({ children }: ToastContextProps) => {
         stopAudio,
         startRecording,
         stopRecording,
-        isRecording,
-        isPlaying,
-        recordings,
-        playAudioBySound
+        recodedAudio,
+        recordedAudioRef,
+        playAudioBySound,
+        getRecorded
       }}>
       {children}
     </AudioContext.Provider>

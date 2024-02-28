@@ -22,13 +22,8 @@ const SectionsScreen = ({ route, navigation }: Props) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      // Do something when the screen is focused
-
-      return () => {
-        console.log('unmount called...')
-        stopAudio()
-        // Do something when the screen is unfocused
-        // Useful for cleanup functions
+      return async () => {
+        await stopAudio()
       }
     }, [])
   )

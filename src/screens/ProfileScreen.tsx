@@ -183,7 +183,7 @@ const ProfileScreen = () => {
           <MText intent="label" className="text-sm font-semibold">
             {t('settings.choose-avatar')}
           </MText>
-          {/* <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" /> */}
+          <Image source={{ uri: avatarImages[user?.icon_id] }} className="py-1" />
           <ScrollView horizontal>
             <View className="slim-scrollbar mb-4 flex flex-row  gap-2">
               {avatarImages.map((avatar, index) => (

@@ -1,60 +1,70 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Audio } from 'expo-av'
 import useSnackBar from './useSnackBar'
 import { AndroidAudioEncoder, AndroidOutputFormat, IOSAudioQuality } from 'expo-av/build/Audio'
+const recordOptions: Audio.RecordingOptions = {
+  ...Audio.RecordingOptionsPresets.HIGH_QUALITY,
+  android: {
+    bitRate: 16000, //TODO put these in config
+    sampleRate: 12000,
+    numberOfChannels: 1,
+    extension: '.wav',
+    outputFormat: AndroidOutputFormat.DEFAULT,
+    audioEncoder: AndroidAudioEncoder.AAC
+  },
+  ios: {
+    ...Audio.RecordingOptionsPresets.HIGH_QUALITY.ios, // Copy other settings from HIGH_QUALITY preset
+    // extension: '.wav',
+    sampleRate: 44100, // Set the sample rate to 44.1 kHz, a common standard for audio recording
+    bitRate: 128000
+  }
+  // ios: {
+  //   bitRate: 16000,
+  //   sampleRate: 12000,
+  //   numberOfChannels: 1,
+  //   extension: '.wav',
+  //   outputFormat: AndroidOutputFormat.DEFAULT,
+  //   audioQuality: IOSAudioQuality.MEDIUM
+  // }
+}
 
 const useAudioRecorder = () => {
-  const [recording, setRecording] = useState<Audio.Recording>(null)
-  const [isRecording, setIsRecording] = useState(false)
-  const [recordings, setRecordings] = useState<AudioType[]>([])
+  const recodingRef = useRef<Audio.Recording>(null)
+  const [recodedAudio, setRecordedAudio] = useState<AudioType>(null)
+  const recordedAudioRef = useRef<AudioType>(null)
   const { showSnackBar } = useSnackBar()
+
+  const initRecorder = useCallback(async () => {
+    await Audio.setAudioModeAsync({
+      allowsRecordingIOS: true,
+      playsInSilentModeIOS: true
+    })
+  }, [])
+
+  useEffect(() => {
+    initRecorder()
+    return () => {
+      // recodingRef.current.stopAndUnloadAsync()
+      // recodedAudioRef.current = null
+    }
+  }, [])
 
   const startRecording = async () => {
     try {
+      // await stopRecording()
+
+      // await Audio.setAudioModeAsync({
+      //   allowsRecordingIOS: true,
+      //   playsInSilentModeIOS: true
+      // })
       const { granted } = await Audio.requestPermissionsAsync()
       if (!granted) {
         showSnackBar({ text: 'Permission to access microphone denied' })
         throw new Error('Permission to access microphone denied')
       }
 
-      if (isRecording) {
-        await stopRecording()
-      }
-
-      await Audio.setAudioModeAsync({
-        allowsRecordingIOS: true,
-        playsInSilentModeIOS: true
-      })
-
-      const recordOptions: Audio.RecordingOptions = {
-        ...Audio.RecordingOptionsPresets.HIGH_QUALITY,
-        android: {
-          bitRate: 16000, //TODO put these in config
-          sampleRate: 12000,
-          numberOfChannels: 1,
-          extension: '.wav',
-          outputFormat: AndroidOutputFormat.DEFAULT,
-          audioEncoder: AndroidAudioEncoder.AAC
-        },
-        ios: {
-          ...Audio.RecordingOptionsPresets.HIGH_QUALITY.ios, // Copy other settings from HIGH_QUALITY preset
-          // extension: '.wav',
-          sampleRate: 44100, // Set the sample rate to 44.1 kHz, a common standard for audio recording
-          bitRate: 128000
-        }
-        // ios: {
-        //   bitRate: 16000,
-        //   sampleRate: 12000,
-        //   numberOfChannels: 1,
-        //   extension: '.wav',
-        //   outputFormat: AndroidOutputFormat.DEFAULT,
-        //   audioQuality: IOSAudioQuality.MEDIUM
-        // }
-      }
       const { recording: recordingObject } = await Audio.Recording.createAsync(recordOptions)
-
-      setRecording(recordingObject)
-      setIsRecording(x => !x)
+      recodingRef.current = recordingObject
     } catch (error) {
       console.error('Failed to start recording:', error)
       showSnackBar({ text: 'Failed to start recording' })
@@ -62,31 +72,32 @@ const useAudioRecorder = () => {
     }
   }
 
-  const stopRecording = async () => {
-    if (isRecording) {
-      try {
-        await recording.stopAndUnloadAsync()
-        const { sound } = await recording.createNewLoadedSoundAsync()
-        setIsRecording(false)
-        setRecording(null)
-        setRecordings(x => [
-          ...x,
-          {
-            sound: sound,
-            file: recording.getURI()
-          }
-        ])
-      } catch (error) {
-        console.error('Failed to stop recording:', error)
-      }
-    }
+  const getRecorded = () => {
+    return recordedAudioRef.current
   }
 
+  const stopRecording = async () => {
+    try {
+      await recodingRef.current.stopAndUnloadAsync()
+      const { sound } = await recodingRef.current.createNewLoadedSoundAsync()
+      setRecordedAudio({
+        sound: sound,
+        file: recodingRef.current.getURI()
+      })
+      recordedAudioRef.current = {
+        sound: sound,
+        file: recodingRef.current.getURI()
+      }
+    } catch (error) {
+      console.error('Failed to stop recording:', error)
+    }
+  }
   return {
     startRecording,
     stopRecording,
-    isRecording,
-    recordings
+    recodedAudio,
+    recordedAudioRef: recordedAudioRef.current,
+    getRecorded
   }
 }
 

@@ -15,6 +15,7 @@ const ChatBar = ({
 }) => {
   const textInputRef = useRef(null)
   const [userResponseMsg, setUserResponseMsg] = useState('')
+  const { startRecording, stopRecording, recodedAudio, recordedAudioRef, getRecorded } = useAudio()
 
   useEffect(() => {
     textInputRef.current.focus()
@@ -28,7 +29,15 @@ const ChatBar = ({
     textInputRef.current.clear()
   }
 
-  const { startRecording, stopRecording, recordings } = useAudio()
+  const handleAudioStop = async () => {
+    try {
+      await stopRecording()
+      const recordedAudio = getRecorded()
+      await updateAudioChat(recordedAudio)
+    } catch (error) {
+      console.log('error occured while handling audio ', error)
+    }
+  }
 
   return (
     <View className="mt-2 flex-row gap-2 text-base">
@@ -52,18 +61,8 @@ const ChatBar = ({
         <MButton
           leadingIcon={<Mic />}
           intent="buttonIcon"
-          onPressOut={async () => {
-            try {
-              await stopRecording()
-              const recordingLine = recordings[recordings.length - 1]
-              await updateAudioChat(recordingLine)
-            } catch (error) {
-              console.log('error occured while handling audio ', error)
-            }
-          }}
-          onPressIn={() => {
-            startRecording()
-          }}></MButton>
+          onPressOut={handleAudioStop}
+          onPressIn={startRecording}></MButton>
       )}
     </View>
   )
