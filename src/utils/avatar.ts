@@ -1,13 +1,13 @@
 export const avatarImages = [
   require('../assets/images/avatar/MILA-0.png'),
   require('../assets/images/avatar/MILA-1.png'),
- require( '../assets/images/avatar/MILA-2.png'),
- require( '../assets/images/avatar/MILA-3.png'),
- require( '../assets/images/avatar/MILA-4.png'),
- require( '../assets/images/avatar/MILA-5.png'),
- require( '../assets/images/avatar/MILA-6.png'),
- require( '../assets/images/avatar/MILA-7.png'),
- require( '../assets/images/avatar/MILA-8.png')
+  require('../assets/images/avatar/MILA-2.png'),
+  require('../assets/images/avatar/MILA-3.png'),
+  require('../assets/images/avatar/MILA-4.png'),
+  require('../assets/images/avatar/MILA-5.png'),
+  require('../assets/images/avatar/MILA-6.png'),
+  require('../assets/images/avatar/MILA-7.png'),
+  require('../assets/images/avatar/MILA-8.png')
 ]
 
 export const avatarBackgroundColors: {
