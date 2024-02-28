@@ -11,8 +11,6 @@ export type Audio = {
   stopAudio: () => Promise<void>
   startRecording: () => Promise<void>
   stopRecording: () => Promise<void>
-  recodedAudio: AudioType
-  recordedAudioRef: AudioType
   playAudioBySound: (sound: Sound) => Promise<void>
   getRecorded: () => AudioType
 }

@@ -43,7 +43,7 @@ const useAudioRecorder = () => {
   useEffect(() => {
     initRecorder()
     return () => {
-      recodingRef.current.stopAndUnloadAsync()
+      // recodingRef.current.stopAndUnloadAsync()
       // recodedAudioRef.current = null
     }
   }, [])

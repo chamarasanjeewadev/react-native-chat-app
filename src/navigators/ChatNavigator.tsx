@@ -18,8 +18,16 @@ export const ChatNavigator = () => (
         headerShown: true
       }}
       initialRouteName="Chat">
-      <ChatStack.Screen name="Chat" component={ConversationsScreen} />
-      <ChatStack.Screen name="Section" component={SectionsScreen} />
+      <ChatStack.Screen
+        options={{ headerBackTitleVisible: false }}
+        name="Chat"
+        component={ConversationsScreen}
+      />
+      <ChatStack.Screen
+        options={{ headerBackTitleVisible: false }}
+        name="Section"
+        component={SectionsScreen}
+      />
     </ChatStack.Navigator>
   </AudioProvider>
 )
