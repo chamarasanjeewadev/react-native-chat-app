@@ -4,6 +4,7 @@ import {
   feedbackTranslate,
   firstChat,
   getSlowAudio,
+  getTokenAudio,
   retry,
   subscriptionIntent
 } from '../services/apiService'
@@ -86,6 +87,12 @@ export const useGetSlowAudio = ({ sectionId, text }: { sectionId: string; text: 
   useQuery({
     queryKey: queryKeys.translate.slowAudio(sectionId, text).queryKey,
     queryFn: () => getSlowAudio(sectionId, text),
+    enabled: false
+  })
+export const useGetTokenAudio = ({ text }: { text: string }) =>
+  useQuery({
+    queryKey: queryKeys.translate.tokenAudio(text).queryKey,
+    queryFn: () => getTokenAudio(text),
     enabled: false
   })
 export const useRetry = ({ sectionId, difficulty }: { sectionId: string; difficulty: number }) =>

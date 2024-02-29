@@ -156,6 +156,7 @@ interface MessageBack {
   lastAIMessage?: string
   lastAIMessageId?: number
   audio?: Audio.Sound
+  tokenization_response?: Token[]
 }
 
 interface StripePaymentIntent {

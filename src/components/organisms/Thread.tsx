@@ -33,6 +33,7 @@ export const Thread = ({
       ) : (
         <BotMessage
           text_response={chatMessage?.text_response}
+          tokenization_response={chatMessage?.tokenization_response}
           sectionId={sectionId}
           difficulty={difficulty}
           showRomaji={showRomaji}

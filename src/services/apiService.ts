@@ -84,6 +84,12 @@ export const getSlowAudio = async (sectionId: string, text: string) => {
   return result.data
 }
 
+export const getTokenAudio = async (text: string) => {
+  const result = await axiosInstance.post<string>(`feedback/word_info`, {
+    text
+  })
+  return result.data
+}
 export const retry = (sectionId: string, difficulty: number) =>
   axiosInstance.post<RetryBack>(`/conversation/section/${sectionId}/retry`, {
     difficulty_level: difficulty

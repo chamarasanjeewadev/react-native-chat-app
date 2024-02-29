@@ -34,6 +34,7 @@ export const translateQueryKeys = createQueryKeys('translate', {
     messageId
   ],
   slowAudio: (text: string, sectionId: string) => [text, sectionId],
+  tokenAudio: (text: string) => [text],
   retry: (difficulty: number, sectionId: string) => [difficulty, sectionId]
 })
 
