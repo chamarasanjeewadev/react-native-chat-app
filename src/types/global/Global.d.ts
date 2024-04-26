@@ -265,3 +265,9 @@ type PlayAudioProps = {
   audioUrl: string
   rate?: number
 }
+
+type WordTranslations = {
+  word_translation: string
+  audio_response_path: { [key: string]: string }
+  word_definitions?: string[]
+}

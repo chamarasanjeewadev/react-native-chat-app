@@ -40,7 +40,7 @@ const ChatBar = ({
   }
 
   return (
-    <View className="mt-2 flex-row gap-2 text-base">
+    <View className="mb-2 flex-row gap-2 text-base">
       <MTextInput
         forwardedRef={textInputRef}
         onChangeText={setUserResponseMsg}

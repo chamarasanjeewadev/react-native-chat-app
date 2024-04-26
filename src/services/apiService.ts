@@ -85,7 +85,7 @@ export const getSlowAudio = async (sectionId: string, text: string) => {
 }
 
 export const getTokenAudio = async (text: string) => {
-  const result = await axiosInstance.post<string>(`feedback/word_info`, {
+  const result = await axiosInstance.post<WordTranslations>(`feedback/word_info`, {
     text
   })
   return result.data
