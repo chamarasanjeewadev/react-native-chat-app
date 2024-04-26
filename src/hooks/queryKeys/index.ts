@@ -3,8 +3,8 @@ import { createQueryKeys } from '@lukemorales/query-key-factory'
 
 export const chatQueryKeys = createQueryKeys('chats', {
   detail: (id: string) => [id],
-  milaChats: () => ({
-    queryKey: ['milachats']
+  MaiChats: () => ({
+    queryKey: ['Maichats']
   }),
   chat: (id: string) => ({
     queryKey: [id]

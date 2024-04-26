@@ -1,5 +1,5 @@
 import { ScrollView, View } from 'react-native'
-import { useGetMilaChats } from '../hooks/queries'
+import { useGetMaiChats } from '../hooks/queries'
 import React, { Suspense } from 'react'
 import { Dropdown } from '../assets/icons/DropDown'
 import ProgressCircle from '../assets/icons/ProgressCircle'
@@ -8,13 +8,22 @@ import MButton from '../components/atoms/MButton'
 import { MText } from '../components/atoms/MText'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ChatStackParamList } from '../navigators/ChatNavigator'
+import Button from '../components/atoms/MButtonDemo'
 
 type Props = NativeStackScreenProps<ChatStackParamList, 'Chat'>
 const ConversationsScreen = ({ navigation }: Props) => {
-  const { data } = useGetMilaChats()
+  const { data } = useGetMaiChats()
   return (
     <ScrollView>
-      <Suspense fallback={<View>Loading...</View>}>
+      <View className=" gap-2">
+        <Button intent="primary">Hello primary</Button>
+
+        <Button intent="secondary" size="large">
+          Hello secondary
+        </Button>
+      </View>
+      {/* <Button intent="secondary">Hello world</Button> */}
+      {/* <Suspense fallback={<View>Loading...</View>}>
         {data?.sections
           .sort((a, b) => b.title.localeCompare(a.title))
           ?.map((section: Section, index: number) => (
@@ -72,7 +81,7 @@ const ConversationsScreen = ({ navigation }: Props) => {
               </View>
             </View>
           ))}
-      </Suspense>
+      </Suspense> */}
     </ScrollView>
   )
 }

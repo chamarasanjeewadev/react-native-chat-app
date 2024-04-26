@@ -28,7 +28,7 @@ export const SelectSubLanguage = ({
       />
       <MText intent="description">{t('settings.showPR.description')}</MText>
       {isLanguageSelectionShown && (
-        <View className="dark:border-mila-gray-25 my-5   flex flex-row gap-4">
+        <View className="dark:border-mai-gray-25 my-5   flex flex-row gap-4">
           {targetLanguage === 'Japanese' && (
             <>
               <MCheckBoxWithCaption

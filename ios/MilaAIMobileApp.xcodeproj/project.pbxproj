@@ -37,7 +37,7 @@
 		18C5EC782B65A3B00035EE9D /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18C5EC652B65A3AF0035EE9D /* FontAwesome6_Brands.ttf */; };
 		18C5EC792B65A3B00035EE9D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18C5EC662B65A3AF0035EE9D /* MaterialIcons.ttf */; };
 		18EDD1622B63BE8100BD1558 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDD1612B63BE8100BD1558 /* dummy.swift */; };
-		1C368550A9C4961BF31BDAE8 /* Pods_MilaAIMobileApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20BF652820395891A331F59 /* Pods_MilaAIMobileApp.framework */; };
+		1C368550A9C4961BF31BDAE8 /* Pods_MaiAIMobileApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20BF652820395891A331F59 /* Pods_MaiAIMobileApp.framework */; };
 		22F905DD9DD2451DA13FC7C0 /* NotoSansSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DCCF902CA864C8290D94F57 /* NotoSansSC-Bold.ttf */; };
 		2360F34A294CB9125E35AA0E /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96768183056A1D59C749E62 /* ExpoModulesProvider.swift */; };
 		2F041F63A8754219AC59DE8D /* NotoSansSC-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1167F9BA6834C1BAFEDE0FD /* NotoSansSC-SemiBold.ttf */; };
@@ -74,12 +74,12 @@
 
 /* Begin PBXFileReference section */
 		02D5B74271C5411987821CA6 /* NotoSansJP-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Medium.ttf"; path = "../src/assets/fonts/NotoSansJP-Medium.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* MilaAIMobileApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilaAIMobileApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MilaAIMobileApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MilaAIMobileApp/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MilaAIMobileApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MilaAIMobileApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MilaAIMobileApp/main.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* MaiAIMobileApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaiAIMobileApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MaiAIMobileApp/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MaiAIMobileApp/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MaiAIMobileApp/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MaiAIMobileApp/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MaiAIMobileApp/main.m; sourceTree = "<group>"; };
 		182D7E652B8342D600EEE7DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18C5EC542B65A3AF0035EE9D /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		18C5EC552B65A3AF0035EE9D /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
@@ -100,14 +100,14 @@
 		18C5EC642B65A3AF0035EE9D /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		18C5EC652B65A3AF0035EE9D /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		18C5EC662B65A3AF0035EE9D /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
-		18EDD1602B63BE8100BD1558 /* MilaAIMobileApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MilaAIMobileApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		18EDD1602B63BE8100BD1558 /* MaiAIMobileApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaiAIMobileApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		18EDD1612B63BE8100BD1558 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 		194BD726D5F140929DFEB06D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		1FADF96174AC4178B2CF16B7 /* NotoSansJP-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Black.ttf"; path = "../src/assets/fonts/NotoSansJP-Black.ttf"; sourceTree = "<group>"; };
 		22A26C5D28684397B8FFF247 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../src/assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		365D5928F2F945EA8664F314 /* NotoSansSC-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Thin.ttf"; path = "../src/assets/fonts/NotoSansSC-Thin.ttf"; sourceTree = "<group>"; };
 		375FD5E9FEA644C6B2C6FD8F /* NotoSansSC-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Light.ttf"; path = "../src/assets/fonts/NotoSansSC-Light.ttf"; sourceTree = "<group>"; };
-		3B32C99E4F2A36DC494A93EC /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B32C99E4F2A36DC494A93EC /* Pods_MaiAIMobileApp_MaiAIMobileAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaiAIMobileApp_MaiAIMobileAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FC5A34733594CFDA1764DB8 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		435F8C895E9848E1ACCD3AD3 /* NotoSansJP-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-SemiBold.ttf"; path = "../src/assets/fonts/NotoSansJP-SemiBold.ttf"; sourceTree = "<group>"; };
 		4F1029398DC0405AB6BB4F4A /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../src/assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		60680A7D2F684480996A9A6A /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../src/assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		64F74772816C455C94F0E4DF /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../src/assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		667290E3D7AA44B3B9DD452B /* NotoSansSC-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Black.ttf"; path = "../src/assets/fonts/NotoSansSC-Black.ttf"; sourceTree = "<group>"; };
-		73E375B1C5AE7A15C990813F /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		73E375B1C5AE7A15C990813F /* Pods-MaiAIMobileApp-MaiAIMobileAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaiAIMobileApp-MaiAIMobileAppTests.release.xcconfig"; path = "Target Support Files/Pods-MaiAIMobileApp-MaiAIMobileAppTests/Pods-MaiAIMobileApp-MaiAIMobileAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		7576719FE66B49E49D3B25A3 /* NotoSansSC-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-ExtraBold.ttf"; path = "../src/assets/fonts/NotoSansSC-ExtraBold.ttf"; sourceTree = "<group>"; };
 		7CCF3631E40E488597FA7D9D /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ThinItalic.ttf"; path = "../src/assets/fonts/Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
 		81865D40DB0445F4B99F9524 /* NotoSansJP-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-ExtraLight.ttf"; path = "../src/assets/fonts/NotoSansJP-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -129,23 +129,23 @@
 		96362C6148CF4BBABF736BEA /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		9DCCF902CA864C8290D94F57 /* NotoSansSC-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Bold.ttf"; path = "../src/assets/fonts/NotoSansSC-Bold.ttf"; sourceTree = "<group>"; };
 		A1167F9BA6834C1BAFEDE0FD /* NotoSansSC-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-SemiBold.ttf"; path = "../src/assets/fonts/NotoSansSC-SemiBold.ttf"; sourceTree = "<group>"; };
-		A20BF652820395891A331F59 /* Pods_MilaAIMobileApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilaAIMobileApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20BF652820395891A331F59 /* Pods_MaiAIMobileApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaiAIMobileApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6DA91F5AEE5421CAAA0D57A /* NotoSansJP-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Light.ttf"; path = "../src/assets/fonts/NotoSansJP-Light.ttf"; sourceTree = "<group>"; };
-		ACCD4CA66F4ED88D2CE62684 /* Pods-MilaAIMobileApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp.debug.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp.debug.xcconfig"; sourceTree = "<group>"; };
+		ACCD4CA66F4ED88D2CE62684 /* Pods-MaiAIMobileApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaiAIMobileApp.debug.xcconfig"; path = "Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BBCA121244C946F98697024B /* NotoSansJP-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Regular.ttf"; path = "../src/assets/fonts/NotoSansJP-Regular.ttf"; sourceTree = "<group>"; };
-		C518E7665D5FAADECB683F8C /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp-MilaAIMobileAppTests/Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C518E7665D5FAADECB683F8C /* Pods-MaiAIMobileApp-MaiAIMobileAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaiAIMobileApp-MaiAIMobileAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MaiAIMobileApp-MaiAIMobileAppTests/Pods-MaiAIMobileApp-MaiAIMobileAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C713F385C4134AA58DD8F59D /* Poppins-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Black.ttf"; path = "../src/assets/fonts/Poppins-Black.ttf"; sourceTree = "<group>"; };
 		CAD886202992492CACFC2DDF /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-LightItalic.ttf"; path = "../src/assets/fonts/Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		CC2A307D6451454CA21E325B /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		CF84CCFFBE804288B62CB9FA /* NotoSansSC-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-ExtraLight.ttf"; path = "../src/assets/fonts/NotoSansSC-ExtraLight.ttf"; sourceTree = "<group>"; };
 		D4E3E619608C438EB7A87047 /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
-		D754B8454E1BB0763A1D9DCB /* Pods-MilaAIMobileApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilaAIMobileApp.release.xcconfig"; path = "Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp.release.xcconfig"; sourceTree = "<group>"; };
-		D96768183056A1D59C749E62 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MilaAIMobileApp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		D754B8454E1BB0763A1D9DCB /* Pods-MaiAIMobileApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaiAIMobileApp.release.xcconfig"; path = "Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp.release.xcconfig"; sourceTree = "<group>"; };
+		D96768183056A1D59C749E62 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MaiAIMobileApp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		DE2C196BCCB848559BA32AF5 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		E671899335F143F3A3AD221D /* NotoSansJP-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Thin.ttf"; path = "../src/assets/fonts/NotoSansJP-Thin.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EDAB75013F394FA2AB896AD0 /* NotoSansJP-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansJP-Bold.ttf"; path = "../src/assets/fonts/NotoSansJP-Bold.ttf"; sourceTree = "<group>"; };
-		FA82539F308A4BABB741E559 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = /Users/apple/Documents/mila/MilaAI.MobileApp/ios/MilaAIMobileApp/BootSplash.storyboard; sourceTree = "<group>"; };
+		FA82539F308A4BABB741E559 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = /Users/apple/Documents/mai/MaiAI.MobileApp/ios/MaiAIMobileApp/BootSplash.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C368550A9C4961BF31BDAE8 /* Pods_MilaAIMobileApp.framework in Frameworks */,
+				1C368550A9C4961BF31BDAE8 /* Pods_MaiAIMobileApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,12 +163,12 @@
 		0FBE5466D9D010C12CE029D4 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				38EA4F2A322E509BE3339DAF /* MilaAIMobileApp */,
+				38EA4F2A322E509BE3339DAF /* MaiAIMobileApp */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* MilaAIMobileApp */ = {
+		13B07FAE1A68108700A75B9A /* MaiAIMobileApp */ = {
 			isa = PBXGroup;
 			children = (
 				18C5EC532B65A3AF0035EE9D /* Fonts */,
@@ -178,10 +178,10 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				18EDD1612B63BE8100BD1558 /* dummy.swift */,
-				18EDD1602B63BE8100BD1558 /* MilaAIMobileApp-Bridging-Header.h */,
+				18EDD1602B63BE8100BD1558 /* MaiAIMobileApp-Bridging-Header.h */,
 				FA82539F308A4BABB741E559 /* BootSplash.storyboard */,
 			);
-			name = MilaAIMobileApp;
+			name = MaiAIMobileApp;
 			sourceTree = "<group>";
 		};
 		18C5EC532B65A3AF0035EE9D /* Fonts */ = {
@@ -215,18 +215,18 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				A20BF652820395891A331F59 /* Pods_MilaAIMobileApp.framework */,
-				3B32C99E4F2A36DC494A93EC /* Pods_MilaAIMobileApp_MilaAIMobileAppTests.framework */,
+				A20BF652820395891A331F59 /* Pods_MaiAIMobileApp.framework */,
+				3B32C99E4F2A36DC494A93EC /* Pods_MaiAIMobileApp_MaiAIMobileAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		38EA4F2A322E509BE3339DAF /* MilaAIMobileApp */ = {
+		38EA4F2A322E509BE3339DAF /* MaiAIMobileApp */ = {
 			isa = PBXGroup;
 			children = (
 				D96768183056A1D59C749E62 /* ExpoModulesProvider.swift */,
 			);
-			name = MilaAIMobileApp;
+			name = MaiAIMobileApp;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -240,7 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				182D7E652B8342D600EEE7DA /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* MilaAIMobileApp */,
+				13B07FAE1A68108700A75B9A /* MaiAIMobileApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
@@ -256,7 +256,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MilaAIMobileApp.app */,
+				13B07F961A680F5B00A75B9A /* MaiAIMobileApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,10 +307,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ACCD4CA66F4ED88D2CE62684 /* Pods-MilaAIMobileApp.debug.xcconfig */,
-				D754B8454E1BB0763A1D9DCB /* Pods-MilaAIMobileApp.release.xcconfig */,
-				C518E7665D5FAADECB683F8C /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.debug.xcconfig */,
-				73E375B1C5AE7A15C990813F /* Pods-MilaAIMobileApp-MilaAIMobileAppTests.release.xcconfig */,
+				ACCD4CA66F4ED88D2CE62684 /* Pods-MaiAIMobileApp.debug.xcconfig */,
+				D754B8454E1BB0763A1D9DCB /* Pods-MaiAIMobileApp.release.xcconfig */,
+				C518E7665D5FAADECB683F8C /* Pods-MaiAIMobileApp-MaiAIMobileAppTests.debug.xcconfig */,
+				73E375B1C5AE7A15C990813F /* Pods-MaiAIMobileApp-MaiAIMobileAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -318,9 +318,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* MilaAIMobileApp */ = {
+		13B07F861A680F5B00A75B9A /* MaiAIMobileApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MilaAIMobileApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MaiAIMobileApp" */;
 			buildPhases = (
 				A5780BA546127703F41B17F8 /* [CP] Check Pods Manifest.lock */,
 				0C792BF6E8DD83FBC4C153A4 /* [Expo] Configure project */,
@@ -336,9 +336,9 @@
 			);
 			dependencies = (
 			);
-			name = MilaAIMobileApp;
-			productName = MilaAIMobileApp;
-			productReference = 13B07F961A680F5B00A75B9A /* MilaAIMobileApp.app */;
+			name = MaiAIMobileApp;
+			productName = MaiAIMobileApp;
+			productReference = 13B07F961A680F5B00A75B9A /* MaiAIMobileApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -354,7 +354,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MilaAIMobileApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MaiAIMobileApp" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -367,7 +367,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* MilaAIMobileApp */,
+				13B07F861A680F5B00A75B9A /* MaiAIMobileApp */,
 			);
 		};
 /* End PBXProject section */
@@ -474,7 +474,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-MilaAIMobileApp/expo-configure-project.sh\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-MaiAIMobileApp/expo-configure-project.sh\"\n";
 		};
 		0FB5A6414D2685CD65CBDF0D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -482,15 +482,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2315ED24107DC675BFFEA92F /* [CP] Copy Pods Resources */ = {
@@ -499,15 +499,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilaAIMobileApp/Pods-MilaAIMobileApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MaiAIMobileApp/Pods-MaiAIMobileApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A5780BA546127703F41B17F8 /* [CP] Check Pods Manifest.lock */ = {
@@ -525,7 +525,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MilaAIMobileApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MaiAIMobileApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -564,14 +564,14 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACCD4CA66F4ED88D2CE62684 /* Pods-MilaAIMobileApp.debug.xcconfig */;
+			baseConfigurationReference = ACCD4CA66F4ED88D2CE62684 /* Pods-MaiAIMobileApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U4KZ4DFJXT;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = MilaAIMobileApp/Info.plist;
+				INFOPLIST_FILE = MaiAIMobileApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,9 +583,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.milaai.app;
-				PRODUCT_NAME = MilaAIMobileApp;
-				SWIFT_OBJC_BRIDGING_HEADER = "MilaAIMobileApp-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Maiai.app;
+				PRODUCT_NAME = MaiAIMobileApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "MaiAIMobileApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -594,13 +594,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D754B8454E1BB0763A1D9DCB /* Pods-MilaAIMobileApp.release.xcconfig */;
+			baseConfigurationReference = D754B8454E1BB0763A1D9DCB /* Pods-MaiAIMobileApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U4KZ4DFJXT;
-				INFOPLIST_FILE = MilaAIMobileApp/Info.plist;
+				INFOPLIST_FILE = MaiAIMobileApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,9 +612,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.milaai.app;
-				PRODUCT_NAME = MilaAIMobileApp;
-				SWIFT_OBJC_BRIDGING_HEADER = "MilaAIMobileApp-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Maiai.app;
+				PRODUCT_NAME = MaiAIMobileApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "MaiAIMobileApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -796,7 +796,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MilaAIMobileApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MaiAIMobileApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -805,7 +805,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MilaAIMobileApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MaiAIMobileApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -426,7 +426,7 @@ const ProfileScreen = () => {
               text="linkText"
               intent="link"
               onPress={() => {
-                Linking.openURL('https://milaai.app/help/privacy-policy')
+                Linking.openURL('https://Maiai.app/help/privacy-policy')
               }}>
               {'Privacy policy'}
             </MButton>
@@ -435,7 +435,7 @@ const ProfileScreen = () => {
             text="linkText"
             intent="link"
             onPress={() => {
-              Linking.openURL('https://milaai.app/help/terms-conditions')
+              Linking.openURL('https://Maiai.app/help/terms-conditions')
             }}>
             {'Terms and Conditions'}
           </MButton>

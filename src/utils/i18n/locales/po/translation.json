@@ -7,16 +7,16 @@
   "onboarding.learn-how-to": "Dowiedz się, jak korzystać z aplikacji.",
   "onboarding.goals": "Cele",
   "onboarding.introduction-meetup": "Spotkanie wprowadzające",
-  "onboarding.with-mila": "z Milą",
-  "onboarding.meeting-up-with-mila": "Spotkanie z Milą",
+  "onboarding.with-mai": "z Milą",
+  "onboarding.meeting-up-with-mai": "Spotkanie z Milą",
   "onboarding.continue": "Kontynuuj",
-  "onboarding.is-typing": "Mila pisze...",
+  "onboarding.is-typing": "Mai pisze...",
   "onboarding.hi": "Cześć!",
   "onboarding.ask-language": "Zanim zaczniemy, jaki jest twój język ojczysty?",
   "onboarding.pick-language": "Wybierz język, którym mówisz.",
   "onboarding.invalid-name-error": "Proszę wpisać swoją nazwę użytkownika.",
   "onboarding.duplicate-username-error": "Nazwa użytkownika już istnieje. Proszę użyć innej nazwy użytkownika.",
-  "onboarding.lets-get-acquainted": "Poznajmy się! Jestem Mila, twoim nowym towarzyszem nauki języka.",
+  "onboarding.lets-get-acquainted": "Poznajmy się! Jestem Mai, twoim nowym towarzyszem nauki języka.",
   "onboarding.learn-much-together": "Będziemy razem wiele się uczyć!",
   "onboarding.ask-name": "Jak się nazywasz?",
   "onboarding.ask-target-language": "Więc, jaki język chcesz ze mną nauczyć się?",
@@ -94,8 +94,8 @@
   "chats.medium.description": "Dostęp do transkrypcji tekstu.",
   "chats.hard": "Trudny",
   "chats.hard.description": "Nauka za pomocą głosu i dźwięku, bez wsparcia tekstu.",
-  "chats.mila": "Rozmowy z Milą",
-  "chats.mila.description": "Zobacz wszystkie scenariusze rozmów stworzone przez Milę tutaj",
+  "chats.mai": "Rozmowy z Milą",
+  "chats.mai.description": "Zobacz wszystkie scenariusze rozmów stworzone przez Milę tutaj",
   "chats.community": "Rozmowy Społeczności",
   "chats.community.description": "Odkryj scenariusze stworzone przez użytkowników.",
   "chats.mine": "Stwórz Swoje",
@@ -120,7 +120,7 @@
   "chats.mine.create.goalAI.label": "Cel Mili",
   "chats.mine.create.goalAI.placeholder": "Przykład - Dowiedz się, jakie jest miasto użytkownika.",
   "chats.mine.create.proficiency": "Chcę, aby poziom biegłości był:",
-  "chats.mine.create.voice": "Chcę, żeby Mila brzmiała jak:",
+  "chats.mine.create.voice": "Chcę, żeby Mai brzmiała jak:",
   "chats.mine.create.additional.description": "Dodatkowy Kontekst:",
   "chats.mine.create.additional.label": "Wprowadź opis...",
   "chats.mine.create.additional.placeholder": "Przykład - „Jedna z głównych ulic w Tokio”",
@@ -129,7 +129,7 @@
   "wordbank.new-words-learned": "Nowe Wyrazy",
   "wordbank.progress": "Postęp Słownictwa",
   "translator.title": "Tłumacz",
-  "translator.description": "Pozwól, że Mila pomoże ci przetłumaczyć słowa.",
+  "translator.description": "Pozwól, że Mai pomoże ci przetłumaczyć słowa.",
   "support.title": "Uzyskaj Wsparcie",
   "support.description": "Nasz przyjazny zespół chętnie odezwie się do ciebie.",
   "support.subject": "Temat",
@@ -171,7 +171,7 @@
   "settings.tab.subscription": "Subskrypcja",
   "sidebar.home": "Strona Główna",
   "sidebar.chat": "Czat",
-  "sidebar.chat.mila": "Mili",
+  "sidebar.chat.mai": "Mili",
   "sidebar.chat.community": "Społecznościowy",
   "sidebar.chat.mine": "Mój",
   "sidebar.wordbank": "Bank Słów",
@@ -196,43 +196,43 @@
   "subscription.ai-tutor-grammar-review": "Recenzja Gramatyki z AI",
   "subscription.ai-tutor-grammar-review.description": "Poproś Milę o analizę Twoich wiadomości i naucz się niuansów języka.",
   "subscription.say-goodbye-to-limited-ai": "Żegnaj z ograniczonymi interakcjami AI i wspieraj naszą misję.",
-  "subscription.subscription-will-expire-on": "Twoja subskrypcja premium wygaśnie {{date}} i wróci do wersji Mila Starter.",
+  "subscription.subscription-will-expire-on": "Twoja subskrypcja premium wygaśnie {{date}} i wróci do wersji Mai Starter.",
   "subscription.thanks-for-support": "Dzięki za wsparcie naszej misji! Ciesz się nieograniczonymi interakcjami z AI, wsparciem w kontekście i nie tylko!",
   "subscription.will-expire-on": "Twoja subskrypcja wygaśnie {{date}}.",
   "subscription.will-charged-on": "W dniu {{date}} zostaniesz obciążony kwotą £{{price}}.",
   "subscription.trial-expire-on": "Twój bezpłatny okres próbny wygaśnie {{date}}.",
   "faqs": [
     {
-      "title": "Co to jest Mila?",
-      "content": "Mila to innowacyjna aplikacja do nauki języków, zaprojektowana tak, aby nauka nowego języka była zabawna, interaktywna i dostosowana do twoich unikalnych preferencji. Bez względu na to, czy jesteś początkującym, czy zaawansowanym uczniem, Mila oferuje interesujące rozmowy i scenariusze, które pomagają ci rozwijać praktyczne umiejętności językowe bez wysiłku."
+      "title": "Co to jest Mai?",
+      "content": "Mai to innowacyjna aplikacja do nauki języków, zaprojektowana tak, aby nauka nowego języka była zabawna, interaktywna i dostosowana do twoich unikalnych preferencji. Bez względu na to, czy jesteś początkującym, czy zaawansowanym uczniem, Mai oferuje interesujące rozmowy i scenariusze, które pomagają ci rozwijać praktyczne umiejętności językowe bez wysiłku."
     },
     {
       "title": "Jakie języki są dostępne na Mili?",
-      "content": "Obecnie Mila oferuje wybór popularnych języków, w tym angielski (UK i USA), hiszpański (Meksyk i Hiszpania), niemiecki, francuski, japoński i mandaryński. Stale poszerzamy naszą ofertę językową, aby zapewnić użytkownikom więcej wyborów."
+      "content": "Obecnie Mai oferuje wybór popularnych języków, w tym angielski (UK i USA), hiszpański (Meksyk i Hiszpania), niemiecki, francuski, japoński i mandaryński. Stale poszerzamy naszą ofertę językową, aby zapewnić użytkownikom więcej wyborów."
     },
     {
-      "title": "Jak działa Mila?",
-      "content": "Mila używa technologii sztucznej inteligencji do dostarczania interaktywnych rozmów i scenariuszy. Możesz angażować się w rozmowy z Milą, która działa jako twój partner do wymiany językowej. Mila oferuje scenariusze dostosowane do różnych poziomów zaawansowania, pomagając w praktyce umiejętności językowych w życiu codziennym."
+      "title": "Jak działa Mai?",
+      "content": "Mai używa technologii sztucznej inteligencji do dostarczania interaktywnych rozmów i scenariuszy. Możesz angażować się w rozmowy z Milą, która działa jako twój partner do wymiany językowej. Mai oferuje scenariusze dostosowane do różnych poziomów zaawansowania, pomagając w praktyce umiejętności językowych w życiu codziennym."
     },
     {
       "title": "Jak śledzić mój postęp na Mili?",
-      "content": "Mila zapewnia szczegółowy system śledzenia postępów. Możesz monitorować swoją biegłość językową, bank słów, gramatykę, wymowę i wiele więcej. To doskonały sposób, aby zobaczyć, jak postępujesz w nauce języka."
+      "content": "Mai zapewnia szczegółowy system śledzenia postępów. Możesz monitorować swoją biegłość językową, bank słów, gramatykę, wymowę i wiele więcej. To doskonały sposób, aby zobaczyć, jak postępujesz w nauce języka."
     },
     {
       "title": "Czy mogę tworzyć własne rozmowy na Mili?",
-      "content": "Oczywiście! Mila oferuje funkcję, dzięki której możesz tworzyć własne niestandardowe scenariusze. Dostosuj swoją naukę języka, tworząc unikalne rozmowy dostosowane do swoich zainteresowań i celów."
+      "content": "Oczywiście! Mai oferuje funkcję, dzięki której możesz tworzyć własne niestandardowe scenariusze. Dostosuj swoją naukę języka, tworząc unikalne rozmowy dostosowane do swoich zainteresowań i celów."
     },
     {
       "title": "Co zrobić, jeśli napotkam problemy techniczne z aplikacją?",
       "content": "Jeśli napotkasz problemy techniczne, odwiedź naszą sekcję „Pomoc i Wsparcie” w aplikacji. Tutaj znajdziesz przewodniki dotyczące rozwiązywania problemów oraz skontaktujesz się z naszym zespołem wsparcia."
     },
     {
-      "title": "Czy Mila jest dostępna na wielu urządzeniach?",
-      "content": "Tak, Mila jest zaprojektowana z myślą o kompatybilności między urządzeniami. Możesz swobodnie przełączać się między telefonem komórkowym, tabletem i komputerem, co pozwala ci uczyć się kiedykolwiek i gdziekolwiek chcesz."
+      "title": "Czy Mai jest dostępna na wielu urządzeniach?",
+      "content": "Tak, Mai jest zaprojektowana z myślą o kompatybilności między urządzeniami. Możesz swobodnie przełączać się między telefonem komórkowym, tabletem i komputerem, co pozwala ci uczyć się kiedykolwiek i gdziekolwiek chcesz."
     },
     {
-      "title": "Jakie plany subskrypcyjne oferuje Mila?",
-      "content": "Mila oferuje trzy plany subskrypcyjne: Darmowy, Plus i Premium. Każdy plan zapewnia różny poziom dostępu do naszych treści i funkcji. Wybierz ten, który najlepiej odpowiada Twoim potrzebom edukacyjnym."
+      "title": "Jakie plany subskrypcyjne oferuje Mai?",
+      "content": "Mai oferuje trzy plany subskrypcyjne: Darmowy, Plus i Premium. Każdy plan zapewnia różny poziom dostępu do naszych treści i funkcji. Wybierz ten, który najlepiej odpowiada Twoim potrzebom edukacyjnym."
     },
     {
       "title": "Jak anulować moją subskrypcję?",

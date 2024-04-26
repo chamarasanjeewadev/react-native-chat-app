@@ -35,7 +35,7 @@ const PaymentSheet = () => {
       //   }
       // },
       paymentIntentClientSecret: paymentIntent,
-      merchantDisplayName: 'Mila AI',
+      merchantDisplayName: 'Mai AI',
       applePay: {
         merchantCountryCode: 'US'
       },
@@ -45,7 +45,7 @@ const PaymentSheet = () => {
         currencyCode: 'usd'
       },
       allowsDelayedPaymentMethods: true,
-      returnURL: 'milaai://stripe-redirect'
+      returnURL: 'Maiai://stripe-redirect'
     })
     if (error) {
       showSnackBar({ text: `Error code: ${error.message}` })

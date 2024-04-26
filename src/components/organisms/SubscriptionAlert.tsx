@@ -15,7 +15,7 @@ export const SubscriptionAlert = () => {
           </MText>
           <MText className="size-large font-extrabold text-coreprune">SAVE 50%</MText>
           <MText className="font-normal text-coreprune" size="small">
-            On Mila Premium
+            On Mai Premium
           </MText>
         </View>
         <View className="mb-4 mt-4 items-center  text-center">

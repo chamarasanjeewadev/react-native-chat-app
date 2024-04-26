@@ -1,6 +1,6 @@
 import Svg, { Path } from 'react-native-svg'
 
-export const MilaHint = () => (
+export const MaiHint = () => (
   <Svg width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
     <Path
       d="M12.5 5C13.3284 5 14 4.32843 14 3.5C14 2.67157 13.3284 2 12.5 2C11.6716 2 11 2.67157 11 3.5C11 4.32843 11.6716 5 12.5 5Z"

@@ -29,7 +29,7 @@ type Section = {
   goal_user: string
   title: string
   topic: string
-  source: 'mila' | 'community' | 'mine'
+  source: 'mai' | 'community' | 'mine'
   background_id?: number
   icon_id?: number
   conversation_length: number

@@ -31,9 +31,9 @@ const StripeSubscription = ({ priceId }: { priceId: string }) => {
       customerEphemeralKeySecret: data?.ephemeral_key,
       setupIntentClientSecret: data?.setup_intent,
       paymentIntentClientSecret: data?.payment_intent,
-      merchantDisplayName: 'Mila AI',
+      merchantDisplayName: 'Mai AI',
       allowsDelayedPaymentMethods: true,
-      returnURL: 'milaai://stripe-redirect'
+      returnURL: 'Maiai://stripe-redirect'
     }
     const { error } = await initPaymentSheet(setUpParams)
     if (error) {

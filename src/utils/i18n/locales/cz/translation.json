@@ -7,16 +7,16 @@
   "onboarding.learn-how-to": "Nauč se používat aplikaci.",
   "onboarding.goals": "Cíle",
   "onboarding.introduction-meetup": "Setkání na úvod",
-  "onboarding.with-mila": "s Milou",
-  "onboarding.meeting-up-with-mila": "Setkání s Milou",
+  "onboarding.with-mai": "s Milou",
+  "onboarding.meeting-up-with-mai": "Setkání s Milou",
   "onboarding.continue": "Pokračovat",
-  "onboarding.is-typing": "Mila píše...",
+  "onboarding.is-typing": "Mai píše...",
   "onboarding.hi": "Ahoj!",
   "onboarding.ask-language": "Než začneme, jaký je tvůj mateřský jazyk?",
   "onboarding.pick-language": "Vyber jazyk, který mluvíš.",
   "onboarding.invalid-name-error": "Prosím, zadej své uživatelské jméno.",
   "onboarding.duplicate-username-error": "Uživatelské jméno již existuje. Použij prosím jiné uživatelské jméno.",
-  "onboarding.lets-get-acquainted": "Seznámíme se! Jsem Mila, tvůj nový společník pro učení jazyka.",
+  "onboarding.lets-get-acquainted": "Seznámíme se! Jsem Mai, tvůj nový společník pro učení jazyka.",
   "onboarding.learn-much-together": "Budeme spolu mnoho učit!",
   "onboarding.ask-name": "Jak se jmenuješ?",
   "onboarding.ask-target-language": "Takže, jaký jazyk chceš se mnou učit?",
@@ -94,8 +94,8 @@
   "chats.medium.description": "Přístup k textovým transkripcím.",
   "chats.hard": "Těžké",
   "chats.hard.description": "Učení prostřednictvím hlasu a zvuku pouze, bez textové podpory.",
-  "chats.mila": "Mily rozhovory",
-  "chats.mila.description": "Vidět všechny scénáře konverzací vytvořené Milou zde",
+  "chats.mai": "Mily rozhovory",
+  "chats.mai.description": "Vidět všechny scénáře konverzací vytvořené Milou zde",
   "chats.community": "Komunitní rozhovory",
   "chats.community.description": "Objevujte scénáře vytvořené uživateli.",
   "chats.mine": "Vytvořte si vlastní",
@@ -108,7 +108,7 @@
   "chats.mine.create.topic.label": "Téma",
   "chats.mine.create.topic.placeholder": "Příklad - Cestování v Japonsku, Vaření italské kuchyně,",
   "chats.mine.create.character.description": "s:",
-  "chats.mine.create.character.label": "Postava Mila",
+  "chats.mine.create.character.label": "Postava Mai",
   "chats.mine.create.character.placeholder": "Příklad - přátelský místní, italský kuchař,",
   "chats.mine.create.location.description": "v:",
   "chats.mine.create.location.label": "Místo",
@@ -120,7 +120,7 @@
   "chats.mine.create.goalAI.label": "Cíl Mily",
   "chats.mine.create.goalAI.placeholder": "Příklad - Zjistit, jaké je domovní město uživatele.",
   "chats.mine.create.proficiency": "Chci, aby úroveň odbornosti byla:",
-  "chats.mine.create.voice": "Chci, aby Mila zněla jako:",
+  "chats.mine.create.voice": "Chci, aby Mai zněla jako:",
   "chats.mine.create.additional.description": "Další kontext:",
   "chats.mine.create.additional.label": "Zadejte popis...",
   "chats.mine.create.additional.placeholder": "Příklad - Jedna z hlavních ulic v Tokiu",
@@ -137,7 +137,7 @@
   "support.message": "Zpráva",
   "support.message.placeholder": "Zanechte nám zprávu...",
   "faq.title": "Často kladené otázky",
-  "faq.description": "Najděte zde odpovědi na otázky, které byste mohli mít o Mila.",
+  "faq.description": "Najděte zde odpovědi na otázky, které byste mohli mít o Mai.",
   "settings.title": "Nastavení",
   "settings.personal-info.title": "Osobní údaje",
   "settings.personal-info.description": "Aktualizujte osobní údaje zde.",
@@ -154,7 +154,7 @@
   "settings.auto-submit": "Automatické odeslání",
   "settings.auto-submit.description": "Odeslat vaši zprávu automaticky po {{seconds}} sekundách od zastavení mluvení.",
   "settings.auto-record": "Automatické nahrávání",
-  "settings.auto-record.description": "Zda by měl mikrofon začít nahrávat poté, co Mila přestane mluvit.",
+  "settings.auto-record.description": "Zda by měl mikrofon začít nahrávat poté, co Mai přestane mluvit.",
   "settings.showPR": "Zobrazit pinyin a romaji",
   "settings.showPR.description": "Zobrazí pinyin nebo romaji nad každým slovem ve konverzacích.",
   "settings.furigana": "Furigana",
@@ -171,7 +171,7 @@
   "settings.tab.subscription": "Předplatné",
   "sidebar.home": "Domov",
   "sidebar.chat": "Chat",
-  "sidebar.chat.mila": "Mila",
+  "sidebar.chat.mai": "Mai",
   "sidebar.chat.community": "Komunita",
   "sidebar.chat.mine": "Moje",
   "sidebar.wordbank": "Slovník",
@@ -179,7 +179,7 @@
   "sidebar.support": "Podpora",
   "sidebar.settings": "Nastavení",
   "subscription.best-deal": "Nejlepší nabídka",
-  "subscription.premium-benefits": "Výhody předplatného Mila Premium",
+  "subscription.premium-benefits": "Výhody předplatného Mai Premium",
   "subscription.find-best-subscription-plan": "Najděte svůj nejlepší plán předplatného",
   "subscription.manage-subscription": "Spravovat předplatné",
   "subscription.current-plan": "Aktuální plán",
@@ -196,43 +196,43 @@
   "subscription.ai-tutor-grammar-review": "AI Tutor - Přehled gramatiky",
   "subscription.ai-tutor-grammar-review.description": "Dejte Milu analyzovat vaše zprávy a naučte se nuance jazyka",
   "subscription.say-goodbye-to-limited-ai": "Sbohem omezeným interakcím s umělou inteligencí, a podpořte naši misi.",
-  "subscription.subscription-will-expire-on": "Vaše prémiové předplatné vyprší dne {{date}} a vrátí se zpět na Mila Starter.",
+  "subscription.subscription-will-expire-on": "Vaše prémiové předplatné vyprší dne {{date}} a vrátí se zpět na Mai Starter.",
   "subscription.thanks-for-support": "Děkujeme za podporu naší mise! Získejte neomezené interakce s umělou inteligencí, podporu v kontextu a další!",
   "subscription.will-expire-on": "Vaše předplatné vyprší dne {{date}}.",
   "subscription.will-charged-on": "Dne {{date}} vám bude účtováno £{{price}}.",
   "subscription.trial-expire-on": "Váš bezplatný zkušební přístup vyprší dne {{date}}.",
   "faqs": [
     {
-      "title": "Co je Mila?",
-      "content": "Mila je inovativní aplikace pro učení jazyků navržená tak, aby učení nového jazyka bylo zábavné, interaktivní a přizpůsobené vašim jedinečným preferencím. Ať už jste začátečník nebo pokročilý student, Mila nabízí angažující konverzace a scénáře, které vám pomohou bez námahy budovat praktické jazykové dovednosti."
+      "title": "Co je Mai?",
+      "content": "Mai je inovativní aplikace pro učení jazyků navržená tak, aby učení nového jazyka bylo zábavné, interaktivní a přizpůsobené vašim jedinečným preferencím. Ať už jste začátečník nebo pokročilý student, Mai nabízí angažující konverzace a scénáře, které vám pomohou bez námahy budovat praktické jazykové dovednosti."
     },
     {
-      "title": "Jaké jazyky jsou k dispozici na Mila?",
-      "content": "V současné době Mila nabízí výběr populárních jazyků, včetně angličtiny (UK a USA), španělštiny (Mexiko a Španělsko), němčiny, francouzštiny, japonštiny a mandarínštiny. Neustále rozšiřujeme naši nabídku jazyků, abychom poskytli více možností našim uživatelům."
+      "title": "Jaké jazyky jsou k dispozici na Mai?",
+      "content": "V současné době Mai nabízí výběr populárních jazyků, včetně angličtiny (UK a USA), španělštiny (Mexiko a Španělsko), němčiny, francouzštiny, japonštiny a mandarínštiny. Neustále rozšiřujeme naši nabídku jazyků, abychom poskytli více možností našim uživatelům."
     },
     {
-      "title": "Jak funguje Mila?",
-      "content": "Mila využívá technologii umělé inteligence k poskytování interaktivních konverzací a scénářů. Můžete se zapojit do konverzací s Milou, která vystupuje jako váš partner pro výměnu jazyků. Mila nabízí scénáře přizpůsobené různým úrovním odbornosti, abyste mohli procvičovat jazykové dovednosti v reálném životě."
+      "title": "Jak funguje Mai?",
+      "content": "Mai využívá technologii umělé inteligence k poskytování interaktivních konverzací a scénářů. Můžete se zapojit do konverzací s Milou, která vystupuje jako váš partner pro výměnu jazyků. Mai nabízí scénáře přizpůsobené různým úrovním odbornosti, abyste mohli procvičovat jazykové dovednosti v reálném životě."
     },
     {
       "title": "Jak sleduji svůj pokrok na Mile?",
-      "content": "Mila poskytuje podrobný systém sledování pokroku. Můžete sledovat svou jazykovou odbornost, slovník, gramatiku, výslovnost a další. Je to vynikající způsob, jak vidět, jak postupujete ve své cestě učením jazyka."
+      "content": "Mai poskytuje podrobný systém sledování pokroku. Můžete sledovat svou jazykovou odbornost, slovník, gramatiku, výslovnost a další. Je to vynikající způsob, jak vidět, jak postupujete ve své cestě učením jazyka."
     },
     {
       "title": "Mohu vytvořit vlastní konverzace na Mile?",
-      "content": "Určitě! Mila nabízí funkci, kde si můžete vytvářet vlastní vlastní scénáře. Personalizujte si svou cestu učením jazyka tím, že vytváříte jedinečné konverzace přizpůsobené svým zájmům a cílům."
+      "content": "Určitě! Mai nabízí funkci, kde si můžete vytvářet vlastní vlastní scénáře. Personalizujte si svou cestu učením jazyka tím, že vytváříte jedinečné konverzace přizpůsobené svým zájmům a cílům."
     },
     {
       "title": "Co mám dělat, pokud narazím na technické problémy s aplikací?",
       "content": "Pokud narazíte na technické problémy, navštivte naši sekci 'Pomoc a podpora' v rámci aplikace. Zde můžete najít průvodce odstraněním potíží a kontaktovat naši podporu pro pomoc."
     },
     {
-      "title": "Je Mila k dispozici na více zařízeních?",
-      "content": "Ano, Mila je navržena pro kompatibilitu s více zařízeními. Můžete plynule přepínat mezi svým mobilním telefonem, tabletem a stolním počítačem, což vám umožní učit se kdykoliv a kdekoliv."
+      "title": "Je Mai k dispozici na více zařízeních?",
+      "content": "Ano, Mai je navržena pro kompatibilitu s více zařízeními. Můžete plynule přepínat mezi svým mobilním telefonem, tabletem a stolním počítačem, což vám umožní učit se kdykoliv a kdekoliv."
     },
     {
-      "title": "Jaké nabízí Mila předplatné plány?",
-      "content": "Mila nabízí tři předplatné plány: Free, Plus a Premium. Každý plán poskytuje různou úroveň přístupu k našemu obsahu a funkcím. Vyberte si ten, který nejlépe vyhovuje vašim učebním potřebám."
+      "title": "Jaké nabízí Mai předplatné plány?",
+      "content": "Mai nabízí tři předplatné plány: Free, Plus a Premium. Každý plán poskytuje různou úroveň přístupu k našemu obsahu a funkcím. Vyberte si ten, který nejlépe vyhovuje vašim učebním potřebám."
     },
     {
       "title": "Jak zruším své předplatné?",

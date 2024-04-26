@@ -1,8 +1,8 @@
 import { Button, Image, Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { useMembership } from '../../hooks/useMembership'
-import PremiumCancelMila from './../../assets/images/mila/premium-cancel-mila.png'
+import PremiumCancelMai from './../../assets/images/mai/premium-cancel-mai.png'
 import dayjs from 'dayjs'
-import Mila from './../../assets/images/mila/premium-mila.png'
+import Mai from './../../assets/images/mai/premium-mai.png'
 import { FC, useEffect, useState } from 'react'
 import { PLANS } from '../atoms/stripe'
 import { t } from 'i18next'
@@ -46,13 +46,13 @@ const useHeaderDesc = ({ currentPlan }: { currentPlan: typeof PLANS }) => {
         : t('subscription.thanks-for-support')
 
   const headerTitle =
-    currentPlan || {} ? 'Mila Premium' : isFreeTrial ? 'Mila Premium(Free Trial)' : 'Mila Starter'
-  const image = isCancelScheduled ? PremiumCancelMila : Mila
+    currentPlan || {} ? 'Mai Premium' : isFreeTrial ? 'Mai Premium(Free Trial)' : 'Mai Starter'
+  const image = isCancelScheduled ? PremiumCancelMai : Mai
   const currentPlanTitle = currentPlan
     ? currentPlan?.title
     : isFreeTrial
-      ? 'Mila Premium(Free Trial)'
-      : 'Mila Starter'
+      ? 'Mai Premium(Free Trial)'
+      : 'Mai Starter'
 
   return {
     currentPlanTitle,
@@ -164,7 +164,7 @@ export const Membership = () => {
           <MSubTitle title={t('subscription.manage-subscription')} />
           <View className="flex flex-row items-center justify-between">
             <View className="">
-              <View className="dark:bg-mila-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700">
+              <View className="dark:bg-mai-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700">
                 <MText> {t('subscription.current-plan')}</MText>
               </View>
             </View>
@@ -191,7 +191,7 @@ export const Membership = () => {
         {!isFreeUser && (
           <View className="mt-4 flex flex-1 flex-row flex-wrap items-center gap-2">
             <View className="min-w-[150px]">
-              <View className="dark:bg-mila-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700 dark:border-none dark:text-white">
+              <View className="dark:bg-mai-gray-25 h-fit w-fit whitespace-nowrap rounded-2xl border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700 dark:border-none dark:text-white">
                 <MText> {t('subscription.next-payment')}</MText>
               </View>
             </View>

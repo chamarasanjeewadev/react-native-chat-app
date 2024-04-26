@@ -74,7 +74,7 @@ export const BotMessage = ({
 
   return (
     <>
-      <ChatBox intent={'mila'} className={clsx(toggleTranslate && 'rounded-b-none')}>
+      <ChatBox intent={'mai'} className={clsx(toggleTranslate && 'rounded-b-none')}>
         <BotText
           // audio_response={audio_response}
           text_response={text_response}
@@ -114,7 +114,7 @@ export const BotMessage = ({
       </ChatBox>
       {toggleTranslate && !isFetching && (
         <ChatBox
-          intent={'mila'}
+          intent={'mai'}
           className="z-1 -mt-1 rounded-t-none bg-card pt-2 text-card-foreground">
           <MText className=" flex-grow ">
             {translatedResponse?.translated_text ?? 'No translation found'}

@@ -9,7 +9,7 @@ import {
   subscriptionIntent
 } from '../services/apiService'
 import { QueryOptions, useQuery } from '@tanstack/react-query'
-import { getMilaUserChats, signIn } from '../services/apiService'
+import { getMaiUserChats, signIn } from '../services/apiService'
 import { queryKeys } from './queryKeys'
 import { useAuthStore } from '../stores/AuthStore'
 // import { useAuthStore } from '../stores/AuthStore'
@@ -38,10 +38,10 @@ export const useGetUsersQuery = () =>
     }
   })
 
-export const useGetMilaChats = () =>
+export const useGetMaiChats = () =>
   useQuery({
-    queryKey: queryKeys.chats.milaChats().queryKey,
-    queryFn: getMilaUserChats,
+    queryKey: queryKeys.chats.MaiChats().queryKey,
+    queryFn: getMaiUserChats,
     staleTime: 0
   })
 

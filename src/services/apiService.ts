@@ -5,8 +5,8 @@ export const signIn = async () => {
   return result.data
 }
 
-export const getMilaUserChats = async () => {
-  const result = await axiosInstance.get<ChatsResponse>(`/user/sections/mila`, {})
+export const getMaiUserChats = async () => {
+  const result = await axiosInstance.get<ChatsResponse>(`/user/sections/mai`, {})
 
   return result.data
 }

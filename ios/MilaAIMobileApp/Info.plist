@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Mila AI</string>
+	<string>Mai AI</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,10 +28,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.milaai.app</string>
+			<string>com.Maiai.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>milaai</string>
+				<string>Maiai</string>
 				<string>com.googleusercontent.apps.428763486515-e4ml09r82fo0crjpmhmflua0kclm10q0</string>
 				<string>com.googleusercontent.apps.893224056607-54a8a3f97v1lbj868sdbu78ag3mottmf</string>
 			</array>

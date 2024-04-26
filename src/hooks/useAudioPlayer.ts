@@ -34,8 +34,8 @@ const useAudioPlayer = () => {
     await stopAudio()
 
     // audioUrl =
-    //   'https://landingmilaaidev.blob.core.windows.net/aimessages/user_10_1707894556.wav?se=2024-02-14T09%3A14%3A28Z&sp=r&sv=2022-11-02&sr=b&sig=U5x4kP5BguwlFBHWSVEDlIchrkkJ7R%2BfEo9G4WRltDc%3D'
-    // audioUrl ="https://landingmilaaidev.blob.core.windows.net/aimessages/Mandarin_太好了.wav?se=2024-02-14T09%3A16%3A42Z&sp=r&sv=2022-11-02&sr=b&sig=YD8qdiao0lq/876giNHG2FNXHWgMQVfSIY9hlERi3aw%3D"
+    //   'https://landingMaiaidev.blob.core.windows.net/aimessages/user_10_1707894556.wav?se=2024-02-14T09%3A14%3A28Z&sp=r&sv=2022-11-02&sr=b&sig=U5x4kP5BguwlFBHWSVEDlIchrkkJ7R%2BfEo9G4WRltDc%3D'
+    // audioUrl ="https://landingMaiaidev.blob.core.windows.net/aimessages/Mandarin_太好了.wav?se=2024-02-14T09%3A16%3A42Z&sp=r&sv=2022-11-02&sr=b&sig=YD8qdiao0lq/876giNHG2FNXHWgMQVfSIY9hlERi3aw%3D"
     console.log('insid play audio', audioUrl)
 
     // const encodedUrl = encodeURIComponent(audioUrl)

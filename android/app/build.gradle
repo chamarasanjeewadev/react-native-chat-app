@@ -85,15 +85,15 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.milaai.app"
+    namespace "com.ai.app"
     defaultConfig {
-        applicationId "com.milaai.app"
+        applicationId "com.ai.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        manifestPlaceholders = [appAuthRedirectScheme: 'milaai']
-        resValue 'string', 'build_config_package','com.milaai.app'
+        manifestPlaceholders = [appAuthRedirectScheme: 'ai']
+        resValue 'string', 'build_config_package','com.ai.app'
     }
 
     flavorDimensions 'env'

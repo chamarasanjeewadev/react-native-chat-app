@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "893224056607",
-    "project_id": "mila-ai-394512",
-    "storage_bucket": "mila-ai-394512.appspot.com"
+    "project_id": "ai-394512",
+    "storage_bucket": "ai-394512.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:893224056607:android:0b318c5ebbe5b5ada8222a",
         "android_client_info": {
-          "package_name": "com.milaai.app"
+          "package_name": "com.ai.app"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "893224056607-54a8a3f97v1lbj868sdbu78ag3mottmf.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.milaai.app"
+                "bundle_id": "com.ai.app"
               }
             }
           ]
@@ -45,7 +45,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:893224056607:android:35c2c89cfefe9db4a8222a",
         "android_client_info": {
-          "package_name": "com.milaai.app.development"
+          "package_name": "com.ai.app.development"
         }
       },
       "oauth_client": [
@@ -70,7 +70,7 @@
               "client_id": "893224056607-54a8a3f97v1lbj868sdbu78ag3mottmf.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.milaai.app"
+                "bundle_id": "com.ai.app"
               }
             }
           ]

@@ -4,7 +4,7 @@ import { getIdToken } from './tokenUtils'
 import { getAuthTokenByRefreshToken } from './authUtil'
 import { MESSAGES } from './consts'
 
-const API_BASE_URL = 'https://backend.milaai.app'
+const API_BASE_URL = 'https://backend.Maiai.app'
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,

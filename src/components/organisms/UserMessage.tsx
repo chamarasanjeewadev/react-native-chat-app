@@ -1,11 +1,11 @@
 import { View } from 'react-native'
 import { MText } from '../atoms/MText'
 import MButton from '../atoms/MButton'
-import MilaHintIcon from '../../assets/icons/svgs/milaHint.svg'
+import MaiHintIcon from '../../assets/icons/svgs/MaiHint.svg'
 import RetryIcon from '../../assets/icons/svgs/retry.svg'
 import PlaySlowIcon from '../../assets/icons/svgs/PlaySlow.svg'
 import { ChatBox } from '../molecules/ChatBox'
-import { ThinkingMila } from '../../assets/icons/ThinkingMila'
+import { ThinkingMai } from '../../assets/icons/ThinkingMai'
 import LoadingDots from '../atoms/LoadingDots'
 import { useFeedbackGrammar, useGetSlowAudio, useRetry } from '../../hooks/queries'
 import { useState } from 'react'
@@ -64,7 +64,7 @@ const UserMessage = ({
             loading={isFetching}
             className={clsx(toggleTranslate ? 'bg-primary' : '')}
             intent="buttonIcon"
-            leadingIcon={<MilaHintIcon className="color-chatbutton" />}
+            leadingIcon={<MaiHintIcon className="color-chatbutton" />}
             onPress={async () => {
               setToggleTranslate(x => !x)
               if (!toggleTranslate) {
@@ -111,9 +111,9 @@ export default UserMessage
 
 export const ThinkingMessage = () => {
   return (
-    <ChatBox intent="mila" loading={false} className="flex flex-col p-4">
+    <ChatBox intent="mai" loading={false} className="flex flex-col p-4">
       <LoadingDots dots={3} borderRadius={50} size={10} bounceHeight={2} />
-      <ThinkingMila />
+      <ThinkingMai />
     </ChatBox>
   )
 }

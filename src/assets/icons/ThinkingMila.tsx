@@ -1,11 +1,11 @@
-import Svg, { Path } from "react-native-svg"
+import Svg, { Path } from 'react-native-svg'
 
 export interface IconProps {
   width?: string
   height?: string
 }
 
-export const ThinkingMila = ({ width = '71', height = '67' }: IconProps) => (
+export const ThinkingMai = ({ width = '71', height = '67' }: IconProps) => (
   <Svg
     width={width}
     height={height}
